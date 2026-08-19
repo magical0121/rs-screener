@@ -352,17 +352,23 @@ function renderIndustryStrength(list) {
  *  30週線上は Stage2 / TT強い の定義に含まれる（150日SMA上）
  */
 function isHonmei(s) {
+  if (!s) return false;
   const stage2 = String(s.stage || "").includes("2");
-  const rsOk = (s.rs || 0) >= 70;
-  const ttOk = s.tt === "強い";
-  const hqmOk = (s.hqm || 0) >= 80;
+  const rs = Number(s.rs);
+  const hqm = Number(s.hqm);
+  const tt = String(s.tt || "").trim();
+  const rsOk = !Number.isNaN(rs) && rs >= 70;
+  const ttOk = tt === "強い";
+  const hqmOk = !Number.isNaN(hqm) && hqm >= 80;
   return stage2 && rsOk && ttOk && hqmOk;
 }
 
 function sortedStocks(stocks) {
-  const honmeiOnly = document.getElementById("honmeiOnly").checked;
-  const sortBy = document.getElementById("sortBy").value;
-  let list = [...stocks];
+  const honmeiEl = document.getElementById("honmeiOnly");
+  const honmeiOnly = honmeiEl ? honmeiEl.checked : true;
+  const sortByEl = document.getElementById("sortBy");
+  const sortBy = sortByEl ? sortByEl.value : "rs";
+  let list = [...(stocks || [])];
   if (honmeiOnly) {
     list = list.filter(isHonmei);
   }
@@ -406,14 +412,33 @@ function renderTable(stocks) {
 
 function render() {
   if (!DATA) return;
+  const stocks = DATA.stocks || [];
+  const honmeiCount = stocks.filter(isHonmei).length;
   document.getElementById("lastUpdated").textContent =
-    "更新: " + (DATA.updated_at || "—");
+    "更新: " + (DATA.updated_at || "—") +
+    " ／ 全" + stocks.length + "件 ／ 本命" + honmeiCount + "件";
+
+  // 業種強度は常に全銘柄ベース
   const industryList =
     (DATA.industries && DATA.industries.length
       ? DATA.industries
-      : computeIndustryScores(DATA.stocks || []));
+      : computeIndustryScores(stocks));
   renderIndustryStrength(industryList);
-  renderTable(DATA.stocks || []);
+  renderTable(stocks);
+
+  const emptyHint = document.getElementById("table-empty-hint");
+  if (emptyHint) {
+    const honmeiOnly = document.getElementById("honmeiOnly")?.checked;
+    if (stocks.length === 0) {
+      emptyHint.textContent = "銘柄データがありません。data/screener.json と Actions を確認してください。";
+      emptyHint.hidden = false;
+    } else if (honmeiOnly && honmeiCount === 0) {
+      emptyHint.textContent = "本命条件に該当する銘柄は0件です。「本命のみ」を外すと全件を表示できます。";
+      emptyHint.hidden = false;
+    } else {
+      emptyHint.hidden = true;
+    }
+  }
 }
 
 document.getElementById("honmeiOnly").addEventListener("change", render);
