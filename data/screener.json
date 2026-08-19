@@ -1,1 +1,95 @@
-
+{
+  "updated_at": "2026-08-19 16:00 ET（サンプル）",
+  "themes": [
+    {
+      "name": "AI/半導体",
+      "score": 92,
+      "label": "強い",
+      "leaders": ["NVDA", "AVGO", "TSM"]
+    },
+    {
+      "name": "サイバーセキュリティ",
+      "score": 74,
+      "label": "普通",
+      "leaders": ["CRWD", "PANW"]
+    },
+    {
+      "name": "バイオテック",
+      "score": 38,
+      "label": "弱い",
+      "leaders": []
+    }
+  ],
+  "stocks": [
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "rs": 98,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "強い",
+      "hqm": 92
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom Inc.",
+      "rs": 94,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "強い",
+      "hqm": 89
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike Holdings",
+      "rs": 76,
+      "stage": "Stage2 →",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "普通",
+      "hqm": 81
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks",
+      "rs": 71,
+      "stage": "Stage2 →",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "普通",
+      "hqm": 74
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake Inc.",
+      "rs": 64,
+      "stage": "Stage1 →",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "弱い",
+      "hqm": 68
+    },
+    {
+      "ticker": "REGN",
+      "name": "Regeneron Pharmaceuticals",
+      "rs": 42,
+      "stage": "Stage4 ↓",
+      "industry": "Biotechnology",
+      "theme": "バイオテック",
+      "tt": "弱い",
+      "hqm": 45
+    },
+    {
+      "ticker": "AMGN",
+      "name": "Amgen Inc.",
+      "rs": 34,
+      "stage": "Stage4 ↓",
+      "industry": "Biotechnology",
+      "theme": "バイオテック",
+      "tt": "弱い",
+      "hqm": 38
+    }
+  ]
+}
