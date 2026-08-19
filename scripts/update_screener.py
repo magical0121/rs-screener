@@ -137,6 +137,162 @@ def fetch_industry_map() -> dict[str, dict[str, str]]:
     return out
 
 
+def _http_get(url: str, timeout: int = 25) -> str:
+    req = Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+    )
+    with urlopen(req, timeout=timeout) as res:
+        return res.read().decode("utf-8", errors="ignore")
+
+
+def _parse_finviz_field(html: str, label: str) -> str:
+    """Finviz quote ページのスナップショット表から label の値を取る"""
+    # 典型: >Industry</td><td ...>Biotechnology</td>
+    patterns = [
+        rf">\s*{re.escape(label)}\s*</td>\s*<td[^>]*>\s*([^<]+?)\s*</td>",
+        rf">\s*{re.escape(label)}\s*</td>\s*<td[^>]*>\s*<[^>]+>\s*([^<]+?)\s*<",
+    ]
+    for pat in patterns:
+        m = re.search(pat, html, flags=re.IGNORECASE)
+        if m:
+            val = re.sub(r"\s+", " ", m.group(1)).strip()
+            if val and val.lower() not in {"-", "—", "n/a", "none"}:
+                return val
+    return ""
+
+
+def fetch_finviz_profile(ticker: str) -> dict[str, str]:
+    """Finviz 無料の quote ページから Sector / Industry / Company を取得（非公式）"""
+    t = ticker.strip().upper()
+    if not t:
+        return {}
+    url = f"https://finviz.com/quote.ashx?t={t}"
+    try:
+        html = _http_get(url)
+    except Exception as e:
+        print(f"  Finviz miss {t}: {e}")
+        return {}
+    low = html.lower()
+    if "no stock matches" in low or "was not found" in low or "too many requests" in low:
+        return {}
+
+    def _clean(s: str) -> str:
+        s = (
+            s.replace("&amp;", "&")
+            .replace("&#39;", "'")
+            .replace("&nbsp;", " ")
+            .replace("\n", " ")
+        )
+        return re.sub(r"\s+", " ", s).strip()
+
+    sector = ""
+    industry = ""
+    # 新UIカテゴリ: f=sec_ / f=ind_
+    m_sec = re.search(
+        r'f=sec_[a-z0-9_]+"[^>]*class="quote-header_category"[^>]*>([^<]+)<',
+        html,
+        flags=re.IGNORECASE,
+    )
+    if m_sec:
+        sector = _clean(m_sec.group(1))
+
+    m_ind = re.search(
+        r'f=ind_[a-z0-9_]+"[^>]*class="quote-header_category"[^>]*title="([^"]+)"',
+        html,
+        flags=re.IGNORECASE,
+    )
+    if m_ind:
+        industry = _clean(m_ind.group(1))
+    if not industry:
+        m_ind2 = re.search(
+            r'f=ind_[a-z0-9_]+"[^>]*class="quote-header_category"[^>]*>\s*(?:<span[^>]*>)?\s*([^<]+?)\s*<',
+            html,
+            flags=re.IGNORECASE,
+        )
+        if m_ind2:
+            industry = _clean(m_ind2.group(1))
+
+    # 旧テーブル
+    if not sector:
+        sector = _parse_finviz_field(html, "Sector")
+    if not industry:
+        industry = _parse_finviz_field(html, "Industry")
+
+    company = ""
+    m_co = re.search(
+        r'quote-header_ticker-wrapper_company[^"]*"[^>]*>\s*<a[^>]*>\s*([^<]+?)\s*<',
+        html,
+        flags=re.IGNORECASE,
+    )
+    if m_co:
+        company = _clean(m_co.group(1))
+
+    out = {}
+    if industry:
+        out["industry"] = industry
+    if sector:
+        out["sector"] = sector
+    if company:
+        out["name"] = company
+    return out
+
+
+def fill_missing_from_finviz(
+    meta_rows: list[dict],
+    max_lookups: int = 400,
+    sleep_sec: float = 1.0,
+) -> int:
+    """
+    業種が空の銘柄だけ Finviz から補完。
+    Actions タイムアウト回避のため max_lookups で上限。
+    """
+    missing_idx = [
+        i
+        for i, m in enumerate(meta_rows)
+        if not m.get("industry")
+        or str(m.get("industry")).strip() in {"—", "-", "N/A", "n/a", ""}
+    ]
+    if not missing_idx:
+        print("Finviz fill: nothing missing")
+        return 0
+
+    targets = missing_idx[:max_lookups]
+    print(f"Finviz fill: {len(missing_idx)} missing, lookup {len(targets)} (cap={max_lookups})")
+    filled = 0
+    for n, i in enumerate(targets, 1):
+        m = meta_rows[i]
+        t = m["ticker"]
+        fv = fetch_finviz_profile(t)
+        if not fv:
+            time.sleep(sleep_sec)
+            continue
+        ind = (fv.get("industry") or "").strip()
+        sec = (fv.get("sector") or "").strip()
+        if ind:
+            m["industry"] = ind
+            filled += 1
+        elif sec:
+            m["industry"] = sec
+            filled += 1
+        if sec:
+            m["sector"] = sec
+        if fv.get("name") and (not m.get("name") or m["name"] == t):
+            m["name"] = fv["name"]
+        if n % 25 == 0:
+            print(f"  Finviz progress {n}/{len(targets)} filled={filled}")
+        time.sleep(sleep_sec)
+    print(f"Finviz fill done: filled={filled}")
+    return filled
+
+
 def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[str]]) -> str:
     """明示テーマ優先、なければ業種から詳細テーマへ自動分類"""
     for name, members in themes.items():
@@ -742,10 +898,13 @@ def main() -> None:
 
             info = industry_map.get(t, {})
             industry = (info.get("industry") or "").strip()
+            sector = (info.get("sector") or "").strip()
+            # 業種が無いときはセクターを表示に使う
             if not industry or industry in {"—", "-", "N/A", "n/a"}:
-                industry = "—"
+                industry = sector if sector and sector not in {"—", "-", "N/A", "n/a"} else "—"
             name = info.get("name", t) or t
-            theme = auto_theme_from_industry(industry, t, themes)
+            theme_src = (info.get("industry_raw") or info.get("industry") or sector or industry)
+            theme = auto_theme_from_industry(theme_src, t, themes)
             meta_rows.append(
                 {
                     "ticker": t,
@@ -753,6 +912,7 @@ def main() -> None:
                     "stage": stage,
                     "tt": tt,
                     "industry": industry,
+                    "sector": sector or "—",
                     "theme": theme,
                 }
             )
@@ -760,6 +920,14 @@ def main() -> None:
         time.sleep(1.0)
 
     print(f"Qualified symbols: {len(meta_rows)}")
+
+    # 業種が無い銘柄だけ Finviz（無料ページ）から補完
+    fill_missing_from_finviz(meta_rows, max_lookups=250, sleep_sec=1.5)
+    # テーマを再計算（Finviz業種反映）
+    for m in meta_rows:
+        src = m.get("industry") or m.get("sector") or ""
+        m["theme"] = auto_theme_from_industry(src, m["ticker"], themes)
+
     hqm_map = calc_hqm_scores(returns_map)
     rs_map = calc_rs_percentile(returns_3m)
 
@@ -773,6 +941,7 @@ def main() -> None:
                 "rs": rs_map.get(t, 50),
                 "stage": m["stage"],
                 "industry": m["industry"],
+                "sector": m.get("sector") or "—",
                 "theme": m["theme"],
                 "tt": m["tt"],
                 "hqm": hqm_map.get(t, 0.0),
