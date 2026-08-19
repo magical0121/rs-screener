@@ -224,6 +224,17 @@ const INDUSTRY_JA = {
   "Independent Power and Renewable Electricity Producers": "独立・再エネ発電",
   "Equity Real Estate Investment Trusts (REITs)": "株式REIT",
   "Real Estate Investment Trusts (REITs)": "REIT",
+  "Communications Equipment": "通信機器",
+  "Internet & Direct Marketing Retail": "ネット・通販小売",
+  "Energy Equipment & Services": "エネルギー機材・サービス",
+  "Auto Components": "自動車部品",
+  "Marine": "海運",
+  "Diversified Financials": "多角金融",
+  "Software & Services": "ソフトウェア・サービス",
+  "Road & Rail": "道路・鉄道",
+  "Electric Utilities": "電力",
+  "Gas Utilities": "ガス",
+  "Mortgage Real Estate Investment Trusts (REITs)": "モーゲージREIT",
 };
 
 function industryJa(raw) {
