@@ -83,19 +83,31 @@ def fetch_industry_map() -> dict[str, dict[str, str]]:
             ticker = str(sym).strip().upper()
             if not ticker or not ticker.replace(".", "").isalnum():
                 continue
-            # 優先: industry → industry_group → sector
-            industry = ""
-            for col in ("industry", "industry_group", "sector"):
-                val = row.get(col) if hasattr(row, "get") else row[col] if col in row.index else None
-                if val is not None and str(val).strip() and str(val).lower() not in {"nan", "none"}:
-                    industry = str(val).strip()
-                    break
-            name = ""
-            if "name" in row.index and row["name"] is not None:
-                name = str(row["name"]).strip()
+            def _val(col):
+                try:
+                    if col not in row.index:
+                        return ""
+                    v = row[col]
+                    if v is None:
+                        return ""
+                    s = str(v).strip()
+                    if not s or s.lower() in {"nan", "none"}:
+                        return ""
+                    return s
+                except Exception:
+                    return ""
+
+            industry = _val("industry")
+            industry_group = _val("industry_group")
+            sector = _val("sector")
+            # 表示用: industry → industry_group → sector
+            display = industry or industry_group or sector or "—"
+            name = _val("name")
             out[ticker] = {
                 "name": name or ticker,
-                "industry": industry or "—",
+                "industry": display,
+                "sector": sector or "—",
+                "industry_raw": industry or "—",
                 "marketCap": str(row["market_cap"]) if "market_cap" in row.index and row["market_cap"] is not None else "",
                 "volume": "",
             }
@@ -195,6 +207,18 @@ def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[
         ("通信サービス", ["communication services"]),
         ("教育", ["education", "education & training"]),
         ("ビジネスサービス", ["business services", "commercial services", "staffing"]),
+        # セクター級フォールバック（industryが無いとき）
+        ("テクノロジー", ["information technology"]),
+        ("ヘルスケア", ["health care", "healthcare"]),
+        ("金融その他", ["financials", "financial"]),
+        ("消費関連", ["consumer discretionary", "consumer cyclical"]),
+        ("消費財", ["consumer staples", "consumer defensive"]),
+        ("エネルギー", ["energy"]),
+        ("資本財・産業", ["industrials", "industrial"]),
+        ("素材その他", ["materials", "basic materials"]),
+        ("電力・ユーティリティ", ["utilities"]),
+        ("REIT・不動産", ["real estate"]),
+        ("通信サービス", ["communication services"]),
     ]
 
     # より具体的なキーワードを優先（長いキーから）。短い汎用語の誤爆を抑制
