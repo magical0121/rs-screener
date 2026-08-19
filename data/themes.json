@@ -8,13 +8,13 @@
       "CRWD", "PANW", "ZS", "FTNT", "OKTA", "NET", "S", "CYBR", "TENB"
     ],
     "クラウド / データ": [
-      "SNOW", "DDOG", "MDB", "PLTR", "CRM", "NOW", "NET", "TEAM", "HUBS", "WDAY"
-    ],
-    "バイオテック": [
-      "REGN", "AMGN", "VRTX", "GILD", "BIIB", "MRNA", "LLY", "ISRG"
+      "SNOW", "DDOG", "MDB", "PLTR", "CRM", "NOW", "TEAM", "HUBS", "WDAY"
     ],
     "メガテック": [
       "AAPL", "MSFT", "GOOGL", "META", "AMZN", "NFLX", "ORCL", "ADBE"
+    ],
+    "バイオテック": [
+      "REGN", "AMGN", "VRTX", "GILD", "BIIB", "MRNA", "ISRG"
     ]
   }
 }
