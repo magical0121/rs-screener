@@ -1,95 +1,853 @@
 {
-  "updated_at": "2026-08-19 16:00 ET（サンプル）",
+  "updated_at": "2026-08-19 11:46 UTC",
   "themes": [
     {
-      "name": "AI/半導体",
-      "score": 92,
-      "label": "強い",
-      "leaders": ["NVDA", "AVGO", "TSM"]
+      "name": "サイバーセキュリティ",
+      "score": 76,
+      "label": "普通",
+      "leaders": [
+        "OKTA",
+        "TENB",
+        "NET"
+      ]
     },
     {
-      "name": "サイバーセキュリティ",
-      "score": 74,
+      "name": "クラウド / データ",
+      "score": 70,
       "label": "普通",
-      "leaders": ["CRWD", "PANW"]
+      "leaders": [
+        "SNOW",
+        "TEAM",
+        "NET"
+      ]
     },
     {
       "name": "バイオテック",
-      "score": 38,
+      "score": 57,
+      "label": "普通",
+      "leaders": [
+        "AMGN",
+        "MRNA",
+        "LLY"
+      ]
+    },
+    {
+      "name": "AI/半導体",
+      "score": 52,
+      "label": "弱い",
+      "leaders": [
+        "MU",
+        "MRVL",
+        "AMAT"
+      ]
+    },
+    {
+      "name": "メガテック",
+      "score": 31,
       "label": "弱い",
       "leaders": []
     }
   ],
   "stocks": [
     {
-      "ticker": "NVDA",
-      "name": "NVIDIA Corporation",
-      "rs": 98,
-      "stage": "Stage2 ↑",
-      "industry": "Semiconductors",
-      "theme": "AI/半導体",
-      "tt": "強い",
-      "hqm": 92
-    },
-    {
-      "ticker": "AVGO",
-      "name": "Broadcom Inc.",
-      "rs": 94,
-      "stage": "Stage2 ↑",
-      "industry": "Semiconductors",
-      "theme": "AI/半導体",
-      "tt": "強い",
-      "hqm": 89
-    },
-    {
-      "ticker": "CRWD",
-      "name": "CrowdStrike Holdings",
-      "rs": 76,
-      "stage": "Stage2 →",
+      "ticker": "RPD",
+      "name": "Rapid7, Inc.",
+      "rs": 100,
+      "stage": "Stage3 →",
       "industry": "Software - Infrastructure",
-      "theme": "サイバーセキュリティ",
-      "tt": "普通",
-      "hqm": 81
-    },
-    {
-      "ticker": "PANW",
-      "name": "Palo Alto Networks",
-      "rs": 71,
-      "stage": "Stage2 →",
-      "industry": "Software - Infrastructure",
-      "theme": "サイバーセキュリティ",
-      "tt": "普通",
-      "hqm": 74
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 60.0
     },
     {
       "ticker": "SNOW",
       "name": "Snowflake Inc.",
-      "rs": 64,
-      "stage": "Stage1 →",
+      "rs": 99,
+      "stage": "Stage2 ↑",
       "industry": "Software - Application",
       "theme": "クラウド / データ",
-      "tt": "弱い",
-      "hqm": 68
+      "tt": "普通",
+      "hqm": 85.6
     },
     {
-      "ticker": "REGN",
-      "name": "Regeneron Pharmaceuticals",
-      "rs": 42,
-      "stage": "Stage4 ↓",
-      "industry": "Biotechnology",
-      "theme": "バイオテック",
+      "ticker": "TEAM",
+      "name": "Atlassian Corporation",
+      "rs": 98,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "普通",
+      "hqm": 82.5
+    },
+    {
+      "ticker": "U",
+      "name": "Unity Software Inc.",
+      "rs": 96,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 87.5
+    },
+    {
+      "ticker": "OKTA",
+      "name": "Okta, Inc.",
+      "rs": 95,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "強い",
+      "hqm": 69.7
+    },
+    {
+      "ticker": "TENB",
+      "name": "Tenable Holdings, Inc.",
+      "rs": 94,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "普通",
+      "hqm": 63.1
+    },
+    {
+      "ticker": "VEEV",
+      "name": "Veeva Systems Inc.",
+      "rs": 92,
+      "stage": "Stage3 →",
+      "industry": "Health Information Services",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 73.1
+    },
+    {
+      "ticker": "NET",
+      "name": "Cloudflare, Inc.",
+      "rs": 91,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "強い",
+      "hqm": 76.2
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks, Inc.",
+      "rs": 90,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "強い",
+      "hqm": 82.8
+    },
+    {
+      "ticker": "WDAY",
+      "name": "Workday, Inc.",
+      "rs": 89,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "普通",
+      "hqm": 72.8
+    },
+    {
+      "ticker": "PATH",
+      "name": "UiPath, Inc.",
+      "rs": 88,
+      "stage": "Stage3 →",
+      "industry": "Software - Infrastructure",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 80.3
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify Inc.",
+      "rs": 86,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 70.9
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology, Inc.",
+      "rs": 85,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 85.9
+    },
+    {
+      "ticker": "DXCM",
+      "name": "DexCom, Inc.",
+      "rs": 84,
+      "stage": "Stage2 ↑",
+      "industry": "Medical Devices",
+      "theme": "—",
+      "tt": "強い",
+      "hqm": 70.3
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike Holdings, Inc.",
+      "rs": 82,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "強い",
+      "hqm": 79.1
+    },
+    {
+      "ticker": "ABNB",
+      "name": "Airbnb, Inc.",
+      "rs": 81,
+      "stage": "Stage2 ↑",
+      "industry": "Travel Services",
+      "theme": "—",
+      "tt": "強い",
+      "hqm": 79.7
+    },
+    {
+      "ticker": "MDB",
+      "name": "MongoDB, Inc.",
+      "rs": 80,
+      "stage": "Stage3 →",
+      "industry": "Software - Infrastructure",
+      "theme": "クラウド / データ",
+      "tt": "普通",
+      "hqm": 80.6
+    },
+    {
+      "ticker": "SE",
+      "name": "Sea Limited",
+      "rs": 79,
+      "stage": "Stage3 →",
+      "industry": "Internet Retail",
+      "theme": "—",
       "tt": "弱い",
-      "hqm": 45
+      "hqm": 49.4
     },
     {
       "ticker": "AMGN",
       "name": "Amgen Inc.",
-      "rs": 34,
-      "stage": "Stage4 ↓",
+      "rs": 78,
+      "stage": "Stage2 ↑",
+      "industry": "Drug Manufacturers - General",
+      "theme": "バイオテック",
+      "tt": "強い",
+      "hqm": 69.1
+    },
+    {
+      "ticker": "MRNA",
+      "name": "Moderna, Inc.",
+      "rs": 76,
+      "stage": "Stage2 ↑",
       "industry": "Biotechnology",
       "theme": "バイオテック",
+      "tt": "強い",
+      "hqm": 73.4
+    },
+    {
+      "ticker": "S",
+      "name": "SentinelOne, Inc.",
+      "rs": 75,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "強い",
+      "hqm": 73.8
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology, Inc.",
+      "rs": 74,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 84.4
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies Inc.",
+      "rs": 72,
+      "stage": "Stage3 →",
+      "industry": "Software - Infrastructure",
+      "theme": "クラウド / データ",
+      "tt": "普通",
+      "hqm": 68.4
+    },
+    {
+      "ticker": "FTNT",
+      "name": "Fortinet, Inc.",
+      "rs": 71,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "強い",
+      "hqm": 69.4
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials, Inc.",
+      "rs": 70,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductor Equipment & Materials",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 68.1
+    },
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly and Company",
+      "rs": 69,
+      "stage": "Stage2 ↑",
+      "industry": "Drug Manufacturers - General",
+      "theme": "バイオテック",
+      "tt": "強い",
+      "hqm": 64.7
+    },
+    {
+      "ticker": "DUOL",
+      "name": "Duolingo, Inc.",
+      "rs": 68,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "—",
       "tt": "弱い",
-      "hqm": 38
+      "hqm": 45.9
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML Holding N.V. - New York Re",
+      "rs": 66,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductor Equipment & Materials",
+      "theme": "AI/半導体",
+      "tt": "強い",
+      "hqm": 67.5
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Super Micro Computer, Inc.",
+      "rs": 65,
+      "stage": "Stage3 →",
+      "industry": "Computer Hardware",
+      "theme": "AI/半導体",
+      "tt": "弱い",
+      "hqm": 65.0
+    },
+    {
+      "ticker": "VRTX",
+      "name": "Vertex Pharmaceuticals Incorpor",
+      "rs": 64,
+      "stage": "Stage2 ↑",
+      "industry": "Biotechnology",
+      "theme": "バイオテック",
+      "tt": "強い",
+      "hqm": 57.8
+    },
+    {
+      "ticker": "HOOD",
+      "name": "Robinhood Markets, Inc.",
+      "rs": 62,
+      "stage": "Stage3 →",
+      "industry": "Capital Markets",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 39.4
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research Corporation",
+      "rs": 61,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductor Equipment & Materials",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 71.6
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog, Inc.",
+      "rs": 60,
+      "stage": "Stage2 ↑",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "強い",
+      "hqm": 61.6
+    },
+    {
+      "ticker": "ARM",
+      "name": "Arm Holdings plc",
+      "rs": 59,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 61.2
+    },
+    {
+      "ticker": "NU",
+      "name": "Nu Holdings Ltd.",
+      "rs": 57,
+      "stage": "Stage4 ↓",
+      "industry": "Banks - Regional",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 40.0
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow, Inc.",
+      "rs": 56,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "弱い",
+      "hqm": 48.4
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "rs": 55,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 66.6
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft Corporation",
+      "rs": 54,
+      "stage": "Stage3 →",
+      "industry": "Software - Infrastructure",
+      "theme": "メガテック",
+      "tt": "普通",
+      "hqm": 59.7
+    },
+    {
+      "ticker": "MELI",
+      "name": "MercadoLibre, Inc.",
+      "rs": 52,
+      "stage": "Stage4 ↓",
+      "industry": "Internet Retail",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 30.0
+    },
+    {
+      "ticker": "REGN",
+      "name": "Regeneron Pharmaceuticals, Inc.",
+      "rs": 51,
+      "stage": "Stage3 →",
+      "industry": "Biotechnology",
+      "theme": "バイオテック",
+      "tt": "普通",
+      "hqm": 59.4
+    },
+    {
+      "ticker": "AI",
+      "name": "C3.ai, Inc.",
+      "rs": 50,
+      "stage": "Stage3 →",
+      "industry": "Software - Infrastructure",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 39.7
+    },
+    {
+      "ticker": "SOFI",
+      "name": "SoFi Technologies, Inc.",
+      "rs": 49,
+      "stage": "Stage4 ↓",
+      "industry": "Credit Services",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 35.0
+    },
+    {
+      "ticker": "GILD",
+      "name": "Gilead Sciences, Inc.",
+      "rs": 48,
+      "stage": "Stage2 ↑",
+      "industry": "Drug Manufacturers - General",
+      "theme": "バイオテック",
+      "tt": "普通",
+      "hqm": 46.6
+    },
+    {
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "rs": 46,
+      "stage": "Stage2 ↑",
+      "industry": "Semiconductor Equipment & Materials",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 54.7
+    },
+    {
+      "ticker": "BIIB",
+      "name": "Biogen Inc.",
+      "rs": 45,
+      "stage": "Stage2 ↑",
+      "industry": "Drug Manufacturers - General",
+      "theme": "バイオテック",
+      "tt": "強い",
+      "hqm": 51.6
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce, Inc.",
+      "rs": 44,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "弱い",
+      "hqm": 45.6
+    },
+    {
+      "ticker": "HUBS",
+      "name": "HubSpot, Inc.",
+      "rs": 42,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Application",
+      "theme": "クラウド / データ",
+      "tt": "弱い",
+      "hqm": 25.0
+    },
+    {
+      "ticker": "AVAV",
+      "name": "AeroVironment, Inc.",
+      "rs": 41,
+      "stage": "Stage4 ↓",
+      "industry": "Aerospace & Defense",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 39.4
+    },
+    {
+      "ticker": "ZS",
+      "name": "Zscaler, Inc.",
+      "rs": 40,
+      "stage": "Stage3 →",
+      "industry": "Software - Infrastructure",
+      "theme": "サイバーセキュリティ",
+      "tt": "弱い",
+      "hqm": 46.6
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufactur",
+      "rs": 39,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 51.6
+    },
+    {
+      "ticker": "NVO",
+      "name": "Novo Nordisk A/S",
+      "rs": 38,
+      "stage": "Stage1 →",
+      "industry": "Drug Manufacturers - General",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 28.8
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "rs": 36,
+      "stage": "Stage2 →",
+      "industry": "Consumer Electronics",
+      "theme": "メガテック",
+      "tt": "強い",
+      "hqm": 42.2
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "rs": 35,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "メガテック",
+      "tt": "弱い",
+      "hqm": 40.3
+    },
+    {
+      "ticker": "CELH",
+      "name": "Celsius Holdings, Inc.",
+      "rs": 34,
+      "stage": "Stage4 ↓",
+      "industry": "Beverages - Non-Alcoholic",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 21.9
+    },
+    {
+      "ticker": "UBER",
+      "name": "Uber Technologies, Inc.",
+      "rs": 32,
+      "stage": "Stage3 →",
+      "industry": "Software - Application",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 35.0
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "rs": 31,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "強い",
+      "hqm": 50.3
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "rs": 30,
+      "stage": "Stage2 →",
+      "industry": "Internet Retail",
+      "theme": "メガテック",
+      "tt": "強い",
+      "hqm": 49.1
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence Design Systems, Inc.",
+      "rs": 29,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Application",
+      "theme": "AI/半導体",
+      "tt": "弱い",
+      "hqm": 31.9
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments Incorporated",
+      "rs": 28,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 43.4
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom Inc.",
+      "rs": 26,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "普通",
+      "hqm": 42.8
+    },
+    {
+      "ticker": "ADI",
+      "name": "Analog Devices, Inc.",
+      "rs": 25,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 45.0
+    },
+    {
+      "ticker": "COST",
+      "name": "Costco Wholesale Corporation",
+      "rs": 24,
+      "stage": "Stage4 ↓",
+      "industry": "Discount Stores",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 34.1
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel Corporation",
+      "rs": 22,
+      "stage": "Stage2 →",
+      "industry": "Semiconductors",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 62.2
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms, Inc.",
+      "rs": 21,
+      "stage": "Stage4 ↓",
+      "industry": "Internet Content & Information",
+      "theme": "メガテック",
+      "tt": "弱い",
+      "hqm": 15.0
+    },
+    {
+      "ticker": "ISRG",
+      "name": "Intuitive Surgical, Inc.",
+      "rs": 20,
+      "stage": "Stage4 ↓",
+      "industry": "Medical Instruments & Supplies",
+      "theme": "バイオテック",
+      "tt": "弱い",
+      "hqm": 31.6
+    },
+    {
+      "ticker": "CAVA",
+      "name": "CAVA Group, Inc.",
+      "rs": 19,
+      "stage": "Stage4 ↓",
+      "industry": "Restaurants",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 33.1
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit Inc.",
+      "rs": 18,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Application",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 32.2
+    },
+    {
+      "ticker": "GOOG",
+      "name": "Alphabet Inc.",
+      "rs": 16,
+      "stage": "Stage2 →",
+      "industry": "Internet Content & Information",
+      "theme": "—",
+      "tt": "普通",
+      "hqm": 41.2
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc.",
+      "rs": 15,
+      "stage": "Stage2 →",
+      "industry": "Internet Content & Information",
+      "theme": "メガテック",
+      "tt": "普通",
+      "hqm": 42.5
+    },
+    {
+      "ticker": "NFLX",
+      "name": "Netflix, Inc.",
+      "rs": 14,
+      "stage": "Stage4 ↓",
+      "industry": "Entertainment",
+      "theme": "メガテック",
+      "tt": "弱い",
+      "hqm": 33.4
+    },
+    {
+      "ticker": "SOUN",
+      "name": "SoundHound AI, Inc.",
+      "rs": 12,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Application",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 27.8
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla, Inc.",
+      "rs": 11,
+      "stage": "Stage4 ↓",
+      "industry": "Auto Manufacturers",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 19.1
+    },
+    {
+      "ticker": "SNPS",
+      "name": "Synopsys, Inc.",
+      "rs": 10,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Infrastructure",
+      "theme": "AI/半導体",
+      "tt": "弱い",
+      "hqm": 26.6
+    },
+    {
+      "ticker": "RBLX",
+      "name": "Roblox Corporation",
+      "rs": 9,
+      "stage": "Stage4 ↓",
+      "industry": "Electronic Gaming & Multimedia",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 4.1
+    },
+    {
+      "ticker": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "rs": 8,
+      "stage": "Stage4 ↓",
+      "industry": "Semiconductors",
+      "theme": "AI/半導体",
+      "tt": "弱い",
+      "hqm": 29.7
+    },
+    {
+      "ticker": "COIN",
+      "name": "Coinbase Global, Inc.",
+      "rs": 6,
+      "stage": "Stage4 ↓",
+      "industry": "Financial Data & Stock Exchanges",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 8.4
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle Corporation",
+      "rs": 5,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Infrastructure",
+      "theme": "メガテック",
+      "tt": "弱い",
+      "hqm": 29.4
+    },
+    {
+      "ticker": "APP",
+      "name": "Applovin Corporation",
+      "rs": 4,
+      "stage": "Stage4 ↓",
+      "industry": "Advertising Agencies",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 10.0
+    },
+    {
+      "ticker": "TTD",
+      "name": "The Trade Desk, Inc.",
+      "rs": 2,
+      "stage": "Stage4 ↓",
+      "industry": "Advertising Agencies",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 2.2
+    },
+    {
+      "ticker": "MSTR",
+      "name": "Strategy Inc",
+      "rs": 1,
+      "stage": "Stage4 ↓",
+      "industry": "Software - Application",
+      "theme": "—",
+      "tt": "弱い",
+      "hqm": 6.2
     }
   ]
 }
