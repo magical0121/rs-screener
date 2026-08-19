@@ -1,20 +1,123 @@
 {
+  "_comment": "Finviz Industry 参考の優先テーマ定義。ここに入った銘柄は自動分類より優先。",
   "themes": {
     "AI/半導体": [
-      "NVDA", "AVGO", "AMD", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MU", "QCOM",
-      "ARM", "SMCI", "MRVL", "SNPS", "CDNS"
+      "NVDA", "AVGO", "TSM", "AMD", "ASML", "AMAT", "LRCX", "KLAC", "MU", "QCOM",
+      "ARM", "INTC", "TXN", "ADI", "MRVL", "NXPI", "ON", "SWKS", "MPWR", "MCHP",
+      "SNPS", "CDNS", "TER", "ENTG", "LSCC", "QRVO", "STM", "GFS", "WOLF", "SMTC",
+      "CRDO", "ALAB", "TSEM", "RMBS", "SLAB", "POWI", "FORM", "ACLS", "AEHR", "HIMX"
     ],
     "サイバーセキュリティ": [
-      "CRWD", "PANW", "ZS", "FTNT", "OKTA", "NET", "S", "CYBR", "TENB"
+      "CRWD", "PANW", "FTNT", "ZS", "S", "OKTA", "CYBR", "TENB", "RPD", "QLYS",
+      "VRNS", "SAIL", "NET", "CHKP", "GEN", "ATEN", "OSPN", "RDWR", "SCWX", "FFIV"
     ],
     "クラウド / データ": [
-      "SNOW", "DDOG", "MDB", "PLTR", "CRM", "NOW", "TEAM", "HUBS", "WDAY"
+      "MSFT", "ORCL", "CRM", "NOW", "SNOW", "DDOG", "MDB", "NET", "ESTC", "CFLT",
+      "PLTR", "PATH", "AI", "GTLB", "DOCN", "FROG", "FSLY", "DBX", "BOX", "TWLO",
+      "ZM", "TEAM", "HUBS", "WDAY", "ADBE", "INTU", "VEEV", "BILL", "PCTY", "PAYC"
+    ],
+    "業務ソフト": [
+      "ADBE", "INTU", "WDAY", "TEAM", "HUBS", "VEEV", "ANSS", "ADSK", "CDNS", "SNPS",
+      "TYL", "MANH", "PCTY", "PAYC", "BILL", "APPF", "ZI", "DOCU", "CRM", "NOW"
     ],
     "メガテック": [
-      "AAPL", "MSFT", "GOOGL", "META", "AMZN", "NFLX", "ORCL", "ADBE"
+      "AAPL", "MSFT", "GOOGL", "GOOG", "META", "AMZN", "NFLX", "ORCL", "ADBE", "CSCO",
+      "IBM", "SAP", "SONY", "DELL", "HPQ", "HPE"
+    ],
+    "インターネット": [
+      "GOOGL", "GOOG", "META", "AMZN", "NFLX", "SNAP", "PINS", "RDDT", "SPOT", "RBLX",
+      "U", "MTCH", "IAC", "ZG", "Z", "ETSY", "EBAY", "MELI", "SE", "BABA", "JD", "PDD"
+    ],
+    "通信キャリア": [
+      "T", "VZ", "TMUS", "CHTR", "CMCSA", "LUMN", "FYBR", "ATUS", "CABO", "LSXMK"
+    ],
+    "通信機器": [
+      "CSCO", "ANET", "CIEN", "JNPR", "FFIV", "MSI", "ERIC", "NOK", "ZBRA", "HPE"
     ],
     "バイオテック": [
-      "REGN", "AMGN", "VRTX", "GILD", "BIIB", "MRNA", "ISRG"
+      "VRTX", "REGN", "GILD", "BIIB", "MRNA", "BNTX", "ILMN", "ALNY", "BMRN", "INCY",
+      "SGEN", "EXAS", "NBIX", "SRPT", "RARE", "FOLD", "IONS", "UTHR", "BGNE", "ARGX",
+      "LEGN", "RCKT", "CRSP", "BEAM", "NTLA", "EDIT", "VERV", "RXRX", "DNA", "ABCL"
+    ],
+    "製薬": [
+      "LLY", "NVO", "JNJ", "MRK", "PFE", "ABBV", "AZN", "NVS", "BMY", "AMGN",
+      "GSK", "SNY", "TAK", "ZTS", "RPRX", "CTLTA", "OGN", "VTRS", "TEVA"
+    ],
+    "医療機器": [
+      "ISRG", "ABT", "MDT", "SYK", "BSX", "EW", "DXCM", "PODD", "ZBH", "ALGN",
+      "HOLX", "RMD", "IDXX", "BAX", "BDX", "TFX", "PEN", "NVST", "GMED", "INSP"
+    ],
+    "医療サービス": [
+      "UNH", "ELV", "CI", "HUM", "CVS", "CNC", "MOH", "HCA", "THC", "UHS",
+      "DVA", "FMS", "ACHC", "OPCH", "AMED", "GH", "TDOC", "OSCR", "ALHC"
+    ],
+    "防衛・航空宇宙": [
+      "GE", "HON", "RTX", "LMT", "NOC", "GD", "BA", "TDG", "HII", "LHX",
+      "TXT", "HEI", "AXON", "BWXT", "KTOS", "AVAV", "RKLB", "LUNR", "ASTS", "RDW"
+    ],
+    "自動車": [
+      "TSLA", "F", "GM", "RIVN", "LCID", "NIO", "XPEV", "LI", "STLA", "TM",
+      "HMC", "RACE", "APTV", "BWA", "LEA", "ALV", "GNTX", "MOD", "THRM"
+    ],
+    "EC・通販": [
+      "AMZN", "MELI", "SE", "SHOP", "EBAY", "ETSY", "BABA", "JD", "PDD", "CPNG",
+      "W", "CHWY", "RVLV", "REAL", "CVNA", "KMX", "ABG"
+    ],
+    "小売": [
+      "WMT", "COST", "TGT", "HD", "LOW", "TJX", "ROST", "DG", "DLTR", "BBY",
+      "ULTA", "DKS", "AZO", "ORLY", "AAP", "TSCO", "RH", "WSM", "BBWI"
+    ],
+    "外食": [
+      "MCD", "SBUX", "CMG", "YUM", "QSR", "DPZ", "WING", "TXRH", "CAVA", "SHAK",
+      "BROS", "WEN", "JACK", "PZZA", "EAT", "DRI", "BJRI", "CHUY"
+    ],
+    "銀行": [
+      "JPM", "BAC", "WFC", "C", "USB", "PNC", "TFC", "SCHW", "BK", "STT",
+      "CFG", "KEY", "RF", "MTB", "FITB", "HBAN", "ZION", "CMA"
+    ],
+    "証券・資産運用": [
+      "GS", "MS", "BLK", "BX", "KKR", "APO", "ARES", "TROW", "BEN", "IVZ",
+      "AMG", "HLNE", "STEP", "OWL", "CG", "IBKR", "HOOD", "COIN", "SCHW"
+    ],
+    "決済・フィンテック": [
+      "V", "MA", "AXP", "PYPL", "SQ", "XYZ", "AFRM", "UPST", "SOFI", "NU",
+      "PAGS", "STNE", "FOUR", "GPN", "FIS", "FISV", "FLT", "JKHY", "TOST"
+    ],
+    "石油・ガス": [
+      "XOM", "CVX", "COP", "EOG", "SLB", "OXY", "MPC", "VLO", "PSX", "HES",
+      "DVN", "FANG", "PXD", "HAL", "BKR", "WMB", "KMI", "OKE", "LNG", "TRGP"
+    ],
+    "REIT・不動産": [
+      "PLD", "AMT", "EQIX", "CCI", "SPG", "O", "WELL", "DLR", "PSA", "EXR",
+      "AVB", "EQR", "VTR", "ARE", "VICI", "INVH", "MAA", "UDR", "SUI", "ELS"
+    ],
+    "電力・ユーティリティ": [
+      "NEE", "DUK", "SO", "D", "AEP", "SRE", "EXC", "XEL", "PCG", "ED",
+      "WEC", "ES", "EIX", "AWK", "ATO", "CMS", "DTE", "FE", "PPL", "EVRG"
+    ],
+    "メディア・広告": [
+      "DIS", "NFLX", "CMCSA", "WBD", "PARA", "FOX", "FOXA", "NYT", "IPG", "OMC",
+      "TTD", "MGNI", "PUBM", "RBLX", "SPOT", "LYV", "MSGS", "WWE"
+    ],
+    "運輸・物流": [
+      "UPS", "FDX", "DAL", "UAL", "AAL", "LUV", "JBLU", "ALK", "CSX", "UNP",
+      "NSC", "ODFL", "XPO", "SAIA", "ARCB", "JBHT", "CHRW", "EXPD", "KNX"
+    ],
+    "資本財・産業": [
+      "CAT", "DE", "GE", "HON", "ETN", "EMR", "ITW", "PH", "ROK", "CMI",
+      "IR", "DOV", "XYL", "FTV", "PNR", "IEX", "GGG", "WAB", "PCAR", "URI"
+    ],
+    "金属・鉱業": [
+      "FCX", "NEM", "GOLD", "SCCO", "VALE", "RIO", "BHP", "AA", "X", "CLF",
+      "NUE", "STLD", "RS", "ATI", "MP", "LAC", "ALB", "SQM", "LTHM"
+    ],
+    "食品・飲料": [
+      "KO", "PEP", "MNST", "KDP", "CELH", "COST", "MDLZ", "GIS", "K", "CPB",
+      "CAG", "SJM", "HSY", "TSN", "HRL", "KHC", "STZ", "BF.B", "SAM", "BUD"
+    ],
+    "生活用品": [
+      "PG", "UL", "CL", "KMB", "CHD", "CLX", "EL", "COTY", "ELF", "NUS",
+      "IP", "WRK", "SEE", "SON", "GPK", "AVY", "SLGN"
     ]
   }
 }
