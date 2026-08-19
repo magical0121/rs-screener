@@ -56,33 +56,72 @@ def load_themes() -> dict[str, list[str]]:
     return {}
 
 
-INDUSTRY_CSV_URL = (
-    "https://raw.githubusercontent.com/Ate329/top-us-stock-tickers/main/tickers/all.csv"
-)
+# US主要取引所（FinanceDatabase）
+_US_EXCHANGES = {
+    "NMS", "NYQ", "ASE", "NCM", "NGM", "NASDAQ", "NYSE", "AMEX", "BATS", "ARCA",
+}
 
 
 def fetch_industry_map() -> dict[str, dict[str, str]]:
-    """symbol -> {name, industry, marketCap, volume}"""
+    """FinanceDatabase から US株の詳細 Industry を取得（Finvizに近い粒度）"""
     out: dict[str, dict[str, str]] = {}
     try:
-        req = Request(INDUSTRY_CSV_URL, headers={"User-Agent": "Mozilla/5.0 rs-screener"})
-        with urlopen(req, timeout=60) as res:
-            text = res.read().decode("utf-8", errors="ignore")
-        import csv
-        reader = csv.DictReader(io.StringIO(text))
-        for row in reader:
-            sym = (row.get("symbol") or "").strip().upper()
-            if not sym:
+        import financedatabase as fd
+
+        eq = fd.Equities()
+        df = eq.select(country="United States")
+        if df is None or df.empty:
+            raise RuntimeError("empty equities table")
+
+        # exchange で絞る（可能なら）
+        if "exchange" in df.columns:
+            mask = df["exchange"].astype(str).str.upper().isin(_US_EXCHANGES)
+            # PNK(OTC)除外。exchangeが空の行は残す
+            df = df[mask | df["exchange"].isna()]
+
+        for sym, row in df.iterrows():
+            ticker = str(sym).strip().upper()
+            if not ticker or not ticker.replace(".", "").isalnum():
                 continue
-            out[sym] = {
-                "name": (row.get("name") or sym).strip(),
-                "industry": (row.get("industry") or "—").strip() or "—",
-                "marketCap": row.get("marketCap") or "",
-                "volume": row.get("volume") or "",
+            # 優先: industry → industry_group → sector
+            industry = ""
+            for col in ("industry", "industry_group", "sector"):
+                val = row.get(col) if hasattr(row, "get") else row[col] if col in row.index else None
+                if val is not None and str(val).strip() and str(val).lower() not in {"nan", "none"}:
+                    industry = str(val).strip()
+                    break
+            name = ""
+            if "name" in row.index and row["name"] is not None:
+                name = str(row["name"]).strip()
+            out[ticker] = {
+                "name": name or ticker,
+                "industry": industry or "—",
+                "marketCap": str(row["market_cap"]) if "market_cap" in row.index and row["market_cap"] is not None else "",
+                "volume": "",
             }
-        print(f"Industry map size: {len(out)}")
+        print(f"Industry map size (FinanceDatabase): {len(out)}")
     except Exception as e:
-        print(f"Industry map fetch failed: {e}")
+        print(f"FinanceDatabase failed ({e}), fallback CSV...")
+        try:
+            url = "https://raw.githubusercontent.com/Ate329/top-us-stock-tickers/main/tickers/all.csv"
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0 rs-screener"})
+            with urlopen(req, timeout=60) as res:
+                raw = res.read().decode("utf-8", errors="ignore")
+            import csv
+            reader = csv.DictReader(io.StringIO(raw))
+            for row in reader:
+                sym = (row.get("symbol") or "").strip().upper()
+                if not sym:
+                    continue
+                out[sym] = {
+                    "name": (row.get("name") or sym).strip(),
+                    "industry": (row.get("industry") or "—").strip() or "—",
+                    "marketCap": row.get("marketCap") or "",
+                    "volume": row.get("volume") or "",
+                }
+            print(f"Industry map size (CSV fallback): {len(out)}")
+        except Exception as e2:
+            print(f"Industry map fetch failed: {e2}")
     return out
 
 
@@ -97,22 +136,27 @@ def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[
         return "未分類"
 
     rules = [
-        # ===== Tech 詳細 =====
+        # ===== Tech 詳細（Finviz / FinanceDatabase 両対応）=====
         ("サイバーセキュリティ", ["cyber", "security software", "network security", "security & protection"]),
-        ("AI/半導体", ["semiconductor", "semiconductors", "chip", "electronic equipment", "electronics manufacturing", "electronic components"]),
-        ("クラウド / データ", ["software—infrastructure", "software - infrastructure", "infrastructure software", "data processing", "cloud", "data storage"]),
-        ("業務ソフト", ["application software", "enterprise software"]),
-        ("ITサービス", ["information technology services", "it services", "consulting services"]),
-        ("インターネット", ["internet content", "internet retail", "interactive media", "online media"]),
+        ("AI/半導体", [
+            "semiconductor", "semiconductors", "semiconductor equipment",
+            "semiconductors & semiconductor equipment", "chip",
+            "electronic equipment", "electronics manufacturing", "electronic components",
+            "electronic equipment, instruments & components",
+        ]),
+        ("クラウド / データ", ["software—infrastructure", "software - infrastructure", "infrastructure software", "data processing", "cloud", "data storage", "health care technology"]),
+        ("業務ソフト", ["application software", "enterprise software", "software"]),
+        ("ITサービス", ["information technology services", "it services", "consulting services", "professional services"]),
+        ("インターネット", ["internet content", "internet retail", "interactive media", "online media", "interactive media & services", "internet & direct marketing"]),
         ("ハード・端末", ["consumer electronics", "technology hardware", "computer hardware", "computer equipment"]),
         ("通信機器", ["communications equipment", "communication equipment"]),
         ("通信キャリア", ["telecom", "wireless telecommunication", "telephone", "integrated telecommunication"]),
         ("テクノロジー", ["technology", "information technology", "tech"]),
         # ===== Health =====
         ("バイオテック", ["biotech", "biotechnology"]),
-        ("製薬", ["pharma", "drug manufacturer", "pharmaceutical"]),
-        ("医療機器", ["medical device", "medical instruments", "diagnostics", "health care equipment", "medical distribution", "medical supplies"]),
-        ("医療サービス", ["health care providers", "hospital", "health services", "managed health", "health care facilities"]),
+        ("製薬", ["pharma", "drug manufacturer", "pharmaceutical", "pharmaceuticals"]),
+        ("医療機器", ["medical device", "medical instruments", "diagnostics", "health care equipment", "medical distribution", "medical supplies", "health care equipment & supplies"]),
+        ("医療サービス", ["health care providers", "hospital", "health services", "managed health", "health care facilities", "health care providers & services"]),
         ("ヘルスケア", ["health care", "healthcare", "health"]),
         # ===== Financials =====
         ("銀行", ["bank", "banks", "diversified bank", "regional bank", "thrifts", "savings"]),
