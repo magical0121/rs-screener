@@ -348,12 +348,23 @@ function renderIndustryStrength(list) {
     .join("");
 }
 
+/** 本命: Stage2 + RS≥70 + TT強い + HQM≥80
+ *  30週線上は Stage2 / TT強い の定義に含まれる（150日SMA上）
+ */
+function isHonmei(s) {
+  const stage2 = String(s.stage || "").includes("2");
+  const rsOk = (s.rs || 0) >= 70;
+  const ttOk = s.tt === "強い";
+  const hqmOk = (s.hqm || 0) >= 80;
+  return stage2 && rsOk && ttOk && hqmOk;
+}
+
 function sortedStocks(stocks) {
-  const stage2Only = document.getElementById("stage2Only").checked;
+  const honmeiOnly = document.getElementById("honmeiOnly").checked;
   const sortBy = document.getElementById("sortBy").value;
   let list = [...stocks];
-  if (stage2Only) {
-    list = list.filter((s) => String(s.stage).includes("2"));
+  if (honmeiOnly) {
+    list = list.filter(isHonmei);
   }
   list.sort((a, b) => {
     if (sortBy === "rs") return (b.rs || 0) - (a.rs || 0);
@@ -371,7 +382,7 @@ function renderTable(stocks) {
   const body = document.getElementById("stockBody");
   const list = sortedStocks(stocks);
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="6" class="empty">該当銘柄なし（フィルターを緩めてください）</td></tr>`;
+    body.innerHTML = `<tr><td colspan="6" class="empty">本命条件に該当する銘柄なし（「本命のみ」を外すと全件表示）</td></tr>`;
     return;
   }
   body.innerHTML = list
@@ -405,7 +416,7 @@ function render() {
   renderTable(DATA.stocks || []);
 }
 
-document.getElementById("stage2Only").addEventListener("change", render);
+document.getElementById("honmeiOnly").addEventListener("change", render);
 document.getElementById("sortBy").addEventListener("change", render);
 document.getElementById("refreshBtn").addEventListener("click", loadData);
 
