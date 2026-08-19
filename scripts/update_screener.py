@@ -914,20 +914,20 @@ def theme_membership(ticker: str, themes: dict[str, list[str]]) -> str:
     return "—"
 
 
-def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> list[dict]:
-    # 定義テーマ + 実際に付いたテーマを集計
-    theme_names = list(themes.keys())
+def compute_industry_scores(stocks: list[dict], min_count: int = 3) -> list[dict]:
+    """業種別強度: 業種内の RS・HQM からスコア化"""
+    groups: dict[str, list[dict]] = {}
     for s in stocks:
-        if s.get("theme") and s["theme"] not in theme_names:
-            theme_names.append(s["theme"])
+        name = (s.get("industry") or s.get("sector") or "").strip()
+        if not name or name in {"—", "-", "N/A", "n/a", "未分類"}:
+            continue
+        groups.setdefault(name, []).append(s)
 
     result = []
-    for name in theme_names:
-        rows = [s for s in stocks if s.get("theme") == name]
-        if not rows:
-            result.append({"name": name, "score": 0, "label": "弱い", "leaders": []})
+    for name, rows in groups.items():
+        if len(rows) < min_count:
             continue
-        score = int(round(np.mean([0.6 * s["rs"] + 0.4 * s["hqm"] for s in rows])))
+        score = int(round(np.mean([0.6 * float(s.get("rs") or 0) + 0.4 * float(s.get("hqm") or 0) for s in rows])))
         if score >= 80:
             label = "強い"
         elif score >= 55:
@@ -936,12 +936,17 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
             label = "弱い"
         leaders = [
             s["ticker"]
-            for s in sorted(rows, key=lambda x: (x["rs"], x["hqm"]), reverse=True)[:3]
-            if s["rs"] >= 60
+            for s in sorted(rows, key=lambda x: (x.get("rs") or 0, x.get("hqm") or 0), reverse=True)[:3]
+            if (s.get("rs") or 0) >= 60
         ]
-        result.append({"name": name, "score": score, "label": label, "leaders": leaders})
+        result.append({"name": name, "score": score, "label": label, "leaders": leaders, "count": len(rows)})
     result.sort(key=lambda x: x["score"], reverse=True)
     return result
+
+
+def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> list[dict]:
+    # 互換用（非推奨）。業種スコアへ移行済み。
+    return compute_industry_scores(stocks)
 
 
 def main() -> None:
@@ -1041,13 +1046,15 @@ def main() -> None:
 
     # 表示用に上位を多めに残す（サイト負荷対策）。全件はJSONに入れる
     stocks_sorted = sorted(stocks, key=lambda x: x["rs"], reverse=True)
-    theme_scores = compute_theme_scores(stocks_sorted, themes)
+    industry_scores = compute_industry_scores(stocks_sorted)
+    theme_scores = industry_scores  # 互換キー
 
     payload = {
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "universe_size": len(universe),
         "qualified_size": len(stocks_sorted),
-        "themes": theme_scores,
+        "industries": industry_scores,
+        "themes": industry_scores,  # 互換（旧フロント）
         "stocks": stocks_sorted,
     }
 
