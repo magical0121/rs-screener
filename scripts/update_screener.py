@@ -56,6 +56,94 @@ def load_themes() -> dict[str, list[str]]:
     return {}
 
 
+INDUSTRY_CSV_URL = (
+    "https://raw.githubusercontent.com/Ate329/top-us-stock-tickers/main/tickers/all.csv"
+)
+
+
+def fetch_industry_map() -> dict[str, dict[str, str]]:
+    """symbol -> {name, industry, marketCap, volume}"""
+    out: dict[str, dict[str, str]] = {}
+    try:
+        req = Request(INDUSTRY_CSV_URL, headers={"User-Agent": "Mozilla/5.0 rs-screener"})
+        with urlopen(req, timeout=60) as res:
+            text = res.read().decode("utf-8", errors="ignore")
+        import csv
+        reader = csv.DictReader(io.StringIO(text))
+        for row in reader:
+            sym = (row.get("symbol") or "").strip().upper()
+            if not sym:
+                continue
+            out[sym] = {
+                "name": (row.get("name") or sym).strip(),
+                "industry": (row.get("industry") or "—").strip() or "—",
+                "marketCap": row.get("marketCap") or "",
+                "volume": row.get("volume") or "",
+            }
+        print(f"Industry map size: {len(out)}")
+    except Exception as e:
+        print(f"Industry map fetch failed: {e}")
+    return out
+
+
+def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[str]]) -> str:
+    """明示テーマ優先、なければ業種から約30テーマへ自動分類"""
+    for name, members in themes.items():
+        if ticker in members:
+            return name
+
+    ind = (industry or "").lower().strip()
+    if not ind or ind in {"—", "-", "n/a", "nan"}:
+        return "その他"
+
+    # 具体度の高い順（約30テーマ）
+    rules = [
+        # Tech
+        ("サイバーセキュリティ", ["cyber", "security software", "security &", "network security"]),
+        ("AI/半導体", ["semiconductor", "semiconductors", "chip", "electronic equipment", "electronics"]),
+        ("クラウド / データ", ["software—infrastructure", "software - infrastructure", "data processing", "cloud"]),
+        ("ソフトウェア", ["software", "information technology services", "it services", "application software"]),
+        ("インターネット", ["internet", "interactive media", "online media", "internet content"]),
+        ("メガテック", ["consumer electronics", "technology hardware", "computer hardware"]),
+        ("通信", ["telecom", "communication services", "wireless", "telephone", "communications"]),
+        # Health
+        ("バイオテック", ["biotech", "biotechnology"]),
+        ("製薬", ["pharma", "drug manufacturer", "pharmaceutical", "pharmaceuticals"]),
+        ("医療機器", ["medical device", "medical instruments", "diagnostics", "health care equipment", "medical distribution"]),
+        ("ヘルスケア", ["health care", "healthcare", "hospital", "health services", "managed health", "health care providers"]),
+        # Financials
+        ("銀行", ["bank", "banks", "diversified bank", "regional bank", "thrifts"]),
+        ("保険", ["insurance", "insurer", "life insurance", "property & casualty", "property and casualty"]),
+        ("証券・資産運用", ["capital market", "asset management", "investment banking", "broker", "financial exchanges"]),
+        ("フィンテック", ["fintech", "financial technology", "transaction & payment", "payment"]),
+        ("金融その他", ["financial", "credit services", "mortgage", "consumer finance"]),
+        # Cyclical / Industrial
+        ("エネルギー", ["oil", "gas", "energy", "petroleum", "exploration", "coal"]),
+        ("電力・ユーティリティ", ["utilit", "electric", "water utilities", "gas utility", "independent power"]),
+        ("不動産", ["reit", "real estate"]),
+        ("資本財・機械", ["machinery", "industrial conglomerate", "construction & engineering", "building product", "industrial"]),
+        ("素材・化学", ["chemical", "metal", "mining", "steel", "paper", "commodity", "materials", "aluminum", "copper", "gold"]),
+        ("自動車", ["auto", "automobile", "vehicle", "car dealer", "auto parts"]),
+        ("航空・運輸", ["airline", "air freight", "railroad", "shipping", "logistics", "truck", "transport"]),
+        ("防衛・航空宇宙", ["aerospace", "defense", "defence"]),
+        # Consumer
+        ("小売", ["retail", "store", "department", "e-commerce", "internet retail", "specialty retail"]),
+        ("外食・レジャー", ["restaurant", "leisure", "hotel", "gaming", "entertainment", "resorts"]),
+        ("消費財", ["beverage", "food", "household", "personal product", "tobacco", "apparel", "footwear", "packaged foods", "soft drink"]),
+        ("メディア", ["media", "publishing", "broadcasting", "advertising", "movies"]),
+        ("テクノロジー", ["technology", "tech"]),
+    ]
+
+    for theme, keys in rules:
+        if any(k in ind for k in keys):
+            return theme
+
+    return "その他"
+
+
+
+
+
 def _fetch_text(url: str) -> str:
     req = Request(url, headers={"User-Agent": "Mozilla/5.0 rs-screener"})
     with urlopen(req, timeout=60) as res:
@@ -377,9 +465,15 @@ def theme_membership(ticker: str, themes: dict[str, list[str]]) -> str:
 
 
 def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> list[dict]:
+    # 定義テーマ + 実際に付いたテーマを集計
+    theme_names = list(themes.keys())
+    for s in stocks:
+        if s.get("theme") and s["theme"] not in theme_names:
+            theme_names.append(s["theme"])
+
     result = []
-    for name, members in themes.items():
-        rows = [s for s in stocks if s["ticker"] in members]
+    for name in theme_names:
+        rows = [s for s in stocks if s.get("theme") == name]
         if not rows:
             result.append({"name": name, "score": 0, "label": "弱い", "leaders": []})
             continue
@@ -402,6 +496,7 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
 
 def main() -> None:
     themes = load_themes()
+    industry_map = fetch_industry_map()
     universe = fetch_us_tickers()
     if not universe:
         raise SystemExit("ティッカーリストの取得に失敗しました")
@@ -442,14 +537,18 @@ def main() -> None:
             stage = calc_stage(close, bench)
             tt, _tt_pass = calc_tt(close, high, low, bench)
 
+            info = industry_map.get(t, {})
+            industry = info.get("industry", "—") or "—"
+            name = info.get("name", t) or t
+            theme = auto_theme_from_industry(industry, t, themes)
             meta_rows.append(
                 {
                     "ticker": t,
-                    "name": t,  # 全銘柄のinfo取得は遅いのでティッカー表示
+                    "name": name,
                     "stage": stage,
                     "tt": tt,
-                    "industry": "—",
-                    "theme": theme_membership(t, themes),
+                    "industry": industry,
+                    "theme": theme,
                 }
             )
         # レート制限対策
