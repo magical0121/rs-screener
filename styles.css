@@ -476,3 +476,24 @@ tbody tr:last-child td {
     min-width: 180px;
   }
 }
+
+.btn-tv {
+  appearance: none;
+  border: 1px solid var(--border, #2a3544);
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--blue, #38bdf8);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-tv:hover {
+  background: rgba(56, 189, 248, 0.22);
+}
+.btn-tv.copied {
+  background: rgba(34, 197, 94, 0.18);
+  color: var(--green, #22c55e);
+  border-color: rgba(34, 197, 94, 0.35);
+}
