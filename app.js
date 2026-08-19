@@ -290,20 +290,50 @@ function rsClass(rs) {
   return "low";
 }
 
-function themeClass(label) {
+function strengthClass(label) {
   if (label === "強い") return "strong";
   if (label === "普通") return "moderate";
   return "weak";
 }
 
-function renderThemes(themes) {
+/** 業種別強度（フロントでも算出可能：現行JSONでも即反映） */
+function computeIndustryScores(stocks, minCount = 3) {
+  const groups = {};
+  for (const s of stocks || []) {
+    const key = (s.industry || s.sector || "").trim();
+    if (!key || key === "—" || key === "-") continue;
+    (groups[key] || (groups[key] = [])).push(s);
+  }
+  const out = [];
+  for (const [name, rows] of Object.entries(groups)) {
+    if (rows.length < minCount) continue;
+    const score = Math.round(
+      rows.reduce((a, s) => a + 0.6 * (s.rs || 0) + 0.4 * (s.hqm || 0), 0) / rows.length
+    );
+    const label = score >= 80 ? "強い" : score >= 55 ? "普通" : "弱い";
+    const leaders = [...rows]
+      .sort((a, b) => (b.rs || 0) - (a.rs || 0) || (b.hqm || 0) - (a.hqm || 0))
+      .filter((s) => (s.rs || 0) >= 60)
+      .slice(0, 3)
+      .map((s) => s.ticker);
+    out.push({ name, score, label, leaders, count: rows.length });
+  }
+  out.sort((a, b) => b.score - a.score);
+  return out;
+}
+
+function renderIndustryStrength(list) {
   const el = document.getElementById("themeCards");
-  el.innerHTML = themes
+  if (!list || !list.length) {
+    el.innerHTML = `<div class="sidebar-note">業種データが不足しています</div>`;
+    return;
+  }
+  el.innerHTML = list
     .map(
       (t) => `
-    <div class="theme-card ${themeClass(t.label)}">
+    <div class="theme-card ${strengthClass(t.label)}">
       <div class="theme-top">
-        <div class="theme-name">${t.name}</div>
+        <div class="theme-name">${industryJa(t.name)}</div>
         <div style="text-align:right">
           <div class="theme-score">${t.score}</div>
           <div class="theme-label">${t.label}</div>
@@ -355,7 +385,7 @@ function renderTable(stocks) {
         </td>
         <td class="rs ${rsClass(s.rs)}">${s.rs}</td>
         <td><span class="badge ${stageBadge(s.stage)}">${s.stage}</span></td>
-        <td>${industryJa(s.industry)}</td>
+        <td>${industryJa(s.industry || s.sector)}</td>
         <td><span class="badge ${ttBadge(s.tt)}">${s.tt}</span></td>
         <td class="hqm-cell"><span class="badge ${h.cls}">${h.text}</span></td>
       </tr>`;
@@ -367,7 +397,11 @@ function render() {
   if (!DATA) return;
   document.getElementById("lastUpdated").textContent =
     "更新: " + (DATA.updated_at || "—");
-  renderThemes(DATA.themes || []);
+  const industryList =
+    (DATA.industries && DATA.industries.length
+      ? DATA.industries
+      : computeIndustryScores(DATA.stocks || []));
+  renderIndustryStrength(industryList);
   renderTable(DATA.stocks || []);
 }
 
