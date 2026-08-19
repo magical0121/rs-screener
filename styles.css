@@ -402,6 +402,16 @@ tbody tr:last-child td {
   font-variant-numeric: tabular-nums;
 }
 
+.ind-score {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: inherit;
+}
+.ind-score .rs {
+  font-size: 1em;
+  font-weight: 700;
+}
+
 .legend {
   display: flex;
   flex-wrap: wrap;

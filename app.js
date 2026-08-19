@@ -422,9 +422,11 @@ function renderTable(stocks) {
     .map((s) => {
       const h = hqmLabel(s.hqm);
       const ind = industryScoreOf(s);
-      const indHtml = ind
-        ? `<span class="badge ${strengthClass(ind.label)}">${ind.score}</span>`
-        : "—";
+      let indHtml = "—";
+      if (ind) {
+        const cls = ind.score >= 80 ? "high" : ind.score >= 55 ? "mid" : "low";
+        indHtml = `<span class="rs ${cls}">${ind.score}</span>`;
+      }
       return `
       <tr>
         <td>
