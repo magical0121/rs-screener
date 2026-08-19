@@ -478,6 +478,42 @@ document.getElementById("honmeiOnly").addEventListener("change", render);
 document.getElementById("sortBy").addEventListener("change", render);
 document.getElementById("refreshBtn").addEventListener("click", loadData);
 
+async function copyTvList() {
+  if (!DATA) return;
+  // 表示と同じフィルター・並び（件数上限なし＝全表示対象）
+  const list = sortedStocks(DATA.stocks || []);
+  const tickers = list.map((s) => s.ticker).filter(Boolean);
+  if (!tickers.length) {
+    alert("コピーする銘柄がありません");
+    return;
+  }
+  // TradingView: カンマ区切りが扱いやすい
+  const text = tickers.join(",");
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (e) {
+    // fallback
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  }
+  const btn = document.getElementById("tvCopyBtn");
+  if (btn) {
+    const prev = btn.textContent;
+    btn.textContent = "コピー済 " + tickers.length;
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.textContent = prev;
+      btn.classList.remove("copied");
+    }, 2000);
+  }
+}
+const tvBtn = document.getElementById("tvCopyBtn");
+if (tvBtn) tvBtn.addEventListener("click", copyTvList);
+
 // サンプルデータ（data/screener.json が無いときのフォールバック）
 window.SAMPLE_DATA = {
   updated_at: "2026-08-19 16:00 ET（サンプル）",
