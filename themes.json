@@ -1,0 +1,8 @@
+{
+  "themes": {
+    "AI/半導体": ["NVDA", "AVGO", "AMD", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MU", "QCOM"],
+    "サイバーセキュリティ": ["CRWD", "PANW", "ZS", "S", "FTNT", "OKTA", "NET"],
+    "クラウド / データ": ["SNOW", "DDOG", "MDB", "PLTR", "CRM", "NOW", "NET"],
+    "バイオテック": ["REGN", "AMGN", "VRTX", "GILD", "BIIB", "MRNA"]
+  }
+}

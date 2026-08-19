@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式スクリーナー | RS × Stage × TT × HQM</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">
+          <span class="logo-mark">RS</span>
+          <div>
+            <div class="logo-title">株式スクリーナー</div>
+            <div class="logo-sub">Stage / TT / HQM / テーマ強度</div>
+          </div>
+        </div>
+      </div>
+      <nav class="tabs">
+        <button class="tab active">スクリーナー</button>
+        <button class="tab" disabled>ウォッチリスト</button>
+        <button class="tab" disabled>アラート</button>
+      </nav>
+      <div class="header-right">
+        <span id="lastUpdated" class="updated">更新: —</span>
+        <button id="refreshBtn" class="btn-refresh" title="再読み込み">↻</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Theme Strength -->
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <h2>テーマ強度</h2>
+          <span class="hint">スコア 0–100</span>
+        </div>
+        <div id="themeCards" class="theme-cards">
+          <!-- filled by JS -->
+        </div>
+        <div class="sidebar-note">
+          スコアはテーマ内銘柄のRS・モメンタム・リーダー品質から算出
+        </div>
+      </aside>
+
+      <!-- Stock Table -->
+      <section class="content">
+        <div class="content-head">
+          <div>
+            <h2>銘柄ユニバース: 全米株</h2>
+            <p class="filter-line">
+              必須: <strong>Stage 2</strong> ／ 表示: TT・HQM・RS・テーマ
+            </p>
+          </div>
+          <div class="controls">
+            <label class="check">
+              <input type="checkbox" id="stage2Only" checked />
+              Stage2のみ
+            </label>
+            <select id="sortBy">
+              <option value="rs">RS順</option>
+              <option value="hqm">HQM順</option>
+              <option value="tt">TT順</option>
+              <option value="theme">テーマ順</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ティッカー</th>
+                <th>RS</th>
+                <th>ステージ</th>
+                <th>業種</th>
+                <th>テーマ</th>
+                <th>TT</th>
+                <th>HQM</th>
+              </tr>
+            </thead>
+            <tbody id="stockBody">
+              <!-- filled by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="legend">
+          <span><i class="dot green"></i>強い / Stage2</span>
+          <span><i class="dot yellow"></i>普通</span>
+          <span><i class="dot red"></i>弱い / Stage4</span>
+          <span class="sep">|</span>
+          <span>TT: Minervini Trend Template（7/8以上=強い）</span>
+          <span>HQM: 1M/3M/6M/1Y パーセンタイル平均</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>個人用スクリーナー — Weinstein Stage / Minervini TT / HQM</span>
+      <span>データは日次バッチ更新想定</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
