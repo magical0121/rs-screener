@@ -37,6 +37,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 THEMES_PATH = DATA_DIR / "themes.json"
 OUT_PATH = DATA_DIR / "screener.json"
+INDUSTRY_CACHE_PATH = DATA_DIR / "industry_cache.json"
 
 BENCHMARK = "SPY"
 
@@ -245,15 +246,64 @@ def fetch_finviz_profile(ticker: str) -> dict[str, str]:
     return out
 
 
+def load_industry_cache() -> dict[str, dict[str, str]]:
+    if INDUSTRY_CACHE_PATH.exists():
+        try:
+            with open(INDUSTRY_CACHE_PATH, encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, dict):
+                return data
+        except Exception as e:
+            print(f"industry_cache load failed: {e}")
+    return {}
+
+
+def save_industry_cache(cache: dict[str, dict[str, str]]) -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    with open(INDUSTRY_CACHE_PATH, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=0, sort_keys=True)
+    print(f"Saved industry_cache ({len(cache)} tickers) -> {INDUSTRY_CACHE_PATH}")
+
+
+def apply_industry_cache(meta_rows: list[dict], cache: dict[str, dict[str, str]]) -> int:
+    """キャッシュで業種欠損を埋める"""
+    n = 0
+    for m in meta_rows:
+        ind = str(m.get("industry") or "").strip()
+        if ind and ind not in {"—", "-", "N/A", "n/a", ""}:
+            continue
+        t = m["ticker"]
+        c = cache.get(t) or cache.get(t.upper())
+        if not c:
+            continue
+        c_ind = (c.get("industry") or "").strip()
+        c_sec = (c.get("sector") or "").strip()
+        if c_ind:
+            m["industry"] = c_ind
+            n += 1
+        elif c_sec:
+            m["industry"] = c_sec
+            n += 1
+        if c_sec:
+            m["sector"] = c_sec
+        if c.get("name") and (not m.get("name") or m["name"] == t):
+            m["name"] = c["name"]
+    print(f"Applied industry_cache: filled {n}")
+    return n
+
+
 def fill_missing_from_finviz(
     meta_rows: list[dict],
-    max_lookups: int = 400,
-    sleep_sec: float = 1.0,
+    max_lookups: int = 2000,
+    sleep_sec: float = 1.2,
 ) -> int:
     """
-    業種が空の銘柄だけ Finviz から補完。
-    Actions タイムアウト回避のため max_lookups で上限。
+    業種が空の銘柄を Finviz から補完（可能な限り全部）。
+    industry_cache.json に永続化し、日をまたいで埋まる。
     """
+    cache = load_industry_cache()
+    apply_industry_cache(meta_rows, cache)
+
     missing_idx = [
         i
         for i, m in enumerate(meta_rows)
@@ -261,36 +311,77 @@ def fill_missing_from_finviz(
         or str(m.get("industry")).strip() in {"—", "-", "N/A", "n/a", ""}
     ]
     if not missing_idx:
-        print("Finviz fill: nothing missing")
+        print("Finviz fill: nothing missing after cache")
         return 0
 
     targets = missing_idx[:max_lookups]
-    print(f"Finviz fill: {len(missing_idx)} missing, lookup {len(targets)} (cap={max_lookups})")
+    print(
+        f"Finviz fill: {len(missing_idx)} missing, "
+        f"lookup {len(targets)} this run (cap={max_lookups})"
+    )
     filled = 0
+    consecutive_fail = 0
     for n, i in enumerate(targets, 1):
         m = meta_rows[i]
         t = m["ticker"]
+        # キャッシュ再確認
+        if t in cache and (cache[t].get("industry") or cache[t].get("sector")):
+            c = cache[t]
+            m["industry"] = c.get("industry") or c.get("sector") or m.get("industry")
+            if c.get("sector"):
+                m["sector"] = c["sector"]
+            filled += 1
+            consecutive_fail = 0
+            continue
+
         fv = fetch_finviz_profile(t)
         if not fv:
+            consecutive_fail += 1
+            # 連続失敗が多いとブロックの可能性 → 早めに打ち切り
+            if consecutive_fail >= 15:
+                print("  Finviz: too many consecutive failures, stop this run (will retry next)")
+                break
             time.sleep(sleep_sec)
             continue
+
+        consecutive_fail = 0
         ind = (fv.get("industry") or "").strip()
         sec = (fv.get("sector") or "").strip()
+        name = (fv.get("name") or "").strip()
+        entry = {}
         if ind:
             m["industry"] = ind
+            entry["industry"] = ind
             filled += 1
         elif sec:
             m["industry"] = sec
+            entry["industry"] = sec
             filled += 1
         if sec:
             m["sector"] = sec
-        if fv.get("name") and (not m.get("name") or m["name"] == t):
-            m["name"] = fv["name"]
-        if n % 25 == 0:
+            entry["sector"] = sec
+        if name:
+            if not m.get("name") or m["name"] == t:
+                m["name"] = name
+            entry["name"] = name
+        if entry:
+            cache[t] = entry
+
+        if n % 20 == 0:
             print(f"  Finviz progress {n}/{len(targets)} filled={filled}")
+            save_industry_cache(cache)
         time.sleep(sleep_sec)
-    print(f"Finviz fill done: filled={filled}")
+
+    save_industry_cache(cache)
+    still = sum(
+        1
+        for m in meta_rows
+        if not m.get("industry")
+        or str(m.get("industry")).strip() in {"—", "-", "N/A", "n/a", ""}
+    )
+    print(f"Finviz fill done: filled={filled}, still_missing={still}")
     return filled
+
 
 
 def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[str]]) -> str:
@@ -922,7 +1013,7 @@ def main() -> None:
     print(f"Qualified symbols: {len(meta_rows)}")
 
     # 業種が無い銘柄だけ Finviz（無料ページ）から補完
-    fill_missing_from_finviz(meta_rows, max_lookups=250, sleep_sec=1.5)
+    fill_missing_from_finviz(meta_rows, max_lookups=2000, sleep_sec=1.2)
     # テーマを再計算（Finviz業種反映）
     for m in meta_rows:
         src = m.get("industry") or m.get("sector") or ""
