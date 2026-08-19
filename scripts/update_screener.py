@@ -138,13 +138,66 @@ def fetch_us_tickers() -> list[str]:
     return out
 
 
+def _normalize_ohlcv(df: pd.DataFrame, ticker: str | None = None) -> pd.DataFrame | None:
+    """yfinanceの列形式の違いを吸収して OHLCV に揃える"""
+    if df is None or df.empty:
+        return None
+
+    out = df.copy()
+    # MultiIndex 対応: ('Close','SPY') or ('SPY','Close')
+    if isinstance(out.columns, pd.MultiIndex):
+        lvl0 = out.columns.get_level_values(0)
+        lvl1 = out.columns.get_level_values(1)
+        if ticker is not None and ticker in lvl0:
+            out = out[ticker].copy()
+        elif ticker is not None and ticker in lvl1:
+            out.columns = lvl0
+            # already price names on level 0 with ticker on level1 - drop to price
+            try:
+                out = df.xs(ticker, axis=1, level=1).copy()
+            except Exception:
+                # fallback: rename by matching
+                cols = {}
+                for a, b in df.columns:
+                    if b == ticker:
+                        cols[(a, b)] = a
+                    elif a == ticker:
+                        cols[(a, b)] = b
+                out = df.rename(columns=cols)
+                out.columns = [c if not isinstance(c, tuple) else c[0] for c in out.columns]
+        else:
+            # single ticker download often is Price x Ticker
+            try:
+                if len(set(lvl1)) == 1:
+                    out.columns = lvl0
+                elif len(set(lvl0)) == 1:
+                    out.columns = lvl1
+            except Exception:
+                return None
+
+    # 列名を文字列化
+    out.columns = [str(c) for c in out.columns]
+    # Adj Close しかない場合の保険
+    if "Close" not in out.columns and "Adj Close" in out.columns:
+        out["Close"] = out["Adj Close"]
+    if "Close" not in out.columns:
+        return None
+    for col in ("Open", "High", "Low"):
+        if col not in out.columns:
+            out[col] = out["Close"]
+    if "Volume" not in out.columns:
+        out["Volume"] = 0
+    out = out.dropna(subset=["Close"]).dropna(how="all")
+    return out if not out.empty else None
+
+
 def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFrame]:
     data: dict[str, pd.DataFrame] = {}
     if not tickers:
         return data
     try:
         df = yf.download(
-            tickers,
+            tickers if len(tickers) > 1 else tickers[0],
             period=period,
             group_by="ticker",
             auto_adjust=True,
@@ -155,22 +208,21 @@ def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, 
         print(f"download error: {e}")
         return data
 
+    if not isinstance(df, pd.DataFrame) or df.empty:
+        return data
+
     if len(tickers) == 1:
         t = tickers[0]
-        if isinstance(df, pd.DataFrame) and not df.empty:
-            data[t] = df.dropna(how="all")
+        norm = _normalize_ohlcv(df, t)
+        if norm is not None:
+            data[t] = norm
         return data
 
     for t in tickers:
         try:
-            if isinstance(df.columns, pd.MultiIndex):
-                if t not in df.columns.get_level_values(0):
-                    continue
-                sub = df[t].dropna(how="all")
-            else:
-                sub = df.dropna(how="all")
-            if not sub.empty and "Close" in sub.columns:
-                data[t] = sub
+            norm = _normalize_ohlcv(df, t)
+            if norm is not None:
+                data[t] = norm
         except Exception:
             continue
     return data
