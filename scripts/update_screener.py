@@ -1,30 +1,29 @@
 #!/usr/bin/env python3
 """
-個人用 RS スクリーナー日次更新スクリプト
+個人用 RS スクリーナー日次更新スクリプト（全米株ユニバース）
+
+対象:
+- NASDAQ / NYSE / NYSE American 上場の普通株
+- テスト銘柄・ワラント・単位・優先株っぽい記号は除外
+- 最低価格・データ不足は計算後に除外
 
 確定ロジック:
 - Stage : Weinstein（米国株仕様・簡易版） SPYベンチマーク
 - TT    : Minervini Trend Template 8条件（RyanJHamby）
-          7〜8=強い / 5〜6=普通 / 4以下=弱い
-          条件8: RS slope >= 0.15
 - HQM   : 1M/3M/6M/1Y パーセンタイル平均
-          いずれかが下位25%なら品質フィルター未通過扱い
-- RS    : 簡易パーセンタイル（対ユニバース）
-
-使い方:
-  pip install -r requirements.txt
-  python scripts/update_screener.py
-
-出力:
-  data/screener.json
+- RS    : ユニバース内パーセンタイル（3M）
 """
 
 from __future__ import annotations
 
+import io
 import json
 import math
+import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.request import urlopen, Request
 
 import numpy as np
 import pandas as pd
@@ -39,26 +38,15 @@ DATA_DIR = ROOT / "data"
 THEMES_PATH = DATA_DIR / "themes.json"
 OUT_PATH = DATA_DIR / "screener.json"
 
-# 拡大ユニバース（テーマ銘柄 + 主要成長/モメンタム候補）
-DEFAULT_TICKERS = [
-    # Mega / Core
-    "AAPL", "MSFT", "GOOGL", "GOOG", "META", "AMZN", "TSLA", "NFLX", "ORCL", "ADBE",
-    # AI / Semi
-    "NVDA", "AVGO", "AMD", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MU", "QCOM",
-    "ARM", "SMCI", "AVAV", "MRVL", "SNPS", "CDNS", "INTC", "TXN", "ADI",
-    # Cyber
-    "CRWD", "PANW", "ZS", "FTNT", "OKTA", "NET", "S", "RPD", "CYBR", "TENB",
-    # Cloud / Data / Software
-    "SNOW", "DDOG", "MDB", "PLTR", "CRM", "NOW", "SHOP", "TEAM", "WDAY", "INTU",
-    "HUBS", "VEEV", "TTD", "APP", "UBER", "ABNB",
-    # Biotech / Health
-    "REGN", "AMGN", "VRTX", "GILD", "BIIB", "MRNA", "LLY", "NVO", "ISRG", "DXCM",
-    # Consumer / Other momentum names often watched
-    "COST", "LLY", "CELH", "CAVA", "DUOL", "MELI", "SE", "NU", "SOFI", "HOOD",
-    "COIN", "MSTR", "RBLX", "U", "PATH", "AI", "SOUN",
-]
-
 BENCHMARK = "SPY"
+
+# スクリーナー品質フィルター
+MIN_PRICE = 5.0
+MIN_HISTORY_DAYS = 200
+BATCH_SIZE = 150  # yfinance 負荷対策
+
+NASDAQ_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
+OTHER_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
 
 
 def load_themes() -> dict[str, list[str]]:
@@ -68,26 +56,119 @@ def load_themes() -> dict[str, list[str]]:
     return {}
 
 
-def download_history(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFrame]:
+def _fetch_text(url: str) -> str:
+    req = Request(url, headers={"User-Agent": "Mozilla/5.0 rs-screener"})
+    with urlopen(req, timeout=60) as res:
+        return res.read().decode("latin-1", errors="ignore")
+
+
+def _clean_symbol(sym: str) -> str | None:
+    if not sym:
+        return None
+    s = sym.strip().upper()
+    # 特殊記号・テスト・ワラント等を除外
+    if not re.fullmatch(r"[A-Z]{1,5}", s):
+        return None
+    if s.endswith("W") and len(s) >= 5:  # 粗いワラント除外
+        return None
+    return s
+
+
+def fetch_us_tickers() -> list[str]:
+    """NASDAQ + NYSE/AMEX の普通株ティッカーを取得"""
+    tickers: set[str] = set()
+
+    # NASDAQ
+    try:
+        text = _fetch_text(NASDAQ_URL)
+        lines = [ln for ln in text.splitlines() if ln and not ln.startswith("File Creation")]
+        if lines:
+            header = lines[0].split("|")
+            # Symbol|...|Test Issue|...|ETF|...
+            for ln in lines[1:]:
+                parts = ln.split("|")
+                if len(parts) < 7:
+                    continue
+                sym = parts[0].strip()
+                test = parts[3].strip().upper() if len(parts) > 3 else "N"
+                etf = parts[6].strip().upper() if len(parts) > 6 else "N"
+                if test == "Y" or etf == "Y":
+                    continue
+                name = parts[1] if len(parts) > 1 else ""
+                if any(x in name.upper() for x in ["WARRANT", " UNIT", " RIGHT", "PREFERRED"]):
+                    continue
+                cleaned = _clean_symbol(sym)
+                if cleaned:
+                    tickers.add(cleaned)
+    except Exception as e:
+        print(f"NASDAQ list fetch failed: {e}")
+
+    # NYSE / NYSE American など
+    try:
+        text = _fetch_text(OTHER_URL)
+        lines = [ln for ln in text.splitlines() if ln and not ln.startswith("File Creation")]
+        if lines:
+            for ln in lines[1:]:
+                parts = ln.split("|")
+                if len(parts) < 7:
+                    continue
+                # ACT Symbol|...|Exchange|...|ETF|...|Test Issue
+                sym = parts[0].strip()
+                exchange = parts[2].strip().upper() if len(parts) > 2 else ""
+                etf = parts[4].strip().upper() if len(parts) > 4 else "N"
+                test = parts[6].strip().upper() if len(parts) > 6 else "N"
+                if test == "Y" or etf == "Y":
+                    continue
+                # N=NYSE, A=NYSE American, P=NYSE Arca など。OTC系は除外気味に
+                if exchange not in {"N", "A", "P", "Z", "Q"}:
+                    # Q は他リスト側のNASDAQ表記のことがある
+                    if exchange not in {"N", "A", "P"}:
+                        continue
+                name = parts[1] if len(parts) > 1 else ""
+                if any(x in name.upper() for x in ["WARRANT", " UNIT", " RIGHT", "PREFERRED"]):
+                    continue
+                cleaned = _clean_symbol(sym)
+                if cleaned:
+                    tickers.add(cleaned)
+    except Exception as e:
+        print(f"OTHER list fetch failed: {e}")
+
+    out = sorted(tickers)
+    print(f"US ticker universe size: {len(out)}")
+    return out
+
+
+def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFrame]:
     data: dict[str, pd.DataFrame] = {}
-    # まとめて取得
-    df = yf.download(
-        tickers,
-        period=period,
-        group_by="ticker",
-        auto_adjust=True,
-        threads=True,
-        progress=False,
-    )
+    if not tickers:
+        return data
+    try:
+        df = yf.download(
+            tickers,
+            period=period,
+            group_by="ticker",
+            auto_adjust=True,
+            threads=True,
+            progress=False,
+        )
+    except Exception as e:
+        print(f"download error: {e}")
+        return data
+
     if len(tickers) == 1:
         t = tickers[0]
-        if not df.empty:
+        if isinstance(df, pd.DataFrame) and not df.empty:
             data[t] = df.dropna(how="all")
         return data
 
     for t in tickers:
         try:
-            sub = df[t].dropna(how="all")
+            if isinstance(df.columns, pd.MultiIndex):
+                if t not in df.columns.get_level_values(0):
+                    continue
+                sub = df[t].dropna(how="all")
+            else:
+                sub = df.dropna(how="all")
             if not sub.empty and "Close" in sub.columns:
                 data[t] = sub
         except Exception:
@@ -100,18 +181,15 @@ def sma(series: pd.Series, n: int) -> pd.Series:
 
 
 def calc_stage(close: pd.Series, bench_close: pd.Series) -> str:
-    """簡易 Weinstein Stage（日足150SMA近似）"""
     if len(close) < 160 or len(bench_close) < 160:
         return "データ不足"
 
-    c = close.iloc[-1]
+    c = float(close.iloc[-1])
     s150 = sma(close, 150)
-    ma = s150.iloc[-1]
-    # 傾き: 約50営業日（≈1ヶ月超）
-    ma_prev = s150.iloc[-51] if len(s150.dropna()) > 50 else s150.dropna().iloc[0]
-    slope = ((ma - ma_prev) / ma_prev) * 100 if ma_prev else 0
+    ma = float(s150.iloc[-1])
+    ma_prev = float(s150.iloc[-51]) if len(s150.dropna()) > 50 else float(s150.dropna().iloc[0])
+    slope = ((ma - ma_prev) / ma_prev) * 100 if ma_prev else 0.0
 
-    # 簡易RS（価格/ベンチの相対）
     aligned = pd.concat([close, bench_close], axis=1, join="inner").dropna()
     if len(aligned) < 60:
         rs_ratio = 1.0
@@ -119,7 +197,7 @@ def calc_stage(close: pd.Series, bench_close: pd.Series) -> str:
         rel = aligned.iloc[:, 0] / aligned.iloc[:, 1]
         rs_ratio = float(rel.iloc[-1] / rel.iloc[-60])
 
-    dist = ((c - ma) / ma) * 100 if ma else 0
+    dist = ((c - ma) / ma) * 100 if ma else 0.0
 
     if c > ma and slope > 0.3 and rs_ratio >= 1.0:
         arrow = "↑" if slope > 1.0 else "→"
@@ -136,22 +214,18 @@ def calc_stage(close: pd.Series, bench_close: pd.Series) -> str:
 
 
 def rs_slope_vs_bench(close: pd.Series, bench: pd.Series, window: int = 63) -> float:
-    """RyanJHamby系: 相対強度の傾き（約3ヶ月）"""
     aligned = pd.concat([close, bench], axis=1, join="inner").dropna()
     if len(aligned) < window + 5:
         return 0.0
     rel = (aligned.iloc[:, 0] / aligned.iloc[:, 1]).tail(window)
     x = np.arange(len(rel))
-    # 正規化して傾きを取る
     y = rel.values / rel.values[0]
     coef = np.polyfit(x, y, 1)[0]
-    # 日次傾きをスケール（経験的に ±0.3 付近）
     return float(coef * 100)
 
 
 def calc_tt(close: pd.Series, high: pd.Series, low: pd.Series, bench: pd.Series) -> tuple[str, int]:
-    """Minervini Trend Template 8条件 → 強い/普通/弱い"""
-    if len(close) < 200:
+    if len(close) < MIN_HISTORY_DAYS:
         return "弱い", 0
 
     c = float(close.iloc[-1])
@@ -165,16 +239,16 @@ def calc_tt(close: pd.Series, high: pd.Series, low: pd.Series, bench: pd.Series)
     slope = rs_slope_vs_bench(close, bench)
 
     conds = [
-        c > s150 and c > s200,          # 1
-        s150 > s200,                    # 2
-        s200 > s200_1m,                 # 3  約1ヶ月上昇
-        s50 > s150 > s200,              # 4
-        c > s50,                        # 5
-        c >= low_52 * 1.30,             # 6
-        c >= high_52 * 0.75,            # 7
-        slope >= 0.15,                  # 8 RyanJHamby RS slope
+        c > s150 and c > s200,
+        s150 > s200,
+        s200 > s200_1m,
+        s50 > s150 > s200,
+        c > s50,
+        c >= low_52 * 1.30,
+        c >= high_52 * 0.75,
+        slope >= 0.15,
     ]
-    passed = sum(1 for x in conds if x)
+    passed = sum(1 for x in conds if bool(x))
     if passed >= 7:
         return "強い", passed
     if passed >= 5:
@@ -193,7 +267,6 @@ def period_return(close: pd.Series, days: int) -> float:
 
 
 def calc_hqm_scores(returns_map: dict[str, dict[str, float]]) -> dict[str, float]:
-    """各期間パーセンタイル→平均。下位25%が1つでもあればペナルティでFair以下寄りに。"""
     periods = ["1m", "3m", "6m", "1y"]
     tickers = list(returns_map.keys())
     pcts: dict[str, list[float]] = {t: [] for t in tickers}
@@ -209,7 +282,7 @@ def calc_hqm_scores(returns_map: dict[str, dict[str, float]]) -> dict[str, float
             continue
         for t in tickers:
             v = series[t]
-            if math.isnan(v):
+            if isinstance(v, float) and math.isnan(v):
                 pcts[t].append(float("nan"))
                 quality_ok[t] = False
             else:
@@ -226,7 +299,7 @@ def calc_hqm_scores(returns_map: dict[str, dict[str, float]]) -> dict[str, float
         else:
             score = float(np.mean(arr))
             if not quality_ok[t]:
-                score = min(score, 69.0)  # フィルター未通過は Good 未満に抑える
+                score = min(score, 69.0)
             out[t] = round(score, 1)
     return out
 
@@ -258,7 +331,6 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
         if not rows:
             result.append({"name": name, "score": 0, "label": "弱い", "leaders": []})
             continue
-        # テーマスコア: RSとHQMの平均
         score = int(round(np.mean([0.6 * s["rs"] + 0.4 * s["hqm"] for s in rows])))
         if score >= 80:
             label = "強い"
@@ -272,71 +344,66 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
             if s["rs"] >= 60
         ]
         result.append({"name": name, "score": score, "label": label, "leaders": leaders})
-    # 強い順
     result.sort(key=lambda x: x["score"], reverse=True)
     return result
 
 
 def main() -> None:
     themes = load_themes()
-    tickers = sorted(set(DEFAULT_TICKERS + [t for ms in themes.values() for t in ms]))
-    all_syms = tickers + [BENCHMARK]
+    universe = fetch_us_tickers()
+    if not universe:
+        raise SystemExit("ティッカーリストの取得に失敗しました")
 
-    print(f"Downloading {len(all_syms)} symbols...")
-    hist = download_history(all_syms)
-    if BENCHMARK not in hist:
+    # ベンチマーク + 全銘柄
+    print("Downloading SPY...")
+    bench_hist = download_history_batch([BENCHMARK], period="2y")
+    if BENCHMARK not in bench_hist:
         raise SystemExit("ベンチマーク SPY の取得に失敗しました")
+    bench = bench_hist[BENCHMARK]["Close"]
 
-    bench = hist[BENCHMARK]["Close"]
     returns_map: dict[str, dict[str, float]] = {}
     returns_3m: dict[str, float] = {}
-    meta_rows = []
+    meta_rows: list[dict] = []
 
-    for t in tickers:
-        if t not in hist:
-            print(f"  skip {t}: no data")
-            continue
-        df = hist[t]
-        close = df["Close"]
-        high = df["High"] if "High" in df.columns else close
-        low = df["Low"] if "Low" in df.columns else close
+    total = len(universe)
+    for i in range(0, total, BATCH_SIZE):
+        batch = universe[i : i + BATCH_SIZE]
+        print(f"Batch {i // BATCH_SIZE + 1}/{(total + BATCH_SIZE - 1) // BATCH_SIZE}: {len(batch)} symbols")
+        hist = download_history_batch(batch, period="2y")
+        for t, df in hist.items():
+            close = df["Close"].dropna()
+            if len(close) < MIN_HISTORY_DAYS:
+                continue
+            price = float(close.iloc[-1])
+            if price < MIN_PRICE:
+                continue
+            high = df["High"] if "High" in df.columns else close
+            low = df["Low"] if "Low" in df.columns else close
 
-        r1 = period_return(close, 21)
-        r3 = period_return(close, 63)
-        r6 = period_return(close, 126)
-        r12 = period_return(close, 252)
-        returns_map[t] = {"1m": r1, "3m": r3, "6m": r6, "1y": r12}
-        returns_3m[t] = r3
+            r1 = period_return(close, 21)
+            r3 = period_return(close, 63)
+            r6 = period_return(close, 126)
+            r12 = period_return(close, 252)
+            returns_map[t] = {"1m": r1, "3m": r3, "6m": r6, "1y": r12}
+            returns_3m[t] = r3
 
-        stage = calc_stage(close, bench)
-        tt, tt_pass = calc_tt(close, high, low, bench)
+            stage = calc_stage(close, bench)
+            tt, _tt_pass = calc_tt(close, high, low, bench)
 
-        # 名前（取れなければティッカー）
-        name = t
-        try:
-            info = yf.Ticker(t).info
-            name = info.get("shortName") or info.get("longName") or t
-        except Exception:
-            pass
+            meta_rows.append(
+                {
+                    "ticker": t,
+                    "name": t,  # 全銘柄のinfo取得は遅いのでティッカー表示
+                    "stage": stage,
+                    "tt": tt,
+                    "industry": "—",
+                    "theme": theme_membership(t, themes),
+                }
+            )
+        # レート制限対策
+        time.sleep(1.0)
 
-        industry = "—"
-        try:
-            industry = yf.Ticker(t).info.get("industry") or "—"
-        except Exception:
-            pass
-
-        meta_rows.append(
-            {
-                "ticker": t,
-                "name": name,
-                "stage": stage,
-                "tt": tt,
-                "tt_pass": tt_pass,
-                "industry": industry,
-                "theme": theme_membership(t, themes),
-            }
-        )
-
+    print(f"Qualified symbols: {len(meta_rows)}")
     hqm_map = calc_hqm_scores(returns_map)
     rs_map = calc_rs_percentile(returns_3m)
 
@@ -356,18 +423,23 @@ def main() -> None:
             }
         )
 
-    theme_scores = compute_theme_scores(stocks, themes)
+    # 表示用に上位を多めに残す（サイト負荷対策）。全件はJSONに入れる
+    stocks_sorted = sorted(stocks, key=lambda x: x["rs"], reverse=True)
+    theme_scores = compute_theme_scores(stocks_sorted, themes)
+
     payload = {
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "universe_size": len(universe),
+        "qualified_size": len(stocks_sorted),
         "themes": theme_scores,
-        "stocks": sorted(stocks, key=lambda x: x["rs"], reverse=True),
+        "stocks": stocks_sorted,
     }
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {OUT_PATH} ({len(stocks)} stocks, {len(theme_scores)} themes)")
+    print(f"Wrote {OUT_PATH} (universe={len(universe)}, qualified={len(stocks_sorted)})")
 
 
 if __name__ == "__main__":
