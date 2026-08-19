@@ -376,7 +376,9 @@ function isHonmei(s) {
   const rsOk = !Number.isNaN(rs) && rs >= 70;
   const ttOk = tt === "強い";
   const hqmOk = !Number.isNaN(hqm) && hqm >= 80;
-  return stage2 && rsOk && ttOk && hqmOk;
+  const ind = industryScoreOf(s);
+  const indOk = !!(ind && Number(ind.score) >= 55);
+  return stage2 && rsOk && ttOk && hqmOk && indOk;
 }
 
 function sortedStocks(stocks) {
@@ -447,14 +449,13 @@ function renderTable(stocks) {
 function render() {
   if (!DATA) return;
   const stocks = DATA.stocks || [];
+  // 先に業種スコアを構築（本命判定で使用）
+  const industryList = computeIndustryScores(stocks, 3);
   const honmeiCount = stocks.filter(isHonmei).length;
   document.getElementById("lastUpdated").textContent =
     "更新: " + (DATA.updated_at || "—") +
     " ／ 全" + stocks.length + "件 ／ 本命" + honmeiCount + "件";
 
-  // 業種強度は常に全銘柄ベース
-  // 全業種スコアをマップ化（表用）＋サイドは上位40
-  const industryList = computeIndustryScores(stocks, 3);
   renderIndustryStrength(industryList.slice(0, 40));
   renderTable(stocks);
 
