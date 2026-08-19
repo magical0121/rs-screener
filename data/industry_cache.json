@@ -1,0 +1,4167 @@
+{
+"AAMI": {
+"industry": "Asset Management",
+"name": "Acadian Asset Management Inc",
+"sector": "Financial"
+},
+"AAPG": {
+"industry": "Biotechnology",
+"name": "Ascentage Pharma Group International ADR",
+"sector": "Healthcare"
+},
+"AAUC": {
+"industry": "Gold",
+"name": "Allied Gold Corp",
+"sector": "Basic Materials"
+},
+"ABCL": {
+"industry": "Biotechnology",
+"name": "AbCellera Biologics Inc",
+"sector": "Healthcare"
+},
+"ABVX": {
+"industry": "Biotechnology",
+"name": "Abivax ADR",
+"sector": "Healthcare"
+},
+"ACFN": {
+"industry": "Scientific & Technical Instruments",
+"name": "Acorn Energy Inc",
+"sector": "Technology"
+},
+"ACGL": {
+"industry": "Insurance - Diversified",
+"name": "Arch Capital Group Ltd",
+"sector": "Financial"
+},
+"ACHV": {
+"industry": "Biotechnology",
+"name": "Achieve Life Sciences Inc",
+"sector": "Healthcare"
+},
+"ACIC": {
+"industry": "Insurance - Property & Casualty",
+"name": "American Coastal Insurance Corp",
+"sector": "Financial"
+},
+"ACN": {
+"industry": "Information Technology Services",
+"name": "Accenture plc",
+"sector": "Technology"
+},
+"ACOG": {
+"industry": "Biotechnology",
+"name": "Alpha Cognition Inc",
+"sector": "Healthcare"
+},
+"ACP": {
+"industry": "Closed-End Fund - Debt",
+"name": "abrdn Income Credit Strategies Fund",
+"sector": "Financial"
+},
+"ADNT": {
+"industry": "Auto Parts",
+"name": "Adient plc",
+"sector": "Consumer Cyclical"
+},
+"ADSE": {
+"industry": "Electrical Equipment & Parts",
+"name": "Ads-Tec Energy Plc",
+"sector": "Industrials"
+},
+"ADUR": {
+"industry": "Pollution & Treatment Controls",
+"name": "Aduro Clean Technologies Inc",
+"sector": "Industrials"
+},
+"ADVB": {
+"industry": "Diagnostics & Research",
+"name": "Advanced Biomed Inc",
+"sector": "Healthcare"
+},
+"ADXN": {
+"industry": "Biotechnology",
+"name": "Addex Therapeutics Ltd ADR",
+"sector": "Healthcare"
+},
+"AEBI": {
+"industry": "Farm & Heavy Construction Machinery",
+"name": "Aebi Schmidt Holding AG",
+"sector": "Industrials"
+},
+"AEF": {
+"industry": "Closed-End Fund - Equity",
+"name": "abrdn Emerging Markets ex-China Fund Inc",
+"sector": "Financial"
+},
+"AEG": {
+"industry": "Insurance - Diversified",
+"name": "Aegon Ltd",
+"sector": "Financial"
+},
+"AEHL": {
+"industry": "Building Products & Equipment",
+"name": "Antelope Enterprise Holdings Ltd",
+"sector": "Industrials"
+},
+"AEM": {
+"industry": "Gold",
+"name": "Agnico Eagle Mines Ltd",
+"sector": "Basic Materials"
+},
+"AER": {
+"industry": "Rental & Leasing Services",
+"name": "Aercap Holdings NV",
+"sector": "Industrials"
+},
+"AFRI": {
+"industry": "Farm Products",
+"name": "Forafric Global PLC",
+"sector": "Consumer Defensive"
+},
+"AFYA": {
+"industry": "Education & Training Services",
+"name": "Afya Ltd",
+"sector": "Consumer Defensive"
+},
+"AG": {
+"industry": "Silver",
+"name": "First Majestic Silver Corp",
+"sector": "Basic Materials"
+},
+"AGCC": {
+"industry": "Beverages - Wineries & Distilleries",
+"name": "Agencia Comercial Spirits Ltd",
+"sector": "Consumer Defensive"
+},
+"AGD": {
+"industry": "Closed-End Fund - Foreign",
+"name": "abrdn Global Dynamic Dividend Fund",
+"sector": "Financial"
+},
+"AGI": {
+"industry": "Gold",
+"name": "Alamos Gold Inc",
+"sector": "Basic Materials"
+},
+"AGO": {
+"industry": "Insurance - Specialty",
+"name": "Assured Guaranty Ltd",
+"sector": "Financial"
+},
+"AGRO": {
+"industry": "Farm Products",
+"name": "Adecoagro SA",
+"sector": "Consumer Defensive"
+},
+"AHR": {
+"industry": "REIT - Healthcare Facilities",
+"name": "American Healthcare REIT Inc",
+"sector": "Real Estate"
+},
+"AIFU": {
+"industry": "Insurance Brokers",
+"name": "AIFU Inc",
+"sector": "Financial"
+},
+"AIIR": {
+"industry": "Tobacco",
+"name": "Air Global Plc",
+"sector": "Consumer Defensive"
+},
+"AIOS": {
+"industry": "Information Technology Services",
+"name": "AIOS Tech Inc",
+"sector": "Technology"
+},
+"AIRO": {
+"industry": "Aerospace & Defense",
+"sector": "Industrials"
+},
+"AKA": {
+"industry": "Apparel Retail",
+"name": "a.k.a. Brands Holding Corp",
+"sector": "Consumer Cyclical"
+},
+"AKTX": {
+"industry": "Biotechnology",
+"name": "Akari Therapeutics Plc ADR",
+"sector": "Healthcare"
+},
+"ALC": {
+"industry": "Medical Instruments & Supplies",
+"name": "Alcon Inc",
+"sector": "Healthcare"
+},
+"ALH": {
+"industry": "Furnishings, Fixtures & Appliances",
+"sector": "Consumer Cyclical"
+},
+"ALKS": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Alkermes plc",
+"sector": "Healthcare"
+},
+"ALLE": {
+"industry": "Security & Protection Services",
+"name": "Allegion plc",
+"sector": "Industrials"
+},
+"ALLT": {
+"industry": "Software - Infrastructure",
+"name": "Allot Ltd",
+"sector": "Technology"
+},
+"ALM": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Almonty Industries Inc",
+"sector": "Basic Materials"
+},
+"ALV": {
+"industry": "Auto Parts",
+"name": "Autoliv Inc",
+"sector": "Consumer Cyclical"
+},
+"AMBP": {
+"industry": "Packaging & Containers",
+"name": "Ardagh Metal Packaging SA",
+"sector": "Consumer Cyclical"
+},
+"AMCR": {
+"industry": "Packaging & Containers",
+"name": "Amcor Plc",
+"sector": "Consumer Cyclical"
+},
+"AMRN": {
+"industry": "Drug Manufacturers - General",
+"name": "Amarin Corp ADR",
+"sector": "Healthcare"
+},
+"AMUB": {
+"industry": "Exchange Traded Fund",
+"name": "UBS ETRACS Alerian MLP Index ETN",
+"sector": "Financial"
+},
+"ANL": {
+"industry": "Biotechnology",
+"name": "Adlai Nortye Ltd ADR",
+"sector": "Healthcare"
+},
+"AOD": {
+"industry": "Closed-End Fund - Foreign",
+"name": "abrdn Total Dynamic Dividend Fund",
+"sector": "Financial"
+},
+"AON": {
+"industry": "Insurance Brokers",
+"name": "Aon Plc",
+"sector": "Financial"
+},
+"APLD": {
+"industry": "Information Technology Services",
+"name": "Applied Digital Corp",
+"sector": "Technology"
+},
+"APT": {
+"industry": "Building Products & Equipment",
+"name": "Alpha Pro Tech Ltd",
+"sector": "Industrials"
+},
+"APTV": {
+"industry": "Auto Parts",
+"name": "Aptiv Plc",
+"sector": "Consumer Cyclical"
+},
+"AQN": {
+"industry": "Utilities - Diversified",
+"name": "Algonquin Power & Utilities Corp",
+"sector": "Utilities"
+},
+"ARCO": {
+"industry": "Restaurants",
+"name": "Arcos Dorados Holdings Inc",
+"sector": "Consumer Cyclical"
+},
+"ARGX": {
+"industry": "Biotechnology",
+"name": "Argen X SE ADR",
+"sector": "Healthcare"
+},
+"ARIS": {
+"industry": "Gold",
+"name": "Aris Mining Corp",
+"sector": "Basic Materials"
+},
+"ARM": {
+"industry": "Semiconductors",
+"name": "Arm Holdings Plc ADR",
+"sector": "Technology"
+},
+"ARQQ": {
+"industry": "Software - Infrastructure",
+"name": "Arqit Quantum Inc",
+"sector": "Technology"
+},
+"ARX": {
+"industry": "Insurance Brokers",
+"name": "Accelerant Holdings",
+"sector": "Financial"
+},
+"AS": {
+"industry": "Leisure",
+"name": "Amer Sports Inc",
+"sector": "Consumer Cyclical"
+},
+"ASC": {
+"industry": "Marine Shipping",
+"name": "Ardmore Shipping Corp",
+"sector": "Industrials"
+},
+"ASIC": {
+"industry": "Insurance - Property & Casualty",
+"name": "Ategrity Specialty Insurance Company Holdings",
+"sector": "Financial"
+},
+"ASM": {
+"industry": "Other Precious Metals & Mining",
+"name": "Avino Silver & Gold Mines Ltd",
+"sector": "Basic Materials"
+},
+"ASML": {
+"industry": "Semiconductor Equipment & Materials",
+"name": "ASML Holding NV",
+"sector": "Technology"
+},
+"ASND": {
+"industry": "Biotechnology",
+"name": "Ascendis Pharma A/S",
+"sector": "Healthcare"
+},
+"ASPS": {
+"industry": "Real Estate Services",
+"name": "Altisource Portfolio Solutions SA",
+"sector": "Real Estate"
+},
+"ASR": {
+"industry": "Airports & Air Services",
+"name": "Grupo Aeroportuario Del Sureste SA ADR",
+"sector": "Industrials"
+},
+"ASX": {
+"industry": "Semiconductors",
+"name": "ASE Technology Holding CoLtd ADR",
+"sector": "Technology"
+},
+"ATAI": {
+"industry": "Biotechnology",
+"name": "AtaiBeckley Inc",
+"sector": "Healthcare"
+},
+"ATAT": {
+"industry": "Lodging",
+"name": "Atour Lifestyle Holdings Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"ATGL": {
+"industry": "Software - Infrastructure",
+"name": "Alpha Technology Group Ltd",
+"sector": "Technology"
+},
+"ATHM": {
+"industry": "Internet Content & Information",
+"name": "Autohome Inc ADR",
+"sector": "Communication Services"
+},
+"ATMP": {
+"industry": "Exchange Traded Fund",
+"name": "iPath Select MLP ETN",
+"sector": "Financial"
+},
+"ATS": {
+"industry": "Specialty Industrial Machinery",
+"name": "ATS Corp",
+"sector": "Industrials"
+},
+"AU": {
+"industry": "Gold",
+"name": "AngloGold Ashanti Plc",
+"sector": "Basic Materials"
+},
+"AUDC": {
+"industry": "Communication Equipment",
+"name": "Audiocodes",
+"sector": "Technology"
+},
+"AUNA": {
+"industry": "Medical Care Facilities",
+"name": "Auna SA",
+"sector": "Healthcare"
+},
+"AUPH": {
+"industry": "Biotechnology",
+"name": "Aurinia Pharmaceuticals Inc",
+"sector": "Healthcare"
+},
+"AVBH": {
+"industry": "Banks - Regional",
+"name": "Avidbank Holdings Inc",
+"sector": "Financial"
+},
+"AWP": {
+"industry": "Closed-End Fund - Foreign",
+"name": "abrdn Global Premier Properties Fund",
+"sector": "Financial"
+},
+"AXIN": {
+"industry": "Shell Companies",
+"name": "Axiom Intelligence Acquisition Corp 1",
+"sector": "Financial"
+},
+"AXS": {
+"industry": "Insurance - Specialty",
+"name": "Axis Capital Holdings Ltd",
+"sector": "Financial"
+},
+"AYA": {
+"industry": "Silver",
+"name": "Aya Gold & Silver Inc",
+"sector": "Basic Materials"
+},
+"AZ": {
+"industry": "Software - Application",
+"name": "A2Z Cust2Mate Solutions Corp",
+"sector": "Technology"
+},
+"AZN": {
+"industry": "Drug Manufacturers - General",
+"name": "Astrazeneca plc",
+"sector": "Healthcare"
+},
+"B": {
+"industry": "Gold",
+"name": "Barrick Mining Corp",
+"sector": "Basic Materials"
+},
+"BABA": {
+"industry": "Internet Retail",
+"name": "Alibaba Group Holding Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"BAM": {
+"industry": "Asset Management",
+"name": "Brookfield Asset Management Ltd",
+"sector": "Financial"
+},
+"BANL": {
+"industry": "Oil & Gas Midstream",
+"name": "CBL International Ltd",
+"sector": "Energy"
+},
+"BAP": {
+"industry": "Banks - Regional",
+"name": "Credicorp Ltd",
+"sector": "Financial"
+},
+"BAR": {
+"industry": "Exchange Traded Fund",
+"name": "GraniteShares Gold Trust",
+"sector": "Financial"
+},
+"BARK": {
+"industry": "Specialty Retail",
+"name": "BARK Inc",
+"sector": "Consumer Cyclical"
+},
+"BB": {
+"industry": "Software - Infrastructure",
+"name": "BlackBerry Ltd",
+"sector": "Technology"
+},
+"BBAR": {
+"industry": "Banks - Regional",
+"name": "BBVA Argentina ADR",
+"sector": "Financial"
+},
+"BBVA": {
+"industry": "Banks - Diversified",
+"name": "Banco Bilbao Vizcaya Argentaria SA ADR",
+"sector": "Financial"
+},
+"BCAL": {
+"industry": "Banks - Regional",
+"name": "California Bancorp",
+"sector": "Financial"
+},
+"BCE": {
+"industry": "Telecom Services",
+"name": "BCE Inc",
+"sector": "Communication Services"
+},
+"BCH": {
+"industry": "Banks - Regional",
+"name": "Banco de Chile ADR",
+"sector": "Financial"
+},
+"BCO": {
+"industry": "Security & Protection Services",
+"name": "Brink's Co",
+"sector": "Industrials"
+},
+"BCS": {
+"industry": "Banks - Diversified",
+"name": "Barclays plc ADR",
+"sector": "Financial"
+},
+"BDCZ": {
+"industry": "Exchange Traded Fund",
+"name": "ETRACS MVIS Business Development Companies Index ETN due April 26, 204",
+"sector": "Financial"
+},
+"BEAG": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"BEKE": {
+"industry": "Real Estate Services",
+"name": "KE Holdings Inc ADR",
+"sector": "Real Estate"
+},
+"BETR": {
+"industry": "Mortgage Finance",
+"name": "Better Home & Finance Holding Co",
+"sector": "Financial"
+},
+"BGB": {
+"industry": "Closed-End Fund - Debt",
+"name": "Blackstone Strategic Credit 2027 Term Fund",
+"sector": "Financial"
+},
+"BGDE": {
+"industry": "Capital Markets",
+"name": "Big Digital Energy Inc",
+"sector": "Financial"
+},
+"BGX": {
+"industry": "Closed-End Fund - Debt",
+"name": "Blackstone Long-Short Credit Income Fund",
+"sector": "Financial"
+},
+"BHC": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Bausch Health Companies Inc",
+"sector": "Healthcare"
+},
+"BHP": {
+"industry": "Other Industrial Metals & Mining",
+"name": "BHP Group Limited ADR",
+"sector": "Basic Materials"
+},
+"BHRB": {
+"industry": "Banks - Regional",
+"name": "Burke & Herbert Financial Services Corp",
+"sector": "Financial"
+},
+"BIDU": {
+"industry": "Internet Content & Information",
+"name": "Baidu Inc ADR",
+"sector": "Communication Services"
+},
+"BILI": {
+"industry": "Internet Content & Information",
+"name": "Bilibili Inc ADR",
+"sector": "Communication Services"
+},
+"BIRK": {
+"industry": "Footwear & Accessories",
+"name": "Birkenstock Holding Plc",
+"sector": "Consumer Cyclical"
+},
+"BLCO": {
+"industry": "Medical Instruments & Supplies",
+"name": "Bausch + Lomb Corp",
+"sector": "Healthcare"
+},
+"BLSH": {
+"industry": "Software - Infrastructure",
+"name": "Bullish",
+"sector": "Technology"
+},
+"BLX": {
+"industry": "Banks - Regional",
+"name": "Bladex Inc",
+"sector": "Financial"
+},
+"BMA": {
+"industry": "Banks - Regional",
+"name": "Banco Macro SA ADR",
+"sector": "Financial"
+},
+"BMGL": {
+"industry": "Medical Care Facilities",
+"name": "Basel Medical Group Ltd",
+"sector": "Healthcare"
+},
+"BMHL": {
+"industry": "Capital Markets",
+"sector": "Financial"
+},
+"BMN": {
+"industry": "Closed-End Fund - Debt",
+"sector": "Financial"
+},
+"BMO": {
+"industry": "Banks - Diversified",
+"name": "Bank of Montreal",
+"sector": "Financial"
+},
+"BN": {
+"industry": "Asset Management",
+"name": "Brookfield Corp",
+"sector": "Financial"
+},
+"BNR": {
+"industry": "Diagnostics & Research",
+"name": "Burning Rock Biotech Ltd ADR",
+"sector": "Healthcare"
+},
+"BNS": {
+"industry": "Banks - Diversified",
+"name": "Bank Of Nova Scotia",
+"sector": "Financial"
+},
+"BNT": {
+"industry": "Insurance - Diversified",
+"name": "Brookfield Wealth Solutions Ltd",
+"sector": "Financial"
+},
+"BNTX": {
+"industry": "Biotechnology",
+"name": "BioNTech SE ADR",
+"sector": "Healthcare"
+},
+"BNY": {
+"industry": "Banks - Diversified",
+"name": "Bank Of New York Mellon Corp",
+"sector": "Financial"
+},
+"BOW": {
+"industry": "Insurance - Property & Casualty",
+"name": "Bowhead Specialty Holdings Inc",
+"sector": "Financial"
+},
+"BP": {
+"industry": "Oil & Gas Integrated",
+"name": "BP plc ADR",
+"sector": "Energy"
+},
+"BRBI": {
+"industry": "Capital Markets",
+"name": "BRBI BR Partners SA ADR",
+"sector": "Financial"
+},
+"BSAA": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"BSAC": {
+"industry": "Banks - Regional",
+"name": "Banco Santander Chile SA ADR",
+"sector": "Financial"
+},
+"BSL": {
+"industry": "Closed-End Fund - Debt",
+"name": "Blackstone Senior Floating Rate 2027 Term Fund",
+"sector": "Financial"
+},
+"BTDR": {
+"industry": "Software - Application",
+"name": "Bitdeer Technologies Group",
+"sector": "Technology"
+},
+"BTG": {
+"industry": "Gold",
+"name": "B2gold Corp",
+"sector": "Basic Materials"
+},
+"BTI": {
+"industry": "Tobacco",
+"name": "British American Tobacco Plc ADR",
+"sector": "Consumer Defensive"
+},
+"BTX": {
+"industry": "Asset Management",
+"sector": "Financial"
+},
+"BUD": {
+"industry": "Beverages - Brewers",
+"name": "Anheuser-Busch InBev SA/NV ADR",
+"sector": "Consumer Defensive"
+},
+"BUUU": {
+"industry": "Specialty Business Services",
+"name": "BUUU Group Ltd",
+"sector": "Industrials"
+},
+"BVC": {
+"industry": "Software - Application",
+"name": "BitVentures Ltd",
+"sector": "Technology"
+},
+"BVFL": {
+"industry": "Banks - Regional",
+"name": "BV Financial Inc",
+"sector": "Financial"
+},
+"BVN": {
+"industry": "Other Precious Metals & Mining",
+"name": "Compania de Minas Buenaventura SA ADR",
+"sector": "Basic Materials"
+},
+"BWAY": {
+"industry": "Medical Devices",
+"name": "Brainsway Ltd ADR",
+"sector": "Healthcare"
+},
+"BWLP": {
+"industry": "Oil & Gas Midstream",
+"name": "BW LPG Limited",
+"sector": "Energy"
+},
+"BWMX": {
+"industry": "Specialty Retail",
+"name": "Betterware de Mexico SAPI de CV",
+"sector": "Consumer Cyclical"
+},
+"BZ": {
+"industry": "Internet Content & Information",
+"name": "Kanzhun Ltd ADR",
+"sector": "Communication Services"
+},
+"CAAP": {
+"industry": "Airports & Air Services",
+"name": "Corporacion America Airports SA",
+"sector": "Industrials"
+},
+"CAE": {
+"industry": "Aerospace & Defense",
+"name": "Cae Inc",
+"sector": "Industrials"
+},
+"CAI": {
+"industry": "Biotechnology",
+"name": "Caris Life Sciences Inc",
+"sector": "Healthcare"
+},
+"CAMT": {
+"industry": "Semiconductor Equipment & Materials",
+"name": "Camtek Ltd",
+"sector": "Technology"
+},
+"CB": {
+"industry": "Insurance - Property & Casualty",
+"name": "Chubb Limited",
+"sector": "Financial"
+},
+"CBIO": {
+"industry": "Biotechnology",
+"name": "Crescent Biopharma Inc",
+"sector": "Healthcare"
+},
+"CBOE": {
+"industry": "Financial Data & Stock Exchanges",
+"name": "Cboe Global Markets Inc",
+"sector": "Financial"
+},
+"CCEC": {
+"industry": "Marine Shipping",
+"name": "Capital Clean Energy Carriers Corp",
+"sector": "Industrials"
+},
+"CCEP": {
+"industry": "Beverages - Non-Alcoholic",
+"name": "Coca-Cola Europacific Partners Plc",
+"sector": "Consumer Defensive"
+},
+"CCG": {
+"industry": "Internet Content & Information",
+"name": "Cheche Group Inc",
+"sector": "Communication Services"
+},
+"CCJ": {
+"industry": "Uranium",
+"name": "Cameco Corp",
+"sector": "Energy"
+},
+"CCU": {
+"industry": "Beverages - Brewers",
+"name": "Compania Cervecerias Unidas SA ADR",
+"sector": "Consumer Defensive"
+},
+"CDLR": {
+"industry": "Engineering & Construction",
+"name": "Cadeler AS ADR",
+"sector": "Industrials"
+},
+"CDRO": {
+"industry": "Gambling",
+"name": "Codere Online Luxembourg S.A",
+"sector": "Consumer Cyclical"
+},
+"CEE": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Central and Eastern Europe Fund Inc",
+"sector": "Financial"
+},
+"CEPU": {
+"industry": "Utilities - Regulated Electric",
+"name": "Central Puerto ADR",
+"sector": "Utilities"
+},
+"CGAU": {
+"industry": "Gold",
+"name": "Centerra Gold Inc",
+"sector": "Basic Materials"
+},
+"CGNT": {
+"industry": "Software - Infrastructure",
+"name": "Cognyte Software Ltd",
+"sector": "Technology"
+},
+"CHA": {
+"industry": "Restaurants",
+"name": "Chagee Holdings Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"CHKP": {
+"industry": "Software - Infrastructure",
+"name": "Check Point Software Technologies Ltd",
+"sector": "Technology"
+},
+"CHT": {
+"industry": "Telecom Services",
+"name": "Chunghwa Telecom ADR",
+"sector": "Communication Services"
+},
+"CIGI": {
+"industry": "Real Estate Services",
+"name": "Colliers International Group Inc",
+"sector": "Real Estate"
+},
+"CLB": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Core Laboratories Inc",
+"sector": "Energy"
+},
+"CLBT": {
+"industry": "Software - Infrastructure",
+"name": "Cellebrite DI Ltd",
+"sector": "Technology"
+},
+"CLM": {
+"industry": "Closed-End Fund - Equity",
+"name": "Cornerstone Strategic Investment Fund Inc",
+"sector": "Financial"
+},
+"CLS": {
+"industry": "Electronic Components",
+"name": "Celestica Inc",
+"sector": "Technology"
+},
+"CM": {
+"industry": "Banks - Diversified",
+"sector": "Financial"
+},
+"CMBT": {
+"industry": "Oil & Gas Midstream",
+"name": "CMB.Tech NV",
+"sector": "Energy"
+},
+"CMCL": {
+"industry": "Gold",
+"name": "Caledonia Mining Corp Plc",
+"sector": "Basic Materials"
+},
+"CMDB": {
+"industry": "Marine Shipping",
+"name": "Costamare Bulkers Holdings Ltd",
+"sector": "Industrials"
+},
+"CMPR": {
+"industry": "Specialty Business Services",
+"name": "Cimpress plc",
+"sector": "Industrials"
+},
+"CMPS": {
+"industry": "Medical Care Facilities",
+"name": "Compass Pathways Plc ADR",
+"sector": "Healthcare"
+},
+"CMRE": {
+"industry": "Marine Shipping",
+"name": "Costamare Inc",
+"sector": "Industrials"
+},
+"CMTV": {
+"industry": "Banks - Regional",
+"name": "Community Bancorp Inc Vermont",
+"sector": "Financial"
+},
+"CNH": {
+"industry": "Farm & Heavy Construction Machinery",
+"name": "CNH Industrial NV",
+"sector": "Industrials"
+},
+"CNI": {
+"industry": "Railroads",
+"name": "Canadian National Railway Co",
+"sector": "Industrials"
+},
+"CNL": {
+"industry": "Gold",
+"name": "Collective Mining Ltd",
+"sector": "Basic Materials"
+},
+"CNQ": {
+"industry": "Oil & Gas E&P",
+"name": "Canadian Natural Resources Ltd",
+"sector": "Energy"
+},
+"COE": {
+"industry": "Education & Training Services",
+"name": "51 Talk Online Education Group ADR",
+"sector": "Consumer Defensive"
+},
+"COLA": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"COPL": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"COR": {
+"industry": "Medical Distribution",
+"name": "Cencora Inc",
+"sector": "Healthcare"
+},
+"COSO": {
+"industry": "Banks - Regional",
+"name": "CoastalSouth Bancshares Inc",
+"sector": "Financial"
+},
+"CP": {
+"industry": "Railroads",
+"name": "Canadian Pacific Kansas City Limited",
+"sector": "Industrials"
+},
+"CPA": {
+"industry": "Airlines",
+"name": "Copa Holdings SA",
+"sector": "Industrials"
+},
+"CPAC": {
+"industry": "Building Materials",
+"name": "Cementos Pacasmayo SAA ADR",
+"sector": "Basic Materials"
+},
+"CPNG": {
+"industry": "Internet Retail",
+"name": "Coupang Inc",
+"sector": "Consumer Cyclical"
+},
+"CPRI": {
+"industry": "Luxury Goods",
+"name": "Capri Holdings Ltd",
+"sector": "Consumer Cyclical"
+},
+"CRCL": {
+"industry": "Capital Markets",
+"name": "Circle Internet Group Inc",
+"sector": "Financial"
+},
+"CRESY": {
+"industry": "Conglomerates",
+"name": "Cresud ADR",
+"sector": "Industrials"
+},
+"CRF": {
+"industry": "Closed-End Fund - Equity",
+"name": "Cornerstone Total Return Fund",
+"sector": "Financial"
+},
+"CRML": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Critical Metals Corp",
+"sector": "Basic Materials"
+},
+"CRSP": {
+"industry": "Biotechnology",
+"name": "CRISPR Therapeutics AG",
+"sector": "Healthcare"
+},
+"CRTO": {
+"industry": "Advertising Agencies",
+"name": "Criteo S.A",
+"sector": "Communication Services"
+},
+"CSIQ": {
+"industry": "Solar",
+"name": "Canadian Solar Inc",
+"sector": "Technology"
+},
+"CSR": {
+"industry": "REIT - Residential",
+"name": "Centerspace",
+"sector": "Real Estate"
+},
+"CSTM": {
+"industry": "Aluminum",
+"name": "Constellium SE",
+"sector": "Basic Materials"
+},
+"CTGO": {
+"industry": "Gold",
+"name": "Contango Silver & Gold Inc",
+"sector": "Basic Materials"
+},
+"CUB": {
+"industry": "Shell Companies",
+"name": "Lionheart Holdings",
+"sector": "Financial"
+},
+"CUVL": {
+"industry": "Biotechnology",
+"name": "Clinuvel Pharmaceuticals Ltd ADR",
+"sector": "Healthcare"
+},
+"CVE": {
+"industry": "Oil & Gas Integrated",
+"name": "Cenovus Energy Inc",
+"sector": "Energy"
+},
+"CWCO": {
+"industry": "Utilities - Regulated Water",
+"name": "Consolidated Water Co Ltd",
+"sector": "Utilities"
+},
+"CX": {
+"industry": "Building Materials",
+"name": "Cemex SAB de CV ADR",
+"sector": "Basic Materials"
+},
+"CYD": {
+"industry": "Auto Manufacturers",
+"name": "China Yuchai International",
+"sector": "Consumer Cyclical"
+},
+"CZFS": {
+"industry": "Banks - Regional",
+"name": "Citizens Financial Services Inc",
+"sector": "Financial"
+},
+"DAC": {
+"industry": "Marine Shipping",
+"name": "Danaos Corp",
+"sector": "Industrials"
+},
+"DAO": {
+"industry": "Education & Training Services",
+"name": "Youdao Inc ADR",
+"sector": "Consumer Defensive"
+},
+"DB": {
+"industry": "Banks - Regional",
+"name": "Deutsche Bank AG",
+"sector": "Financial"
+},
+"DBVT": {
+"industry": "Biotechnology",
+"name": "DBV Technologies ADR",
+"sector": "Healthcare"
+},
+"DCBO": {
+"industry": "Software - Application",
+"name": "Docebo Inc",
+"sector": "Technology"
+},
+"DDI": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "DoubleDown Interactive Co Ltd ADR",
+"sector": "Communication Services"
+},
+"DEC": {
+"industry": "Oil & Gas Integrated",
+"name": "Diversified Energy Co",
+"sector": "Energy"
+},
+"DEO": {
+"industry": "Beverages - Wineries & Distilleries",
+"name": "Diageo plc ADR",
+"sector": "Consumer Defensive"
+},
+"DFNS": {
+"industry": "Aerospace & Defense",
+"name": "T3 Defense Inc",
+"sector": "Industrials"
+},
+"DGP": {
+"industry": "Exchange Traded Fund",
+"name": "DB Gold Double Long ETN",
+"sector": "Financial"
+},
+"DHT": {
+"industry": "Oil & Gas Midstream",
+"name": "DHT Holdings Inc",
+"sector": "Energy"
+},
+"DJP": {
+"industry": "Exchange Traded Fund",
+"name": "iPath Bloomberg Commodity Total Return ETN",
+"sector": "Financial"
+},
+"DLO": {
+"industry": "Software - Infrastructure",
+"name": "DLocal Limited",
+"sector": "Technology"
+},
+"DMC": {
+"industry": "Farm Products",
+"name": "Del Monte Corp",
+"sector": "Consumer Defensive"
+},
+"DMRA": {
+"industry": "Biotechnology",
+"name": "Damora Therapeutics Inc",
+"sector": "Healthcare"
+},
+"DOCS": {
+"industry": "Health Information Services",
+"name": "Doximity Inc",
+"sector": "Healthcare"
+},
+"DOLE": {
+"industry": "Farm Products",
+"name": "Dole plc",
+"sector": "Consumer Defensive"
+},
+"DOO": {
+"industry": "Recreational Vehicles",
+"name": "BRP Inc",
+"sector": "Consumer Cyclical"
+},
+"DQ": {
+"industry": "Solar",
+"name": "Daqo New Energy Corp ADR",
+"sector": "Technology"
+},
+"DRD": {
+"industry": "Gold",
+"name": "DRDGold Ltd ADR",
+"sector": "Basic Materials"
+},
+"DRS": {
+"industry": "Aerospace & Defense",
+"name": "Leonardo DRS Inc",
+"sector": "Industrials"
+},
+"DRTS": {
+"industry": "Biotechnology",
+"name": "Alpha Tau Medical Ltd",
+"sector": "Healthcare"
+},
+"DRUG": {
+"industry": "Biotechnology",
+"name": "Bright Minds Biosciences Inc",
+"sector": "Healthcare"
+},
+"DSGX": {
+"industry": "Software - Application",
+"name": "Descartes Systems Group Inc",
+"sector": "Technology"
+},
+"DTM": {
+"industry": "Oil & Gas Midstream",
+"name": "DT Midstream Inc",
+"sector": "Energy"
+},
+"DUKR": {
+"industry": "Aerospace & Defense",
+"name": "DUKE Robotics Corp",
+"sector": "Industrials"
+},
+"E": {
+"industry": "Oil & Gas Integrated",
+"name": "Eni Spa ADR",
+"sector": "Energy"
+},
+"EC": {
+"industry": "Oil & Gas Integrated",
+"name": "Ecopetrol SA ADR",
+"sector": "Energy"
+},
+"ECG": {
+"industry": "Engineering & Construction",
+"name": "Everus Construction Group",
+"sector": "Industrials"
+},
+"ECHO": {
+"industry": "Telecom Services",
+"name": "EchoStar Corp",
+"sector": "Communication Services"
+},
+"ECO": {
+"industry": "Marine Shipping",
+"name": "Okeanis Eco Tankers Corp",
+"sector": "Industrials"
+},
+"EDF": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Virtus Stone Harbor Emerging Markets Income Fund",
+"sector": "Financial"
+},
+"EDN": {
+"industry": "Utilities - Regulated Electric",
+"name": "Empresa Distribuidora y Comercial Norte SA ADR",
+"sector": "Utilities"
+},
+"EDRY": {
+"industry": "Marine Shipping",
+"name": "EuroDry Ltd",
+"sector": "Industrials"
+},
+"EDSA": {
+"industry": "Biotechnology",
+"name": "Edesa Biotech Inc",
+"sector": "Healthcare"
+},
+"EDU": {
+"industry": "Education & Training Services",
+"name": "New Oriental Education & Technology Group Inc ADR",
+"sector": "Consumer Defensive"
+},
+"EE": {
+"industry": "Oil & Gas Midstream",
+"name": "Excelerate Energy Inc",
+"sector": "Energy"
+},
+"EEA": {
+"industry": "Closed-End Fund - Foreign",
+"name": "European Equity Fund Inc",
+"sector": "Financial"
+},
+"EFSI": {
+"industry": "Banks - Regional",
+"name": "Eagle Financial Services Inc",
+"sector": "Financial"
+},
+"EFXT": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Enerflex Ltd",
+"sector": "Energy"
+},
+"EG": {
+"industry": "Insurance - Reinsurance",
+"name": "Everest Group Ltd",
+"sector": "Financial"
+},
+"EGO": {
+"industry": "Gold",
+"name": "Eldorado Gold Corp",
+"sector": "Basic Materials"
+},
+"EH": {
+"industry": "Aerospace & Defense",
+"name": "EHang Holdings Ltd ADR",
+"sector": "Industrials"
+},
+"EHLD": {
+"industry": "Marine Shipping",
+"name": "Euroholdings Ltd",
+"sector": "Industrials"
+},
+"ELE": {
+"industry": "Other Precious Metals & Mining",
+"name": "Elemental Royalty Corp",
+"sector": "Basic Materials"
+},
+"ELLO": {
+"industry": "Utilities - Renewable",
+"name": "Ellomay Capital Ltd",
+"sector": "Utilities"
+},
+"ELPC": {
+"industry": "Utilities - Diversified",
+"name": "Cia Paranaense De Energia Copel ADR",
+"sector": "Utilities"
+},
+"ELTK": {
+"industry": "Electronic Components",
+"name": "Eltek Ltd",
+"sector": "Technology"
+},
+"ELVA": {
+"industry": "Electrical Equipment & Parts",
+"name": "Electrovaya Inc",
+"sector": "Industrials"
+},
+"ELVR": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Elevra Lithium Ltd ADR",
+"sector": "Basic Materials"
+},
+"EMA": {
+"industry": "Utilities - Regulated Electric",
+"name": "Emera Inc",
+"sector": "Utilities"
+},
+"EMBJ": {
+"industry": "Aerospace & Defense",
+"name": "Embraer SA ADR",
+"sector": "Industrials"
+},
+"EMF": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Templeton Emerging Markets Fund",
+"sector": "Financial"
+},
+"ENB": {
+"industry": "Oil & Gas Midstream",
+"name": "Enbridge Inc",
+"sector": "Energy"
+},
+"ENLT": {
+"industry": "Utilities - Renewable",
+"name": "Enlight Renewable Energy Ltd",
+"sector": "Utilities"
+},
+"EPRX": {
+"industry": "Biotechnology",
+"name": "Eupraxia Pharmaceuticals Inc",
+"sector": "Healthcare"
+},
+"EQNR": {
+"industry": "Oil & Gas Integrated",
+"name": "Equinor ASA ADR",
+"sector": "Energy"
+},
+"EQX": {
+"industry": "Gold",
+"name": "Equinox Gold Corp",
+"sector": "Basic Materials"
+},
+"ERIC": {
+"industry": "Communication Equipment",
+"name": "Telefonaktiebolaget L M Ericsson ADR",
+"sector": "Technology"
+},
+"ERO": {
+"industry": "Copper",
+"name": "Ero Copper Corp",
+"sector": "Basic Materials"
+},
+"ESEA": {
+"industry": "Marine Shipping",
+"name": "Euroseas Ltd",
+"sector": "Industrials"
+},
+"ESLT": {
+"industry": "Aerospace & Defense",
+"name": "Elbit Systems Ltd",
+"sector": "Industrials"
+},
+"ESNT": {
+"industry": "Insurance - Specialty",
+"name": "Essent Group Ltd",
+"sector": "Financial"
+},
+"ESOA": {
+"industry": "Engineering & Construction",
+"name": "Energy Services of America Corp",
+"sector": "Industrials"
+},
+"ESTA": {
+"industry": "Medical Devices",
+"name": "Establishment Labs Holdings Inc",
+"sector": "Healthcare"
+},
+"ETN": {
+"industry": "Specialty Industrial Machinery",
+"name": "Eaton Corp Plc",
+"sector": "Industrials"
+},
+"ETOR": {
+"industry": "Capital Markets",
+"name": "Etoro Group Ltd",
+"sector": "Financial"
+},
+"ETX": {
+"industry": "Closed-End Fund - Debt",
+"name": "Eaton Vance Municipal Income 2028 Term Trust",
+"sector": "Financial"
+},
+"EUDA": {
+"industry": "Real Estate Services",
+"name": "Euda Health Holdings Limited",
+"sector": "Real Estate"
+},
+"EVAC": {
+"industry": "Shell Companies",
+"name": "Eqv Ventures Acquisition Corp II",
+"sector": "Financial"
+},
+"EXK": {
+"industry": "Silver",
+"name": "Endeavour Silver Corp",
+"sector": "Basic Materials"
+},
+"FAX": {
+"industry": "Closed-End Fund - Debt",
+"name": "abrdn Asia-Pacific Income Fund Inc",
+"sector": "Financial"
+},
+"FBRT": {
+"industry": "REIT - Mortgage",
+"name": "Franklin BSP Realty Trust Inc",
+"sector": "Real Estate"
+},
+"FCUV": {
+"industry": "Scientific & Technical Instruments",
+"name": "Focus Universal Inc",
+"sector": "Technology"
+},
+"FEDU": {
+"industry": "Education & Training Services",
+"name": "Four Seasons Education (Cayman) Inc ADR",
+"sector": "Consumer Defensive"
+},
+"FER": {
+"industry": "Engineering & Construction",
+"name": "Ferrovial N. V",
+"sector": "Industrials"
+},
+"FERA": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"FERG": {
+"industry": "Industrial Distribution",
+"name": "Ferguson Enterprises Inc",
+"sector": "Industrials"
+},
+"FIG": {
+"industry": "Software - Application",
+"name": "Figma Inc",
+"sector": "Technology"
+},
+"FIGR": {
+"industry": "Capital Markets",
+"name": "Figure Technology Solutions Inc",
+"sector": "Financial"
+},
+"FLEX": {
+"industry": "Electronic Components",
+"name": "Flex Ltd",
+"sector": "Technology"
+},
+"FLNG": {
+"industry": "Oil & Gas Midstream",
+"name": "Flex Lng Ltd",
+"sector": "Energy"
+},
+"FLY": {
+"industry": "Aerospace & Defense",
+"name": "Firefly Aerospace Inc",
+"sector": "Industrials"
+},
+"FMS": {
+"industry": "Medical Care Facilities",
+"name": "Fresenius Medical Care AG ADR",
+"sector": "Healthcare"
+},
+"FMX": {
+"industry": "Beverages - Brewers",
+"name": "Fomento Economico Mexicano SAB de CV ADR",
+"sector": "Consumer Defensive"
+},
+"FN": {
+"industry": "Electronic Components",
+"name": "Fabrinet",
+"sector": "Technology"
+},
+"FNGD": {
+"industry": "Exchange Traded Fund",
+"name": "MicroSectors FANG+ Index -3X Inverse Leveraged ETNs",
+"sector": "Financial"
+},
+"FNGO": {
+"industry": "Exchange Traded Fund",
+"name": "MicroSectors FANG+Index 2X Leveraged ETNs",
+"sector": "Financial"
+},
+"FNRN": {
+"industry": "Banks - Regional",
+"name": "First Northern Community Bancorp",
+"sector": "Financial"
+},
+"FNV": {
+"industry": "Gold",
+"name": "Franco-Nevada Corp",
+"sector": "Basic Materials"
+},
+"FORTY": {
+"industry": "Information Technology Services",
+"name": "Formula Systems (1985) Ltd ADR",
+"sector": "Technology"
+},
+"FRHC": {
+"industry": "Financial Conglomerates",
+"name": "Freedom Holding Corp",
+"sector": "Financial"
+},
+"FRO": {
+"industry": "Oil & Gas Midstream",
+"name": "Frontline Plc",
+"sector": "Energy"
+},
+"FSI": {
+"industry": "Specialty Chemicals",
+"name": "Flexible Solutions International Inc",
+"sector": "Basic Materials"
+},
+"FSM": {
+"industry": "Gold",
+"name": "Fortuna Mining Corp",
+"sector": "Basic Materials"
+},
+"FSV": {
+"industry": "Real Estate Services",
+"name": "FirstService Corp",
+"sector": "Real Estate"
+},
+"FTI": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "TechnipFMC plc",
+"sector": "Energy"
+},
+"FTLF": {
+"industry": "Packaged Foods",
+"name": "FitLife Brands Inc",
+"sector": "Consumer Defensive"
+},
+"FTS": {
+"industry": "Utilities - Regulated Electric",
+"name": "Fortis Inc",
+"sector": "Utilities"
+},
+"FTW": {
+"industry": "Oil & Gas E&P",
+"name": "Presidio Production Co",
+"sector": "Energy"
+},
+"FUND": {
+"industry": "Closed-End Fund - Equity",
+"name": "Sprott Focus Trust Inc",
+"sector": "Financial"
+},
+"FUTU": {
+"industry": "Capital Markets",
+"name": "Futu Holdings Ltd ADR",
+"sector": "Financial"
+},
+"FVN": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"FVRR": {
+"industry": "Internet Content & Information",
+"name": "Fiverr International Ltd",
+"sector": "Communication Services"
+},
+"FXHO": {
+"industry": "Consumer Electronics",
+"name": "UTime Ltd",
+"sector": "Technology"
+},
+"G": {
+"industry": "Information Technology Services",
+"name": "Genpact Ltd",
+"sector": "Technology"
+},
+"GASS": {
+"industry": "Marine Shipping",
+"name": "StealthGas Inc",
+"sector": "Industrials"
+},
+"GBFH": {
+"industry": "Banks - Regional",
+"name": "GBank Financial Holdings Inc",
+"sector": "Financial"
+},
+"GCT": {
+"industry": "Software - Infrastructure",
+"name": "GigaCloud Technology Inc",
+"sector": "Technology"
+},
+"GDEV": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "GDEV Inc",
+"sector": "Communication Services"
+},
+"GDS": {
+"industry": "Information Technology Services",
+"name": "GDS Holdings Limited ADR",
+"sector": "Technology"
+},
+"GENI": {
+"industry": "Internet Content & Information",
+"name": "Genius Sports Limited",
+"sector": "Communication Services"
+},
+"GF": {
+"industry": "Closed-End Fund - Foreign",
+"name": "New Germany Fund Inc",
+"sector": "Financial"
+},
+"GFI": {
+"industry": "Gold",
+"name": "Gold Fields Ltd ADR",
+"sector": "Basic Materials"
+},
+"GFL": {
+"industry": "Waste Management",
+"name": "GFL Environmental Inc",
+"sector": "Industrials"
+},
+"GFR": {
+"industry": "Oil & Gas E&P",
+"name": "Greenfire Resources Ltd",
+"sector": "Energy"
+},
+"GGAL": {
+"industry": "Banks - Regional",
+"name": "Grupo Financiero Galicia ADR",
+"sector": "Financial"
+},
+"GHRS": {
+"industry": "Biotechnology",
+"name": "GH Research PLC",
+"sector": "Healthcare"
+},
+"GIB": {
+"industry": "Information Technology Services",
+"name": "CGI Inc",
+"sector": "Technology"
+},
+"GIBO": {
+"industry": "Internet Content & Information",
+"name": "GIBO Holdings Ltd",
+"sector": "Communication Services"
+},
+"GIL": {
+"industry": "Apparel Manufacturing",
+"name": "Gildan Activewear Inc",
+"sector": "Consumer Cyclical"
+},
+"GLAS": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Glass House Brands Inc",
+"sector": "Healthcare"
+},
+"GLBE": {
+"industry": "Internet Retail",
+"name": "Global E Online Ltd",
+"sector": "Consumer Cyclical"
+},
+"GLNG": {
+"industry": "Oil & Gas Midstream",
+"name": "Golar Lng",
+"sector": "Energy"
+},
+"GLOB": {
+"industry": "Information Technology Services",
+"name": "Globant SA",
+"sector": "Technology"
+},
+"GLRE": {
+"industry": "Insurance - Reinsurance",
+"name": "Greenlight Capital Re Ltd",
+"sector": "Financial"
+},
+"GMAB": {
+"industry": "Biotechnology",
+"name": "Genmab ADR",
+"sector": "Healthcare"
+},
+"GOLD": {
+"industry": "Capital Markets",
+"name": "Gold.com Inc",
+"sector": "Financial"
+},
+"GOOS": {
+"industry": "Apparel Manufacturing",
+"name": "Canada Goose Holdings Inc",
+"sector": "Consumer Cyclical"
+},
+"GPRK": {
+"industry": "Oil & Gas E&P",
+"name": "Geopark Limited",
+"sector": "Energy"
+},
+"GRFS": {
+"industry": "Drug Manufacturers - General",
+"name": "Grifols SA ADR",
+"sector": "Healthcare"
+},
+"GRMN": {
+"industry": "Scientific & Technical Instruments",
+"name": "Garmin Ltd",
+"sector": "Technology"
+},
+"GRN": {
+"industry": "Exchange Traded Fund",
+"name": "Barclays Bank PLC iPath Series B Carbon ETN",
+"sector": "Financial"
+},
+"GRND": {
+"industry": "Software - Application",
+"name": "Grindr Inc",
+"sector": "Technology"
+},
+"GRNQ": {
+"industry": "Consulting Services",
+"name": "Greenpro Capital Corp",
+"sector": "Industrials"
+},
+"GRRR": {
+"industry": "Software - Infrastructure",
+"name": "Gorilla Technology Group Inc",
+"sector": "Technology"
+},
+"GRVY": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "Gravity Co Ltd ADR",
+"sector": "Communication Services"
+},
+"GSIW": {
+"industry": "Capital Markets",
+"name": "Garden Stage Ltd",
+"sector": "Financial"
+},
+"GSK": {
+"industry": "Drug Manufacturers - General",
+"name": "GSK Plc ADR",
+"sector": "Healthcare"
+},
+"GSL": {
+"industry": "Marine Shipping",
+"name": "Global Ship Lease Inc",
+"sector": "Industrials"
+},
+"GTE": {
+"industry": "Oil & Gas E&P",
+"name": "Gran Tierra Energy Inc",
+"sector": "Energy"
+},
+"GTERA": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"GTX": {
+"industry": "Auto Parts",
+"name": "Garrett Motion Inc",
+"sector": "Consumer Cyclical"
+},
+"GUG": {
+"industry": "Asset Management",
+"sector": "Financial"
+},
+"HAFN": {
+"industry": "Marine Shipping",
+"name": "Hafnia Ltd",
+"sector": "Industrials"
+},
+"HBM": {
+"industry": "Copper",
+"name": "Hudbay Minerals Inc",
+"sector": "Basic Materials"
+},
+"HBNB": {
+"industry": "Real Estate Services",
+"name": "Hotel101 Global Holdings Corp",
+"sector": "Real Estate"
+},
+"HCM": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "HUTCHMED (China) Limited ADR",
+"sector": "Healthcare"
+},
+"HDB": {
+"industry": "Banks - Regional",
+"name": "HDFC Bank Ltd ADR",
+"sector": "Financial"
+},
+"HDL": {
+"industry": "Restaurants",
+"name": "Super Hi International Holding LTD ADR",
+"sector": "Consumer Cyclical"
+},
+"HELP": {
+"industry": "Biotechnology",
+"name": "Helus Pharma Inc",
+"sector": "Healthcare"
+},
+"HG": {
+"industry": "Insurance - Reinsurance",
+"name": "Hamilton Insurance Group Ltd",
+"sector": "Financial"
+},
+"HIMX": {
+"industry": "Semiconductors",
+"name": "Himax Technologies ADR",
+"sector": "Technology"
+},
+"HLN": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Haleon plc ADR",
+"sector": "Healthcare"
+},
+"HMC": {
+"industry": "Auto Manufacturers",
+"name": "Honda Motor ADR",
+"sector": "Consumer Cyclical"
+},
+"HMY": {
+"industry": "Gold",
+"name": "Harmony Gold Mining Co Ltd ADR",
+"sector": "Basic Materials"
+},
+"HSAI": {
+"industry": "Auto Parts",
+"name": "Hesai Group ADR",
+"sector": "Consumer Cyclical"
+},
+"HSBC": {
+"industry": "Banks - Diversified",
+"name": "HSBC Holdings plc ADR",
+"sector": "Financial"
+},
+"HSHP": {
+"industry": "Marine Shipping",
+"name": "Himalaya Shipping Ltd",
+"sector": "Industrials"
+},
+"HTHT": {
+"industry": "Lodging",
+"name": "H World Group Limited ADR",
+"sector": "Consumer Cyclical"
+},
+"HUT": {
+"industry": "Capital Markets",
+"name": "Hut 8 Corp",
+"sector": "Financial"
+},
+"IAF": {
+"industry": "Closed-End Fund - Equity",
+"name": "abrdn Australia Equity Fund Inc",
+"sector": "Financial"
+},
+"IAG": {
+"industry": "Gold",
+"name": "Iamgold Corp",
+"sector": "Basic Materials"
+},
+"IBN": {
+"industry": "Banks - Regional",
+"name": "ICICI Bank Ltd ADR",
+"sector": "Financial"
+},
+"ICL": {
+"industry": "Agricultural Inputs",
+"name": "ICL Group Ltd",
+"sector": "Basic Materials"
+},
+"ICLR": {
+"industry": "Diagnostics & Research",
+"name": "Icon Plc",
+"sector": "Healthcare"
+},
+"IDR": {
+"industry": "Gold",
+"name": "Idaho Strategic Resources Inc",
+"sector": "Basic Materials"
+},
+"IE": {
+"industry": "Copper",
+"name": "Ivanhoe Electric Inc",
+"sector": "Basic Materials"
+},
+"IFN": {
+"industry": "Closed-End Fund - Equity",
+"name": "Aberdeen India Fund Inc",
+"sector": "Financial"
+},
+"IFS": {
+"industry": "Banks - Regional",
+"name": "Intercorp Financial Services Inc",
+"sector": "Financial"
+},
+"IGIC": {
+"industry": "Insurance - Diversified",
+"name": "International General Insurance Holdings Ltd",
+"sector": "Financial"
+},
+"IHG": {
+"industry": "Lodging",
+"name": "Intercontinental Hotels Group ADR",
+"sector": "Consumer Cyclical"
+},
+"IHS": {
+"industry": "Real Estate Services",
+"name": "IHS Holding Ltd",
+"sector": "Real Estate"
+},
+"IMAX": {
+"industry": "Entertainment",
+"name": "Imax Corp",
+"sector": "Communication Services"
+},
+"IMCR": {
+"industry": "Biotechnology",
+"name": "Immunocore Holdings plc ADR",
+"sector": "Healthcare"
+},
+"IMO": {
+"industry": "Oil & Gas Integrated",
+"name": "Imperial Oil Ltd",
+"sector": "Energy"
+},
+"IMOS": {
+"industry": "Semiconductors",
+"name": "Chipmos Technologies Inc ADR",
+"sector": "Technology"
+},
+"IMTX": {
+"industry": "Biotechnology",
+"name": "Immatics N.V",
+"sector": "Healthcare"
+},
+"INDV": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Indivior Pharmaceuticals Inc",
+"sector": "Healthcare"
+},
+"INFY": {
+"industry": "Information Technology Services",
+"name": "Infosys Ltd ADR",
+"sector": "Technology"
+},
+"ING": {
+"industry": "Banks - Diversified",
+"name": "ING Groep NV ADR",
+"sector": "Financial"
+},
+"INLX": {
+"industry": "Software - Application",
+"name": "Intellinetics Inc",
+"sector": "Technology"
+},
+"INMD": {
+"industry": "Medical Devices",
+"name": "Inmode Ltd",
+"sector": "Healthcare"
+},
+"INR": {
+"industry": "Oil & Gas E&P",
+"name": "Infinity Natural Resources Inc",
+"sector": "Energy"
+},
+"INTR": {
+"industry": "Banks - Regional",
+"name": "Inter & Co Inc",
+"sector": "Financial"
+},
+"IOT": {
+"industry": "Software - Infrastructure",
+"name": "Samsara Inc",
+"sector": "Technology"
+},
+"IQMX": {
+"industry": "Computer Hardware",
+"sector": "Technology"
+},
+"IREN": {
+"industry": "Capital Markets",
+"name": "IREN Ltd",
+"sector": "Financial"
+},
+"ISBA": {
+"industry": "Banks - Regional",
+"name": "Isabella Bank Corp",
+"sector": "Financial"
+},
+"ISOU": {
+"industry": "Uranium",
+"name": "IsoEnergy Ltd",
+"sector": "Energy"
+},
+"ITRN": {
+"industry": "Scientific & Technical Instruments",
+"name": "Ituran Location And Control Ltd",
+"sector": "Technology"
+},
+"IX": {
+"industry": "Financial Conglomerates",
+"name": "Orix Corp ADR",
+"sector": "Financial"
+},
+"J": {
+"industry": "Engineering & Construction",
+"name": "Jacobs Solutions Inc",
+"sector": "Industrials"
+},
+"JAZZ": {
+"industry": "Biotechnology",
+"name": "Jazz Pharmaceuticals plc",
+"sector": "Healthcare"
+},
+"JBS": {
+"industry": "Packaged Foods",
+"name": "JBS NV",
+"sector": "Consumer Defensive"
+},
+"JCI": {
+"industry": "Building Products & Equipment",
+"name": "Johnson Controls International plc",
+"sector": "Industrials"
+},
+"JD": {
+"industry": "Internet Retail",
+"name": "JD.com Inc ADR",
+"sector": "Consumer Cyclical"
+},
+"JG": {
+"industry": "Software - Application",
+"name": "Aurora Mobile Ltd ADR",
+"sector": "Technology"
+},
+"JHX": {
+"industry": "Building Materials",
+"name": "James Hardie Industries plc",
+"sector": "Basic Materials"
+},
+"JKS": {
+"industry": "Solar",
+"name": "JinkoSolar Holding Co Ltd ADR",
+"sector": "Technology"
+},
+"JLHL": {
+"industry": "Building Products & Equipment",
+"name": "Julong Holding Ltd",
+"sector": "Industrials"
+},
+"JMIA": {
+"industry": "Internet Retail",
+"name": "Jumia Technologies Ag ADR",
+"sector": "Consumer Cyclical"
+},
+"JMM": {
+"industry": "Closed-End Fund - Debt",
+"name": "Nuveen Multi-Market Income Fund",
+"sector": "Financial"
+},
+"JMSB": {
+"industry": "Banks - Regional",
+"name": "John Marshall Bancorp Inc",
+"sector": "Financial"
+},
+"JOF": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Japan Smaller Capitalization Fund Inc",
+"sector": "Financial"
+},
+"JOYY": {
+"industry": "Internet Content & Information",
+"name": "JOYY Inc ADR",
+"sector": "Communication Services"
+},
+"JXG": {
+"industry": "Apparel Manufacturing",
+"name": "JX Luxventure Group Inc",
+"sector": "Consumer Cyclical"
+},
+"KARO": {
+"industry": "Software - Application",
+"name": "Karooooo Ltd",
+"sector": "Technology"
+},
+"KB": {
+"industry": "Banks - Regional",
+"name": "KB Financial Group Inc ADR",
+"sector": "Financial"
+},
+"KC": {
+"industry": "Software - Application",
+"name": "Kingsoft Cloud Holdings Ltd ADR",
+"sector": "Technology"
+},
+"KEN": {
+"industry": "Utilities - Independent Power Producers",
+"name": "Kenon Holdings Ltd",
+"sector": "Utilities"
+},
+"KEP": {
+"industry": "Utilities - Regulated Electric",
+"name": "Korea Electric Power Corp ADR",
+"sector": "Utilities"
+},
+"KG": {
+"industry": "Insurance - Reinsurance",
+"name": "Kestrel Group Ltd",
+"sector": "Financial"
+},
+"KGC": {
+"industry": "Gold",
+"name": "Kinross Gold Corp",
+"sector": "Basic Materials"
+},
+"KGS": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Kodiak Gas Services Inc",
+"sector": "Energy"
+},
+"KLAR": {
+"industry": "Credit Services",
+"name": "Klarna Group plc",
+"sector": "Financial"
+},
+"KLIC": {
+"industry": "Semiconductor Equipment & Materials",
+"name": "Kulicke & Soffa Industries Inc",
+"sector": "Technology"
+},
+"KMDA": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Kamada Ltd",
+"sector": "Healthcare"
+},
+"KNSA": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Kiniksa Pharmaceuticals International Plc",
+"sector": "Healthcare"
+},
+"KRNT": {
+"industry": "Specialty Industrial Machinery",
+"name": "Kornit Digital Ltd",
+"sector": "Industrials"
+},
+"KSPI": {
+"industry": "Software - Infrastructure",
+"name": "Kaspi.kz JSC ADR",
+"sector": "Technology"
+},
+"KT": {
+"industry": "Telecom Services",
+"name": "KT Corp ADR",
+"sector": "Communication Services"
+},
+"KWY": {
+"industry": "Asset Management",
+"name": "Kingsway Corp",
+"sector": "Financial"
+},
+"KXIN": {
+"industry": "Auto & Truck Dealerships",
+"name": "Kaixin Holdings",
+"sector": "Consumer Cyclical"
+},
+"KYIV": {
+"industry": "Telecom Services",
+"sector": "Communication Services"
+},
+"KZIA": {
+"industry": "Biotechnology",
+"name": "Kazia Therapeutics Limited ADR",
+"sector": "Healthcare"
+},
+"LAR": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Lithium Argentina AG",
+"sector": "Basic Materials"
+},
+"LAZ": {
+"industry": "Capital Markets",
+"name": "Lazard Inc",
+"sector": "Financial"
+},
+"LB": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Landbridge Company LLC",
+"sector": "Energy"
+},
+"LBTYA": {
+"industry": "Telecom Services",
+"name": "Liberty Global Ltd",
+"sector": "Communication Services"
+},
+"LBTYK": {
+"industry": "Telecom Services",
+"name": "Liberty Global Ltd",
+"sector": "Communication Services"
+},
+"LEXX": {
+"industry": "Biotechnology",
+"name": "Lexaria Bioscience Corp",
+"sector": "Healthcare"
+},
+"LFWD": {
+"industry": "Medical Devices",
+"name": "Lifeward Ltd",
+"sector": "Healthcare"
+},
+"LI": {
+"industry": "Auto Manufacturers",
+"name": "Li Auto Inc ADR",
+"sector": "Consumer Cyclical"
+},
+"LIN": {
+"industry": "Specialty Chemicals",
+"name": "Linde Plc",
+"sector": "Basic Materials"
+},
+"LIVN": {
+"industry": "Medical Devices",
+"name": "LivaNova PLC",
+"sector": "Healthcare"
+},
+"LKFT": {
+"industry": "Biotechnology",
+"name": "Lakefront Biotherapeutics NV ADR",
+"sector": "Healthcare"
+},
+"LOGI": {
+"industry": "Computer Hardware",
+"name": "Logitech International SA",
+"sector": "Technology"
+},
+"LOMA": {
+"industry": "Building Materials",
+"name": "Loma Negra Compania Industrial Argentina Sociedad Anonima ADR",
+"sector": "Basic Materials"
+},
+"LSE": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Leishen Energy Holding Co Ltd",
+"sector": "Energy"
+},
+"LSPD": {
+"industry": "Software - Application",
+"name": "Lightspeed Commerce Inc",
+"sector": "Technology"
+},
+"LTM": {
+"industry": "Airlines",
+"name": "LATAM Airlines Group SA ADR",
+"sector": "Industrials"
+},
+"LULU": {
+"industry": "Apparel Retail",
+"name": "Lululemon Athletica Inc",
+"sector": "Consumer Cyclical"
+},
+"LUXE": {
+"industry": "Luxury Goods",
+"name": "LuxExperience B.V ADR",
+"sector": "Consumer Cyclical"
+},
+"LWLG": {
+"industry": "Specialty Chemicals",
+"name": "Lightwave Logic Inc",
+"sector": "Basic Materials"
+},
+"LXFR": {
+"industry": "Specialty Industrial Machinery",
+"name": "Luxfer Holdings PLC",
+"sector": "Industrials"
+},
+"LYG": {
+"industry": "Banks - Regional",
+"name": "Lloyds Banking Group plc ADR",
+"sector": "Financial"
+},
+"MAAS": {
+"industry": "Asset Management",
+"name": "Maase Inc",
+"sector": "Financial"
+},
+"MAKO": {
+"industry": "Gold",
+"name": "Mako Mining Corp",
+"sector": "Basic Materials"
+},
+"MB": {
+"industry": "Restaurants",
+"name": "Masterbeef Group",
+"sector": "Consumer Cyclical"
+},
+"MBAI": {
+"industry": "Diagnostics & Research",
+"name": "Check-Cap Ltd",
+"sector": "Healthcare"
+},
+"MBBC": {
+"industry": "Banks - Regional",
+"name": "Marathon Bancorp Inc",
+"sector": "Financial"
+},
+"MBC": {
+"industry": "Furnishings, Fixtures & Appliances",
+"name": "MasterBrand Inc",
+"sector": "Consumer Cyclical"
+},
+"MBLY": {
+"industry": "Auto Parts",
+"name": "Mobileye Global Inc",
+"sector": "Consumer Cyclical"
+},
+"MCHB": {
+"industry": "Banks - Regional",
+"sector": "Financial"
+},
+"MDT": {
+"industry": "Medical Devices",
+"name": "Medtronic Plc",
+"sector": "Healthcare"
+},
+"MDWD": {
+"industry": "Biotechnology",
+"name": "MediWound Ltd",
+"sector": "Healthcare"
+},
+"MELI": {
+"industry": "Internet Retail",
+"name": "MercadoLibre Inc",
+"sector": "Consumer Cyclical"
+},
+"MEOH": {
+"industry": "Chemicals",
+"name": "Methanex Corp",
+"sector": "Basic Materials"
+},
+"MESO": {
+"industry": "Biotechnology",
+"name": "Mesoblast Ltd ADR",
+"sector": "Healthcare"
+},
+"MF": {
+"industry": "Advertising Agencies",
+"name": "MindForge Inc",
+"sector": "Communication Services"
+},
+"MFC": {
+"industry": "Insurance - Life",
+"name": "Manulife Financial Corp",
+"sector": "Financial"
+},
+"MFG": {
+"industry": "Banks - Regional",
+"name": "Mizuho Financial Group Inc ADR",
+"sector": "Financial"
+},
+"MFI": {
+"industry": "Software - Application",
+"name": "mF International Ltd",
+"sector": "Technology"
+},
+"MGA": {
+"industry": "Auto Parts",
+"name": "Magna International Inc",
+"sector": "Consumer Cyclical"
+},
+"MGRT": {
+"industry": "Information Technology Services",
+"name": "Mega Fortune Co Ltd",
+"sector": "Technology"
+},
+"MI": {
+"industry": "Internet Retail",
+"name": "NFT Ltd",
+"sector": "Consumer Cyclical"
+},
+"MKDW": {
+"industry": "Auto Parts",
+"sector": "Consumer Cyclical"
+},
+"MLCO": {
+"industry": "Resorts & Casinos",
+"name": "Melco Resorts & Entertainment Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"MLEC": {
+"industry": "Biotechnology",
+"name": "Moolec Science SA",
+"sector": "Healthcare"
+},
+"MLPB": {
+"industry": "Exchange Traded Fund",
+"name": "UBS ETRACS Alerian MLP Infrastructure Index ETN",
+"sector": "Financial"
+},
+"MMYT": {
+"industry": "Travel Services",
+"name": "MakeMyTrip Ltd",
+"sector": "Consumer Cyclical"
+},
+"MNDY": {
+"industry": "Software - Application",
+"name": "Monday.Com Ltd",
+"sector": "Technology"
+},
+"MNSO": {
+"industry": "Specialty Retail",
+"name": "MINISO Group Holding Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"MNTN": {
+"industry": "Software - Application",
+"name": "MNTN Inc",
+"sector": "Technology"
+},
+"MOB": {
+"industry": "Aerospace & Defense",
+"name": "Mobilicom Limited",
+"sector": "Industrials"
+},
+"MOMO": {
+"industry": "Internet Content & Information",
+"name": "Hello Group Inc ADR",
+"sector": "Communication Services"
+},
+"MOVE": {
+"industry": "Software - Infrastructure",
+"name": "Corvex Inc",
+"sector": "Technology"
+},
+"MRX": {
+"industry": "Capital Markets",
+"name": "Marex Group Ltd",
+"sector": "Financial"
+},
+"MSLE": {
+"industry": "Biotechnology",
+"name": "Satellos Bioscience Inc",
+"sector": "Healthcare"
+},
+"MT": {
+"industry": "Steel",
+"name": "ArcelorMittal SA",
+"sector": "Basic Materials"
+},
+"MTA": {
+"industry": "Other Precious Metals & Mining",
+"name": "Metalla Royalty and Streaming Ltd",
+"sector": "Basic Materials"
+},
+"MTLS": {
+"industry": "Software - Application",
+"name": "Materialise Nv ADR",
+"sector": "Technology"
+},
+"MUFG": {
+"industry": "Banks - Diversified",
+"name": "Mitsubishi UFJ Financial Group Inc ADR",
+"sector": "Financial"
+},
+"MUX": {
+"industry": "Other Precious Metals & Mining",
+"name": "McEwen Inc",
+"sector": "Basic Materials"
+},
+"MXE": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Mexico Equity And Income Fund Inc",
+"sector": "Financial"
+},
+"MXF": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Mexico Fund Inc",
+"sector": "Financial"
+},
+"NAMS": {
+"industry": "Biotechnology",
+"name": "NewAmsterdam Pharma Company NV",
+"sector": "Healthcare"
+},
+"NAT": {
+"industry": "Oil & Gas Midstream",
+"name": "Nordic American Tankers Ltd",
+"sector": "Energy"
+},
+"NBIS": {
+"industry": "Software - Infrastructure",
+"name": "Nebius Group NV",
+"sector": "Technology"
+},
+"NBR": {
+"industry": "Oil & Gas Drilling",
+"name": "Nabors Industries Ltd",
+"sector": "Energy"
+},
+"NBTX": {
+"industry": "Biotechnology",
+"name": "Nanobiotix ADR",
+"sector": "Healthcare"
+},
+"NCEW": {
+"industry": "Integrated Freight & Logistics",
+"name": "New Century Logistics (BVI) Ltd",
+"sector": "Industrials"
+},
+"NCI": {
+"industry": "Apparel Manufacturing",
+"name": "Neo Concept International Group Holdings Ltd",
+"sector": "Consumer Cyclical"
+},
+"NE": {
+"industry": "Oil & Gas Drilling",
+"name": "Noble Corp Plc",
+"sector": "Energy"
+},
+"NECB": {
+"industry": "Banks - Regional",
+"name": "NorthEast Community Bancorp Inc",
+"sector": "Financial"
+},
+"NEGG": {
+"industry": "Internet Retail",
+"name": "Newegg Commerce Inc",
+"sector": "Consumer Cyclical"
+},
+"NEWP": {
+"industry": "Silver",
+"name": "New Pacific Metals Corp",
+"sector": "Basic Materials"
+},
+"NEXA": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Nexa Resources SA",
+"sector": "Basic Materials"
+},
+"NEXN": {
+"industry": "Advertising Agencies",
+"name": "Nexxen International Ltd",
+"sector": "Communication Services"
+},
+"NG": {
+"industry": "Gold",
+"name": "Novagold Resources Inc",
+"sector": "Basic Materials"
+},
+"NGG": {
+"industry": "Utilities - Regulated Electric",
+"name": "National Grid Plc ADR",
+"sector": "Utilities"
+},
+"NGNE": {
+"industry": "Biotechnology",
+"name": "Neurogene Inc",
+"sector": "Healthcare"
+},
+"NICE": {
+"industry": "Software - Application",
+"name": "NICE Ltd ADR",
+"sector": "Technology"
+},
+"NIKI": {
+"industry": "Biotechnology",
+"name": "Niki BioSolutions Inc",
+"sector": "Healthcare"
+},
+"NIPG": {
+"industry": "Entertainment",
+"name": "NIP Group Inc ADR",
+"sector": "Communication Services"
+},
+"NIQ": {
+"industry": "Software - Application",
+"sector": "Technology"
+},
+"NKLR": {
+"industry": "Utilities - Regulated Electric",
+"name": "Terra Innovatum Global NV",
+"sector": "Utilities"
+},
+"NMR": {
+"industry": "Capital Markets",
+"name": "Nomura Holdings Inc ADR",
+"sector": "Financial"
+},
+"NNNN": {
+"industry": "Medical Instruments & Supplies",
+"name": "Anbio Biotechnology",
+"sector": "Healthcare"
+},
+"NOA": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "North American Construction Group Ltd",
+"sector": "Energy"
+},
+"NOAH": {
+"industry": "Asset Management",
+"name": "Noah Holdings Ltd ADR",
+"sector": "Financial"
+},
+"NOK": {
+"industry": "Communication Equipment",
+"name": "Nokia Corp ADR",
+"sector": "Technology"
+},
+"NOMD": {
+"industry": "Packaged Foods",
+"name": "Nomad Foods Limited",
+"sector": "Consumer Defensive"
+},
+"NP": {
+"industry": "Insurance Brokers",
+"sector": "Financial"
+},
+"NTB": {
+"industry": "Banks - Diversified",
+"name": "Bank of N T Butterfield & Son Ltd",
+"sector": "Financial"
+},
+"NTES": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "NetEase Inc ADR",
+"sector": "Communication Services"
+},
+"NTR": {
+"industry": "Agricultural Inputs",
+"name": "Nutrien Ltd",
+"sector": "Basic Materials"
+},
+"NU": {
+"industry": "Banks - Regional",
+"name": "Nu Holdings Ltd",
+"sector": "Financial"
+},
+"NVA": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Nova Minerals Corp",
+"sector": "Basic Materials"
+},
+"NVCR": {
+"industry": "Medical Devices",
+"name": "NovoCure Ltd",
+"sector": "Healthcare"
+},
+"NVGS": {
+"industry": "Oil & Gas Midstream",
+"name": "Navigator Holdings Ltd",
+"sector": "Energy"
+},
+"NVMI": {
+"industry": "Semiconductor Equipment & Materials",
+"name": "Nova Ltd",
+"sector": "Technology"
+},
+"NVO": {
+"industry": "Drug Manufacturers - General",
+"name": "Novo Nordisk ADR",
+"sector": "Healthcare"
+},
+"NVS": {
+"industry": "Drug Manufacturers - General",
+"name": "Novartis AG ADR",
+"sector": "Healthcare"
+},
+"NVT": {
+"industry": "Electrical Equipment & Parts",
+"name": "nVent Electric plc",
+"sector": "Industrials"
+},
+"NWG": {
+"industry": "Banks - Regional",
+"name": "NatWest Group Plc ADR",
+"sector": "Financial"
+},
+"NXE": {
+"industry": "Uranium",
+"name": "NexGen Energy Ltd",
+"sector": "Energy"
+},
+"NXG": {
+"industry": "Closed-End Fund - Equity",
+"name": "NXG NextGen Infrastructure Income Fund",
+"sector": "Financial"
+},
+"NXPI": {
+"industry": "Semiconductors",
+"name": "NXP Semiconductors NV",
+"sector": "Technology"
+},
+"NXTT": {
+"industry": "Software - Application",
+"name": "Next Technology Holding Inc",
+"sector": "Technology"
+},
+"NYAX": {
+"industry": "Software - Infrastructure",
+"name": "Nayax Ltd",
+"sector": "Technology"
+},
+"OBA": {
+"industry": "Shell Companies",
+"name": "Oxley Bridge Acquisition Ltd",
+"sector": "Financial"
+},
+"OBE": {
+"industry": "Oil & Gas E&P",
+"name": "Obsidian Energy Ltd",
+"sector": "Energy"
+},
+"OCS": {
+"industry": "Biotechnology",
+"name": "Oculis Holding AG",
+"sector": "Healthcare"
+},
+"ODD": {
+"industry": "Household & Personal Products",
+"name": "ODDITY Tech Ltd",
+"sector": "Consumer Defensive"
+},
+"OEC": {
+"industry": "Specialty Chemicals",
+"name": "Orion S.A",
+"sector": "Basic Materials"
+},
+"OGC": {
+"industry": "Gold",
+"name": "OceanaGold Corp",
+"sector": "Basic Materials"
+},
+"OMAB": {
+"industry": "Airports & Air Services",
+"name": "Grupo Aeroportuario del Centro Norte SAB de C.V ADR",
+"sector": "Industrials"
+},
+"ONC": {
+"industry": "Biotechnology",
+"name": "BeOne Medicines Ltd ADR",
+"sector": "Healthcare"
+},
+"ONON": {
+"industry": "Footwear & Accessories",
+"name": "On Holding AG",
+"sector": "Consumer Cyclical"
+},
+"OPRA": {
+"industry": "Internet Content & Information",
+"name": "Opera Ltd ADR",
+"sector": "Communication Services"
+},
+"OPXS": {
+"industry": "Aerospace & Defense",
+"name": "Optex Systems Holdings Inc",
+"sector": "Industrials"
+},
+"OR": {
+"industry": "Gold",
+"name": "OR Royalties Inc",
+"sector": "Basic Materials"
+},
+"ORIQ": {
+"industry": "Shell Companies",
+"name": "Origin Investment Corp I",
+"sector": "Financial"
+},
+"OTEX": {
+"industry": "Software - Application",
+"name": "Open Text Corp",
+"sector": "Technology"
+},
+"OTLY": {
+"industry": "Packaged Foods",
+"name": "Oatly Group AB ADR",
+"sector": "Consumer Defensive"
+},
+"OWLS": {
+"industry": "Software - Infrastructure",
+"name": "OBOOK Holdings Inc",
+"sector": "Technology"
+},
+"PAAS": {
+"industry": "Gold",
+"name": "Pan American Silver Corp",
+"sector": "Basic Materials"
+},
+"PAC": {
+"industry": "Airports & Air Services",
+"name": "Grupo Aeroportuario Del Pacifico SAB de CV ADR",
+"sector": "Industrials"
+},
+"PAGS": {
+"industry": "Software - Infrastructure",
+"name": "PagSeguro Digital Ltd",
+"sector": "Technology"
+},
+"PAM": {
+"industry": "Conglomerates",
+"name": "Pampa Energia SA ADR",
+"sector": "Industrials"
+},
+"PAVS": {
+"industry": "Packaged Foods",
+"name": "Paranovus Entertainment Technology Ltd",
+"sector": "Consumer Defensive"
+},
+"PAX": {
+"industry": "Asset Management",
+"name": "Patria Investments Ltd",
+"sector": "Financial"
+},
+"PBA": {
+"industry": "Oil & Gas Midstream",
+"name": "Pembina Pipeline Corp",
+"sector": "Energy"
+},
+"PBAM": {
+"industry": "Banks - Regional",
+"name": "Private Bancorp of America Inc",
+"sector": "Financial"
+},
+"PBR": {
+"industry": "Oil & Gas Integrated",
+"name": "Petroleo Brasileiro SA Petrobras ADR",
+"sector": "Energy"
+},
+"PCLA": {
+"industry": "Telecom Services",
+"name": "PicoCELA Inc ADR",
+"sector": "Communication Services"
+},
+"PDD": {
+"industry": "Internet Retail",
+"name": "PDD Holdings Inc ADR",
+"sector": "Consumer Cyclical"
+},
+"PDO": {
+"industry": "Closed-End Fund - Debt",
+"name": "PIMCO Dynamic Income Opportunities Fund",
+"sector": "Financial"
+},
+"PDS": {
+"industry": "Oil & Gas Drilling",
+"name": "Precision Drilling Corp",
+"sector": "Energy"
+},
+"PDX": {
+"industry": "Asset Management",
+"sector": "Financial"
+},
+"PGY": {
+"industry": "Software - Infrastructure",
+"name": "Pagaya Technologies Ltd",
+"sector": "Technology"
+},
+"PHAR": {
+"industry": "Biotechnology",
+"name": "Pharming Group NV ADR",
+"sector": "Healthcare"
+},
+"PHG": {
+"industry": "Medical Devices",
+"name": "Koninklijke Philips NV ADR",
+"sector": "Healthcare"
+},
+"PHI": {
+"industry": "Telecom Services",
+"name": "PLDT Inc ADR",
+"sector": "Communication Services"
+},
+"PHOE": {
+"industry": "Engineering & Construction",
+"sector": "Industrials"
+},
+"PHVS": {
+"industry": "Biotechnology",
+"name": "Pharvaris NV",
+"sector": "Healthcare"
+},
+"PKX": {
+"industry": "Steel",
+"name": "POSCO Holdings Inc ADR",
+"sector": "Basic Materials"
+},
+"PL": {
+"industry": "Aerospace & Defense",
+"name": "Planet Labs PBC",
+"sector": "Industrials"
+},
+"PLBL": {
+"industry": "Department Stores",
+"sector": "Consumer Cyclical"
+},
+"PLGO": {
+"industry": "Insurance - Diversified",
+"name": "Pelagos Insurance Capital Ltd",
+"sector": "Financial"
+},
+"PLRZ": {
+"industry": "Biotechnology",
+"name": "Polyrizon Ltd",
+"sector": "Healthcare"
+},
+"PMN": {
+"industry": "Biotechnology",
+"name": "ProMIS Neurosciences Inc",
+"sector": "Healthcare"
+},
+"PMTS": {
+"industry": "Credit Services",
+"name": "CPI Card Group Inc",
+"sector": "Financial"
+},
+"PNR": {
+"industry": "Specialty Industrial Machinery",
+"name": "Pentair plc",
+"sector": "Industrials"
+},
+"POET": {
+"industry": "Semiconductors",
+"name": "POET Technologies Inc",
+"sector": "Technology"
+},
+"PONY": {
+"industry": "Information Technology Services",
+"name": "Pony AI Inc ADR",
+"sector": "Technology"
+},
+"PRE": {
+"industry": "Packaged Foods",
+"name": "Prenetics Global Limited",
+"sector": "Consumer Defensive"
+},
+"PRGO": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Perrigo Company plc",
+"sector": "Healthcare"
+},
+"PRMB": {
+"industry": "Beverages - Non-Alcoholic",
+"name": "Primo Brands Corp",
+"sector": "Consumer Defensive"
+},
+"PROF": {
+"industry": "Medical Devices",
+"name": "Profound Medical Corp",
+"sector": "Healthcare"
+},
+"PRTA": {
+"industry": "Biotechnology",
+"name": "Prothena Corp Plc",
+"sector": "Healthcare"
+},
+"PSFE": {
+"industry": "Software - Infrastructure",
+"name": "Paysafe Limited",
+"sector": "Technology"
+},
+"PSIX": {
+"industry": "Specialty Industrial Machinery",
+"name": "Power Solutions International Inc",
+"sector": "Industrials"
+},
+"PSNY": {
+"industry": "Auto Manufacturers",
+"name": "Polestar Automotive Holding UK PLC ADR",
+"sector": "Consumer Cyclical"
+},
+"PSO": {
+"industry": "Publishing",
+"name": "Pearson plc ADR",
+"sector": "Communication Services"
+},
+"PTLE": {
+"industry": "Specialty Retail",
+"name": "PTL Ltd",
+"sector": "Consumer Cyclical"
+},
+"PUK": {
+"industry": "Insurance - Life",
+"name": "Prudential plc ADR",
+"sector": "Financial"
+},
+"PXS": {
+"industry": "Oil & Gas Midstream",
+"name": "Pyxis Tankers Inc",
+"sector": "Energy"
+},
+"Q": {
+"industry": "Semiconductor Equipment & Materials",
+"name": "Qnity Electronics Inc",
+"sector": "Technology"
+},
+"QFIN": {
+"industry": "Credit Services",
+"name": "Qfin Holdings Inc ADR",
+"sector": "Financial"
+},
+"QGEN": {
+"industry": "Diagnostics & Research",
+"name": "Qiagen NV",
+"sector": "Healthcare"
+},
+"QSR": {
+"industry": "Restaurants",
+"name": "Restaurant Brands International Inc",
+"sector": "Consumer Cyclical"
+},
+"QUBT": {
+"industry": "Computer Hardware",
+"name": "Quantum Computing Inc",
+"sector": "Technology"
+},
+"QURE": {
+"industry": "Biotechnology",
+"name": "uniQure NV",
+"sector": "Healthcare"
+},
+"RACE": {
+"industry": "Auto Manufacturers",
+"name": "Ferrari NV",
+"sector": "Consumer Cyclical"
+},
+"RAL": {
+"industry": "Electronic Components",
+"name": "Ralliant Corp",
+"sector": "Technology"
+},
+"RBC": {
+"industry": "Tools & Accessories",
+"name": "RBC Bearings Inc",
+"sector": "Industrials"
+},
+"RCBC": {
+"industry": "Banks - Regional",
+"name": "River City Bank",
+"sector": "Financial"
+},
+"RCI": {
+"industry": "Telecom Services",
+"name": "Rogers Communications Inc",
+"sector": "Communication Services"
+},
+"RDAC": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"RDCM": {
+"industry": "Telecom Services",
+"name": "Radcom",
+"sector": "Communication Services"
+},
+"RDWR": {
+"industry": "Software - Infrastructure",
+"name": "Radware",
+"sector": "Technology"
+},
+"RDY": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Dr. Reddy's Laboratories Ltd ADR",
+"sector": "Healthcare"
+},
+"RELX": {
+"industry": "Specialty Business Services",
+"name": "RELX Plc ADR",
+"sector": "Industrials"
+},
+"RFAI": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"RGC": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Regencell Bioscience Holdings Ltd",
+"sector": "Healthcare"
+},
+"RIBB": {
+"industry": "Shell Companies",
+"name": "Ribbon Acquisition Corp",
+"sector": "Financial"
+},
+"RIG": {
+"industry": "Oil & Gas Drilling",
+"name": "Transocean Ltd",
+"sector": "Energy"
+},
+"RIO": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Rio Tinto plc ADR",
+"sector": "Basic Materials"
+},
+"RNR": {
+"industry": "Insurance - Reinsurance",
+"name": "RenaissanceRe Holdings Ltd",
+"sector": "Financial"
+},
+"RNW": {
+"industry": "Utilities - Renewable",
+"name": "ReNew Energy Global plc",
+"sector": "Utilities"
+},
+"ROIV": {
+"industry": "Biotechnology",
+"name": "Roivant Sciences Ltd",
+"sector": "Healthcare"
+},
+"ROMA": {
+"industry": "Consulting Services",
+"name": "Roma Green Finance Ltd",
+"sector": "Industrials"
+},
+"RPT": {
+"industry": "REIT - Mortgage",
+"name": "Rithm Property Trust Inc",
+"sector": "Real Estate"
+},
+"RSKD": {
+"industry": "Software - Application",
+"name": "Riskified Ltd",
+"sector": "Technology"
+},
+"RTO": {
+"industry": "Specialty Business Services",
+"name": "Rentokil Initial Plc ADR",
+"sector": "Industrials"
+},
+"RVSN": {
+"industry": "Railroads",
+"name": "Rail Vision Ltd",
+"sector": "Industrials"
+},
+"RY": {
+"industry": "Banks - Diversified",
+"name": "Royal Bank Of Canada",
+"sector": "Financial"
+},
+"RYAAY": {
+"industry": "Airlines",
+"name": "Ryanair Holdings Plc ADR",
+"sector": "Industrials"
+},
+"SA": {
+"industry": "Gold",
+"name": "Seabridge Gold Inc",
+"sector": "Basic Materials"
+},
+"SAIH": {
+"industry": "Information Technology Services",
+"name": "SAIHEAT Ltd",
+"sector": "Technology"
+},
+"SAIL": {
+"industry": "Software - Infrastructure",
+"name": "Sailpoint Inc",
+"sector": "Technology"
+},
+"SAN": {
+"industry": "Banks - Diversified",
+"name": "Banco Santander SA ADR",
+"sector": "Financial"
+},
+"SAP": {
+"industry": "Software - Application",
+"name": "Sap SE ADR",
+"sector": "Technology"
+},
+"SATL": {
+"industry": "Aerospace & Defense",
+"name": "Satellogic Inc",
+"sector": "Industrials"
+},
+"SB": {
+"industry": "Marine Shipping",
+"name": "Safe Bulkers Inc",
+"sector": "Industrials"
+},
+"SBET": {
+"industry": "Capital Markets",
+"name": "Sharplink Inc",
+"sector": "Financial"
+},
+"SBLK": {
+"industry": "Marine Shipping",
+"name": "Star Bulk Carriers Corp",
+"sector": "Industrials"
+},
+"SBSW": {
+"industry": "Other Precious Metals & Mining",
+"name": "Sibanye Stillwater Limited ADR",
+"sector": "Basic Materials"
+},
+"SCZM": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Santacruz Silver Mining Ltd",
+"sector": "Basic Materials"
+},
+"SDRL": {
+"industry": "Oil & Gas Drilling",
+"name": "Seadrill Ltd",
+"sector": "Energy"
+},
+"SE": {
+"industry": "Internet Retail",
+"name": "Sea Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"SEDG": {
+"industry": "Solar",
+"name": "Solaredge Technologies Inc",
+"sector": "Technology"
+},
+"SEG": {
+"industry": "Real Estate Services",
+"name": "Seaport Entertainment Group Inc",
+"sector": "Real Estate"
+},
+"SFL": {
+"industry": "Marine Shipping",
+"name": "SFL Corp Ltd",
+"sector": "Industrials"
+},
+"SGHC": {
+"industry": "Gambling",
+"name": "Super Group (SGHC) Limited",
+"sector": "Consumer Cyclical"
+},
+"SGML": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Sigma Lithium Corp",
+"sector": "Basic Materials"
+},
+"SHEL": {
+"industry": "Oil & Gas Integrated",
+"name": "Shell Plc ADR",
+"sector": "Energy"
+},
+"SHG": {
+"industry": "Banks - Regional",
+"name": "Shinhan Financial Group Co Ltd ADR",
+"sector": "Financial"
+},
+"SHIP": {
+"industry": "Marine Shipping",
+"name": "Seanergy Maritime Holdings Corp",
+"sector": "Industrials"
+},
+"SHOP": {
+"industry": "Software - Application",
+"name": "Shopify Inc",
+"sector": "Technology"
+},
+"SI": {
+"industry": "Medical Devices",
+"name": "Shoulder Innovations Inc",
+"sector": "Healthcare"
+},
+"SIFY": {
+"industry": "Telecom Services",
+"name": "Sify Technologies Limited ADR",
+"sector": "Communication Services"
+},
+"SIG": {
+"industry": "Luxury Goods",
+"name": "Signet Jewelers Ltd",
+"sector": "Consumer Cyclical"
+},
+"SII": {
+"industry": "Asset Management",
+"name": "Sprott Inc",
+"sector": "Financial"
+},
+"SILC": {
+"industry": "Communication Equipment",
+"name": "Silicom Ltd",
+"sector": "Technology"
+},
+"SIM": {
+"industry": "Steel",
+"name": "Grupo Simec SAB de CV ADR",
+"sector": "Basic Materials"
+},
+"SIMA": {
+"industry": "Shell Companies",
+"name": "SIM Acquisition Corp I",
+"sector": "Financial"
+},
+"SIMO": {
+"industry": "Semiconductors",
+"name": "Silicon Motion Technology Corp ADR",
+"sector": "Technology"
+},
+"SKE": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Skeena Resources Ltd",
+"sector": "Basic Materials"
+},
+"SKIL": {
+"industry": "Education & Training Services",
+"name": "Skillsoft Corp",
+"sector": "Consumer Defensive"
+},
+"SKK": {
+"industry": "Engineering & Construction",
+"name": "SKK Holdings Ltd",
+"sector": "Industrials"
+},
+"SKM": {
+"industry": "Telecom Services",
+"name": "SK Telecom Co Ltd ADR",
+"sector": "Communication Services"
+},
+"SLF": {
+"industry": "Insurance - Diversified",
+"name": "Sun Life Financial Inc",
+"sector": "Financial"
+},
+"SLGL": {
+"industry": "Biotechnology",
+"name": "Sol-Gel Technologies Ltd",
+"sector": "Healthcare"
+},
+"SLN": {
+"industry": "Biotechnology",
+"name": "Silence Therapeutics Plc ADR",
+"sector": "Healthcare"
+},
+"SLSR": {
+"industry": "Other Precious Metals & Mining",
+"name": "Solaris Resources Inc",
+"sector": "Basic Materials"
+},
+"SMFG": {
+"industry": "Banks - Diversified",
+"name": "Sumitomo Mitsui Financial Group Inc ADR",
+"sector": "Financial"
+},
+"SMWB": {
+"industry": "Software - Application",
+"name": "Similarweb Ltd",
+"sector": "Technology"
+},
+"SMX": {
+"industry": "Specialty Business Services",
+"name": "SMX (Security Matters) Plc",
+"sector": "Industrials"
+},
+"SN": {
+"industry": "Furnishings, Fixtures & Appliances",
+"name": "SharkNinja Inc",
+"sector": "Consumer Cyclical"
+},
+"SNN": {
+"industry": "Medical Devices",
+"name": "Smith & Nephew plc ADR",
+"sector": "Healthcare"
+},
+"SNWV": {
+"industry": "Medical Devices",
+"name": "Sanuwave Health Inc",
+"sector": "Healthcare"
+},
+"SNY": {
+"industry": "Drug Manufacturers - General",
+"name": "Sanofi ADR",
+"sector": "Healthcare"
+},
+"SOBO": {
+"industry": "Oil & Gas Midstream",
+"name": "South Bow Corp",
+"sector": "Energy"
+},
+"SOGP": {
+"industry": "Internet Content & Information",
+"name": "Sound Group Inc ADR",
+"sector": "Communication Services"
+},
+"SOHU": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "Sohu.com Ltd ADR",
+"sector": "Communication Services"
+},
+"SOLS": {
+"industry": "Specialty Chemicals",
+"name": "Solstice Advanced Materials Inc",
+"sector": "Basic Materials"
+},
+"SONY": {
+"industry": "Consumer Electronics",
+"name": "Sony Group Corp ADR",
+"sector": "Technology"
+},
+"SOPH": {
+"industry": "Health Information Services",
+"name": "SOPHiA Genetics SA",
+"sector": "Healthcare"
+},
+"SOTK": {
+"industry": "Scientific & Technical Instruments",
+"name": "Sono-Tek Corp",
+"sector": "Technology"
+},
+"SOUL": {
+"industry": "Shell Companies",
+"name": "Soulpower Acquisition Corp",
+"sector": "Financial"
+},
+"SPCB": {
+"industry": "Security & Protection Services",
+"name": "SuperCom Ltd",
+"sector": "Industrials"
+},
+"SPIR": {
+"industry": "Specialty Business Services",
+"name": "Spire Global Inc",
+"sector": "Industrials"
+},
+"SPMC": {
+"industry": "Asset Management",
+"sector": "Financial"
+},
+"SPNT": {
+"industry": "Insurance - Reinsurance",
+"name": "SiriusPoint Ltd",
+"sector": "Financial"
+},
+"SPOT": {
+"industry": "Internet Content & Information",
+"name": "Spotify Technology SA",
+"sector": "Communication Services"
+},
+"SPRC": {
+"industry": "Biotechnology",
+"name": "SciSparc Ltd",
+"sector": "Healthcare"
+},
+"SQM": {
+"industry": "Specialty Chemicals",
+"name": "Sociedad Quimica Y Minera de Chile SA ADR",
+"sector": "Basic Materials"
+},
+"SRAD": {
+"industry": "Software - Application",
+"name": "Sportradar Group AG",
+"sector": "Technology"
+},
+"SRL": {
+"industry": "Capital Markets",
+"name": "Scully Royalty Ltd",
+"sector": "Financial"
+},
+"SRV": {
+"industry": "Closed-End Fund - Equity",
+"name": "NXG Cushing Midstream Energy Fund",
+"sector": "Financial"
+},
+"SSL": {
+"industry": "Specialty Chemicals",
+"name": "Sasol Ltd ADR",
+"sector": "Basic Materials"
+},
+"SSRM": {
+"industry": "Gold",
+"name": "SSR Mining Inc",
+"sector": "Basic Materials"
+},
+"STC": {
+"industry": "Insurance - Property & Casualty",
+"name": "Stewart Information Services Corp",
+"sector": "Financial"
+},
+"STE": {
+"industry": "Medical Devices",
+"name": "Steris Plc",
+"sector": "Healthcare"
+},
+"STGW": {
+"industry": "Advertising Agencies",
+"name": "Stagwell Inc",
+"sector": "Communication Services"
+},
+"STLA": {
+"industry": "Auto Manufacturers",
+"name": "Stellantis N.V",
+"sector": "Consumer Cyclical"
+},
+"STM": {
+"industry": "Semiconductors",
+"name": "ST Microelectronics",
+"sector": "Technology"
+},
+"STN": {
+"industry": "Engineering & Construction",
+"name": "Stantec Inc",
+"sector": "Industrials"
+},
+"STNG": {
+"industry": "Oil & Gas Midstream",
+"name": "Scorpio Tankers Inc",
+"sector": "Energy"
+},
+"STRZ": {
+"industry": "Entertainment",
+"name": "Starz Entertainment Corp",
+"sector": "Communication Services"
+},
+"STVN": {
+"industry": "Medical Instruments & Supplies",
+"name": "Stevanato Group Spa",
+"sector": "Healthcare"
+},
+"STX": {
+"industry": "Computer Hardware",
+"name": "Seagate Technology Holdings Plc",
+"sector": "Technology"
+},
+"SU": {
+"industry": "Oil & Gas Integrated",
+"name": "Suncor Energy Inc",
+"sector": "Energy"
+},
+"SUNS": {
+"industry": "REIT - Mortgage",
+"name": "Sunrise Realty Trust Inc",
+"sector": "Real Estate"
+},
+"SUPV": {
+"industry": "Banks - Regional",
+"name": "Grupo Supervielle SA ADR",
+"sector": "Financial"
+},
+"SUPX": {
+"industry": "Software - Infrastructure",
+"name": "SuperX AI Technology Ltd",
+"sector": "Technology"
+},
+"SUZ": {
+"industry": "Paper & Paper Products",
+"name": "Suzano SA ADR",
+"sector": "Basic Materials"
+},
+"SVM": {
+"industry": "Silver",
+"name": "Silvercorp Metals Inc",
+"sector": "Basic Materials"
+},
+"SVRN": {
+"industry": "Marine Shipping",
+"name": "OceanPal Inc",
+"sector": "Industrials"
+},
+"SW": {
+"industry": "Packaging & Containers",
+"name": "Smurfit WestRock plc",
+"sector": "Consumer Cyclical"
+},
+"TAC": {
+"industry": "Utilities - Independent Power Producers",
+"name": "Transalta Corp",
+"sector": "Utilities"
+},
+"TAK": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Takeda Pharmaceutical Co ADR",
+"sector": "Healthcare"
+},
+"TAL": {
+"industry": "Education & Training Services",
+"name": "TAL Education Group ADR",
+"sector": "Consumer Defensive"
+},
+"TATT": {
+"industry": "Aerospace & Defense",
+"name": "TAT Technologies Ltd",
+"sector": "Industrials"
+},
+"TBBB": {
+"industry": "Discount Stores",
+"name": "BBB Foods Inc",
+"sector": "Consumer Defensive"
+},
+"TBN": {
+"industry": "Oil & Gas E&P",
+"name": "Tamboran Resources Corp",
+"sector": "Energy"
+},
+"TBPH": {
+"industry": "Biotechnology",
+"name": "Theravance Biopharma Inc",
+"sector": "Healthcare"
+},
+"TCOM": {
+"industry": "Travel Services",
+"name": "Trip.com Group Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"TCX": {
+"industry": "Software - Infrastructure",
+"name": "Tucows Inc",
+"sector": "Technology"
+},
+"TD": {
+"industry": "Banks - Diversified",
+"name": "Toronto Dominion Bank",
+"sector": "Financial"
+},
+"TDF": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Templeton Dragon Fund Inc",
+"sector": "Financial"
+},
+"TEAM": {
+"industry": "Software - Application",
+"name": "Atlassian Corp",
+"sector": "Technology"
+},
+"TECK": {
+"industry": "Copper",
+"name": "Teck Resources Ltd",
+"sector": "Basic Materials"
+},
+"TEL": {
+"industry": "Electronic Components",
+"name": "TE Connectivity plc",
+"sector": "Technology"
+},
+"TEN": {
+"industry": "Oil & Gas Midstream",
+"name": "Tsakos Energy Navigation Limited",
+"sector": "Energy"
+},
+"TEO": {
+"industry": "Telecom Services",
+"name": "Telecom Argentina SA ADR",
+"sector": "Communication Services"
+},
+"TEVA": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Teva- Pharmaceutical Industries Ltd ADR",
+"sector": "Healthcare"
+},
+"TFII": {
+"industry": "Trucking",
+"name": "TFI International Inc",
+"sector": "Industrials"
+},
+"TFPM": {
+"industry": "Other Precious Metals & Mining",
+"name": "Triple Flag Precious Metals Corp",
+"sector": "Basic Materials"
+},
+"TGB": {
+"industry": "Copper",
+"name": "Trekor Metals Ltd",
+"sector": "Basic Materials"
+},
+"TGLS": {
+"industry": "Building Materials",
+"name": "Tecnoglass Holdings Inc",
+"sector": "Basic Materials"
+},
+"TGS": {
+"industry": "Oil & Gas Integrated",
+"name": "Transportadora de Gas del Sur ADR",
+"sector": "Energy"
+},
+"TIC": {
+"industry": "Specialty Business Services",
+"name": "TIC Solutions Inc",
+"sector": "Industrials"
+},
+"TIGO": {
+"industry": "Telecom Services",
+"name": "Millicom International Cellular SA",
+"sector": "Communication Services"
+},
+"TIMB": {
+"industry": "Telecom Services",
+"name": "TIM SA ADR",
+"sector": "Communication Services"
+},
+"TK": {
+"industry": "Oil & Gas Midstream",
+"name": "Teekay Corp Ltd",
+"sector": "Energy"
+},
+"TKC": {
+"industry": "Telecom Services",
+"name": "Turkcell Iletisim Hizmetleri A.S ADR",
+"sector": "Communication Services"
+},
+"TLIH": {
+"industry": "Industrial Distribution",
+"name": "Ten League International Holdings Ltd",
+"sector": "Industrials"
+},
+"TLX": {
+"industry": "Biotechnology",
+"name": "Telix Pharmaceuticals Ltd ADR",
+"sector": "Healthcare"
+},
+"TM": {
+"industry": "Auto Manufacturers",
+"name": "Toyota Motor Corp ADR",
+"sector": "Consumer Cyclical"
+},
+"TME": {
+"industry": "Internet Content & Information",
+"name": "Tencent Music Entertainment Group ADR",
+"sector": "Communication Services"
+},
+"TNK": {
+"industry": "Oil & Gas Midstream",
+"name": "Teekay Tankers Ltd",
+"sector": "Energy"
+},
+"TONT": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"TOP": {
+"industry": "Capital Markets",
+"name": "TOP Financial Group Limited",
+"sector": "Financial"
+},
+"TORO": {
+"industry": "Oil & Gas Midstream",
+"name": "Toro Corp",
+"sector": "Energy"
+},
+"TPCS": {
+"industry": "Metal Fabrication",
+"name": "Techprecision Corp",
+"sector": "Industrials"
+},
+"TRI": {
+"industry": "Specialty Business Services",
+"name": "Thomson-Reuters Corp",
+"sector": "Industrials"
+},
+"TRIB": {
+"industry": "Medical Devices",
+"name": "Trinity Biotech Plc ADR",
+"sector": "Healthcare"
+},
+"TRLV": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Trulieve Cannabis Corp",
+"sector": "Healthcare"
+},
+"TRMD": {
+"industry": "Oil & Gas Midstream",
+"name": "Torm Plc",
+"sector": "Energy"
+},
+"TRP": {
+"industry": "Oil & Gas Midstream",
+"name": "TC Energy Corp",
+"sector": "Energy"
+},
+"TRVG": {
+"industry": "Internet Content & Information",
+"name": "Trivago NV ADR",
+"sector": "Communication Services"
+},
+"TS": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Tenaris SA ADR",
+"sector": "Energy"
+},
+"TSAT": {
+"industry": "Communication Equipment",
+"name": "Telesat Corp",
+"sector": "Technology"
+},
+"TSEM": {
+"industry": "Semiconductors",
+"name": "Tower Semiconductor Ltd",
+"sector": "Technology"
+},
+"TSM": {
+"industry": "Semiconductors",
+"name": "Taiwan Semiconductor Manufacturing ADR",
+"sector": "Technology"
+},
+"TSSI": {
+"industry": "Information Technology Services",
+"name": "TSS Inc",
+"sector": "Technology"
+},
+"TT": {
+"industry": "Building Products & Equipment",
+"name": "Trane Technologies plc",
+"sector": "Industrials"
+},
+"TTAM": {
+"industry": "Building Materials",
+"name": "Titan America SA",
+"sector": "Basic Materials"
+},
+"TTE": {
+"industry": "Oil & Gas Integrated",
+"name": "TotalEnergies SE",
+"sector": "Energy"
+},
+"TU": {
+"industry": "Telecom Services",
+"name": "Telus Corp",
+"sector": "Communication Services"
+},
+"TWN": {
+"industry": "Closed-End Fund - Foreign",
+"name": "Taiwan Fund Inc",
+"sector": "Financial"
+},
+"TX": {
+"industry": "Steel",
+"name": "Ternium SA ADR",
+"sector": "Basic Materials"
+},
+"UBS": {
+"industry": "Banks - Diversified",
+"name": "UBS Group AG",
+"sector": "Financial"
+},
+"UCIB": {
+"industry": "Exchange Traded Fund",
+"name": "UBS ETRACS UBS Bloomberg Constant Maturity Commodity Index Total Retur",
+"sector": "Financial"
+},
+"UGP": {
+"industry": "Oil & Gas Refining & Marketing",
+"name": "Ultrapar Participacoes SA ADR",
+"sector": "Energy"
+},
+"UL": {
+"industry": "Household & Personal Products",
+"name": "Unilever plc ADR",
+"sector": "Consumer Defensive"
+},
+"UMC": {
+"industry": "Semiconductors",
+"name": "United Micro Electronics ADR",
+"sector": "Technology"
+},
+"UP": {
+"industry": "Airports & Air Services",
+"name": "Wheels Up Experience Inc",
+"sector": "Industrials"
+},
+"UPC": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Universe Pharmaceuticals INC",
+"sector": "Healthcare"
+},
+"USAS": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Americas Gold and Silver Corp",
+"sector": "Basic Materials"
+},
+"VAL": {
+"industry": "Oil & Gas Drilling",
+"name": "Valaris Ltd",
+"sector": "Energy"
+},
+"VALE": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Vale SA ADR",
+"sector": "Basic Materials"
+},
+"VALN": {
+"industry": "Biotechnology",
+"name": "Valneva SE ADR",
+"sector": "Healthcare"
+},
+"VBNK": {
+"industry": "Banks - Regional",
+"name": "VersaBank",
+"sector": "Financial"
+},
+"VEON": {
+"industry": "Telecom Services",
+"name": "VEON Ltd ADR",
+"sector": "Communication Services"
+},
+"VET": {
+"industry": "Oil & Gas E&P",
+"name": "Vermilion Energy Inc",
+"sector": "Energy"
+},
+"VG": {
+"industry": "Oil & Gas Midstream",
+"name": "Venture Global Inc",
+"sector": "Energy"
+},
+"VIA": {
+"industry": "Software - Application",
+"name": "Via Transportation Inc",
+"sector": "Technology"
+},
+"VIK": {
+"industry": "Travel Services",
+"name": "Viking Holdings Ltd",
+"sector": "Consumer Cyclical"
+},
+"VINP": {
+"industry": "Asset Management",
+"name": "Vinci Compass Investments Ltd",
+"sector": "Financial"
+},
+"VIPS": {
+"industry": "Internet Retail",
+"name": "Vipshop Holdings Ltd ADR",
+"sector": "Consumer Cyclical"
+},
+"VIST": {
+"industry": "Oil & Gas E&P",
+"name": "Vista Energy SAB de CV ADR",
+"sector": "Energy"
+},
+"VIV": {
+"industry": "Telecom Services",
+"name": "Telefonica Brasil SA ADR",
+"sector": "Communication Services"
+},
+"VLRS": {
+"industry": "Airlines",
+"name": "Controladora Vuela Cia De Aviacion ADR",
+"sector": "Industrials"
+},
+"VMRK": {
+"industry": "REIT - Residential",
+"name": "Vivmark Residential",
+"sector": "Real Estate"
+},
+"VNET": {
+"industry": "Information Technology Services",
+"name": "VNET Group Inc ADR",
+"sector": "Technology"
+},
+"VOXR": {
+"industry": "Other Precious Metals & Mining",
+"name": "Vox Royalty Corp",
+"sector": "Basic Materials"
+},
+"VTMX": {
+"industry": "Real Estate - Development",
+"name": "Corporacion Inmobiliaria Vesta Sab ADR",
+"sector": "Real Estate"
+},
+"VXX": {
+"industry": "Exchange Traded Fund",
+"name": "iPath Series B S&P 500 VIX Short-Term FuturesTM ETN",
+"sector": "Financial"
+},
+"VXZ": {
+"industry": "Exchange Traded Fund",
+"name": "iPath Series B S&P 500 VIX Mid-Term FuturesTM ETN",
+"sector": "Financial"
+},
+"WAVE": {
+"industry": "Utilities - Renewable",
+"name": "Eco Wave Power Global AB ADR",
+"sector": "Utilities"
+},
+"WB": {
+"industry": "Internet Content & Information",
+"name": "Weibo Corp ADR",
+"sector": "Communication Services"
+},
+"WBI": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "WaterBridge Infrastructure LLC",
+"sector": "Energy"
+},
+"WCN": {
+"industry": "Waste Management",
+"name": "Waste Connections Inc",
+"sector": "Industrials"
+},
+"WDI": {
+"industry": "Asset Management",
+"sector": "Financial"
+},
+"WDS": {
+"industry": "Oil & Gas E&P",
+"name": "Woodside Energy Group Ltd ADR",
+"sector": "Energy"
+},
+"WETO": {
+"industry": "Software - Infrastructure",
+"sector": "Technology"
+},
+"WF": {
+"industry": "Banks - Regional",
+"name": "Woori Financial Group Inc ADR",
+"sector": "Financial"
+},
+"WFG": {
+"industry": "Lumber & Wood Production",
+"name": "West Fraser Timber Co Ltd",
+"sector": "Basic Materials"
+},
+"WILC": {
+"industry": "Food Distribution",
+"name": "G. Willi-Food International Ltd",
+"sector": "Consumer Defensive"
+},
+"WIX": {
+"industry": "Software - Infrastructure",
+"name": "Wix.com Ltd",
+"sector": "Technology"
+},
+"WKEY": {
+"industry": "Semiconductors",
+"name": "WISeKey International Holding Ltd ADR",
+"sector": "Technology"
+},
+"WPM": {
+"industry": "Gold",
+"name": "Wheaton Precious Metals Corp",
+"sector": "Basic Materials"
+},
+"WPP": {
+"industry": "Advertising Agencies",
+"name": "WPP Plc ADR",
+"sector": "Communication Services"
+},
+"WRD": {
+"industry": "Software - Application",
+"name": "WeRide Inc ADR",
+"sector": "Technology"
+},
+"WTG": {
+"industry": "Shell Companies",
+"sector": "Financial"
+},
+"WTM": {
+"industry": "Insurance - Property & Casualty",
+"name": "White Mountains Insurance Group Ltd",
+"sector": "Financial"
+},
+"WTW": {
+"industry": "Insurance Brokers",
+"name": "Willis Towers Watson Public Limited Co",
+"sector": "Financial"
+},
+"WVE": {
+"industry": "Biotechnology",
+"name": "Wave Life Sciences Inc",
+"sector": "Healthcare"
+},
+"XENE": {
+"industry": "Biotechnology",
+"name": "Xenon Pharmaceuticals Inc",
+"sector": "Healthcare"
+},
+"XNET": {
+"industry": "Software - Infrastructure",
+"name": "Xunlei Ltd ADR",
+"sector": "Technology"
+},
+"XP": {
+"industry": "Capital Markets",
+"name": "XP Inc",
+"sector": "Financial"
+},
+"XPEV": {
+"industry": "Auto Manufacturers",
+"name": "XPeng Inc ADR",
+"sector": "Consumer Cyclical"
+},
+"XYF": {
+"industry": "Credit Services",
+"name": "X Financial ADR",
+"sector": "Financial"
+},
+"YALA": {
+"industry": "Software - Application",
+"name": "Yalla Group Limited ADR",
+"sector": "Technology"
+},
+"YB": {
+"industry": "Software - Application",
+"name": "Yuanbao Inc ADR",
+"sector": "Technology"
+},
+"YHNA": {
+"industry": "Shell Companies",
+"name": "YHN Acquisition I Ltd",
+"sector": "Financial"
+},
+"YMM": {
+"industry": "Software - Application",
+"name": "Full Truck Alliance Co Ltd ADR",
+"sector": "Technology"
+},
+"YPF": {
+"industry": "Oil & Gas Integrated",
+"name": "YPF ADR",
+"sector": "Energy"
+},
+"ZEPP": {
+"industry": "Consumer Electronics",
+"name": "Zepp Health Corp ADR",
+"sector": "Technology"
+},
+"ZETA": {
+"industry": "Software - Infrastructure",
+"name": "Zeta Global Holdings Corp",
+"sector": "Technology"
+},
+"ZGN": {
+"industry": "Apparel Manufacturing",
+"name": "Ermenegildo Zegna NV",
+"sector": "Consumer Cyclical"
+},
+"ZIM": {
+"industry": "Marine Shipping",
+"name": "Zim Integrated Shipping Services Ltd",
+"sector": "Industrials"
+},
+"ZLAB": {
+"industry": "Biotechnology",
+"name": "Zai Lab Limited ADR",
+"sector": "Healthcare"
+},
+"ZOOZ": {
+"industry": "Electrical Equipment & Parts",
+"name": "Zooz Strategy Ltd",
+"sector": "Industrials"
+},
+"ZSTK": {
+"industry": "Asset Management",
+"name": "ZeroStack Corp",
+"sector": "Financial"
+},
+"ZTO": {
+"industry": "Integrated Freight & Logistics",
+"name": "ZTO Express (Cayman) Inc ADR",
+"sector": "Industrials"
+},
+"ZTS": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Zoetis Inc",
+"sector": "Healthcare"
+},
+"ZURA": {
+"industry": "Biotechnology",
+"name": "Zura Bio Ltd",
+"sector": "Healthcare"
+},
+"ZYME": {
+"industry": "Biotechnology",
+"name": "Zymeworks BC Inc",
+"sector": "Healthcare"
+}
+}
