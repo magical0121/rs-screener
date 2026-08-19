@@ -252,13 +252,19 @@ function industryJa(raw) {
 let DATA = null;
 
 async function loadData() {
+  const status = document.getElementById("lastUpdated");
+  if (status) status.textContent = "読み込み中…";
   try {
     const res = await fetch("./data/screener.json?t=" + Date.now());
-    if (!res.ok) throw new Error("data load failed");
-    DATA = await res.json();
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const json = await res.json();
+    if (!json || !Array.isArray(json.stocks)) throw new Error("stocks missing");
+    DATA = json;
+    console.log("[screener] loaded", DATA.stocks.length, "stocks", DATA.updated_at);
   } catch (e) {
-    // フォールバック（ローカル閲覧用サンプル）
+    console.error("[screener] load failed", e);
     DATA = window.SAMPLE_DATA;
+    if (status) status.textContent = "データ取得失敗 → サンプル表示 (" + e.message + ")";
   }
   render();
 }
@@ -297,7 +303,9 @@ function strengthClass(label) {
 }
 
 /** 業種別強度（フロントでも算出可能：現行JSONでも即反映） */
-function computeIndustryScores(stocks, minCount = 3) {
+let INDUSTRY_SCORE_MAP = {}; // industry(en) -> {score, label, count}
+
+function computeIndustryScores(stocks, minCount = 1) {
   const groups = {};
   for (const s of stocks || []) {
     const key = (s.industry || s.sector || "").trim();
@@ -305,12 +313,14 @@ function computeIndustryScores(stocks, minCount = 3) {
     (groups[key] || (groups[key] = [])).push(s);
   }
   const out = [];
+  INDUSTRY_SCORE_MAP = {};
   for (const [name, rows] of Object.entries(groups)) {
-    if (rows.length < minCount) continue;
     const score = Math.round(
-      rows.reduce((a, s) => a + 0.6 * (s.rs || 0) + 0.4 * (s.hqm || 0), 0) / rows.length
+      rows.reduce((a, s) => a + 0.6 * (Number(s.rs) || 0) + 0.4 * (Number(s.hqm) || 0), 0) / rows.length
     );
     const label = score >= 80 ? "強い" : score >= 55 ? "普通" : "弱い";
+    INDUSTRY_SCORE_MAP[name] = { score, label, count: rows.length };
+    if (rows.length < minCount) continue;
     const leaders = [...rows]
       .sort((a, b) => (b.rs || 0) - (a.rs || 0) || (b.hqm || 0) - (a.hqm || 0))
       .filter((s) => (s.rs || 0) >= 60)
@@ -320,6 +330,12 @@ function computeIndustryScores(stocks, minCount = 3) {
   }
   out.sort((a, b) => b.score - a.score);
   return out;
+}
+
+function industryScoreOf(s) {
+  const key = ((s && (s.industry || s.sector)) || "").trim();
+  if (!key || key === "—") return null;
+  return INDUSTRY_SCORE_MAP[key] || null;
 }
 
 function renderIndustryStrength(list) {
@@ -376,6 +392,11 @@ function sortedStocks(stocks) {
     if (sortBy === "rs") return (b.rs || 0) - (a.rs || 0);
     if (sortBy === "hqm") return (b.hqm || 0) - (a.hqm || 0);
     if (sortBy === "tt") return (TT_RANK[b.tt] || 0) - (TT_RANK[a.tt] || 0);
+    if (sortBy === "indScore") {
+      const sa = (industryScoreOf(a) || {}).score || 0;
+      const sb = (industryScoreOf(b) || {}).score || 0;
+      return sb - sa;
+    }
     if (sortBy === "industry") {
       return industryJa(a.industry).localeCompare(industryJa(b.industry), "ja");
     }
@@ -386,14 +407,24 @@ function sortedStocks(stocks) {
 
 function renderTable(stocks) {
   const body = document.getElementById("stockBody");
+  if (!body) return;
   const list = sortedStocks(stocks);
+  const MAX_ROWS = 400;
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="6" class="empty">本命条件に該当する銘柄なし（「本命のみ」を外すと全件表示）</td></tr>`;
+    body.innerHTML = `<tr><td colspan="7" class="empty">表示できる銘柄がありません。「本命のみ」のON/OFFやデータ更新を確認してください。</td></tr>`;
     return;
   }
-  body.innerHTML = list
+  const shown = list.slice(0, MAX_ROWS);
+  const extra = list.length > MAX_ROWS
+    ? `<tr><td colspan="7" class="empty">…他 ${list.length - MAX_ROWS} 件（上位${MAX_ROWS}件のみ表示）</td></tr>`
+    : "";
+  body.innerHTML = shown
     .map((s) => {
       const h = hqmLabel(s.hqm);
+      const ind = industryScoreOf(s);
+      const indHtml = ind
+        ? `<span class="badge ${strengthClass(ind.label)}">${ind.score}</span>`
+        : "—";
       return `
       <tr>
         <td>
@@ -403,11 +434,12 @@ function renderTable(stocks) {
         <td class="rs ${rsClass(s.rs)}">${s.rs}</td>
         <td><span class="badge ${stageBadge(s.stage)}">${s.stage}</span></td>
         <td>${industryJa(s.industry || s.sector)}</td>
+        <td class="ind-score">${indHtml}</td>
         <td><span class="badge ${ttBadge(s.tt)}">${s.tt}</span></td>
         <td class="hqm-cell"><span class="badge ${h.cls}">${h.text}</span></td>
       </tr>`;
     })
-    .join("");
+    .join("") + extra;
 }
 
 function render() {
@@ -419,16 +451,14 @@ function render() {
     " ／ 全" + stocks.length + "件 ／ 本命" + honmeiCount + "件";
 
   // 業種強度は常に全銘柄ベース
-  const industryList =
-    (DATA.industries && DATA.industries.length
-      ? DATA.industries
-      : computeIndustryScores(stocks));
-  renderIndustryStrength(industryList);
+  // 全業種スコアをマップ化（表用）＋サイドは上位40
+  const industryList = computeIndustryScores(stocks, 3);
+  renderIndustryStrength(industryList.slice(0, 40));
   renderTable(stocks);
 
   const emptyHint = document.getElementById("table-empty-hint");
   if (emptyHint) {
-    const honmeiOnly = document.getElementById("honmeiOnly")?.checked;
+    const _h = document.getElementById("honmeiOnly"); const honmeiOnly = _h ? _h.checked : true;
     if (stocks.length === 0) {
       emptyHint.textContent = "銘柄データがありません。data/screener.json と Actions を確認してください。";
       emptyHint.hidden = false;
