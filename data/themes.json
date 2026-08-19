@@ -1,1 +1,20 @@
-
+{
+  "themes": {
+    "AI/半導体": [
+      "NVDA", "AVGO", "AMD", "TSM", "ASML", "AMAT", "LRCX", "KLAC", "MU", "QCOM",
+      "ARM", "SMCI", "MRVL", "SNPS", "CDNS"
+    ],
+    "サイバーセキュリティ": [
+      "CRWD", "PANW", "ZS", "FTNT", "OKTA", "NET", "S", "CYBR", "TENB"
+    ],
+    "クラウド / データ": [
+      "SNOW", "DDOG", "MDB", "PLTR", "CRM", "NOW", "NET", "TEAM", "HUBS", "WDAY"
+    ],
+    "バイオテック": [
+      "REGN", "AMGN", "VRTX", "GILD", "BIIB", "MRNA", "LLY", "ISRG"
+    ],
+    "メガテック": [
+      "AAPL", "MSFT", "GOOGL", "META", "AMZN", "NFLX", "ORCL", "ADBE"
+    ]
+  }
+}
