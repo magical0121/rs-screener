@@ -4,6 +4,186 @@
 const TT_RANK = { 強い: 3, 普通: 2, 弱い: 1 };
 const HQM_RANK = { Top: 4, Strong: 3, Good: 2, Fair: 1, Poor: 0 };
 
+// FinanceDatabase / Finviz 系の英語業種 → 日本語表示
+const INDUSTRY_JA = {
+  "Advertising Agencies": "広告代理店",
+  "Aerospace & Defense": "航空宇宙・防衛",
+  "Agricultural Inputs": "農業資材",
+  "Airlines": "航空",
+  "Airports & Air Services": "空港・航空サービス",
+  "Aluminum": "アルミニウム",
+  "Apparel Manufacturing": "アパレル製造",
+  "Apparel Retail": "アパレル小売",
+  "Asset Management": "資産運用",
+  "Auto & Truck Dealerships": "自動車販売",
+  "Auto Manufacturers": "自動車メーカー",
+  "Auto Parts": "自動車部品",
+  "Banks - Diversified": "銀行（総合）",
+  "Banks - Regional": "地方銀行",
+  "Beverages - Brewers": "飲料（ビール）",
+  "Beverages - Non-Alcoholic": "飲料（ノンアル）",
+  "Beverages - Wineries & Distilleries": "飲料（酒類）",
+  "Biotechnology": "バイオテクノロジー",
+  "Broadcasting": "放送",
+  "Building Materials": "建材",
+  "Building Products & Equipment": "建築製品・設備",
+  "Business Equipment & Supplies": "事務機器",
+  "Capital Markets": "資本市場",
+  "Chemicals": "化学",
+  "Coking Coal": "原料炭",
+  "Communication Equipment": "通信機器",
+  "Computer Hardware": "コンピュータ機器",
+  "Confectioners": "製菓",
+  "Conglomerates": "コングロマリット",
+  "Consulting Services": "コンサルティング",
+  "Consumer Electronics": "家電",
+  "Copper": "銅",
+  "Credit Services": "信用・金融サービス",
+  "Diagnostics & Research": "診断・研究",
+  "Discount Stores": "ディスカウント店",
+  "Drug Manufacturers - General": "医薬品（大手）",
+  "Drug Manufacturers - Specialty & Generic": "医薬品（専門・GE）",
+  "Education & Training Services": "教育・研修",
+  "Electrical Equipment & Parts": "電気機器・部品",
+  "Electronic Components": "電子部品",
+  "Electronic Gaming & Multimedia": "ゲーム・マルチメディア",
+  "Electronics & Computer Distribution": "電子・PC流通",
+  "Engineering & Construction": "エンジニアリング・建設",
+  "Entertainment": "エンタメ",
+  "Farm & Heavy Construction Machinery": "農機・建機",
+  "Farm Products": "農産物",
+  "Financial Conglomerates": "金融コングロマリット",
+  "Financial Data & Stock Exchanges": "金融データ・取引所",
+  "Food Distribution": "食品流通",
+  "Food & Staples Retailing": "食品・生活必需品小売",
+  "Footwear & Accessories": "履物・アクセサリー",
+  "Furnishings, Fixtures & Appliances": "家具・家電",
+  "Gambling": "ギャンブル",
+  "Gold": "金",
+  "Grocery Stores": "食料品店",
+  "Health Information Services": "医療情報サービス",
+  "Healthcare Plans": "医療保険",
+  "Home Improvement Retail": "ホームセンター",
+  "Household & Personal Products": "家庭・パーソナル用品",
+  "Household Durables": "家庭用耐久財",
+  "Industrial Distribution": "工業流通",
+  "Information Technology Services": "ITサービス",
+  "Infrastructure Operations": "インフラ運営",
+  "Insurance - Diversified": "保険（総合）",
+  "Insurance - Life": "生命保険",
+  "Insurance - Property & Casualty": "損保",
+  "Insurance - Reinsurance": "再保険",
+  "Insurance - Specialty": "保険（専門）",
+  "Insurance Brokers": "保険ブローカー",
+  "Integrated Freight & Logistics": "物流・フォワーダー",
+  "Internet Content & Information": "インターネット・情報",
+  "Internet Retail": "ネット通販",
+  "Leisure": "レジャー",
+  "Lodging": "宿泊",
+  "Lumber & Wood Production": "木材",
+  "Marine Shipping": "海運",
+  "Medical Care Facilities": "医療施設",
+  "Medical Devices": "医療機器",
+  "Medical Distribution": "医療流通",
+  "Medical Instruments & Supplies": "医療器具・消耗品",
+  "Metal Fabrication": "金属加工",
+  "Mortgage Finance": "住宅ローン金融",
+  "Oil & Gas Drilling": "石油ガス掘削",
+  "Oil & Gas E&P": "石油ガス開発",
+  "Oil & Gas Equipment & Services": "石油ガス機材・サービス",
+  "Oil & Gas Integrated": "石油ガス総合",
+  "Oil & Gas Midstream": "石油ガス中流",
+  "Oil & Gas Refining & Marketing": "石油精製・販売",
+  "Other Industrial Metals & Mining": "その他工業金属・鉱業",
+  "Other Precious Metals & Mining": "その他貴金属・鉱業",
+  "Packaged Foods": "加工食品",
+  "Packaging & Containers": "包装・容器",
+  "Paper & Paper Products": "紙・パルプ",
+  "Personal Services": "個人向けサービス",
+  "Pharmaceutical Retailers": "薬局・薬小売",
+  "Pollution & Treatment Controls": "環境・処理",
+  "Publishing": "出版",
+  "Railroads": "鉄道",
+  "Real Estate - Development": "不動産開発",
+  "Real Estate - Diversified": "不動産（総合）",
+  "Real Estate Services": "不動産サービス",
+  "Recreational Vehicles": "RV",
+  "REIT - Diversified": "REIT（総合）",
+  "REIT - Healthcare Facilities": "REIT（医療）",
+  "REIT - Hotel & Motel": "REIT（ホテル）",
+  "REIT - Industrial": "REIT（物流・工業）",
+  "REIT - Mortgage": "REIT（モーゲージ）",
+  "REIT - Office": "REIT（オフィス）",
+  "REIT - Residential": "REIT（住宅）",
+  "REIT - Retail": "REIT（商業）",
+  "REIT - Specialty": "REIT（専門）",
+  "Rental & Leasing Services": "レンタル・リース",
+  "Residential Construction": "住宅建設",
+  "Resorts & Casinos": "リゾート・カジノ",
+  "Restaurants": "外食",
+  "Scientific & Technical Instruments": "科学・精密機器",
+  "Security & Protection Services": "警備・セキュリティ",
+  "Semiconductor Equipment & Materials": "半導体製造装置・材料",
+  "Semiconductors": "半導体",
+  "Shell Companies": "SPAC・シェル",
+  "Silver": "銀",
+  "Software - Application": "ソフトウェア（アプリ）",
+  "Software - Infrastructure": "ソフトウェア（基盤）",
+  "Solar": "太陽光",
+  "Specialty Business Services": "専門ビジネスサービス",
+  "Specialty Chemicals": "特殊化学品",
+  "Specialty Industrial Machinery": "特殊産業機械",
+  "Specialty Retail": "専門小売",
+  "Staffing & Employment Services": "人材・派遣",
+  "Steel": "鉄鋼",
+  "Telecom Services": "通信サービス",
+  "Textile Manufacturing": "繊維",
+  "Thermal Coal": "一般炭",
+  "Tobacco": "たばこ",
+  "Tools & Accessories": "工具・部品",
+  "Travel Services": "旅行サービス",
+  "Trucking": "トラック輸送",
+  "Uranium": "ウラン",
+  "Utilities - Diversified": "電力・ガス（総合）",
+  "Utilities - Independent Power Producers": "独立系発電",
+  "Utilities - Regulated Electric": "規制電力",
+  "Utilities - Regulated Gas": "規制ガス",
+  "Utilities - Regulated Water": "規制水道",
+  "Utilities - Renewable": "再エネユーティリティ",
+  "Waste Management": "廃棄物処理",
+  // セクター級フォールバック
+  "Information Technology": "情報技術",
+  "Health Care": "ヘルスケア",
+  "Healthcare": "ヘルスケア",
+  "Financials": "金融",
+  "Financial": "金融",
+  "Consumer Discretionary": "一般消費財",
+  "Consumer Cyclical": "一般消費財",
+  "Consumer Staples": "生活必需品",
+  "Consumer Defensive": "生活必需品",
+  "Energy": "エネルギー",
+  "Industrials": "資本財・産業",
+  "Industrial": "資本財・産業",
+  "Materials": "素材",
+  "Basic Materials": "素材",
+  "Utilities": "公益",
+  "Real Estate": "不動産",
+  "Communication Services": "通信サービス",
+  "Technology": "テクノロジー",
+};
+
+function industryJa(raw) {
+  if (raw == null || raw === "" || raw === "—") return "—";
+  const s = String(raw).trim();
+  if (INDUSTRY_JA[s]) return INDUSTRY_JA[s];
+  // 部分一致（表記ゆれ用）
+  const lower = s.toLowerCase();
+  for (const [en, ja] of Object.entries(INDUSTRY_JA)) {
+    if (en.toLowerCase() === lower) return ja;
+  }
+  return s; // 未登録は英語のまま
+}
+
 let DATA = null;
 
 async function loadData() {
@@ -84,7 +264,9 @@ function sortedStocks(stocks) {
     if (sortBy === "rs") return (b.rs || 0) - (a.rs || 0);
     if (sortBy === "hqm") return (b.hqm || 0) - (a.hqm || 0);
     if (sortBy === "tt") return (TT_RANK[b.tt] || 0) - (TT_RANK[a.tt] || 0);
-    if (sortBy === "industry") return String(a.industry || "").localeCompare(String(b.industry || ""), "ja");
+    if (sortBy === "industry") {
+      return industryJa(a.industry).localeCompare(industryJa(b.industry), "ja");
+    }
     return 0;
   });
   return list;
@@ -108,7 +290,7 @@ function renderTable(stocks) {
         </td>
         <td class="rs ${rsClass(s.rs)}">${s.rs}</td>
         <td><span class="badge ${stageBadge(s.stage)}">${s.stage}</span></td>
-        <td>${s.industry || "—"}</td>
+        <td>${industryJa(s.industry)}</td>
         <td><span class="badge ${ttBadge(s.tt)}">${s.tt}</span></td>
         <td class="hqm-cell"><span class="badge ${h.cls}">${h.text}</span></td>
       </tr>`;
