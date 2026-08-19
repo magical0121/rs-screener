@@ -197,10 +197,33 @@ def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[
         ("ビジネスサービス", ["business services", "commercial services", "staffing"]),
     ]
 
+    # より具体的なキーワードを優先（長いキーから）。短い汎用語の誤爆を抑制
+    best = None
+    best_len = -1
     for theme, keys in rules:
-        if any(k in ind for k in keys):
-            return theme
-
+        for k in keys:
+            k = (k or "").lower().strip()
+            if not k or k not in ind:
+                continue
+            # biotechnology / fintech 等に "technology" / "tech" が誤爆しないようにする
+            if k in {"tech", "technology"}:
+                if any(x in ind for x in (
+                    "biotech", "biotechnology", "fintech", "health care technology",
+                    "information technology services",
+                )):
+                    # 明確に IT 系のときだけ technology を許可
+                    if "information technology" in ind and "biotech" not in ind:
+                        pass
+                    elif "biotech" in ind or "biotechnology" in ind:
+                        continue
+                    elif "fintech" in ind:
+                        continue
+            score = len(k)
+            if score > best_len:
+                best_len = score
+                best = theme
+    if best:
+        return best
     return "未分類"
 
 
