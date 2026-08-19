@@ -87,14 +87,126 @@ def fetch_industry_map() -> dict[str, dict[str, str]]:
 
 
 def auto_theme_from_industry(industry: str, ticker: str, themes: dict[str, list[str]]) -> str:
-    """明示テーマ優先、なければ業種から約30テーマへ自動分類"""
+    """明示テーマ優先、なければ業種から詳細テーマへ自動分類"""
     for name, members in themes.items():
         if ticker in members:
             return name
 
     ind = (industry or "").lower().strip()
-    if not ind or ind in {"—", "-", "n/a", "nan"}:
-        return "その他"
+    if not ind or ind in {"—", "-", "n/a", "nan", "none", "null", "未分類"}:
+        return "未分類"
+
+    rules = [
+        # ===== Tech 詳細 =====
+        ("サイバーセキュリティ", ["cyber", "security software", "network security", "security & protection"]),
+        ("AI/半導体", ["semiconductor", "semiconductors", "chip", "electronic equipment", "electronics manufacturing", "electronic components"]),
+        ("クラウド / データ", ["software—infrastructure", "software - infrastructure", "infrastructure software", "data processing", "cloud", "data storage"]),
+        ("業務ソフト", ["application software", "enterprise software"]),
+        ("ITサービス", ["information technology services", "it services", "consulting services"]),
+        ("インターネット", ["internet content", "internet retail", "interactive media", "online media"]),
+        ("ハード・端末", ["consumer electronics", "technology hardware", "computer hardware", "computer equipment"]),
+        ("通信機器", ["communications equipment", "communication equipment"]),
+        ("通信キャリア", ["telecom", "wireless telecommunication", "telephone", "integrated telecommunication"]),
+        ("テクノロジー", ["technology", "information technology", "tech"]),
+        # ===== Health =====
+        ("バイオテック", ["biotech", "biotechnology"]),
+        ("製薬", ["pharma", "drug manufacturer", "pharmaceutical"]),
+        ("医療機器", ["medical device", "medical instruments", "diagnostics", "health care equipment", "medical distribution", "medical supplies"]),
+        ("医療サービス", ["health care providers", "hospital", "health services", "managed health", "health care facilities"]),
+        ("ヘルスケア", ["health care", "healthcare", "health"]),
+        # ===== Financials =====
+        ("銀行", ["bank", "banks", "diversified bank", "regional bank", "thrifts", "savings"]),
+        ("保険", ["insurance", "insurer", "life insurance", "property & casualty", "property and casualty", "reinsurance"]),
+        ("証券・資産運用", ["capital market", "asset management", "investment banking", "broker", "financial exchanges", "investment"]),
+        ("決済・フィンテック", ["fintech", "financial technology", "transaction & payment", "payment", "credit services"]),
+        ("金融その他", ["financial", "mortgage", "consumer finance", "financials"]),
+        # ===== Energy / Utility / RE =====
+        ("石油・ガス", ["oil", "gas", "petroleum", "exploration", "upstream", "midstream", "downstream", "oil & gas"]),
+        ("エネルギーその他", ["energy", "coal", "renewable", "solar", "wind"]),
+        ("電力・ユーティリティ", ["utilit", "electric", "water utilities", "gas utility", "independent power", "multi-utilities"]),
+        ("REIT・不動産", ["reit", "real estate"]),
+        # ===== Industrials =====
+        ("機械", ["machinery", "industrial machinery", "farm & construction"]),
+        ("建設・土木", ["construction", "engineering", "building product", "building materials"]),
+        ("防衛・航空宇宙", ["aerospace", "defense", "defence"]),
+        ("運輸・物流", ["airline", "air freight", "railroad", "shipping", "logistics", "truck", "transport", "marine"]),
+        ("資本財・産業", ["industrial conglomerate", "industrials", "industrial", "trading companies", "distributors industrial"]),
+        # ===== Materials =====
+        ("化学", ["chemical", "specialty chemical"]),
+        ("金属・鉱業", ["metal", "mining", "steel", "aluminum", "copper", "gold", "silver", "precious"]),
+        ("素材その他", ["paper", "materials", "containers", "packaging", "forest"]),
+        # ===== Consumer =====
+        ("自動車", ["auto manufacturer", "automobile", "auto parts", "car dealer", "vehicle"]),
+        ("小売", ["specialty retail", "retail", "department", "home improvement", "apparel retail"]),
+        ("EC・通販", ["internet retail", "e-commerce"]),
+        ("外食", ["restaurant", "restaurants"]),
+        ("旅行・レジャー", ["leisure", "hotel", "resorts", "travel", "casinos", "gaming", "entertainment"]),
+        ("食品・飲料", ["beverage", "soft drink", "packaged foods", "food products", "food distribution", "brewer"]),
+        ("生活用品", ["household", "personal product", "personal care", "household products"]),
+        ("アパレル", ["apparel", "footwear", "textiles", "luxury goods"]),
+        ("消費財", ["consumer staples", "consumer defensive", "tobacco", "consumer goods"]),
+        ("消費関連", ["consumer discretionary", "consumer cyclical"]),
+        # ===== Media / Other =====
+        ("メディア・広告", ["media", "publishing", "broadcasting", "advertising", "movies", "entertainment"]),
+        ("通信サービス", ["communication services"]),
+        ("教育", ["education", "education & training"]),
+        ("ビジネスサービス", ["business services", "commercial services", "staffing"]),
+    ]
+
+    for theme, keys in rules:
+        if any(k in ind for k in keys):
+            return theme
+
+    return "未分類"
+
+
+    # 具体キーワード → 広義セクター の順
+    rules = [
+        # Tech 詳細
+        ("サイバーセキュリティ", ["cyber", "security software", "network security", "security &"]),
+        ("AI/半導体", ["semiconductor", "semiconductors", "chip", "electronic equipment", "electronics manufacturing"]),
+        ("クラウド / データ", ["software—infrastructure", "software - infrastructure", "data processing", "cloud", "infrastructure software"]),
+        ("ソフトウェア", ["software", "application software", "information technology services", "it services"]),
+        ("インターネット", ["internet content", "internet retail", "interactive media", "online media", "e-commerce"]),
+        ("メガテック", ["consumer electronics", "technology hardware", "computer hardware"]),
+        ("通信", ["telecom", "wireless telecommunication", "telephone", "communications equipment"]),
+        # Health
+        ("バイオテック", ["biotech", "biotechnology"]),
+        ("製薬", ["pharma", "drug manufacturer", "pharmaceutical"]),
+        ("医療機器", ["medical device", "medical instruments", "diagnostics", "health care equipment", "medical distribution"]),
+        ("ヘルスケア", ["health care", "healthcare", "hospital", "health services", "managed health", "health care providers"]),
+        # Financials
+        ("銀行", ["bank", "banks", "diversified bank", "regional bank", "thrifts"]),
+        ("保険", ["insurance", "insurer", "life insurance", "property & casualty", "property and casualty"]),
+        ("証券・資産運用", ["capital market", "asset management", "investment banking", "broker", "financial exchanges"]),
+        ("フィンテック", ["fintech", "financial technology", "transaction & payment", "payment"]),
+        ("金融その他", ["financial", "credit services", "mortgage", "consumer finance", "financials"]),
+        # Cyclical
+        ("エネルギー", ["oil", "gas", "energy", "petroleum", "exploration", "coal"]),
+        ("電力・ユーティリティ", ["utilit", "electric", "water utilities", "gas utility", "independent power"]),
+        ("不動産", ["reit", "real estate"]),
+        ("資本財・機械", ["machinery", "industrial conglomerate", "construction", "building product", "industrials", "industrial"]),
+        ("素材・化学", ["chemical", "metal", "mining", "steel", "paper", "materials", "aluminum", "copper", "gold"]),
+        ("自動車", ["auto", "automobile", "vehicle", "car dealer", "auto parts"]),
+        ("航空・運輸", ["airline", "air freight", "railroad", "shipping", "logistics", "truck", "transport"]),
+        ("防衛・航空宇宙", ["aerospace", "defense", "defence"]),
+        # Consumer
+        ("小売", ["retail", "specialty retail", "department", "distributors"]),
+        ("外食・レジャー", ["restaurant", "leisure", "hotel", "gaming", "entertainment", "resorts", "casinos"]),
+        ("消費財", ["beverage", "food", "household", "personal product", "tobacco", "apparel", "footwear", "packaged foods", "soft drink", "consumer staples", "consumer defensive"]),
+        ("メディア", ["media", "publishing", "broadcasting", "advertising", "movies", "communication services"]),
+        # 広義セクター名（マスタがセクターのみのとき）
+        ("テクノロジー", ["technology", "information technology", "tech"]),
+        ("消費関連", ["consumer discretionary", "consumer cyclical"]),
+        ("ヘルスケア", ["health"]),
+    ]
+
+    for theme, keys in rules:
+        if any(k in ind for k in keys):
+            return theme
+
+    return "その他"
+
 
     # 具体度の高い順（約30テーマ）
     rules = [
@@ -538,7 +650,9 @@ def main() -> None:
             tt, _tt_pass = calc_tt(close, high, low, bench)
 
             info = industry_map.get(t, {})
-            industry = info.get("industry", "—") or "—"
+            industry = (info.get("industry") or "").strip()
+            if not industry or industry in {"—", "-", "N/A", "n/a"}:
+                industry = "—"
             name = info.get("name", t) or t
             theme = auto_theme_from_industry(industry, t, themes)
             meta_rows.append(
