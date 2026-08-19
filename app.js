@@ -84,7 +84,7 @@ function sortedStocks(stocks) {
     if (sortBy === "rs") return (b.rs || 0) - (a.rs || 0);
     if (sortBy === "hqm") return (b.hqm || 0) - (a.hqm || 0);
     if (sortBy === "tt") return (TT_RANK[b.tt] || 0) - (TT_RANK[a.tt] || 0);
-    if (sortBy === "theme") return String(a.theme).localeCompare(String(b.theme), "ja");
+    if (sortBy === "industry") return String(a.industry || "").localeCompare(String(b.industry || ""), "ja");
     return 0;
   });
   return list;
@@ -94,7 +94,7 @@ function renderTable(stocks) {
   const body = document.getElementById("stockBody");
   const list = sortedStocks(stocks);
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="7" class="empty">該当銘柄なし（フィルターを緩めてください）</td></tr>`;
+    body.innerHTML = `<tr><td colspan="6" class="empty">該当銘柄なし（フィルターを緩めてください）</td></tr>`;
     return;
   }
   body.innerHTML = list
@@ -109,7 +109,6 @@ function renderTable(stocks) {
         <td class="rs ${rsClass(s.rs)}">${s.rs}</td>
         <td><span class="badge ${stageBadge(s.stage)}">${s.stage}</span></td>
         <td>${s.industry || "—"}</td>
-        <td>${s.theme || "—"}</td>
         <td><span class="badge ${ttBadge(s.tt)}">${s.tt}</span></td>
         <td class="hqm-cell"><span class="badge ${h.cls}">${h.text}</span></td>
       </tr>`;
