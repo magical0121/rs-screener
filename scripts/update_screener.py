@@ -929,12 +929,15 @@ def calc_setup_flags(
         above = bool(last_sma is not None and last_c > last_sma)
         qqq_rs = calc_qqq_rs_ratio(close, qqq_close, 60)
         foundation = bool(above and slope_pct > 0.3 and qqq_rs >= 1.0)
+        # 30週SMAからの乖離%（終値/30週 - 1）*100
+        pct_30w = ((last_c / last_sma) - 1.0) * 100.0 if last_sma else None
 
         out["breakout_pct"] = round(brk * 100.0, 1) if brk is not None else None
         out["above_30w"] = above
         out["sma30_slope"] = round(slope_pct, 3)
         out["qqq_rs"] = round(qqq_rs, 4)
         out["foundation"] = foundation
+        out["pct_from_30w"] = round(pct_30w, 2) if pct_30w is not None else None
 
         # 日足EMA
         ema9 = close.ewm(span=9, adjust=False).mean()
@@ -1252,6 +1255,7 @@ def main() -> None:
                     "sma30_slope": setup.get("sma30_slope"),
                     "foundation": setup.get("foundation", False),
                     "setup_age_days": setup.get("setup_age_days"),
+                    "pct_from_30w": setup.get("pct_from_30w"),
                 }
             )
         # レート制限対策
@@ -1289,6 +1293,7 @@ def main() -> None:
                 "sma30_slope": m.get("sma30_slope"),
                 "foundation": bool(m.get("foundation")),
                 "setup_age_days": m.get("setup_age_days"),
+                "pct_from_30w": m.get("pct_from_30w"),
             }
         )
 
