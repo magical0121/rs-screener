@@ -277,6 +277,11 @@
 "name": "Algonquin Power & Utilities Corp",
 "sector": "Utilities"
 },
+"ARBB": {
+"industry": "Information Technology Services",
+"name": "ARB IOT Group Ltd",
+"sector": "Technology"
+},
 "ARCO": {
 "industry": "Restaurants",
 "name": "Arcos Dorados Holdings Inc",
@@ -792,6 +797,11 @@
 "name": "Cameco Corp",
 "sector": "Energy"
 },
+"CCM": {
+"industry": "Medical Care Facilities",
+"name": "Concord Medical Services ADR",
+"sector": "Healthcare"
+},
 "CCU": {
 "industry": "Beverages - Brewers",
 "name": "Compania Cervecerias Unidas SA ADR",
@@ -1107,6 +1117,11 @@
 "DGP": {
 "industry": "Exchange Traded Fund",
 "name": "DB Gold Double Long ETN",
+"sector": "Financial"
+},
+"DGZ": {
+"industry": "Exchange Traded Fund",
+"name": "DB Gold Short ETN",
 "sector": "Financial"
 },
 "DHT": {
@@ -1860,6 +1875,11 @@
 "name": "Hut 8 Corp",
 "sector": "Financial"
 },
+"IA": {
+"industry": "Aerospace & Defense",
+"name": "Innovative Solutions And Support Inc",
+"sector": "Industrials"
+},
 "IAF": {
 "industry": "Closed-End Fund - Equity",
 "name": "abrdn Australia Equity Fund Inc",
@@ -1939,6 +1959,11 @@
 "industry": "Semiconductors",
 "name": "Chipmos Technologies Inc ADR",
 "sector": "Technology"
+},
+"IMPP": {
+"industry": "Oil & Gas Midstream",
+"name": "Imperial Petroleum Inc",
+"sector": "Energy"
 },
 "IMTX": {
 "industry": "Biotechnology",
@@ -2996,6 +3021,11 @@
 "name": "Pyxis Tankers Inc",
 "sector": "Energy"
 },
+"PYPD": {
+"industry": "Biotechnology",
+"name": "Polypid Ltd",
+"sector": "Healthcare"
+},
 "Q": {
 "industry": "Semiconductor Equipment & Materials",
 "name": "Qnity Electronics Inc",
@@ -3010,6 +3040,11 @@
 "industry": "Diagnostics & Research",
 "name": "Qiagen NV",
 "sector": "Healthcare"
+},
+"QNBC": {
+"industry": "Banks - Regional",
+"name": "QNB Corp",
+"sector": "Financial"
 },
 "QSR": {
 "industry": "Restaurants",
@@ -3379,6 +3414,11 @@
 "name": "South Bow Corp",
 "sector": "Energy"
 },
+"SOC": {
+"industry": "Oil & Gas Drilling",
+"name": "Sable Offshore Corp",
+"sector": "Energy"
+},
 "SOGP": {
 "industry": "Internet Content & Information",
 "name": "Sound Group Inc ADR",
@@ -3683,6 +3723,11 @@
 "name": "Millicom International Cellular SA",
 "sector": "Communication Services"
 },
+"TIGR": {
+"industry": "Capital Markets",
+"name": "UP Fintech Holding Ltd ADR",
+"sector": "Financial"
+},
 "TIMB": {
 "industry": "Telecom Services",
 "name": "TIM SA ADR",
@@ -3741,6 +3786,10 @@
 "industry": "Metal Fabrication",
 "name": "Techprecision Corp",
 "sector": "Industrials"
+},
+"TREO": {
+"industry": "Other Industrial Metals & Mining",
+"sector": "Basic Materials"
 },
 "TRI": {
 "industry": "Specialty Business Services",
@@ -4058,6 +4107,11 @@
 "industry": "Biotechnology",
 "name": "Wave Life Sciences Inc",
 "sector": "Healthcare"
+},
+"WYHG": {
+"industry": "Packaged Foods",
+"name": "Wing Yip Food Holdings Group Ltd ADR",
+"sector": "Consumer Defensive"
 },
 "XENE": {
 "industry": "Biotechnology",
