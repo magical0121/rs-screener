@@ -870,10 +870,16 @@ def calc_setup_flags(
     if len(close) < 200:
         return out
 
-    close = close.dropna().sort_index()
-    high = high.reindex(close.index).ffill()
-    low = low.reindex(close.index).ffill()
-    qqq_close = qqq_close.reindex(close.index).ffill()
+    def _naive(s: pd.Series) -> pd.Series:
+        s = s.copy()
+        if getattr(s.index, "tz", None) is not None:
+            s.index = s.index.tz_convert("UTC").tz_localize(None)
+        return s
+
+    close = _naive(close.dropna().sort_index())
+    high = _naive(high.reindex(close.index).ffill())
+    low = _naive(low.reindex(close.index).ffill())
+    qqq_close = _naive(qqq_close.reindex(close.index).ffill())
 
     # ----- 週足（インジ相当） -----
     wdf = pd.DataFrame({"c": close, "h": high, "q": qqq_close})
@@ -1172,10 +1178,12 @@ def main() -> None:
     bench_hist = download_history_batch([BENCHMARK, BENCHMARK_QQQ], period="2y")
     if BENCHMARK not in bench_hist:
         raise SystemExit("ベンチマーク SPY の取得に失敗しました")
-    if BENCHMARK_QQQ not in bench_hist:
-        raise SystemExit("ベンチマーク QQQ の取得に失敗しました")
     bench = bench_hist[BENCHMARK]["Close"]
-    qqq = bench_hist[BENCHMARK_QQQ]["Close"]
+    if BENCHMARK_QQQ in bench_hist:
+        qqq = bench_hist[BENCHMARK_QQQ]["Close"]
+    else:
+        print("WARN: QQQ download failed, fallback to SPY for relative metrics")
+        qqq = bench
 
     returns_map: dict[str, dict[str, float]] = {}
     returns_3m: dict[str, float] = {}
@@ -1205,7 +1213,11 @@ def main() -> None:
 
             stage = calc_stage(close, bench)
             tt, _tt_pass = calc_tt(close, high, low, bench)
-            setup = calc_setup_flags(close, high, low, qqq)
+            try:
+                setup = calc_setup_flags(close, high, low, qqq)
+            except Exception as e:
+                print(f"setup fail {t}: {e}")
+                setup = {"setup": "", "breakout_pct": None, "foundation": False}
 
             info = industry_map.get(t, {})
             industry = (info.get("industry") or "").strip()
