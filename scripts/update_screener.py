@@ -909,13 +909,12 @@ def calc_setup_flags(
     # --- 日足EMAでロックOFF風の状態機械（簡易）---
     ema9 = close.ewm(span=9, adjust=False).mean()
     ema21 = close.ewm(span=21, adjust=False).mean()
-    # 週次イベントに日足を対応させるため、直近2年を週ループ
     had_primary = False
     signal_on = False
     entry_count = 0
     last_label = ""
+    signal_on_date = None  # 本/再が点灯した日（日足）
 
-    # 週ごとの最終日で評価
     for i in range(30, len(w)):
         wc = float(w_close.iloc[i])
         sm = float(sma30.iloc[i]) if not pd.isna(sma30.iloc[i]) else None
@@ -928,22 +927,17 @@ def calc_setup_flags(
         else:
             rh = float(w_high.iloc[:i].max()) if i > 0 else float(w_high.iloc[i])
         br = (wc / rh) if rh else 0.0
-        # その週の対QQQは全体値で近似（重いので最終以外は slope/above/brk 中心）
         found = wc > sm and sl > 0.3 and br >= 1.0
-        # 30週割れでリセット
         if wc < sm:
             had_primary = False
             signal_on = False
             entry_count = 0
             last_label = ""
+            signal_on_date = None
             continue
 
-        # 週の期間の日足で EMA 下クロス検出
         week_end = w_close.index[i]
-        if i > 0:
-            week_start = w_close.index[i - 1]
-        else:
-            week_start = close.index[0]
+        week_start = w_close.index[i - 1] if i > 0 else close.index[0]
         mask = (close.index > week_start) & (close.index <= week_end)
         c_seg = close.loc[mask]
         e9 = ema9.loc[mask]
@@ -957,29 +951,49 @@ def calc_setup_flags(
 
         if signal_on and ema_death:
             signal_on = False
-            # 一旦終了（カウントは維持 → 再の資格が残る）
+            signal_on_date = None
             if had_primary:
-                last_label = ""  # 終了中
+                last_label = ""
 
         if found and not signal_on:
             signal_on = True
             entry_count += 1
+            # 点灯日＝その週に含まれる最後の営業日
+            if len(c_seg) > 0:
+                signal_on_date = c_seg.index[-1]
+            else:
+                signal_on_date = week_end
             if entry_count == 1:
                 had_primary = True
                 last_label = "本"
             else:
                 last_label = "再"
 
-    # 最終バーのラベル優先、なければ currently 目前/本状態
-    if last_label in ("本", "再") and signal_on:
+    def _within_n_trading_days(event_ts, n: int = 3) -> bool:
+        """event_ts から最終バーまでが n 営業日以内か"""
+        if event_ts is None:
+            return False
+        idx = close.index
+        # timezone 差を吸収
+        try:
+            pos = idx.get_indexer([event_ts], method="nearest")[0]
+        except Exception:
+            return False
+        if pos < 0:
+            return False
+        # 最終バーとの営業日差（index上の本数）
+        return (len(idx) - 1 - pos) <= n
+
+    # 本・再は「点灯から3営業日以内」のみ採用。目前は期限なし
+    if last_label in ("本", "再") and signal_on and _within_n_trading_days(signal_on_date, 3):
         out["setup"] = last_label
-    elif foundation and 0.90 <= brk < 0.95:
+        out["setup_age_days"] = int(max(0, len(close.index) - 1 - close.index.get_indexer([signal_on_date], method="nearest")[0])) if signal_on_date is not None else None
+    elif foundation and 0.90 <= brk < 1.00:
         out["setup"] = "目前"
-    elif foundation and brk >= 1.0:
-        # 状態機械が取れなくても土台+ブレイクなら本候補
-        out["setup"] = last_label if last_label else "本"
-    elif foundation and 0.95 <= brk < 1.0:
-        out["setup"] = "目前"  # 直前帯は目前扱い（厚め）
+    # 古い本/再や期限切れは目前条件を満たせば目前、否则空
+    elif foundation and brk >= 1.0 and not signal_on:
+        # ブレイク済みだがシグナル終了中 → 目前にはしない（待機でもない）
+        out["setup"] = ""
     return out
 
 
@@ -1189,6 +1203,7 @@ def main() -> None:
                     "qqq_rs": setup.get("qqq_rs"),
                     "sma30_slope": setup.get("sma30_slope"),
                     "foundation": setup.get("foundation", False),
+                    "setup_age_days": setup.get("setup_age_days"),
                 }
             )
         # レート制限対策
@@ -1225,6 +1240,7 @@ def main() -> None:
                 "qqq_rs": m.get("qqq_rs"),
                 "sma30_slope": m.get("sma30_slope"),
                 "foundation": bool(m.get("foundation")),
+                "setup_age_days": m.get("setup_age_days"),
             }
         )
 
