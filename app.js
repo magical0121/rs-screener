@@ -364,12 +364,9 @@ function renderIndustryStrength(list) {
     .join("");
 }
 
-/** 本命: Stage2 + RS≥70 + TT強い + HQM≥80
- *  30週線上は Stage2 / TT強い の定義に含まれる（150日SMA上）
- */
-function isHonmei(s) {
+/** 旧本命＝品質フィルタ */
+function isQuality(s) {
   if (!s) return false;
-  const stage2 = String(s.stage || "").includes("2");
   const rs = Number(s.rs);
   const hqm = Number(s.hqm);
   const tt = String(s.tt || "").trim();
@@ -378,17 +375,42 @@ function isHonmei(s) {
   const hqmOk = !Number.isNaN(hqm) && hqm >= 80;
   const ind = industryScoreOf(s);
   const indOk = !!(ind && Number(ind.score) >= 55);
-  return stage2 && rsOk && ttOk && hqmOk && indOk;
+  return rsOk && ttOk && hqmOk && indOk;
+}
+
+function setupBadge(setup) {
+  if (setup === "本") return "green";
+  if (setup === "再") return "yellow";
+  if (setup === "目前") return "yellow";
+  return "gray";
 }
 
 function sortedStocks(stocks) {
-  const honmeiEl = document.getElementById("honmeiOnly");
-  const honmeiOnly = honmeiEl ? honmeiEl.checked : true;
+  const moku = document.getElementById("fltMokuzen");
+  const hon = document.getElementById("fltHon");
+  const sai = document.getElementById("fltSai");
+  const qual = document.getElementById("qualityOnly");
+  const wantM = moku ? moku.checked : true;
+  const wantH = hon ? hon.checked : true;
+  const wantS = sai ? sai.checked : true;
+  const qualityOnly = qual ? qual.checked : true;
   const sortByEl = document.getElementById("sortBy");
   const sortBy = sortByEl ? sortByEl.value : "rs";
   let list = [...(stocks || [])];
-  if (honmeiOnly) {
-    list = list.filter(isHonmei);
+  // setup未計算の旧JSONでは区分フィルタをスキップ
+  const hasSetup = list.some((s) => s.setup);
+  if (hasSetup) {
+    list = list.filter((s) => {
+      const su = s.setup || "";
+      if (!wantM && !wantH && !wantS) return true;
+      if (wantM && su === "目前") return true;
+      if (wantH && su === "本") return true;
+      if (wantS && su === "再") return true;
+      return false;
+    });
+  }
+  if (qualityOnly) {
+    list = list.filter(isQuality);
   }
   list.sort((a, b) => {
     if (sortBy === "rs") return (b.rs || 0) - (a.rs || 0);
@@ -413,12 +435,12 @@ function renderTable(stocks) {
   const list = sortedStocks(stocks);
   const MAX_ROWS = 400;
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="7" class="empty">表示できる銘柄がありません。「本命のみ」のON/OFFやデータ更新を確認してください。</td></tr>`;
+    body.innerHTML = `<tr><td colspan="9" class="empty">表示できる銘柄がありません。区分フィルターや品質フィルタを確認してください。</td></tr>`;
     return;
   }
   const shown = list.slice(0, MAX_ROWS);
   const extra = list.length > MAX_ROWS
-    ? `<tr><td colspan="7" class="empty">…他 ${list.length - MAX_ROWS} 件（上位${MAX_ROWS}件のみ表示）</td></tr>`
+    ? `<tr><td colspan="9" class="empty">…他 ${list.length - MAX_ROWS} 件（上位${MAX_ROWS}件のみ表示）</td></tr>`
     : "";
   body.innerHTML = shown
     .map((s) => {
@@ -429,14 +451,18 @@ function renderTable(stocks) {
         const cls = ind.score >= 80 ? "high" : ind.score >= 55 ? "mid" : "low";
         indHtml = `<span class="rs ${cls}">${ind.score}</span>`;
       }
+      const su = s.setup || "—";
+      const bp = s.breakout_pct != null ? s.breakout_pct + "%" : "—";
       return `
       <tr>
         <td>
           <span class="ticker">${s.ticker}</span>
           <span class="ticker-name">${s.name || ""}</span>
         </td>
+        <td><span class="badge ${setupBadge(su)}">${su}</span></td>
         <td class="rs ${rsClass(s.rs)}">${s.rs}</td>
         <td><span class="badge ${stageBadge(s.stage)}">${s.stage}</span></td>
+        <td>${bp}</td>
         <td>${industryJa(s.industry || s.sector)}</td>
         <td class="ind-score">${indHtml}</td>
         <td><span class="badge ${ttBadge(s.tt)}">${s.tt}</span></td>
@@ -451,22 +477,20 @@ function render() {
   const stocks = DATA.stocks || [];
   // 先に業種スコアを構築（本命判定で使用）
   const industryList = computeIndustryScores(stocks, 3);
-  const honmeiCount = stocks.filter(isHonmei).length;
+  const nM = stocks.filter((s) => s.setup === "目前").length;
+  const nH = stocks.filter((s) => s.setup === "本").length;
+  const nS = stocks.filter((s) => s.setup === "再").length;
   document.getElementById("lastUpdated").textContent =
     "更新: " + (DATA.updated_at || "—") +
-    " ／ 全" + stocks.length + "件 ／ 本命" + honmeiCount + "件";
+    " ／ 全" + stocks.length + "件 ／ 目前" + nM + " 本" + nH + " 再" + nS;
 
   renderIndustryStrength(industryList.slice(0, 40));
   renderTable(stocks);
 
   const emptyHint = document.getElementById("table-empty-hint");
   if (emptyHint) {
-    const _h = document.getElementById("honmeiOnly"); const honmeiOnly = _h ? _h.checked : true;
     if (stocks.length === 0) {
       emptyHint.textContent = "銘柄データがありません。data/screener.json と Actions を確認してください。";
-      emptyHint.hidden = false;
-    } else if (honmeiOnly && honmeiCount === 0) {
-      emptyHint.textContent = "本命条件に該当する銘柄は0件です。「本命のみ」を外すと全件を表示できます。";
       emptyHint.hidden = false;
     } else {
       emptyHint.hidden = true;
@@ -474,8 +498,10 @@ function render() {
   }
 }
 
-document.getElementById("honmeiOnly").addEventListener("change", render);
-document.getElementById("sortBy").addEventListener("change", render);
+["fltMokuzen", "fltHon", "fltSai", "qualityOnly", "sortBy"].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("change", render);
+});
 document.getElementById("refreshBtn").addEventListener("click", loadData);
 
 async function copyTvList() {

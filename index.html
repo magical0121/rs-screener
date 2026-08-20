@@ -51,14 +51,14 @@
           <div>
             <h2>銘柄ユニバース: 全米株</h2>
             <p class="filter-line">
-              本命: <strong>Stage2</strong> ＋ 30週線上 ＋ <strong>RS≥70</strong> ＋ <strong>TT強い</strong> ＋ <strong>HQM≥80</strong> ＋ <strong>業種スコア≥55</strong>
+              土台: 週足&gt;30週 ＋ 傾き&gt;0.3% ＋ 対QQQ≥1.0 ／ 目前90–95% ・ 本100%初回 ・ 再=ロックOFF
             </p>
           </div>
           <div class="controls">
-            <label class="check">
-              <input type="checkbox" id="honmeiOnly" checked />
-              本命のみ
-            </label>
+            <label class="check"><input type="checkbox" id="fltMokuzen" checked />目前</label>
+            <label class="check"><input type="checkbox" id="fltHon" checked />本</label>
+            <label class="check"><input type="checkbox" id="fltSai" checked />再</label>
+            <label class="check"><input type="checkbox" id="qualityOnly" checked />品質フィルタ</label>
             <select id="sortBy">
               <option value="rs">RS順</option>
               <option value="hqm">HQM順</option>
@@ -75,8 +75,10 @@
             <thead>
               <tr>
                 <th>ティッカー</th>
+                <th>区分</th>
                 <th>RS</th>
                 <th>ステージ</th>
+                <th>ブレイク%</th>
                 <th>業種</th>
                 <th>業種スコア</th>
                 <th>TT</th>
