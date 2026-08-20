@@ -40,6 +40,7 @@ OUT_PATH = DATA_DIR / "screener.json"
 INDUSTRY_CACHE_PATH = DATA_DIR / "industry_cache.json"
 
 BENCHMARK = "SPY"
+BENCHMARK_QQQ = "QQQ"
 
 # スクリーナー品質フィルター
 MIN_PRICE = 5.0
@@ -814,6 +815,175 @@ def rs_slope_vs_bench(close: pd.Series, bench: pd.Series, window: int = 63) -> f
     return float(coef * 100)
 
 
+
+def _weekly_ohlc(close: pd.Series, high: pd.Series, low: pd.Series | None = None) -> pd.DataFrame:
+    """日足から週足(W-FRI)を作る"""
+    df = pd.DataFrame({"Close": close, "High": high})
+    if low is not None:
+        df["Low"] = low
+    w = df.resample("W-FRI").agg({"Close": "last", "High": "max", **({"Low": "min"} if low is not None else {})}).dropna()
+    return w
+
+
+def calc_qqq_rs_ratio(close: pd.Series, qqq: pd.Series, window: int = 60) -> float:
+    """直近window日の (株/QQQ) 終値比 ÷ window日前比。>=1 でQQQに勝ち越し"""
+    aligned = pd.concat([close, qqq], axis=1, join="inner").dropna()
+    if len(aligned) < window + 5:
+        return 1.0
+    rel = aligned.iloc[:, 0] / aligned.iloc[:, 1]
+    a = float(rel.iloc[-1])
+    b = float(rel.iloc[-window])
+    if b == 0:
+        return 1.0
+    return a / b
+
+
+def calc_setup_flags(
+    close: pd.Series,
+    high: pd.Series,
+    low: pd.Series,
+    qqq_close: pd.Series,
+) -> dict:
+    """
+    目前 / 本 / 再 判定（インジ ロックOFF 準拠の簡略版）
+
+    土台:
+      週足終値 > 30週SMA
+      30週SMA傾き > 0.3%
+      対QQQ相対 >= 1.0
+
+    目前: 土台 + 0.90 <= 終値/13週高値 < 0.95
+    本:   土台 + 終値/13週高値 >= 1.0 かつ このサイクル初回
+    再:   本のあと、EMA9/21下で一旦終了後、土台再達成（30週上）
+    """
+    out = {
+        "setup": "",
+        "breakout_pct": None,
+        "above_30w": False,
+        "sma30_slope": None,
+        "qqq_rs": None,
+        "foundation": False,
+    }
+    if len(close) < 200:
+        return out
+
+    # --- 週足 ---
+    try:
+        w = _weekly_ohlc(close, high, low)
+    except Exception:
+        return out
+    if len(w) < 40:
+        return out
+
+    w_close = w["Close"]
+    w_high = w["High"]
+    sma30 = w_close.rolling(30, min_periods=30).mean()
+    if pd.isna(sma30.iloc[-1]) or pd.isna(sma30.iloc[-2]):
+        return out
+
+    last_c = float(w_close.iloc[-1])
+    last_sma = float(sma30.iloc[-1])
+    prev_sma = float(sma30.iloc[-2])
+    slope_pct = ((last_sma - prev_sma) / prev_sma) * 100 if prev_sma else 0.0
+    above = last_c > last_sma
+    # 13週高値（直近を除く過去13週の高値＝インジの range に近い）
+    if len(w_high) >= 14:
+        range_high = float(w_high.iloc[-14:-1].max())
+    else:
+        range_high = float(w_high.iloc[:-1].max()) if len(w_high) > 1 else float(w_high.iloc[-1])
+    brk = (last_c / range_high) if range_high else 0.0
+
+    qqq_rs = calc_qqq_rs_ratio(close, qqq_close, 60)
+    foundation = bool(above and slope_pct > 0.3 and qqq_rs >= 1.0)
+
+    out.update(
+        {
+            "breakout_pct": round(brk * 100, 1),
+            "above_30w": above,
+            "sma30_slope": round(slope_pct, 3),
+            "qqq_rs": round(qqq_rs, 4),
+            "foundation": foundation,
+        }
+    )
+
+    # --- 日足EMAでロックOFF風の状態機械（簡易）---
+    ema9 = close.ewm(span=9, adjust=False).mean()
+    ema21 = close.ewm(span=21, adjust=False).mean()
+    # 週次イベントに日足を対応させるため、直近2年を週ループ
+    had_primary = False
+    signal_on = False
+    entry_count = 0
+    last_label = ""
+
+    # 週ごとの最終日で評価
+    for i in range(30, len(w)):
+        wc = float(w_close.iloc[i])
+        sm = float(sma30.iloc[i]) if not pd.isna(sma30.iloc[i]) else None
+        if sm is None:
+            continue
+        sm_prev = float(sma30.iloc[i - 1]) if i > 0 and not pd.isna(sma30.iloc[i - 1]) else sm
+        sl = ((sm - sm_prev) / sm_prev) * 100 if sm_prev else 0.0
+        if i >= 13:
+            rh = float(w_high.iloc[i - 13 : i].max())
+        else:
+            rh = float(w_high.iloc[:i].max()) if i > 0 else float(w_high.iloc[i])
+        br = (wc / rh) if rh else 0.0
+        # その週の対QQQは全体値で近似（重いので最終以外は slope/above/brk 中心）
+        found = wc > sm and sl > 0.3 and br >= 1.0
+        # 30週割れでリセット
+        if wc < sm:
+            had_primary = False
+            signal_on = False
+            entry_count = 0
+            last_label = ""
+            continue
+
+        # 週の期間の日足で EMA 下クロス検出
+        week_end = w_close.index[i]
+        if i > 0:
+            week_start = w_close.index[i - 1]
+        else:
+            week_start = close.index[0]
+        mask = (close.index > week_start) & (close.index <= week_end)
+        c_seg = close.loc[mask]
+        e9 = ema9.loc[mask]
+        e21 = ema21.loc[mask]
+        ema_death = False
+        if len(c_seg) >= 2:
+            for j in range(1, len(c_seg)):
+                if e9.iloc[j - 1] >= e21.iloc[j - 1] and e9.iloc[j] < e21.iloc[j]:
+                    ema_death = True
+                    break
+
+        if signal_on and ema_death:
+            signal_on = False
+            # 一旦終了（カウントは維持 → 再の資格が残る）
+            if had_primary:
+                last_label = ""  # 終了中
+
+        if found and not signal_on:
+            signal_on = True
+            entry_count += 1
+            if entry_count == 1:
+                had_primary = True
+                last_label = "本"
+            else:
+                last_label = "再"
+
+    # 最終バーのラベル優先、なければ currently 目前/本状態
+    if last_label in ("本", "再") and signal_on:
+        out["setup"] = last_label
+    elif foundation and 0.90 <= brk < 0.95:
+        out["setup"] = "目前"
+    elif foundation and brk >= 1.0:
+        # 状態機械が取れなくても土台+ブレイクなら本候補
+        out["setup"] = last_label if last_label else "本"
+    elif foundation and 0.95 <= brk < 1.0:
+        out["setup"] = "目前"  # 直前帯は目前扱い（厚め）
+    return out
+
+
+
 def calc_tt(close: pd.Series, high: pd.Series, low: pd.Series, bench: pd.Series) -> tuple[str, int]:
     if len(close) < MIN_HISTORY_DAYS:
         return "弱い", 0
@@ -957,11 +1127,14 @@ def main() -> None:
         raise SystemExit("ティッカーリストの取得に失敗しました")
 
     # ベンチマーク + 全銘柄
-    print("Downloading SPY...")
-    bench_hist = download_history_batch([BENCHMARK], period="2y")
+    print("Downloading SPY + QQQ...")
+    bench_hist = download_history_batch([BENCHMARK, BENCHMARK_QQQ], period="2y")
     if BENCHMARK not in bench_hist:
         raise SystemExit("ベンチマーク SPY の取得に失敗しました")
+    if BENCHMARK_QQQ not in bench_hist:
+        raise SystemExit("ベンチマーク QQQ の取得に失敗しました")
     bench = bench_hist[BENCHMARK]["Close"]
+    qqq = bench_hist[BENCHMARK_QQQ]["Close"]
 
     returns_map: dict[str, dict[str, float]] = {}
     returns_3m: dict[str, float] = {}
@@ -991,6 +1164,7 @@ def main() -> None:
 
             stage = calc_stage(close, bench)
             tt, _tt_pass = calc_tt(close, high, low, bench)
+            setup = calc_setup_flags(close, high, low, qqq)
 
             info = industry_map.get(t, {})
             industry = (info.get("industry") or "").strip()
@@ -1010,6 +1184,11 @@ def main() -> None:
                     "industry": industry,
                     "sector": sector or "—",
                     "theme": theme,
+                    "setup": setup.get("setup") or "",
+                    "breakout_pct": setup.get("breakout_pct"),
+                    "qqq_rs": setup.get("qqq_rs"),
+                    "sma30_slope": setup.get("sma30_slope"),
+                    "foundation": setup.get("foundation", False),
                 }
             )
         # レート制限対策
@@ -1041,6 +1220,11 @@ def main() -> None:
                 "theme": m["theme"],
                 "tt": m["tt"],
                 "hqm": hqm_map.get(t, 0.0),
+                "setup": m.get("setup") or "",
+                "breakout_pct": m.get("breakout_pct"),
+                "qqq_rs": m.get("qqq_rs"),
+                "sma30_slope": m.get("sma30_slope"),
+                "foundation": bool(m.get("foundation")),
             }
         )
 
