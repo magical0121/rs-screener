@@ -864,6 +864,7 @@ def calc_qqq_rs_ratio(close: pd.Series, qqq: pd.Series, window: int = 60) -> flo
 
 
 
+
 def calc_setup_flags(
     close: pd.Series,
     high: pd.Series,
@@ -873,15 +874,14 @@ def calc_setup_flags(
     """
     目前 / 本 / 再
 
-    本・再: インジ「統合 Stage Analysis」ロックOFF・個別FほぼOFF
-      stage2_cond = 週足ブレイク(終値>過去13週終値高値) and 終値>30週SMA
-        （30週上向きOFF / RS改善OFF / モメンタムOFF / 出来高OFF）
-      ロックOFF終了: 日足EMA9がEMA21を下抜け or 週足終値<30週SMA
-      本 = そのサイクルで1回目の Stage2 入り矢印
-      再 = 2回目以降の Stage2 入り矢印
-      表示は点灯日（日足）から3営業日以内のみ
+    本・再（インジ ロックOFF・上向き/RS改善OFF）:
+      週足: ブレイク(終値 > 過去13週終値高値) and 終値 > 30週SMA
+      終了: 日足EMA9クロス下EMA21 or 週足終値 < 30週SMA
+      本=サイクル1回目, 再=2回目以降。点灯日（日足）から3営業日以内のみ表示
 
-    目前: 土台(30週上・傾き>0.3%・対QQQ60日>=1) + 90%<=ブレイク比<100%（期限なし）
+    目前:
+      土台 = 週足終値>30週SMA and 傾き>0.3% and 対QQQ60日>=1.0
+      and 90% <= 終値/13週高値 < 100%
     """
     out = {
         "setup": "",
@@ -892,167 +892,134 @@ def calc_setup_flags(
         "foundation": False,
         "setup_age_days": None,
     }
-    if len(close) < 200:
-        return out
+    try:
+        if close is None or len(close.dropna()) < 200:
+            return out
 
-    def _naive(s: pd.Series) -> pd.Series:
-        s = s.copy()
-        if getattr(s.index, "tz", None) is not None:
-            s.index = s.index.tz_convert("UTC").tz_localize(None)
-        return s
+        def _naive(s: pd.Series) -> pd.Series:
+            s = s.dropna().sort_index().copy()
+            if getattr(s.index, "tz", None) is not None:
+                s.index = s.index.tz_convert("UTC").tz_localize(None)
+            return s
 
-    close = _naive(close.dropna().sort_index())
-    high = _naive(high.reindex(close.index).ffill())
-    low = _naive(low.reindex(close.index).ffill())
-    qqq_close = _naive(qqq_close.reindex(close.index).ffill())
+        close = _naive(close)
+        high = _naive(high.reindex(close.index).ffill())
+        low = _naive(low.reindex(close.index).ffill())
+        qqq_close = _naive(qqq_close.reindex(close.index).ffill())
 
-    # ----- 週足（インジ相当） -----
-    wdf = pd.DataFrame({"c": close, "h": high, "q": qqq_close})
-    w = wdf.resample("W-FRI").agg({"c": "last", "h": "max", "q": "last"}).dropna()
-    if len(w) < 40:
-        return out
+        # 週足
+        w = pd.DataFrame({"c": close, "h": high}).resample("W-FRI").agg({"c": "last", "h": "max"}).dropna()
+        if len(w) < 35:
+            return out
 
-    w["sma30"] = w["c"].rolling(30, min_periods=30).mean()
-    w["sma30_prev"] = w["sma30"].shift(1)
-    # 過去13週の終値高値（当週を含めない）＝インジ range_type 終値
-    w["range_high"] = w["c"].shift(1).rolling(13, min_periods=5).max()
-    w["breakout"] = w["c"] > w["range_high"]
-    w["above_ma30"] = w["c"] > w["sma30"]
-    w["sma30_rising"] = w["sma30"] > w["sma30_prev"]
-    # インジ: require_sma30_rising=OFF, use_rs_improve=OFF, momentum/volume=OFF
-    # stage2_cond = ブレイク and 30週の上 のみ
-    w["stage2_cond"] = (
-        w["breakout"].fillna(False)
-        & w["above_ma30"].fillna(False)
-    )
+        w["sma30"] = w["c"].rolling(30, min_periods=30).mean()
+        w["sma30_prev"] = w["sma30"].shift(1)
+        w["range_high"] = w["c"].shift(1).rolling(13, min_periods=5).max()
+        w["breakout"] = w["c"] > w["range_high"]
+        w["above"] = w["c"] > w["sma30"]
+        w["stage2_cond"] = w["breakout"].fillna(False) & w["above"].fillna(False)
 
-    # 各日に「その日以前で確定した最新週」のフラグを載せる（lookahead抑制）
-    daily = pd.DataFrame(index=close.index)
-    daily["close"] = close
-    daily["ema9"] = close.ewm(span=9, adjust=False).mean()
-    daily["ema21"] = close.ewm(span=21, adjust=False).mean()
-    # 週のラベルを日にmap: その日が属する週の金曜キー
-    week_ends = w.index
-    # asof: 各日について、その日以前の最後の週足
-    w_flags = w[["stage2_cond", "above_ma30", "c", "sma30", "range_high", "sma30_prev"]].copy()
-    w_flags = w_flags.reset_index().rename(columns={"index": "week_end"})
-    # merge_asof requires sorted
-    daily_r = daily.reset_index().rename(columns={"index": "date"})
-    # column name for index may be Date
-    date_col = daily_r.columns[0]
-    daily_r = daily_r.rename(columns={date_col: "date"})
-    w_flags = w_flags.sort_values("week_end")
-    daily_r = daily_r.sort_values("date")
-    merged = pd.merge_asof(
-        daily_r,
-        w_flags,
-        left_on="date",
-        right_on="week_end",
-        direction="backward",
-    )
-    merged = merged.set_index("date")
+        last = w.iloc[-1]
+        last_c = float(last["c"])
+        last_sma = float(last["sma30"]) if not pd.isna(last["sma30"]) else None
+        prev_sma = float(last["sma30_prev"]) if not pd.isna(last["sma30_prev"]) else last_sma
+        slope_pct = ((last_sma - prev_sma) / prev_sma * 100.0) if last_sma and prev_sma else 0.0
+        rh = float(last["range_high"]) if not pd.isna(last["range_high"]) else None
+        brk = (last_c / rh) if rh and rh > 0 else None
+        above = bool(last_sma is not None and last_c > last_sma)
+        qqq_rs = calc_qqq_rs_ratio(close, qqq_close, 60)
+        foundation = bool(above and slope_pct > 0.3 and qqq_rs >= 1.0)
 
-    # 最新スナップ（目前用）
-    last_w = w.iloc[-1]
-    last_c = float(last_w["c"])
-    last_sma = float(last_w["sma30"]) if not pd.isna(last_w["sma30"]) else None
-    prev_sma = float(last_w["sma30_prev"]) if not pd.isna(last_w["sma30_prev"]) else last_sma
-    slope_pct = ((last_sma - prev_sma) / prev_sma) * 100 if last_sma and prev_sma else 0.0
-    rh = float(last_w["range_high"]) if not pd.isna(last_w["range_high"]) else None
-    brk = (last_c / rh) if rh else 0.0
-    qqq_rs = calc_qqq_rs_ratio(close, qqq_close, 60)
-    above = bool(last_sma is not None and last_c > last_sma)
-    foundation = bool(above and slope_pct > 0.3 and qqq_rs >= 1.0)
-    out.update(
-        {
-            "breakout_pct": round(brk * 100, 1) if rh else None,
-            "above_30w": above,
-            "sma30_slope": round(slope_pct, 3),
-            "qqq_rs": round(qqq_rs, 4),
-            "foundation": foundation,
-        }
-    )
+        out["breakout_pct"] = round(brk * 100.0, 1) if brk is not None else None
+        out["above_30w"] = above
+        out["sma30_slope"] = round(slope_pct, 3)
+        out["qqq_rs"] = round(qqq_rs, 4)
+        out["foundation"] = foundation
 
-    # ----- 日足でロックOFF状態機械 + 矢印日 -----
-    locked = 1  # 1=非Stage2, 2=Stage2
-    prev_locked = 1
-    initial_signaled = False
-    entry_count = 0
-    last_arrow = ""  # 本/再
-    last_arrow_date = None
+        # 日足EMA
+        ema9 = close.ewm(span=9, adjust=False).mean()
+        ema21 = close.ewm(span=21, adjust=False).mean()
 
-    dates = list(merged.index)
-    for i, dt in enumerate(dates):
-        row = merged.iloc[i]
-        stage2_cond = bool(row["stage2_cond"]) if not pd.isna(row["stage2_cond"]) else False
-        above_ma = bool(row["above_ma30"]) if not pd.isna(row["above_ma30"]) else False
-        # 週足close < sma30
-        wc = row["c"]
-        sm = row["sma30"]
-        under_30 = (not pd.isna(wc) and not pd.isna(sm) and float(wc) < float(sm))
+        # 週ごとに状態機械を進め、点灯は「その週の最終営業日」
+        locked = 1
+        prev_locked = 1
+        initial_signaled = False
+        entry_count = 0
+        last_arrow = ""
+        last_arrow_date = None
 
-        # EMA crossunder on daily
-        ema_death = False
-        if i > 0:
-            e9a, e21a = float(merged.iloc[i - 1]["ema9"]), float(merged.iloc[i - 1]["ema21"])
-            e9b, e21b = float(row["ema9"]), float(row["ema21"])
-            if e9a >= e21a and e9b < e21b:
-                ema_death = True
+        w_dates = list(w.index)
+        for i, week_end in enumerate(w_dates):
+            row = w.iloc[i]
+            if pd.isna(row["sma30"]):
+                continue
+            stage2_cond = bool(row["stage2_cond"])
+            under_30 = float(row["c"]) < float(row["sma30"])
 
-        # ロックOFF更新
-        if stage2_cond:
-            locked = 2
-        elif locked == 2 and (ema_death or under_30):
-            locked = 1
-        # stage4省略（cycle_resetは30割れで十分）
-
-        stage2_just_started = locked == 2 and prev_locked != 2
-
-        if stage2_just_started:
-            initial_signaled = False
-        elif locked != 2:
-            initial_signaled = False
-
-        # cycle reset
-        if under_30:
-            entry_count = 0
-
-        # 矢印: Stage2に入っていてまだシグナル出していない
-        initial_arrow = locked == 2 and (not initial_signaled)
-        if initial_arrow:
-            initial_signaled = True
-            entry_count += 1
-            last_arrow_date = dt
-            if entry_count == 1:
-                last_arrow = "本"
+            # その週の日足
+            if i == 0:
+                week_start = close.index[0]
             else:
-                last_arrow = "再"
+                week_start = w_dates[i - 1]
+            mask = (close.index > week_start) & (close.index <= week_end)
+            if not mask.any():
+                # 週末が祝日など
+                mask = close.index <= week_end
+                if i > 0:
+                    mask = mask & (close.index > week_start)
 
-        prev_locked = locked
+            e9 = ema9.loc[mask]
+            e21 = ema21.loc[mask]
+            ema_death = False
+            if len(e9) >= 2:
+                for j in range(1, len(e9)):
+                    if float(e9.iloc[j - 1]) >= float(e21.iloc[j - 1]) and float(e9.iloc[j]) < float(e21.iloc[j]):
+                        ema_death = True
+                        break
 
-    # 点灯から3営業日以内のみ本/再
-    def age_trading_days(event_dt) -> int | None:
-        if event_dt is None:
-            return None
-        idx = close.index
-        try:
-            pos = idx.get_indexer([event_dt], method="ffill")[0]
-        except Exception:
-            return None
-        if pos < 0:
-            return None
-        return int(len(idx) - 1 - pos)
+            if stage2_cond:
+                locked = 2
+            elif locked == 2 and (ema_death or under_30):
+                locked = 1
 
-    age = age_trading_days(last_arrow_date)
-    if last_arrow in ("本", "再") and age is not None and age <= 3 and locked == 2:
-        # まだStage2ロック中で、矢印が新しい
-        out["setup"] = last_arrow
-        out["setup_age_days"] = age
-    elif foundation and rh and 0.90 <= brk < 1.00:
-        out["setup"] = "目前"
-    else:
-        out["setup"] = ""
-    return out
+            stage2_just_started = locked == 2 and prev_locked != 2
+            if stage2_just_started:
+                initial_signaled = False
+            elif locked != 2:
+                initial_signaled = False
+
+            if under_30:
+                entry_count = 0
+
+            initial_arrow = locked == 2 and (not initial_signaled)
+            if initial_arrow:
+                initial_signaled = True
+                entry_count += 1
+                # 点灯日 = その週の最後の営業日
+                days = close.loc[mask]
+                last_arrow_date = days.index[-1] if len(days) else week_end
+                last_arrow = "本" if entry_count == 1 else "再"
+
+            prev_locked = locked
+
+        # 年齢（営業日）
+        age = None
+        if last_arrow_date is not None:
+            pos = close.index.get_indexer([last_arrow_date], method="nearest")[0]
+            if pos >= 0:
+                age = int(len(close.index) - 1 - pos)
+
+        if last_arrow in ("本", "再") and age is not None and age <= 3 and locked == 2:
+            out["setup"] = last_arrow
+            out["setup_age_days"] = age
+        elif foundation and brk is not None and 0.90 <= brk < 1.00:
+            out["setup"] = "目前"
+        else:
+            out["setup"] = ""
+        return out
+    except Exception as e:
+        print(f"calc_setup_flags error: {e}")
+        return out
 
 
 
