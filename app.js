@@ -378,6 +378,19 @@ function isQuality(s) {
   return rsOk && ttOk && hqmOk && indOk;
 }
 
+/** 第1層: 30週SMA ±5% ＋ RS≥70 ＋ 業種スコア≥55 */
+function isLayer1(s) {
+  if (!s) return false;
+  const pct = Number(s.pct_from_30w);
+  const rs = Number(s.rs);
+  if (Number.isNaN(pct) || Number.isNaN(rs)) return false;
+  if (pct < -5 || pct > 5) return false;
+  if (rs < 70) return false;
+  const ind = industryScoreOf(s);
+  if (!ind || Number(ind.score) < 55) return false;
+  return true;
+}
+
 function setupBadge(setup) {
   if (setup === "本") return "green";
   if (setup === "再") return "yellow";
@@ -386,6 +399,8 @@ function setupBadge(setup) {
 }
 
 function sortedStocks(stocks) {
+  const layer1El = document.getElementById("fltLayer1");
+  const layer1Only = layer1El ? layer1El.checked : false;
   const moku = document.getElementById("fltMokuzen");
   const hon = document.getElementById("fltHon");
   const sai = document.getElementById("fltSai");
@@ -397,20 +412,25 @@ function sortedStocks(stocks) {
   const sortByEl = document.getElementById("sortBy");
   const sortBy = sortByEl ? sortByEl.value : "rs";
   let list = [...(stocks || [])];
-  // setup未計算の旧JSONでは区分フィルタをスキップ
-  const hasSetup = list.some((s) => s.setup);
-  if (hasSetup) {
-    list = list.filter((s) => {
-      const su = s.setup || "";
-      if (!wantM && !wantH && !wantS) return true;
-      if (wantM && su === "目前") return true;
-      if (wantH && su === "本") return true;
-      if (wantS && su === "再") return true;
-      return false;
-    });
-  }
-  if (qualityOnly) {
-    list = list.filter(isQuality);
+
+  if (layer1Only) {
+    // 第1層モード: 区分・品質は使わず、核条件のみ
+    list = list.filter(isLayer1);
+  } else {
+    const hasSetup = list.some((s) => s.setup);
+    if (hasSetup) {
+      list = list.filter((s) => {
+        const su = s.setup || "";
+        if (!wantM && !wantH && !wantS) return true;
+        if (wantM && su === "目前") return true;
+        if (wantH && su === "本") return true;
+        if (wantS && su === "再") return true;
+        return false;
+      });
+    }
+    if (qualityOnly) {
+      list = list.filter(isQuality);
+    }
   }
   list.sort((a, b) => {
     if (sortBy === "rs") return (b.rs || 0) - (a.rs || 0);
@@ -435,12 +455,12 @@ function renderTable(stocks) {
   const list = sortedStocks(stocks);
   const MAX_ROWS = 400;
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="9" class="empty">表示できる銘柄がありません。区分フィルターや品質フィルタを確認してください。</td></tr>`;
+    body.innerHTML = `<tr><td colspan="10" class="empty">表示できる銘柄がありません。区分フィルターや品質フィルタを確認してください。</td></tr>`;
     return;
   }
   const shown = list.slice(0, MAX_ROWS);
   const extra = list.length > MAX_ROWS
-    ? `<tr><td colspan="9" class="empty">…他 ${list.length - MAX_ROWS} 件（上位${MAX_ROWS}件のみ表示）</td></tr>`
+    ? `<tr><td colspan="10" class="empty">…他 ${list.length - MAX_ROWS} 件（上位${MAX_ROWS}件のみ表示）</td></tr>`
     : "";
   body.innerHTML = shown
     .map((s) => {
@@ -453,6 +473,7 @@ function renderTable(stocks) {
       }
       const su = s.setup || "—";
       const bp = s.breakout_pct != null ? s.breakout_pct + "%" : "—";
+      const p30 = s.pct_from_30w != null ? (Number(s.pct_from_30w) > 0 ? "+" : "") + Number(s.pct_from_30w).toFixed(1) + "%" : "—";
       return `
       <tr>
         <td>
@@ -463,6 +484,7 @@ function renderTable(stocks) {
         <td class="rs ${rsClass(s.rs)}">${s.rs}</td>
         <td><span class="badge ${stageBadge(s.stage)}">${s.stage}</span></td>
         <td>${bp}</td>
+        <td>${p30}</td>
         <td>${industryJa(s.industry || s.sector)}</td>
         <td class="ind-score">${indHtml}</td>
         <td><span class="badge ${ttBadge(s.tt)}">${s.tt}</span></td>
@@ -480,9 +502,10 @@ function render() {
   const nM = stocks.filter((s) => s.setup === "目前").length;
   const nH = stocks.filter((s) => s.setup === "本").length;
   const nS = stocks.filter((s) => s.setup === "再").length;
+  const nL1 = stocks.filter(isLayer1).length;
   document.getElementById("lastUpdated").textContent =
     "更新: " + (DATA.updated_at || "—") +
-    " ／ 全" + stocks.length + "件 ／ 目前" + nM + " 本" + nH + " 再" + nS;
+    " ／ 全" + stocks.length + "件 ／ 第1層" + nL1 + " 目前" + nM + " 本" + nH + " 再" + nS;
 
   renderIndustryStrength(industryList.slice(0, 40));
   renderTable(stocks);
@@ -498,7 +521,7 @@ function render() {
   }
 }
 
-["fltMokuzen", "fltHon", "fltSai", "qualityOnly", "sortBy"].forEach((id) => {
+["fltLayer1", "fltMokuzen", "fltHon", "fltSai", "qualityOnly", "sortBy"].forEach((id) => {
   const el = document.getElementById(id);
   if (el) el.addEventListener("change", render);
 });
