@@ -33,6 +33,18 @@ try:
 except ImportError as e:
     raise SystemExit("yfinance が必要です: pip install yfinance") from e
 
+# GitHub Actions で起きやすい SQLite "database is locked" 対策
+try:
+    yf.set_tz_cache_location("/tmp/yf_tz_cache")
+except Exception:
+    pass
+try:
+    # キャッシュ無効（バージョン差を吸収）
+    if hasattr(yf, "set_config"):
+        yf.set_config(network_timeout=60)
+except Exception:
+    pass
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 THEMES_PATH = DATA_DIR / "themes.json"
@@ -731,20 +743,33 @@ def _normalize_ohlcv(df: pd.DataFrame, ticker: str | None = None) -> pd.DataFram
 
 
 def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFrame]:
+    """yfinance取得。database is locked / レート制限にリトライ。"""
     data: dict[str, pd.DataFrame] = {}
     if not tickers:
         return data
-    try:
-        df = yf.download(
-            tickers if len(tickers) > 1 else tickers[0],
-            period=period,
-            group_by="ticker",
-            auto_adjust=True,
-            threads=True,
-            progress=False,
-        )
-    except Exception as e:
-        print(f"download error: {e}")
+
+    last_err = None
+    df = None
+    for attempt in range(1, 5):
+        try:
+            df = yf.download(
+                tickers if len(tickers) > 1 else tickers[0],
+                period=period,
+                group_by="ticker",
+                auto_adjust=True,
+                threads=False,  # ロック回避
+                progress=False,
+            )
+            if isinstance(df, pd.DataFrame) and not df.empty:
+                break
+            last_err = "empty dataframe"
+        except Exception as e:
+            last_err = e
+            print(f"download error (try {attempt}/4): {e}")
+        time.sleep(1.5 * attempt)
+    else:
+        if last_err:
+            print(f"download failed after retries: {last_err}")
         return data
 
     if not isinstance(df, pd.DataFrame) or df.empty:
@@ -1175,10 +1200,27 @@ def main() -> None:
 
     # ベンチマーク + 全銘柄
     print("Downloading SPY + QQQ...")
-    bench_hist = download_history_batch([BENCHMARK, BENCHMARK_QQQ], period="2y")
+    bench_hist = {}
+    for attempt in range(1, 6):
+        bench_hist = download_history_batch([BENCHMARK, BENCHMARK_QQQ], period="2y")
+        if BENCHMARK in bench_hist:
+            break
+        print(f"SPY missing, retry {attempt}/5 ...")
+        time.sleep(2 * attempt)
     if BENCHMARK not in bench_hist:
-        raise SystemExit("ベンチマーク SPY の取得に失敗しました")
+        # 最後の手段: 単独取得
+        print("SPY batch failed, trying single download...")
+        for attempt in range(1, 5):
+            bench_hist = download_history_batch([BENCHMARK], period="2y")
+            if BENCHMARK in bench_hist:
+                break
+            time.sleep(2 * attempt)
+    if BENCHMARK not in bench_hist:
+        raise SystemExit("ベンチマーク SPY の取得に失敗しました（yfinance database locked / rate limit）")
     bench = bench_hist[BENCHMARK]["Close"]
+    if BENCHMARK_QQQ not in bench_hist:
+        qqq_hist = download_history_batch([BENCHMARK_QQQ], period="2y")
+        bench_hist.update(qqq_hist)
     if BENCHMARK_QQQ in bench_hist:
         qqq = bench_hist[BENCHMARK_QQQ]["Close"]
     else:
