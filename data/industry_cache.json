@@ -546,6 +546,11 @@
 "name": "Big Digital Energy Inc",
 "sector": "Financial"
 },
+"BGSI": {
+"industry": "Auto & Truck Dealerships",
+"name": "Boyd Group Services Inc",
+"sector": "Consumer Cyclical"
+},
 "BGX": {
 "industry": "Closed-End Fund - Debt",
 "name": "Blackstone Long-Short Credit Income Fund",
@@ -1805,6 +1810,11 @@
 "name": "Hotel101 Global Holdings Corp",
 "sector": "Real Estate"
 },
+"HCAI": {
+"industry": "Farm & Heavy Construction Machinery",
+"name": "Huachen AI Parking Management Technology Holding Co Ltd",
+"sector": "Industrials"
+},
 "HCM": {
 "industry": "Drug Manufacturers - Specialty & Generic",
 "name": "HUTCHMED (China) Limited ADR",
@@ -2546,6 +2556,11 @@
 "name": "Neo Concept International Group Holdings Ltd",
 "sector": "Consumer Cyclical"
 },
+"NCTY": {
+"industry": "Capital Markets",
+"name": "The9 Limited ADR",
+"sector": "Financial"
+},
 "NE": {
 "industry": "Oil & Gas Drilling",
 "name": "Noble Corp Plc",
@@ -3045,6 +3060,11 @@
 "industry": "Banks - Regional",
 "name": "QNB Corp",
 "sector": "Financial"
+},
+"QNRX": {
+"industry": "Biotechnology",
+"name": "Quoin Pharmaceuticals Ltd ADR",
+"sector": "Healthcare"
 },
 "QSR": {
 "industry": "Restaurants",
