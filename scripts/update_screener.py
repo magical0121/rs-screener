@@ -44,8 +44,6 @@ OUT_PATH = DATA_DIR / "screener.json"
 INDUSTRY_CACHE_PATH = DATA_DIR / "industry_cache.json"
 THEMES_PATH = DATA_DIR / "themes.json"
 
-BENCHMARK = "SPY"
-
 MIN_PRICE = 0.75
 MIN_AVG_VOL = 500_000
 MIN_DOLLAR_VOL = 1_000_000
@@ -218,10 +216,27 @@ def _normalize_ohlcv(df: pd.DataFrame) -> pd.DataFrame | None:
     return out
 
 
+def _download_one_ticker(ticker: str, period: str = "2y") -> pd.DataFrame | None:
+    """単一銘柄を Ticker.history で取得（GitHub Actions向け）"""
+    for attempt in range(3):
+        try:
+            t = yf.Ticker(ticker)
+            df = t.history(period=period, auto_adjust=True)
+            norm = _normalize_ohlcv(df)
+            if norm is not None and len(norm) >= MIN_HISTORY_DAYS:
+                return norm
+        except Exception as e:
+            print(f"single download fail {ticker} ({attempt+1}/3): {e}")
+            time.sleep(1.5 * (attempt + 1))
+    return None
+
+
 def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFrame]:
     result: dict[str, pd.DataFrame] = {}
     if not tickers:
         return result
+
+    # まずまとめて取得
     try:
         data = yf.download(
             tickers=tickers,
@@ -234,28 +249,44 @@ def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, 
         )
     except Exception as e:
         print(f"download batch fail: {e}")
-        return result
+        data = None
 
-    if data is None or data.empty:
-        return result
-
-    if len(tickers) == 1:
-        t = tickers[0]
-        norm = _normalize_ohlcv(data)
-        if norm is not None and len(norm) >= MIN_HISTORY_DAYS:
-            result[t] = norm
-        return result
-
-    for t in tickers:
-        try:
-            if t not in data.columns.get_level_values(0):
-                continue
-            sub = data[t].copy()
-            norm = _normalize_ohlcv(sub)
+    if data is not None and not data.empty:
+        if len(tickers) == 1:
+            t = tickers[0]
+            norm = _normalize_ohlcv(data)
             if norm is not None and len(norm) >= MIN_HISTORY_DAYS:
                 result[t] = norm
+            else:
+                one = _download_one_ticker(t, period)
+                if one is not None:
+                    result[t] = one
+            return result
+
+        level0 = set()
+        try:
+            level0 = set(data.columns.get_level_values(0))
         except Exception:
-            continue
+            level0 = set()
+
+        for t in tickers:
+            try:
+                if t in level0:
+                    sub = data[t].copy()
+                    norm = _normalize_ohlcv(sub)
+                    if norm is not None and len(norm) >= MIN_HISTORY_DAYS:
+                        result[t] = norm
+            except Exception:
+                continue
+
+    # バッチで取れなかった銘柄を個別リトライ（最大30）
+    missing = [t for t in tickers if t not in result]
+    for t in missing[:30]:
+        one = _download_one_ticker(t, period)
+        if one is not None:
+            result[t] = one
+        time.sleep(0.2)
+
     return result
 
 
@@ -405,12 +436,7 @@ def main() -> None:
             "name": info.get("name") or t,
         }
 
-    # ベンチマーク
-    bench_hist = download_history_batch([BENCHMARK], period="2y")
-    if BENCHMARK not in bench_hist:
-        raise SystemExit("SPY download failed")
-    bench_close = bench_hist[BENCHMARK]["Close"]
-
+    # ※ Stage2判定・RSはユニバース内計算のため SPY は不要
     meta_rows: list[dict] = []
     returns_3m: dict[str, float] = {}
 
