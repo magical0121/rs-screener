@@ -1,68 +1,42 @@
-# 株式スクリーナー（個人用）
+# Stage2 Entry スクリーナー
 
-RS × Weinstein Stage × Minervini Trend Template × HQM の日本語スクリーナーです。
+12週高値ブレイク + 30週SMA上（Lookahead ON相当）で **Stage2背景が入った瞬間** の米国株を日次抽出します。
 
-## 画面
+## 判定ロジック
 
-- 左: **テーマ強度**カード
-- 右: 銘柄表（RS / ステージ / 業種 / テーマ / TT / HQM）
-- Stage2フィルター、ソート対応
+- 週足終値 > 直近12週の終値高値（現在週除く）
+- 週足終値 > 30週SMA
+- 前週未達 & 今週達成 → **Entry**
+- 今週も達成中 → **Active**
 
-## 確定ロジック
+日足を週足（W-FRI）にリサンプルし、未確定の今週を含めるため Lookahead ON 相当です。
 
-### Stage（Weinstein・米国株仕様）
-- 150日SMA近似、SPYベンチマーク
-- Stage2 を必須フィルター想定
+## ユニバース
 
-### TT（Minervini / RyanJHamby）
-1. 価格 > 150SMA かつ > 200SMA  
-2. 150SMA > 200SMA  
-3. 200SMA が約1ヶ月以上上昇  
-4. 50SMA > 150SMA > 200SMA  
-5. 価格 > 50SMA  
-6. 価格 ≥ 52週安値 × 1.30  
-7. 価格 ≥ 52週高値 × 0.75  
-8. RS slope ≥ +0.15  
+- 株価 ≥ $0.75
+- 20日平均出来高 ≥ 50万株
+- 売買代金 ≥ $1M
 
-表示: 7〜8=強い / 5〜6=普通 / 4以下=弱い
+## 表示
 
-### HQM
-- 1M / 3M / 6M / 1Y リターンのパーセンタイル平均
-- いずれかが下位25%なら品質ペナルティ
-- 表示例: `92（Top）` / `81（Strong）` / `74（Good）`
+- RS（3Mリターン順位）
+- 業種 / 業種スコア / 業種強度
+- ブレイク% / 30週乖離
+- Entry / Active 区分
 
-## ローカルで見る
+TT・HQM・本/再/目前・品質フィルターは含みません。
 
-```bash
-cd rs-screener
-# 単純に index.html をブラウザで開くだけでもサンプル表示可
-python -m http.server 8080
-# http://localhost:8080
-```
-
-## データを更新する
+## 更新
 
 ```bash
 pip install -r requirements.txt
 python scripts/update_screener.py
 ```
 
-`data/screener.json` が更新されます。
+GitHub Actions: 平日の米引け後に自動実行（`workflow_dispatch` で手動可）。
 
-## GitHub で自動更新する（推奨）
+## 既存 rs-screener への入れ方
 
-1. このフォルダを GitHub リポジトリに push
-2. Settings → Pages → Deploy from branch `main` / `/ (root)`
-3. Actions が有効なら、平日の米株引け後に自動で `screener.json` を更新して commit
-
-手動実行: Actions → **Daily Screener Update** → Run workflow
-
-## テーマ定義
-
-`data/themes.json` を編集してテーマ構成銘柄を変更できます。
-
-## 注意
-
-- 投資助言ではありません
-- 日次バッチ前提（リアルタイムではない）
-- ユニバースは `scripts/update_screener.py` の `DEFAULT_TICKERS` で拡張
+1. このフォルダの内容でリポジトリを上書き（または差し替え）
+2. `data/themes.json` は任意（業種スコアは業種名ベース）
+3. Pages は `main` / root のまま

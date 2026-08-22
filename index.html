@@ -2,70 +2,47 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>株式スクリーナー | RS × Stage × TT × HQM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stage2 Entry スクリーナー</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app">
-    <!-- Header -->
     <header class="header">
-      <div class="header-left">
-        <div class="logo">
-          <span class="logo-mark">RS</span>
-          <div>
-            <div class="logo-title">株式スクリーナー</div>
-            <div class="logo-sub">Stage / TT / HQM / 業種強度</div>
-          </div>
-        </div>
+      <div>
+        <h1>Stage2 Entry スクリーナー</h1>
+        <p class="sub">12週高値ブレイク + 30週SMA上（Lookahead ON相当）— 背景が入った瞬間の銘柄</p>
       </div>
-      <nav class="tabs">
-        <button class="tab active">スクリーナー</button>
-        <button class="tab" disabled>ウォッチリスト</button>
-        <button class="tab" disabled>アラート</button>
-      </nav>
-      <div class="header-right">
-        <span id="lastUpdated" class="updated">更新: —</span>
-        <button id="refreshBtn" class="btn-refresh" title="再読み込み">↻</button>
+      <div class="meta">
+        <div id="updatedAt">更新: —</div>
+        <div id="counts">Entry: — / Active: —</div>
       </div>
     </header>
 
     <main class="main">
-      <!-- Theme Strength -->
       <aside class="sidebar">
-        <div class="sidebar-head">
-          <h2>業種強度</h2>
-          <span class="hint">スコア 0–100</span>
-        </div>
-        <div id="themeCards" class="theme-cards">
+        <h2>業種強度</h2>
+        <div id="industryList" class="theme-list">
           <!-- filled by JS -->
-        </div>
-        <div class="sidebar-note">
-          スコアは業種内銘柄のRS・HQMから算出（銘柄数3以上）
         </div>
       </aside>
 
-      <!-- Stock Table -->
       <section class="content">
         <div class="content-head">
           <div>
-            <h2>銘柄ユニバース: 全米株</h2>
+            <h2>Stage2 銘柄</h2>
             <p class="filter-line">
-              本・再: インジ同等（週足ブレイク＋30週上、上向き/RS改善OFF、ロックOFF）3営業日 ／ 目前: 土台＋90–100%未満
+              Entry = 今週Stage2入り ／ Active = Stage2継続中 ／ 流動性: 株価≥$0.75・平均出来高≥50万・売買代金≥$1M
             </p>
           </div>
           <div class="controls">
-            <label class="check"><input type="checkbox" id="fltLayer1" />第1層</label>
-            <label class="check"><input type="checkbox" id="fltMokuzen" checked />目前</label>
-            <label class="check"><input type="checkbox" id="fltHon" checked />本</label>
-            <label class="check"><input type="checkbox" id="fltSai" checked />再</label>
-            <label class="check"><input type="checkbox" id="qualityOnly" checked />品質フィルタ</label>
+            <label class="check"><input type="checkbox" id="fltEntry" checked />Entryのみ</label>
+            <label class="check"><input type="checkbox" id="fltActive" />Activeも表示</label>
             <select id="sortBy">
               <option value="rs">RS順</option>
-              <option value="hqm">HQM順</option>
-              <option value="tt">TT順</option>
               <option value="industry">業種順</option>
               <option value="indScore">業種スコア順</option>
+              <option value="breakout">ブレイク%順</option>
             </select>
             <button type="button" id="tvCopyBtn" class="btn-tv" title="表示中の銘柄をTradingView用にコピー">TVコピー</button>
           </div>
@@ -78,39 +55,33 @@
                 <th>ティッカー</th>
                 <th>区分</th>
                 <th>RS</th>
-                <th>ステージ</th>
                 <th>ブレイク%</th>
                 <th>30週乖離</th>
                 <th>業種</th>
                 <th>業種スコア</th>
-                <th>TT</th>
-                <th>HQM</th>
+                <th>価格</th>
               </tr>
             </thead>
-            <tbody id="stockBody">
-              <!-- filled by JS -->
-            </tbody>
+            <tbody id="stockBody"></tbody>
           </table>
         </div>
 
-        <p id="table-empty-hint" class="empty" style="padding:12px 4px;color:#9aa;" hidden></p>
+        <p id="table-empty-hint" class="empty" hidden></p>
         <div class="legend">
-          <span><i class="dot green"></i>強い / Stage2</span>
-          <span><i class="dot yellow"></i>普通</span>
-          <span><i class="dot red"></i>弱い / Stage4</span>
+          <span><i class="dot green"></i>Entry（Stage2入り）</span>
+          <span><i class="dot yellow"></i>Active（継続）</span>
           <span class="sep">|</span>
-          <span>TT: Minervini Trend Template（7/8以上=強い）</span>
-          <span>HQM: 1M/3M/6M/1Y パーセンタイル平均</span>
+          <span>業種スコア: 表示銘柄のRS平均</span>
+          <span>RS: ユニバース内3Mリターン順位</span>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>個人用スクリーナー — Weinstein Stage / Minervini TT / HQM</span>
-      <span>データは日次バッチ更新想定</span>
+      <span>Stage2 Entry 専用 — 12w break + 30w SMA</span>
+      <span>データは日次バッチ更新</span>
     </footer>
   </div>
-
   <script src="app.js"></script>
 </body>
 </html>
