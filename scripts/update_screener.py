@@ -293,53 +293,27 @@ def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, 
 # ──────────────────────────────
 # Stage2 判定（Lookahead ON 相当）
 # ──────────────────────────────
-def _stage2_state_from_daily(close: pd.Series, high: pd.Series) -> tuple[bool, float | None, float | None, float | None]:
-    """
-    インジ相当（Lookahead ON）:
-      request.security(W, close) の系列に SMA(30)
-      日足上では「今週の終値」が毎日更新される
-
-    実装:
-      日足 → 週足(W-FRI)リサンプル（未確定週も含む）
-      breakout = 週終値 > 過去RANGE_LEN週の週終値高値
-      above    = 週終値 > 30週SMA
-    戻り値: (stage2, close, sma30, range_high)
-    """
-    close = _naive_index(close)
-    high = _naive_index(high.reindex(close.index).ffill())
-    if len(close) < (SMA_LEN + RANGE_LEN) * 5:
-        return False, None, None, None
-
-    w = (
-        pd.DataFrame({"c": close, "h": high})
-        .resample("W-FRI")
-        .agg({"c": "last", "h": "max"})
-        .dropna()
-    )
-    if len(w) < SMA_LEN + 2:
-        return False, None, None, None
-
-    w["sma30"] = w["c"].rolling(SMA_LEN, min_periods=SMA_LEN).mean()
-    w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN, min_periods=max(5, RANGE_LEN // 2)).max()
-    last = w.iloc[-1]
-    last_c = float(last["c"])
-    last_sma = float(last["sma30"]) if not pd.isna(last["sma30"]) else None
-    rh = float(last["range_high"]) if not pd.isna(last["range_high"]) else None
-    if last_sma is None or rh is None:
-        return False, last_c, last_sma, rh
-    stage2 = bool(last_c > rh and last_c > last_sma)
-    return stage2, last_c, last_sma, rh
-
 
 def calc_stage2_entry(close: pd.Series, high: pd.Series) -> dict:
     """
-    Lookahead ON で「今日背景が点灯した」瞬間を検出。
+    Pineインジと同一ロジック（フィルターOFF / Lookahead ON相当）
 
-    - today: 全データ（今日の終値まで）で週足系列を構築して判定
-    - yesterday: 最終日を除いたデータで同じ判定
-    - Entry = today が Stage2 かつ yesterday は Stage2 でない
+    30週SMA:
+      週足終値シリーズに対する SMA(30)
+      日足→W-FRIリサンプル、未確定の今週を含む（Lookahead ON相当）
 
-    ※「前週未達→今週達成」ではない。日次で点灯したかを見る。
+    ブレイク:
+      週足終値 > 過去12週の週足終値高値（現在週除く）
+      Pine: range_high = ta.highest(w_close[1], 12)
+
+    Stage遷移（Pineと同じ）:
+      if stage2_cond: stage = 2
+      elif stage == 2 and crossunder(w_close, sma30): stage = 1
+      ※一度Stage2に入ったら、30週SMAを下抜けるまで維持
+        （毎週ブレイクし直す必要なし）
+
+    Entry:
+      stage が 2 に切り替わった週（前週 stage != 2, 今週 stage == 2）
     """
     out = {
         "stage2_active": False,
@@ -352,24 +326,63 @@ def calc_stage2_entry(close: pd.Series, high: pd.Series) -> dict:
     try:
         close = _naive_index(close)
         high = _naive_index(high.reindex(close.index).ffill())
-        if len(close) < 2:
+
+        w = (
+            pd.DataFrame({"c": close, "h": high})
+            .resample("W-FRI")
+            .agg({"c": "last", "h": "max"})
+            .dropna()
+        )
+        if len(w) < SMA_LEN + RANGE_LEN + 2:
             return out
 
-        st_today, last_c, last_sma, rh = _stage2_state_from_daily(close, high)
-        st_yest, _, _, _ = _stage2_state_from_daily(close.iloc[:-1], high.iloc[:-1])
+        # Pine: sma30 = ta.sma(w_close, 30)
+        w["sma30"] = w["c"].rolling(SMA_LEN, min_periods=SMA_LEN).mean()
+        # Pine: range_high = ta.highest(w_close[1], range_len)
+        w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN, min_periods=RANGE_LEN).max()
+        w["breakout"] = w["c"] > w["range_high"]
+        w["above"] = w["c"] > w["sma30"]
+        # フィルターOFF時の stage2_cond_base
+        w["stage2_cond"] = w["breakout"].fillna(False) & w["above"].fillna(False)
+        # Pine: ta.crossunder(w_close, sma30)
+        prev_c = w["c"].shift(1)
+        prev_sma = w["sma30"].shift(1)
+        w["cross_under"] = (w["c"] < w["sma30"]) & (prev_c >= prev_sma)
 
-        out["stage2_active"] = st_today
-        out["stage2_entry"] = bool(st_today and not st_yest)
+        # Pine stage machine（Stage2部分）
+        stage = 1
+        stages: list[int] = []
+        for i in range(len(w)):
+            cond = bool(w["stage2_cond"].iloc[i])
+            cu = w["cross_under"].iloc[i]
+            cross_under = bool(cu) if not pd.isna(cu) else False
+            if cond:
+                stage = 2
+            elif stage == 2 and cross_under:
+                stage = 1
+            stages.append(stage)
+        w["stage"] = stages
+
+        last = w.iloc[-1]
+        prev = w.iloc[-2]
+        active = int(last["stage"]) == 2
+        entry = int(last["stage"]) == 2 and int(prev["stage"]) != 2
+
+        last_c = float(last["c"])
+        last_sma = float(last["sma30"]) if not pd.isna(last["sma30"]) else None
+        rh = float(last["range_high"]) if not pd.isna(last["range_high"]) else None
+
+        out["stage2_active"] = active
+        out["stage2_entry"] = entry
         out["sma30"] = last_sma
         out["range_high"] = rh
-        if last_c is not None and rh and rh > 0:
+        if rh and rh > 0:
             out["breakout_pct"] = round((last_c / rh - 1.0) * 100.0, 2)
-        if last_c is not None and last_sma and last_sma > 0:
+        if last_sma and last_sma > 0:
             out["pct_from_30w"] = round((last_c / last_sma - 1.0) * 100.0, 2)
         return out
     except Exception:
         return out
-
 
 
 def period_return(close: pd.Series, days: int) -> float:
