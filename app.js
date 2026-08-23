@@ -311,7 +311,15 @@ function computeIndustryScores(stocks, minCount = 1) {
 function industryScoreOf(s) {
   const key = ((s && (s.industry || s.sector)) || "").trim();
   if (!key || key === "—") return null;
-  return INDUSTRY_SCORE_MAP[key] || null;
+  if (INDUSTRY_SCORE_MAP[key]) return INDUSTRY_SCORE_MAP[key];
+  if (s && s.industry_score != null) {
+    const sc = Number(s.industry_score);
+    return {
+      score: sc,
+      label: sc >= 80 ? "強い" : sc >= 55 ? "普通" : "弱い",
+    };
+  }
+  return null;
 }
 
 function sortedStocks(stocks) {
@@ -402,11 +410,29 @@ function renderTable(stocks) {
 function render() {
   if (!DATA) return;
   const stocks = DATA.stocks || [];
-  const industryList = computeIndustryScores(stocks, 1);
+  // 業種強度: バックエンドの全流動性ユニバース集計を優先。無ければEntryから算出
+  let industryList = Array.isArray(DATA.industries) && DATA.industries.length
+    ? DATA.industries
+    : computeIndustryScores(stocks, 1);
+  // マップ再構築（表の業種スコア用）
+  INDUSTRY_SCORE_MAP = {};
+  for (const t of industryList) {
+    if (t && t.name) INDUSTRY_SCORE_MAP[t.name] = t;
+  }
+  // Entry銘柄に industry_score があればマップに反映
+  for (const s of stocks) {
+    if (s.industry && s.industry_score != null && !INDUSTRY_SCORE_MAP[s.industry]) {
+      INDUSTRY_SCORE_MAP[s.industry] = {
+        score: s.industry_score,
+        label: s.industry_score >= 80 ? "強い" : s.industry_score >= 55 ? "普通" : "弱い",
+      };
+    }
+  }
   document.getElementById("lastUpdated").textContent =
     "更新: " + (DATA.updated_at || "—") +
     " ／ Entry " + stocks.length + "件" +
-    (DATA.universe_size ? " ／ 宇宙" + DATA.universe_size : "");
+    (DATA.universe_size ? " ／ 宇宙" + DATA.universe_size : "") +
+    (DATA.liquid_size ? " ／ 流動" + DATA.liquid_size : "");
 
   renderIndustryStrength(industryList.slice(0, 40));
   renderTable(stocks);
