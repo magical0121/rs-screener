@@ -174,6 +174,11 @@
 "name": "Abeona Therapeutics Inc.",
 "sector": "Health Care"
 },
+"ABEV": {
+"industry": "Beverages - Brewers",
+"name": "Ambev SA ADR",
+"sector": "Consumer Defensive"
+},
 "ABG": {
 "industry": "Automobiles",
 "name": "Asbury Automotive Group Inc",
@@ -289,6 +294,11 @@
 "name": "Alset Capital Acquisition Corp. Warrant",
 "sector": "Financials"
 },
+"ACB": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Aurora Cannabis Inc",
+"sector": "Healthcare"
+},
 "ACCO": {
 "industry": "Commercial Services & Supplies",
 "name": "ACCO Brands Corporation",
@@ -343,6 +353,11 @@
 "industry": "Insurance - Diversified",
 "name": "Arch Capital Group Ltd",
 "sector": "Financial"
+},
+"ACH": {
+"industry": "Medical Distribution",
+"name": "Accendra Health Inc",
+"sector": "Healthcare"
 },
 "ACHC": {
 "industry": "Health Care Equipment & Supplies",
@@ -563,6 +578,11 @@
 "industry": "Equity Real Estate Investment Trusts (REITs)",
 "name": "Agree Realty Corporation",
 "sector": "Real Estate"
+},
+"ADCT": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Adc Therapeutics SA",
+"sector": "Healthcare"
 },
 "ADEA": {
 "industry": "Software",
@@ -1164,6 +1184,11 @@
 "name": "American International Group, Inc.",
 "sector": "Financials"
 },
+"AIHS": {
+"industry": "Rental & Leasing Services",
+"name": "Senmiao Technology Ltd",
+"sector": "Industrials"
+},
 "AII": {
 "industry": "Insurance",
 "name": "American Integrity Insurance Group Inc. Common Stock",
@@ -1173,6 +1198,11 @@
 "industry": "Diversified Financial Services",
 "name": "AI Infrastructure Acquisition Corp. Class A Ordinary Shares",
 "sector": "Financials"
+},
+"AIIO": {
+"industry": "Auto Manufacturers",
+"name": "Robo.ai Inc",
+"sector": "Consumer Cyclical"
 },
 "AIIR": {
 "industry": "Tobacco",
@@ -1332,6 +1362,11 @@
 "industry": "Software",
 "name": "Akamai Technologies, Inc.",
 "sector": "Information Technology"
+},
+"AKAN": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Akanda Corp",
+"sector": "Healthcare"
 },
 "AKBA": {
 "industry": "Biotechnology",
@@ -2112,6 +2147,11 @@
 "name": "Annovis Bio Inc",
 "sector": "Health Care"
 },
+"ANY": {
+"industry": "Capital Markets",
+"name": "Sphere 3D Corp",
+"sector": "Financial"
+},
 "AOD": {
 "industry": "Closed-End Fund - Foreign",
 "name": "abrdn Total Dynamic Dividend Fund",
@@ -2867,6 +2907,11 @@
 "name": "Astrana Health Inc. Common Stock",
 "sector": "Industrials"
 },
+"ASTL": {
+"industry": "Steel",
+"name": "Algoma Steel Group Inc",
+"sector": "Basic Materials"
+},
 "ASTS": {
 "industry": "Diversified Telecommunication Services",
 "name": "AST SpaceMobile, Inc.",
@@ -3187,6 +3232,11 @@
 "name": "Aurora Innovation Inc. Warrant",
 "sector": "Information Technology"
 },
+"AUTL": {
+"industry": "Biotechnology",
+"name": "Autolus Therapeutics plc ADR",
+"sector": "Healthcare"
+},
 "AUUD": {
 "industry": "Software",
 "name": "Auddia Inc.",
@@ -3467,6 +3517,11 @@
 "name": "A2Z Cust2Mate Solutions Corp",
 "sector": "Technology"
 },
+"AZI": {
+"industry": "Auto & Truck Dealerships",
+"name": "Autozi Internet Technology (Global) Ltd",
+"sector": "Consumer Cyclical"
+},
 "AZIO": {
 "industry": "Auto Components",
 "name": "Azio AI Holdings Inc. Common Stock",
@@ -3566,6 +3621,11 @@
 "industry": "Professional Services",
 "name": "Booz Allen Hamilton Holding Corporation Class A",
 "sector": "Industrials"
+},
+"BAK": {
+"industry": "Chemicals",
+"name": "Braskem SA ADR",
+"sector": "Basic Materials"
 },
 "BALL": {
 "industry": "Distributors",
@@ -3711,6 +3771,11 @@
 "industry": "nan",
 "name": "Bleichroeder Acquisition Corp. II Warrants",
 "sector": "nan"
+},
+"BBD": {
+"industry": "Banks - Regional",
+"name": "Banco Bradesco SA ADR",
+"sector": "Financial"
 },
 "BBDC": {
 "industry": "Consumer Finance",
@@ -4456,6 +4521,11 @@
 "name": "Bitcoin Infrastructure Acquisition Corp Ltd. Warrant",
 "sector": "nan"
 },
+"BIYA": {
+"industry": "Software - Application",
+"name": "Baiya International Group Inc",
+"sector": "Technology"
+},
 "BJ": {
 "industry": "Household Products",
 "name": "BJ's Wholesale Club Holdings, Inc.",
@@ -4576,6 +4646,11 @@
 "name": "TopBuild Corp.",
 "sector": "Industrials"
 },
+"BLDP": {
+"industry": "Electrical Equipment & Parts",
+"name": "Ballard Power Systems Inc",
+"sector": "Industrials"
+},
 "BLDR": {
 "industry": "Building Products",
 "name": "Builders FirstSource, Inc.",
@@ -4620,6 +4695,11 @@
 "industry": "Hotels, Restaurants & Leisure",
 "name": "Bloomin' Brands, Inc.",
 "sector": "Consumer Discretionary"
+},
+"BLND": {
+"industry": "Software - Application",
+"name": "Blend Labs Inc",
+"sector": "Technology"
 },
 "BLNE": {
 "industry": "Beverages",
@@ -4989,6 +5069,11 @@
 "name": "Boot Barn Holdings, Inc.",
 "sector": "Consumer Discretionary"
 },
+"BORR": {
+"industry": "Oil & Gas Drilling",
+"name": "Borr Drilling Ltd",
+"sector": "Energy"
+},
 "BOTJ": {
 "industry": "Banks",
 "name": "Bank of the James Financial Group, Inc.",
@@ -5063,6 +5148,11 @@
 "industry": "Biotechnology",
 "name": "Bio-Path Holdings, Inc.",
 "sector": "Health Care"
+},
+"BQ": {
+"industry": "Specialty Retail",
+"name": "Boqii Holding Limited",
+"sector": "Consumer Cyclical"
 },
 "BR": {
 "industry": "IT Services",
@@ -5353,10 +5443,25 @@
 "name": "Bit Digital, Inc.",
 "sector": "Information Technology"
 },
+"BTCS": {
+"industry": "Capital Markets",
+"name": "BTCS Inc",
+"sector": "Financial"
+},
+"BTCT": {
+"industry": "Computer Hardware",
+"name": "BTC Digital Ltd",
+"sector": "Technology"
+},
 "BTDR": {
 "industry": "Software - Application",
 "name": "Bitdeer Technologies Group",
 "sector": "Technology"
+},
+"BTE": {
+"industry": "Oil & Gas E&P",
+"name": "Baytex Energy Corp",
+"sector": "Energy"
 },
 "BTG": {
 "industry": "Gold",
@@ -5412,6 +5517,11 @@
 "industry": "Food & Staples Retailing",
 "name": "Bit Origin Limited Ordinary Shares",
 "sector": "Consumer Staples"
+},
+"BTQ": {
+"industry": "Software - Infrastructure",
+"name": "BTQ Technologies Corp",
+"sector": "Technology"
 },
 "BTRSW": {
 "industry": "Software",
@@ -5476,6 +5586,11 @@
 "industry": "Capital Markets",
 "name": "Webull Corporation Warrants",
 "sector": "Financials"
+},
+"BUR": {
+"industry": "Asset Management",
+"name": "Burford Capital Limited",
+"sector": "Financial"
 },
 "BURL": {
 "industry": "Textiles, Apparel & Luxury Goods",
@@ -5666,6 +5781,11 @@
 "industry": "Banks",
 "name": "Byline Bancorp, Inc.",
 "sector": "Financials"
+},
+"BYAH": {
+"industry": "Household & Personal Products",
+"name": "Park Ha Biological Technology Co Ltd",
+"sector": "Consumer Defensive"
 },
 "BYD": {
 "industry": "Hotels, Restaurants & Leisure",
@@ -6477,6 +6597,11 @@
 "name": "Codere Online Luxembourg S.A",
 "sector": "Consumer Cyclical"
 },
+"CDTG": {
+"industry": "Waste Management",
+"name": "CDT Environmental Technology Investment Holdings Ltd",
+"sector": "Industrials"
+},
 "CDTTW": {
 "industry": "Biotechnology",
 "name": "CDT Equity Inc.",
@@ -6561,6 +6686,11 @@
 "industry": "Biotechnology",
 "name": "Celularity Inc. Warrant",
 "sector": "Health Care"
+},
+"CELZ": {
+"industry": "Biotechnology",
+"name": "Creative Medical Technology Holdings Inc",
+"sector": "Healthcare"
 },
 "CENT": {
 "industry": "Food & Staples Retailing",
@@ -6747,6 +6877,11 @@
 "name": "Carlyle Secured Lending, Inc.",
 "sector": "Financials"
 },
+"CGC": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Canopy Growth Corp",
+"sector": "Healthcare"
+},
 "CGCFU": {
 "industry": "Diversified Financial Services",
 "name": "Cartesian Growth Corporation IV Unit",
@@ -6791,6 +6926,11 @@
 "industry": "Biotechnology",
 "name": "CG Oncology Inc. Common stock",
 "sector": "Health Care"
+},
+"CGTL": {
+"industry": "Specialty Retail",
+"name": "Creative Global Technology Holdings Ltd",
+"sector": "Consumer Cyclical"
 },
 "CGTX": {
 "industry": "Biotechnology",
@@ -7042,6 +7182,11 @@
 "name": "Cipher Mining Inc. Common Stock",
 "sector": "Financials"
 },
+"CIG": {
+"industry": "Utilities - Regulated Electric",
+"name": "Cia Energetica DE Minas Gerais - Cemig ADR",
+"sector": "Utilities"
+},
 "CIGI": {
 "industry": "Real Estate Services",
 "name": "Colliers International Group Inc",
@@ -7111,6 +7256,11 @@
 "industry": "Pharmaceuticals",
 "name": "Circle8 Group Inc. Common Stock",
 "sector": "Health Care"
+},
+"CISS": {
+"industry": "Marine Shipping",
+"name": "C3is Inc",
+"sector": "Industrials"
 },
 "CITEU": {
 "industry": "Diversified Financial Services",
@@ -7327,6 +7477,11 @@
 "name": "Clever Leaves Holdings Inc.",
 "sector": "Health Care"
 },
+"CLVT": {
+"industry": "Information Technology Services",
+"name": "Clarivate Plc",
+"sector": "Technology"
+},
 "CLW": {
 "industry": "Paper & Forest Products",
 "name": "Clearwater Paper Corporation",
@@ -7444,6 +7599,11 @@
 "CMPS": {
 "industry": "Medical Care Facilities",
 "name": "Compass Pathways Plc ADR",
+"sector": "Healthcare"
+},
+"CMPX": {
+"industry": "Biotechnology",
+"name": "Compass Therapeutics Inc",
 "sector": "Healthcare"
 },
 "CMRA": {
@@ -7929,6 +8089,11 @@
 "name": "Canterbury Park Holding Corporation",
 "sector": "Consumer Discretionary"
 },
+"CPHI": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "China Pharma Holdings Inc",
+"sector": "Healthcare"
+},
 "CPIX": {
 "industry": "Pharmaceuticals",
 "name": "Cumberland Pharmaceuticals Inc.",
@@ -8084,6 +8249,11 @@
 "name": "Cardiff Oncology, Inc.",
 "sector": "Health Care"
 },
+"CRDL": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Cardiol Therapeutics Inc",
+"sector": "Healthcare"
+},
 "CRDO": {
 "industry": "Semiconductors & Semiconductor Equipment",
 "name": "Credo Technology Group Holding Ltd Ordinary Shares",
@@ -8179,6 +8349,11 @@
 "name": "Crinetics Pharmaceuticals Inc",
 "sector": "Health Care"
 },
+"CRON": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Cronos Group Inc",
+"sector": "Healthcare"
+},
 "CROX": {
 "industry": "Textiles, Apparel & Luxury Goods",
 "name": "Crocs, Inc.",
@@ -8263,6 +8438,11 @@
 "industry": "Diversified Telecommunication Services",
 "name": "Cloudastructure Inc. Class A Common Stock",
 "sector": "Communication Services"
+},
+"CSAN": {
+"industry": "Oil & Gas Refining & Marketing",
+"name": "Cosan S.A ADR",
+"sector": "Energy"
 },
 "CSBR": {
 "industry": "Biotechnology",
@@ -9089,6 +9269,11 @@
 "name": "Dominion Energy, Inc.",
 "sector": "Utilities"
 },
+"DCX": {
+"industry": "Auto Manufacturers",
+"name": "Digital Currency X Technology Inc",
+"sector": "Consumer Cyclical"
+},
 "DD": {
 "industry": "Chemicals",
 "name": "DuPont de Nemours, Inc.",
@@ -9229,6 +9414,11 @@
 "name": "DFP Healthcare Acquisitions Corp.",
 "sector": "Financials"
 },
+"DFSC": {
+"industry": "Aerospace & Defense",
+"name": "DEFSEC Technologies Inc",
+"sector": "Industrials"
+},
 "DFTX": {
 "industry": "Biotechnology",
 "name": "Definium Therapeutics Inc. Common Shares",
@@ -9259,6 +9449,11 @@
 "name": "nan",
 "sector": "Financials"
 },
+"DGNX": {
+"industry": "Consulting Services",
+"name": "Diginex Ltd",
+"sector": "Industrials"
+},
 "DGP": {
 "industry": "Exchange Traded Fund",
 "name": "DB Gold Double Long ETN",
@@ -9268,6 +9463,11 @@
 "industry": "Biotechnology",
 "name": "Quest Diagnostics Incorporated",
 "sector": "Health Care"
+},
+"DGXX": {
+"industry": "Utilities - Independent Power Producers",
+"name": "Digi Power X Inc",
+"sector": "Utilities"
 },
 "DGZ": {
 "industry": "Exchange Traded Fund",
@@ -9413,6 +9613,10 @@
 "industry": "Oil, Gas & Consumable Fuels",
 "name": "Delek US Holdings Inc",
 "sector": "Energy"
+},
+"DKI": {
+"industry": "Electronic Gaming & Multimedia",
+"sector": "Communication Services"
 },
 "DKL": {
 "industry": "Oil, Gas & Consumable Fuels",
@@ -9649,6 +9853,11 @@
 "name": "DocuSign, Inc.",
 "sector": "Information Technology"
 },
+"DOGZ": {
+"industry": "Leisure",
+"name": "Dogness (International) Corp",
+"sector": "Consumer Cyclical"
+},
 "DOLE": {
 "industry": "Farm Products",
 "name": "Dole plc",
@@ -9703,6 +9912,11 @@
 "industry": "Capital Markets",
 "name": "Duff & Phelps Utility and Infrastructure Fund Inc.",
 "sector": "Financials"
+},
+"DPRO": {
+"industry": "Computer Hardware",
+"name": "Draganfly Inc",
+"sector": "Technology"
 },
 "DPW": {
 "industry": "Electrical Equipment",
@@ -13372,6 +13586,11 @@
 "name": "GATX Corporation",
 "sector": "Industrials"
 },
+"GAU": {
+"industry": "Gold",
+"name": "Galiano Gold Inc",
+"sector": "Basic Materials"
+},
 "GAVA": {
 "industry": "Capital Markets",
 "name": "Grayscale Avalanche Staking ETF Common Units of Fractional Undivided Beneficial Interest",
@@ -14667,6 +14886,11 @@
 "name": "Global Ship Lease Inc",
 "sector": "Industrials"
 },
+"GSM": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Ferroglobe Plc",
+"sector": "Basic Materials"
+},
 "GSRF": {
 "industry": "Diversified Financial Services",
 "name": "GSR IV Acquisition Corp. Class A ordinary share",
@@ -14818,6 +15042,11 @@
 "GVA": {
 "industry": "Construction & Engineering",
 "name": "Granite Construction Incorporated",
+"sector": "Industrials"
+},
+"GVH": {
+"industry": "Integrated Freight & Logistics",
+"name": "Globavend Holdings Ltd",
 "sector": "Industrials"
 },
 "GWACW": {
@@ -19688,6 +19917,11 @@
 "name": "Sports Entertainment Gaming Global Corporation Warrants",
 "sector": "Consumer Discretionary"
 },
+"LU": {
+"industry": "Credit Services",
+"name": "Lufax Holding Ltd ADR",
+"sector": "Financial"
+},
 "LUCD": {
 "industry": "Health Care Technology",
 "name": "Lucid Diagnostics Inc. Common Stock",
@@ -21761,6 +21995,11 @@
 "name": "Marwynn Holdings Inc. Common stock",
 "sector": "Consumer Staples"
 },
+"MX": {
+"industry": "Semiconductors",
+"name": "MagnaChip Semiconductor Corp",
+"sector": "Technology"
+},
 "MXC": {
 "industry": "Oil, Gas & Consumable Fuels",
 "name": "Mexco Energy Corporation",
@@ -21846,6 +22085,11 @@
 "name": "Myseum Inc. Series A Warrant",
 "sector": "Communication Services"
 },
+"MYSZ": {
+"industry": "Apparel Retail",
+"name": "My Size Inc",
+"sector": "Consumer Cyclical"
+},
 "MYX": {
 "industry": "Diversified Financial Services",
 "name": "Maywood Acquisition Corp. 2 Class A Ordinary Share",
@@ -21901,10 +22145,20 @@
 "name": "Natural Alternatives International, Inc.",
 "sector": "Consumer Staples"
 },
+"NAK": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Northern Dynasty Minerals Ltd",
+"sector": "Basic Materials"
+},
 "NAKA": {
 "industry": "Capital Markets",
 "name": "Nakamoto Inc.",
 "sector": "Financials"
+},
+"NAMI": {
+"industry": "Internet Content & Information",
+"name": "Jinxin Technology Holding Co ADR",
+"sector": "Communication Services"
 },
 "NAMS": {
 "industry": "Biotechnology",
@@ -22121,6 +22375,11 @@
 "name": "Netcapital Inc. Warrants",
 "sector": "Financials"
 },
+"NCRA": {
+"industry": "Packaged Foods",
+"name": "Nocera Inc",
+"sector": "Consumer Defensive"
+},
 "NCSM": {
 "industry": "Energy Equipment & Services",
 "name": "NCS Multistage Holdings, Inc.",
@@ -22320,6 +22579,11 @@
 "industry": "Advertising Agencies",
 "name": "Nexxen International Ltd",
 "sector": "Communication Services"
+},
+"NEXR": {
+"industry": "Internet Retail",
+"name": "Nexera Technologies Ltd",
+"sector": "Consumer Cyclical"
 },
 "NEXT": {
 "industry": "Oil, Gas & Consumable Fuels",
@@ -25626,6 +25890,11 @@
 "name": "Prologis, Inc.",
 "sector": "Real Estate"
 },
+"PLG": {
+"industry": "Other Precious Metals & Mining",
+"name": "Platinum Group Metals Ltd",
+"sector": "Basic Materials"
+},
 "PLGO": {
 "industry": "Insurance - Diversified",
 "name": "Pelagos Insurance Capital Ltd",
@@ -26810,6 +27079,11 @@
 "industry": "Diversified Telecommunication Services",
 "name": "QualTek Services Inc. Warrant",
 "sector": "Communication Services"
+},
+"QTEX": {
+"industry": "Computer Hardware",
+"name": "QTREX Quantum Ltd",
+"sector": "Technology"
 },
 "QTI": {
 "industry": "Health Care Technology",
@@ -31448,6 +31722,11 @@
 "name": "Triumph Bancorp, Inc.",
 "sector": "Financials"
 },
+"TBLA": {
+"industry": "Internet Content & Information",
+"name": "Taboola.com Ltd",
+"sector": "Communication Services"
+},
 "TBLD": {
 "industry": "Capital Markets",
 "name": "Thornburg Income Builder Opportunities Trust Common Stock",
@@ -35154,6 +35433,11 @@
 "name": "World Acceptance Corporation",
 "sector": "Financials"
 },
+"WRN": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Western Copper & Gold Corp",
+"sector": "Basic Materials"
+},
 "WS": {
 "industry": "Metals & Mining",
 "name": "Worthington Steel Inc.",
@@ -35907,6 +36191,11 @@
 "industry": "Biotechnology",
 "name": "China Holdings, Inc.",
 "sector": "Health Care"
+},
+"YXT": {
+"industry": "Software - Application",
+"name": "Yxt.Com Group Holding Ltd ADR",
+"sector": "Technology"
 },
 "YYAI": {
 "industry": "Hotels, Restaurants & Leisure",
