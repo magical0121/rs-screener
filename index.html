@@ -2,47 +2,60 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stage2 Entry スクリーナー</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式スクリーナー | 本日の本 Stage2</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app">
     <header class="header">
-      <div>
-        <h1>Stage2 Entry スクリーナー</h1>
-        <p class="sub">12週高値ブレイク + 30週SMA上（Lookahead ON相当）— 背景が入った瞬間の銘柄</p>
+      <div class="header-left">
+        <div class="logo">
+          <span class="logo-mark">RS</span>
+          <div>
+            <div class="logo-title">株式スクリーナー</div>
+            <div class="logo-sub">本日の本 Stage2 / 業種強度</div>
+          </div>
+        </div>
       </div>
-      <div class="meta">
-        <div id="updatedAt">更新: —</div>
-        <div id="counts">Entry: — / Active: —</div>
+      <nav class="tabs">
+        <button class="tab active">スクリーナー</button>
+        <button class="tab" disabled>ウォッチリスト</button>
+        <button class="tab" disabled>アラート</button>
+      </nav>
+      <div class="header-right">
+        <span id="lastUpdated" class="updated">更新: —</span>
+        <button id="refreshBtn" class="btn-refresh" title="再読み込み">↻</button>
       </div>
     </header>
 
     <main class="main">
       <aside class="sidebar">
-        <h2>業種強度</h2>
-        <div id="industryList" class="theme-list">
-          <!-- filled by JS -->
+        <div class="sidebar-head">
+          <h2>業種強度</h2>
+          <span class="hint">スコア 0–100</span>
+        </div>
+        <div id="themeCards" class="theme-cards"></div>
+        <div class="sidebar-note">
+          本日Entry銘柄の業種内RS平均（1件以上で表示）
         </div>
       </aside>
 
       <section class="content">
         <div class="content-head">
           <div>
-            <h2>Stage2 銘柄</h2>
+            <h2>本日の本 Stage2 Entry</h2>
             <p class="filter-line">
-              Entry = 今週Stage2入り ／ Active = Stage2継続中 ／ 流動性: 株価≥$0.75・平均出来高≥50万・売買代金≥$1M
+              ロジック: 12週ブレイク + 30週SMA上（点灯は今日のみ）／ 業種は日本語表示・業種スコア付き
             </p>
           </div>
           <div class="controls">
-            <label class="check"><input type="checkbox" id="fltEntry" checked />Entryのみ</label>
-            <label class="check"><input type="checkbox" id="fltActive" />Activeも表示</label>
             <select id="sortBy">
               <option value="rs">RS順</option>
-              <option value="industry">業種順</option>
               <option value="indScore">業種スコア順</option>
+              <option value="industry">業種順</option>
               <option value="breakout">ブレイク%順</option>
+              <option value="pct30">30週乖離順</option>
             </select>
             <button type="button" id="tvCopyBtn" class="btn-tv" title="表示中の銘柄をTradingView用にコピー">TVコピー</button>
           </div>
@@ -53,32 +66,31 @@
             <thead>
               <tr>
                 <th>ティッカー</th>
-                <th>区分</th>
+                <th>状態</th>
                 <th>RS</th>
+                <th>価格</th>
                 <th>ブレイク%</th>
                 <th>30週乖離</th>
                 <th>業種</th>
                 <th>業種スコア</th>
-                <th>価格</th>
               </tr>
             </thead>
             <tbody id="stockBody"></tbody>
           </table>
         </div>
 
-        <p id="table-empty-hint" class="empty" hidden></p>
+        <p id="table-empty-hint" class="empty" style="padding:12px 4px;color:#9aa;" hidden></p>
         <div class="legend">
-          <span><i class="dot green"></i>Entry（Stage2入り）</span>
-          <span><i class="dot yellow"></i>Active（継続）</span>
+          <span><i class="dot green"></i>Entry（本日点灯）</span>
           <span class="sep">|</span>
-          <span>業種スコア: 表示銘柄のRS平均</span>
-          <span>RS: ユニバース内3Mリターン順位</span>
+          <span>Stage2 = 12週高値ブレイク + 30週SMA上</span>
+          <span>業種スコア = 同一業種のRS平均</span>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>Stage2 Entry 専用 — 12w break + 30w SMA</span>
+      <span>個人用 — 本日の本 Stage2 Entry</span>
       <span>データは日次バッチ更新</span>
     </footer>
   </div>
