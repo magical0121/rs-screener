@@ -1170,11 +1170,19 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
     return compute_industry_scores(stocks)
 
 
+
 def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series | None = None) -> dict:
     """
-    本日の本 Stage2 Entry（インジ簡易・ロックOFF相当の点灯日）
-    Stage2 = 週足終値 > 過去12週終値高値 and 週足終値 > 30週SMA
-    Entry  = 最新週で Stage2 かつ 前週は Stage2 でない
+    本日の本 Stage2 Entry（以前の47件ロジック相当）
+
+    Stage2条件（日足で評価）:
+      終値 > 過去12週の週足終値高値
+      かつ 終値 > 30週SMA
+      ※週足指標は「確定済み週」のみ使用（lookaheadなし）
+
+    Entry:
+      今日 Stage2 == True かつ 昨日 Stage2 == False
+      （直近2営業日の切り替わりのみ → 件数を絞る）
     """
     out = {
         "stage2_entry": False,
@@ -1193,44 +1201,64 @@ def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series
         if getattr(close.index, "tz", None) is not None:
             close = close.copy()
             close.index = close.index.tz_convert("UTC").tz_localize(None)
+
         high = high.reindex(close.index).ffill()
         price = float(close.iloc[-1])
         out["price"] = price
 
-        if volume is not None:
-            vol = volume.reindex(close.index).fillna(0)
-            avg_vol = float(vol.tail(20).mean()) if len(vol) >= 5 else float(vol.mean() or 0)
-            out["avg_vol"] = avg_vol
-            out["dollar_vol"] = avg_vol * price
+        # 出来高（必須）
+        if volume is None:
+            return out
+        vol = volume.reindex(close.index).fillna(0.0)
+        avg_vol = float(vol.tail(20).mean()) if len(vol) >= 5 else 0.0
+        out["avg_vol"] = avg_vol
+        out["dollar_vol"] = avg_vol * price
 
+        # 週足（確定週）
         w = pd.DataFrame({"c": close}).resample("W-FRI").last().dropna()
-        if len(w) < SMA_WEEKS + RANGE_LEN_WEEKS:
+        if len(w) < SMA_WEEKS + RANGE_LEN_WEEKS + 2:
             return out
         w["sma30"] = w["c"].rolling(SMA_WEEKS, min_periods=SMA_WEEKS).mean()
+        # 過去12週の終値高値（当週を含めない）
         w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN_WEEKS, min_periods=5).max()
-        w["stage2"] = (w["c"] > w["range_high"]) & (w["c"] > w["sma30"])
+        # 確定週のみ日足へ asof（その日以前の最後の週）
+        w_feat = w[["sma30", "range_high"]].dropna().copy()
+        w_feat = w_feat.reset_index()
+        # index name may vary
+        wcol = w_feat.columns[0]
+        w_feat = w_feat.rename(columns={wcol: "week_end"}).sort_values("week_end")
 
-        last = w.iloc[-1]
-        prev = w.iloc[-2]
-        active = bool(last["stage2"]) if not pd.isna(last["stage2"]) else False
-        was = bool(prev["stage2"]) if not pd.isna(prev["stage2"]) else False
-        entry = active and (not was)
+        daily = pd.DataFrame({"close": close}).reset_index()
+        dcol = daily.columns[0]
+        daily = daily.rename(columns={dcol: "date"}).sort_values("date")
+        merged = pd.merge_asof(
+            daily, w_feat, left_on="date", right_on="week_end", direction="backward"
+        )
+        merged = merged.dropna(subset=["sma30", "range_high"])
+        if len(merged) < 5:
+            return out
 
-        rh = float(last["range_high"]) if not pd.isna(last["range_high"]) else None
-        sm = float(last["sma30"]) if not pd.isna(last["sma30"]) else None
-        lc = float(last["c"])
-        brk = ((lc / rh) - 1.0) * 100.0 if rh else None  # % above range high
-        # also store ratio*100 style like before for compatibility: lc/rh*100
+        merged["stage2"] = (merged["close"] > merged["range_high"]) & (merged["close"] > merged["sma30"])
+
+        # 直近2営業日
+        s_today = bool(merged["stage2"].iloc[-1])
+        s_yest = bool(merged["stage2"].iloc[-2])
+        entry = s_today and (not s_yest)
+
+        last = merged.iloc[-1]
+        lc = float(last["close"])
+        rh = float(last["range_high"])
+        sm = float(last["sma30"])
         brk_ratio = (lc / rh) * 100.0 if rh else None
         pct30 = ((lc / sm) - 1.0) * 100.0 if sm else None
 
         out.update(
             {
                 "stage2_entry": entry,
-                "stage2_active": active,
+                "stage2_active": s_today,
                 "breakout_pct": round(brk_ratio, 2) if brk_ratio is not None else None,
                 "pct_from_30w": round(pct30, 2) if pct30 is not None else None,
-                "status": "Entry" if entry else ("Active" if active else ""),
+                "status": "Entry" if entry else ("Active" if s_today else ""),
             }
         )
         return out
@@ -1278,13 +1306,15 @@ def main() -> None:
             vol = df["Volume"] if "Volume" in df.columns else None
 
             entry = calc_stage2_entry_today(close, high, vol)
-            # 流動性
-            if entry.get("avg_vol") is not None and entry["avg_vol"] < MIN_AVG_VOL:
+            # 流動性（必須・欠落は除外）
+            avg_vol = entry.get("avg_vol")
+            dollar_vol = entry.get("dollar_vol")
+            if avg_vol is None or dollar_vol is None:
                 continue
-            if entry.get("dollar_vol") is not None and entry["dollar_vol"] < MIN_DOLLAR_VOL:
+            if avg_vol < MIN_AVG_VOL or dollar_vol < MIN_DOLLAR_VOL:
                 continue
 
-            # Entry のみ残す（本日点灯）
+            # Entry のみ残す（今日点灯・昨日は非Stage2）
             if not entry.get("stage2_entry"):
                 continue
 
@@ -1353,7 +1383,7 @@ def main() -> None:
         "qualified_size": len(stocks_sorted),
         "entry_count": len(stocks_sorted),
         "active_count": 0,
-        "logic": "Stage2 Entry = 12w break + 30w SMA; Entry = lit this week only (this week stage2, prior week not); industry=FinanceDatabase+Finviz",
+        "logic": "Stage2 Entry = 12w break + 30w SMA; Entry = lit today only (today stage2, yesterday not); industry=FinanceDatabase+Finviz",
         "filters": {
             "min_price": MIN_PRICE,
             "min_avg_vol": MIN_AVG_VOL,
