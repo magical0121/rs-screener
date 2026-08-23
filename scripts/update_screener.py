@@ -1200,18 +1200,21 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
 
 
 
+
 def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series | None = None) -> dict:
     """
-    以前の「約47件」ロジックに合わせた Entry 判定（Pine寄り）
+    本日の本 Stage2 Entry = 「今日はじめて Stage2 に入った」銘柄のみ
 
-    Stage2（週足ベース・インジ同等）:
+    Stage2（週足ベース）:
       週足終値 > 過去12週の週足終値高値（当週除外）
       かつ 週足終値 > 30週SMA
-      ※進行中の週は「その週の最新終値」を週足終値として使う（TVの週足更新に近い）
+      進行中週の週足終値 = その日の終値
 
-    Entry（日次）:
-      今日 Stage2 かつ 昨日は非 Stage2
-      （週足条件が日次で見て True になった当日のみ）
+    Entry（厳格）:
+      1) 今日 Stage2 == True
+      2) 昨日 Stage2 == False
+      3) 直近の Stage2 連続区間の開始日が「今日」（＝今回の入りが今日）
+      → 昔から背景が付いている銘柄は除外
     """
     out = {
         "stage2_entry": False,
@@ -1242,77 +1245,58 @@ def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series
         out["avg_vol"] = avg_vol
         out["dollar_vol"] = avg_vol * price
 
-        # --- 週足（進行中週も含む W-FRI）---
+        # 確定済み週足
         w = pd.DataFrame({"c": close}).resample("W-FRI").last().dropna()
         if len(w) < SMA_WEEKS + RANGE_LEN_WEEKS + 2:
             return out
 
-        w["sma30"] = w["c"].rolling(SMA_WEEKS, min_periods=SMA_WEEKS).mean()
-        # 過去12週終値高値（当週を shift(1) で除外）= Pine range
-        w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN_WEEKS, min_periods=5).max()
-        w["stage2"] = (w["c"] > w["range_high"]) & (w["c"] > w["sma30"])
-
-        # 各日が属する週の Stage2 を付与（その週の週足条件）
-        # 週ラベル: その日以前で最も近い金曜週
-        w_status = w[["stage2", "c", "sma30", "range_high"]].copy()
-        w_status = w_status.reset_index()
-        wcol = w_status.columns[0]
-        w_status = w_status.rename(columns={wcol: "week_end"}).sort_values("week_end")
-
-        daily = pd.DataFrame({"close": close}).reset_index()
-        dcol = daily.columns[0]
-        daily = daily.rename(columns={dcol: "date"}).sort_values("date")
-
-        # 各日 → その日が含まれる週の期末（ceil to Friday week end）
-        # merge_asof backward: その日以前の週期末＝進行中週なら「今の週の行」は
-        # resample が毎週末に1行なので、週の途中の日は「前の金曜」に asof される。
-        # 進行中週の条件を日次で更新するため、日ごとに「週次終値=その日の終値」で再計算する。
-        #
-        # Pine寄り実装:
-        #   確定済み週の sma30 / range_high は固定
-        #   進行中週の「週足終値」だけ日次の close を使う
-        completed = w.iloc[:-1].copy() if len(w) >= 2 else w.copy()
-        if len(completed) < SMA_WEEKS + 2:
+        completed = w.iloc[:-1].copy()  # 進行中週を除く
+        if len(completed) < SMA_WEEKS + RANGE_LEN_WEEKS:
             return out
 
-        # 直近「確定週」までの指標（lookaheadなし）
-        last_complete = completed.iloc[-1]
-        # 進行中週用: range_high / sma30 は「前週まで」で固定
-        # sma30: 確定週の sma30 を使用（進行中は前週SMAで近似＝Pine lookahead_offに近い）
-        base_sma = float(last_complete["sma30"]) if not pd.isna(last_complete["sma30"]) else None
-        # range: 確定週の range_high ではなく、確定週終値を含む過去12週高値
-        # = last_complete 時点の range 計算と同等に、completed の直近12週終値 max
-        if len(completed) >= RANGE_LEN_WEEKS:
-            base_range = float(completed["c"].iloc[-RANGE_LEN_WEEKS:].max())
-        else:
-            base_range = float(completed["c"].max())
+        completed["sma30"] = completed["c"].rolling(SMA_WEEKS, min_periods=SMA_WEEKS).mean()
+        # 各確定週の「その時点の」12週高値（当週除外）
+        completed["range_high"] = completed["c"].shift(1).rolling(RANGE_LEN_WEEKS, min_periods=5).max()
 
+        last_c = completed.iloc[-1]
+        base_sma = float(last_c["sma30"]) if not pd.isna(last_c["sma30"]) else None
+        # 進行中週から見た12週高値 = 直近12本の確定週終値の max
+        base_range = float(completed["c"].iloc[-RANGE_LEN_WEEKS:].max())
         if base_sma is None or base_range <= 0:
             return out
 
-        # 日次 Stage2 = 日次終値で進行中週を評価（週足終値がその日まで更新されるイメージ）
-        s2 = (close > base_range) & (close > base_sma)
-        if len(s2) < 2:
+        # 日次 Stage2（進行中週の週足終値＝日々の終値）
+        stage2 = (close > base_range) & (close > base_sma)
+        if len(stage2) < 3:
             return out
 
-        s_today = bool(s2.iloc[-1])
-        s_yest = bool(s2.iloc[-2])
-        entry = s_today and (not s_yest)
+        s_today = bool(stage2.iloc[-1])
+        s_yest = bool(stage2.iloc[-2])
+        out["stage2_active"] = s_today
 
         lc = float(close.iloc[-1])
-        # 以前のJSONに近い表示: 比率%（100=ちょうど高値）
-        brk_ratio = (lc / base_range) * 100.0
-        pct30 = ((lc / base_sma) - 1.0) * 100.0
+        out["breakout_pct"] = round((lc / base_range) * 100.0, 2)
+        out["pct_from_30w"] = round(((lc / base_sma) - 1.0) * 100.0, 2)
 
-        out.update(
-            {
-                "stage2_entry": entry,
-                "stage2_active": s_today,
-                "breakout_pct": round(brk_ratio, 2),
-                "pct_from_30w": round(pct30, 2),
-                "status": "Entry" if entry else ("Active" if s_today else ""),
-            }
-        )
+        if not s_today:
+            out["status"] = ""
+            return out
+
+        # --- 今回の Stage2 連続区間の開始位置 ---
+        # 末尾から False になるまで遡る
+        vals = stage2.values
+        n = len(vals)
+        start_i = n - 1
+        while start_i > 0 and bool(vals[start_i - 1]):
+            start_i -= 1
+        run_len = n - start_i  # 連続 True の本数
+
+        # Entry = 今日が連続区間の最初の日（run_len == 1）
+        # ⇔ 今日 True かつ 昨日 False（と同じだが、明示的に「今日始まり」だけ）
+        entry = s_today and (not s_yest) and (run_len == 1)
+
+        out["stage2_entry"] = entry
+        out["status"] = "Entry" if entry else "Active"
         return out
     except Exception as e:
         print(f"entry calc error: {e}")
@@ -1435,7 +1419,7 @@ def main() -> None:
         "qualified_size": len(stocks_sorted),
         "entry_count": len(stocks_sorted),
         "active_count": 0,
-        "logic": "Stage2 Entry = 12w break + 30w SMA; Entry = lit today only (today stage2, yesterday not); industry=FinanceDatabase+Finviz",
+        "logic": "Stage2=weekly close>12w high & >30wSMA; Entry=FIRST day of stage2 run only (today true, yesterday false, run_len=1)",
         "filters": {
             "min_price": MIN_PRICE,
             "min_avg_vol": MIN_AVG_VOL,
