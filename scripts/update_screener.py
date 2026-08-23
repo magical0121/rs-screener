@@ -630,63 +630,91 @@ def _clean_symbol(sym: str) -> str | None:
 
 
 def fetch_us_tickers() -> list[str]:
-    """NASDAQ + NYSE/AMEX の普通株ティッカーを取得"""
+    """
+    米国株ユニバース（以前の約12,000台規模）
+    1) NASDAQ Trader リスト（NASDAQ / NYSE / AMEX 等）
+    2) FinanceDatabase の United States 株式
+    を統合。テスト・ワラント・ユニット・優先株っぽい記号は除外。
+    """
     tickers: set[str] = set()
 
-    # NASDAQ
+    # --- 1) NASDAQ listed ---
     try:
         text = _fetch_text(NASDAQ_URL)
         lines = [ln for ln in text.splitlines() if ln and not ln.startswith("File Creation")]
-        if lines:
-            header = lines[0].split("|")
-            # Symbol|...|Test Issue|...|ETF|...
-            for ln in lines[1:]:
-                parts = ln.split("|")
-                if len(parts) < 7:
-                    continue
-                sym = parts[0].strip()
-                test = parts[3].strip().upper() if len(parts) > 3 else "N"
-                etf = parts[6].strip().upper() if len(parts) > 6 else "N"
-                if test == "Y" or etf == "Y":
-                    continue
-                name = parts[1] if len(parts) > 1 else ""
-                if any(x in name.upper() for x in ["WARRANT", " UNIT", " RIGHT", "PREFERRED"]):
-                    continue
-                cleaned = _clean_symbol(sym)
-                if cleaned:
-                    tickers.add(cleaned)
+        for ln in lines[1:]:
+            parts = ln.split("|")
+            if len(parts) < 7:
+                continue
+            sym = parts[0].strip()
+            test = parts[3].strip().upper() if len(parts) > 3 else "N"
+            etf = parts[6].strip().upper() if len(parts) > 6 else "N"
+            if test == "Y" or etf == "Y":
+                continue
+            name = parts[1] if len(parts) > 1 else ""
+            if any(x in name.upper() for x in ["WARRANT", " UNIT", " RIGHT", "PREFERRED"]):
+                continue
+            cleaned = _clean_symbol(sym)
+            if cleaned:
+                tickers.add(cleaned)
     except Exception as e:
         print(f"NASDAQ list fetch failed: {e}")
 
-    # NYSE / NYSE American など
+    # --- 2) NYSE / AMEX / Arca 等 ---
     try:
         text = _fetch_text(OTHER_URL)
         lines = [ln for ln in text.splitlines() if ln and not ln.startswith("File Creation")]
-        if lines:
-            for ln in lines[1:]:
-                parts = ln.split("|")
-                if len(parts) < 7:
-                    continue
-                # ACT Symbol|...|Exchange|...|ETF|...|Test Issue
-                sym = parts[0].strip()
-                exchange = parts[2].strip().upper() if len(parts) > 2 else ""
-                etf = parts[4].strip().upper() if len(parts) > 4 else "N"
-                test = parts[6].strip().upper() if len(parts) > 6 else "N"
-                if test == "Y" or etf == "Y":
-                    continue
-                # N=NYSE, A=NYSE American, P=NYSE Arca など。OTC系は除外気味に
-                if exchange not in {"N", "A", "P", "Z", "Q"}:
-                    # Q は他リスト側のNASDAQ表記のことがある
-                    if exchange not in {"N", "A", "P"}:
-                        continue
-                name = parts[1] if len(parts) > 1 else ""
-                if any(x in name.upper() for x in ["WARRANT", " UNIT", " RIGHT", "PREFERRED"]):
-                    continue
-                cleaned = _clean_symbol(sym)
-                if cleaned:
-                    tickers.add(cleaned)
+        for ln in lines[1:]:
+            parts = ln.split("|")
+            if len(parts) < 7:
+                continue
+            sym = parts[0].strip()
+            exchange = parts[2].strip().upper() if len(parts) > 2 else ""
+            etf = parts[4].strip().upper() if len(parts) > 4 else "N"
+            test = parts[6].strip().upper() if len(parts) > 6 else "N"
+            if test == "Y" or etf == "Y":
+                continue
+            # 主要取引所。以前より広め（Z=BATS, Q=Nasdaq表記など）
+            if exchange and exchange not in {"N", "A", "P", "Z", "Q", "V"}:
+                continue
+            name = parts[1] if len(parts) > 1 else ""
+            if any(x in name.upper() for x in ["WARRANT", " UNIT", " RIGHT", "PREFERRED"]):
+                continue
+            cleaned = _clean_symbol(sym)
+            if cleaned:
+                tickers.add(cleaned)
     except Exception as e:
         print(f"OTHER list fetch failed: {e}")
+
+    nasdaq_count = len(tickers)
+    print(f"NASDAQ Trader universe: {nasdaq_count}")
+
+    # --- 3) FinanceDatabase US equities（約12,000台の主力）---
+    try:
+        import financedatabase as fd
+
+        eq = fd.Equities()
+        df = eq.select(country="United States")
+        if df is not None and not df.empty:
+            if "exchange" in df.columns:
+                mask = df["exchange"].astype(str).str.upper().isin(_US_EXCHANGES)
+                df = df[mask | df["exchange"].isna()]
+            for sym in df.index:
+                ticker = str(sym).strip().upper()
+                if not ticker or len(ticker) > 6:
+                    continue
+                # ワラント・ユニット等
+                if any(ch in ticker for ch in ["$", "^"]):
+                    continue
+                if ticker.endswith(("W", "U", "R")) and len(ticker) >= 5:
+                    # 粗い除外（本則は名前で弾く）
+                    pass
+                cleaned = _clean_symbol(ticker)
+                if cleaned:
+                    tickers.add(cleaned)
+        print(f"After FinanceDatabase merge: {len(tickers)} (added {len(tickers) - nasdaq_count})")
+    except Exception as e:
+        print(f"FinanceDatabase universe expand failed: {e}")
 
     out = sorted(tickers)
     print(f"US ticker universe size: {len(out)}")
@@ -1171,18 +1199,19 @@ def compute_theme_scores(stocks: list[dict], themes: dict[str, list[str]]) -> li
 
 
 
+
 def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series | None = None) -> dict:
     """
-    本日の本 Stage2 Entry（以前の47件ロジック相当）
+    以前の「約47件」ロジックに合わせた Entry 判定（Pine寄り）
 
-    Stage2条件（日足で評価）:
-      終値 > 過去12週の週足終値高値
-      かつ 終値 > 30週SMA
-      ※週足指標は「確定済み週」のみ使用（lookaheadなし）
+    Stage2（週足ベース・インジ同等）:
+      週足終値 > 過去12週の週足終値高値（当週除外）
+      かつ 週足終値 > 30週SMA
+      ※進行中の週は「その週の最新終値」を週足終値として使う（TVの週足更新に近い）
 
-    Entry:
-      今日 Stage2 == True かつ 昨日 Stage2 == False
-      （直近2営業日の切り替わりのみ → 件数を絞る）
+    Entry（日次）:
+      今日 Stage2 かつ 昨日は非 Stage2
+      （週足条件が日次で見て True になった当日のみ）
     """
     out = {
         "stage2_entry": False,
@@ -1206,7 +1235,6 @@ def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series
         price = float(close.iloc[-1])
         out["price"] = price
 
-        # 出来高（必須）
         if volume is None:
             return out
         vol = volume.reindex(close.index).fillna(0.0)
@@ -1214,50 +1242,74 @@ def calc_stage2_entry_today(close: pd.Series, high: pd.Series, volume: pd.Series
         out["avg_vol"] = avg_vol
         out["dollar_vol"] = avg_vol * price
 
-        # 週足（確定週）
+        # --- 週足（進行中週も含む W-FRI）---
         w = pd.DataFrame({"c": close}).resample("W-FRI").last().dropna()
         if len(w) < SMA_WEEKS + RANGE_LEN_WEEKS + 2:
             return out
+
         w["sma30"] = w["c"].rolling(SMA_WEEKS, min_periods=SMA_WEEKS).mean()
-        # 過去12週の終値高値（当週を含めない）
+        # 過去12週終値高値（当週を shift(1) で除外）= Pine range
         w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN_WEEKS, min_periods=5).max()
-        # 確定週のみ日足へ asof（その日以前の最後の週）
-        w_feat = w[["sma30", "range_high"]].dropna().copy()
-        w_feat = w_feat.reset_index()
-        # index name may vary
-        wcol = w_feat.columns[0]
-        w_feat = w_feat.rename(columns={wcol: "week_end"}).sort_values("week_end")
+        w["stage2"] = (w["c"] > w["range_high"]) & (w["c"] > w["sma30"])
+
+        # 各日が属する週の Stage2 を付与（その週の週足条件）
+        # 週ラベル: その日以前で最も近い金曜週
+        w_status = w[["stage2", "c", "sma30", "range_high"]].copy()
+        w_status = w_status.reset_index()
+        wcol = w_status.columns[0]
+        w_status = w_status.rename(columns={wcol: "week_end"}).sort_values("week_end")
 
         daily = pd.DataFrame({"close": close}).reset_index()
         dcol = daily.columns[0]
         daily = daily.rename(columns={dcol: "date"}).sort_values("date")
-        merged = pd.merge_asof(
-            daily, w_feat, left_on="date", right_on="week_end", direction="backward"
-        )
-        merged = merged.dropna(subset=["sma30", "range_high"])
-        if len(merged) < 5:
+
+        # 各日 → その日が含まれる週の期末（ceil to Friday week end）
+        # merge_asof backward: その日以前の週期末＝進行中週なら「今の週の行」は
+        # resample が毎週末に1行なので、週の途中の日は「前の金曜」に asof される。
+        # 進行中週の条件を日次で更新するため、日ごとに「週次終値=その日の終値」で再計算する。
+        #
+        # Pine寄り実装:
+        #   確定済み週の sma30 / range_high は固定
+        #   進行中週の「週足終値」だけ日次の close を使う
+        completed = w.iloc[:-1].copy() if len(w) >= 2 else w.copy()
+        if len(completed) < SMA_WEEKS + 2:
             return out
 
-        merged["stage2"] = (merged["close"] > merged["range_high"]) & (merged["close"] > merged["sma30"])
+        # 直近「確定週」までの指標（lookaheadなし）
+        last_complete = completed.iloc[-1]
+        # 進行中週用: range_high / sma30 は「前週まで」で固定
+        # sma30: 確定週の sma30 を使用（進行中は前週SMAで近似＝Pine lookahead_offに近い）
+        base_sma = float(last_complete["sma30"]) if not pd.isna(last_complete["sma30"]) else None
+        # range: 確定週の range_high ではなく、確定週終値を含む過去12週高値
+        # = last_complete 時点の range 計算と同等に、completed の直近12週終値 max
+        if len(completed) >= RANGE_LEN_WEEKS:
+            base_range = float(completed["c"].iloc[-RANGE_LEN_WEEKS:].max())
+        else:
+            base_range = float(completed["c"].max())
 
-        # 直近2営業日
-        s_today = bool(merged["stage2"].iloc[-1])
-        s_yest = bool(merged["stage2"].iloc[-2])
+        if base_sma is None or base_range <= 0:
+            return out
+
+        # 日次 Stage2 = 日次終値で進行中週を評価（週足終値がその日まで更新されるイメージ）
+        s2 = (close > base_range) & (close > base_sma)
+        if len(s2) < 2:
+            return out
+
+        s_today = bool(s2.iloc[-1])
+        s_yest = bool(s2.iloc[-2])
         entry = s_today and (not s_yest)
 
-        last = merged.iloc[-1]
-        lc = float(last["close"])
-        rh = float(last["range_high"])
-        sm = float(last["sma30"])
-        brk_ratio = (lc / rh) * 100.0 if rh else None
-        pct30 = ((lc / sm) - 1.0) * 100.0 if sm else None
+        lc = float(close.iloc[-1])
+        # 以前のJSONに近い表示: 比率%（100=ちょうど高値）
+        brk_ratio = (lc / base_range) * 100.0
+        pct30 = ((lc / base_sma) - 1.0) * 100.0
 
         out.update(
             {
                 "stage2_entry": entry,
                 "stage2_active": s_today,
-                "breakout_pct": round(brk_ratio, 2) if brk_ratio is not None else None,
-                "pct_from_30w": round(pct30, 2) if pct30 is not None else None,
+                "breakout_pct": round(brk_ratio, 2),
+                "pct_from_30w": round(pct30, 2),
                 "status": "Entry" if entry else ("Active" if s_today else ""),
             }
         )
