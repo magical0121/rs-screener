@@ -294,26 +294,71 @@ def download_history_batch(tickers: list[str], period: str = "2y") -> dict[str, 
 # Stage2 判定（Lookahead ON 相当）
 # ──────────────────────────────
 
+
+
+def _build_weekly_stage(close: pd.Series, high: pd.Series) -> pd.DataFrame | None:
+    """週足を構築し、Pineと同じStage列を付与して返す。"""
+    close = _naive_index(close)
+    high = _naive_index(high.reindex(close.index).ffill())
+    w = (
+        pd.DataFrame({"c": close, "h": high})
+        .resample("W-FRI")
+        .agg({"c": "last", "h": "max"})
+        .dropna()
+    )
+    if len(w) < SMA_LEN + RANGE_LEN + 2:
+        return None
+
+    w = w.copy()
+    w["sma30"] = w["c"].rolling(SMA_LEN, min_periods=SMA_LEN).mean()
+    w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN, min_periods=RANGE_LEN).max()
+    w["breakout"] = w["c"] > w["range_high"]
+    w["above"] = w["c"] > w["sma30"]
+    w["stage2_cond"] = w["breakout"].fillna(False) & w["above"].fillna(False)
+    prev_c = w["c"].shift(1)
+    prev_sma = w["sma30"].shift(1)
+    w["cross_under"] = (w["c"] < w["sma30"]) & (prev_c >= prev_sma)
+
+    stage = 1
+    stages: list[int] = []
+    for i in range(len(w)):
+        cond = bool(w["stage2_cond"].iloc[i])
+        cu = w["cross_under"].iloc[i]
+        cross_under = bool(cu) if not pd.isna(cu) else False
+        if cond:
+            stage = 2
+        elif stage == 2 and cross_under:
+            stage = 1
+        stages.append(stage)
+    w["stage"] = stages
+    return w
+
+
+def _stage_asof(close: pd.Series, high: pd.Series) -> tuple[int, bool, float | None, float | None, float | None]:
+    """直近の stage / stage2_cond / close / sma / range_high を返す。"""
+    w = _build_weekly_stage(close, high)
+    if w is None or len(w) == 0:
+        return 1, False, None, None, None
+    last = w.iloc[-1]
+    stage = int(last["stage"])
+    cond = bool(last["stage2_cond"])
+    last_c = float(last["c"])
+    last_sma = float(last["sma30"]) if not pd.isna(last["sma30"]) else None
+    rh = float(last["range_high"]) if not pd.isna(last["range_high"]) else None
+    return stage, cond, last_c, last_sma, rh
+
+
 def calc_stage2_entry(close: pd.Series, high: pd.Series) -> dict:
     """
-    Pineインジと同一ロジック（フィルターOFF / Lookahead ON相当）
+    Pineと同じStage定義 + 「今日初めて点灯」だけをEntryにする。
 
-    30週SMA:
-      週足終値シリーズに対する SMA(30)
-      日足→W-FRIリサンプル、未確定の今週を含む（Lookahead ON相当）
+    必須:
+      1) 今日 stage==2
+      2) 昨日 stage!=2          ← 日次の切り替わり
+      3) 今日 stage2_cond==True ← 実際にブレイク条件で入った日
+      4) 2つ前の週足でも stage!=2 ← つい最近までStage2ではなかった
 
-    ブレイク:
-      週足終値 > 過去12週の週足終値高値（現在週除く）
-      Pine: range_high = ta.highest(w_close[1], 12)
-
-    Stage遷移（Pineと同じ）:
-      if stage2_cond: stage = 2
-      elif stage == 2 and crossunder(w_close, sma30): stage = 1
-      ※一度Stage2に入ったら、30週SMAを下抜けるまで維持
-        （毎週ブレイクし直す必要なし）
-
-    Entry:
-      stage が 2 に切り替わった週（前週 stage != 2, 今週 stage == 2）
+    4 により「ずっとStage2なのにデータ誤差で再点灯」を大幅に減らす。
     """
     out = {
         "stage2_active": False,
@@ -326,59 +371,40 @@ def calc_stage2_entry(close: pd.Series, high: pd.Series) -> dict:
     try:
         close = _naive_index(close)
         high = _naive_index(high.reindex(close.index).ffill())
-
-        w = (
-            pd.DataFrame({"c": close, "h": high})
-            .resample("W-FRI")
-            .agg({"c": "last", "h": "max"})
-            .dropna()
-        )
-        if len(w) < SMA_LEN + RANGE_LEN + 2:
+        if len(close) < 10:
             return out
 
-        # Pine: sma30 = ta.sma(w_close, 30)
-        w["sma30"] = w["c"].rolling(SMA_LEN, min_periods=SMA_LEN).mean()
-        # Pine: range_high = ta.highest(w_close[1], range_len)
-        w["range_high"] = w["c"].shift(1).rolling(RANGE_LEN, min_periods=RANGE_LEN).max()
-        w["breakout"] = w["c"] > w["range_high"]
-        w["above"] = w["c"] > w["sma30"]
-        # フィルターOFF時の stage2_cond_base
-        w["stage2_cond"] = w["breakout"].fillna(False) & w["above"].fillna(False)
-        # Pine: ta.crossunder(w_close, sma30)
-        prev_c = w["c"].shift(1)
-        prev_sma = w["sma30"].shift(1)
-        w["cross_under"] = (w["c"] < w["sma30"]) & (prev_c >= prev_sma)
+        stage_t, cond_t, last_c, last_sma, rh = _stage_asof(close, high)
+        stage_y, _, _, _, _ = _stage_asof(close.iloc[:-1], high.iloc[:-1])
 
-        # Pine stage machine（Stage2部分）
-        stage = 1
-        stages: list[int] = []
-        for i in range(len(w)):
-            cond = bool(w["stage2_cond"].iloc[i])
-            cu = w["cross_under"].iloc[i]
-            cross_under = bool(cu) if not pd.isna(cu) else False
-            if cond:
-                stage = 2
-            elif stage == 2 and cross_under:
-                stage = 1
-            stages.append(stage)
-        w["stage"] = stages
+        # 2営業日前
+        stage_2d = 1
+        if len(close) >= 3:
+            stage_2d, _, _, _, _ = _stage_asof(close.iloc[:-2], high.iloc[:-2])
 
-        last = w.iloc[-1]
-        prev = w.iloc[-2]
-        active = int(last["stage"]) == 2
-        entry = int(last["stage"]) == 2 and int(prev["stage"]) != 2
+        # 前週の確定状態（直近週を除いた系列の最終stage）
+        w_full = _build_weekly_stage(close, high)
+        prev_week_stage = 1
+        if w_full is not None and len(w_full) >= 2:
+            prev_week_stage = int(w_full["stage"].iloc[-2])
 
-        last_c = float(last["c"])
-        last_sma = float(last["sma30"]) if not pd.isna(last["sma30"]) else None
-        rh = float(last["range_high"]) if not pd.isna(last["range_high"]) else None
+        active = stage_t == 2
+        # 今日点灯のみ
+        entry = (
+            stage_t == 2
+            and stage_y != 2
+            and cond_t is True
+            and prev_week_stage != 2
+            and stage_2d != 2
+        )
 
         out["stage2_active"] = active
-        out["stage2_entry"] = entry
+        out["stage2_entry"] = bool(entry)
         out["sma30"] = last_sma
         out["range_high"] = rh
-        if rh and rh > 0:
+        if last_c is not None and rh and rh > 0:
             out["breakout_pct"] = round((last_c / rh - 1.0) * 100.0, 2)
-        if last_sma and last_sma > 0:
+        if last_c is not None and last_sma and last_sma > 0:
             out["pct_from_30w"] = round((last_c / last_sma - 1.0) * 100.0, 2)
         return out
     except Exception:
@@ -557,7 +583,7 @@ def main() -> None:
         "qualified_size": len(stocks_sorted),
         "entry_count": len(stocks_sorted),
         "active_count": 0,
-        "logic": "Stage2 Entry = 12w high break + above 30w SMA; lit today (lookahead-on daily)",
+        "logic": "Stage2 Entry = Pine same (12w break + 30w SMA, hold until SMA loss); Entry = lit today only (today stage2, yesterday not)",
         "filters": {
             "min_price": MIN_PRICE,
             "min_avg_vol": MIN_AVG_VOL,
