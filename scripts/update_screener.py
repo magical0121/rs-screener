@@ -1324,7 +1324,9 @@ def main() -> None:
         raise SystemExit("ベンチマーク SPY の取得に失敗しました")
 
     returns_3m: dict[str, float] = {}
-    meta_rows: list[dict] = []
+    # 全流動性通過銘柄（業種スコア用）と Entry のみ
+    universe_rows: list[dict] = []
+    entry_rows: list[dict] = []
 
     total = len(universe)
     for i in range(0, total, BATCH_SIZE):
@@ -1342,16 +1344,11 @@ def main() -> None:
             vol = df["Volume"] if "Volume" in df.columns else None
 
             entry = calc_stage2_entry_today(close, high, vol)
-            # 流動性（必須・欠落は除外）
             avg_vol = entry.get("avg_vol")
             dollar_vol = entry.get("dollar_vol")
             if avg_vol is None or dollar_vol is None:
                 continue
             if avg_vol < MIN_AVG_VOL or dollar_vol < MIN_DOLLAR_VOL:
-                continue
-
-            # Entry のみ残す（今日点灯・昨日は非Stage2）
-            if not entry.get("stage2_entry"):
                 continue
 
             r3 = period_return(close, 63)
@@ -1364,58 +1361,73 @@ def main() -> None:
                 industry = sector if sector and sector not in {"—", "-", "N/A", "n/a", "nan"} else "—"
             name = info.get("name", t) or t
 
-            meta_rows.append(
-                {
-                    "ticker": t,
-                    "name": name,
-                    "industry": industry,
-                    "sector": sector or "—",
-                    "price": entry.get("price") or price,
-                    "stage2_entry": True,
-                    "stage2_active": bool(entry.get("stage2_active")),
-                    "breakout_pct": entry.get("breakout_pct"),
-                    "pct_from_30w": entry.get("pct_from_30w"),
-                    "status": "Entry",
-                }
-            )
+            row = {
+                "ticker": t,
+                "name": name,
+                "industry": industry,
+                "sector": sector or "—",
+                "price": entry.get("price") or price,
+                "stage2_entry": bool(entry.get("stage2_entry")),
+                "stage2_active": bool(entry.get("stage2_active")),
+                "breakout_pct": entry.get("breakout_pct"),
+                "pct_from_30w": entry.get("pct_from_30w"),
+                "status": "Entry" if entry.get("stage2_entry") else "",
+            }
+            # 業種・RS用: 流動性を満たす全銘柄
+            universe_rows.append(row)
+            if entry.get("stage2_entry"):
+                entry_rows.append(row)
         time.sleep(1.0)
 
-    print(f"Entry candidates (pre-industry fill): {len(meta_rows)}")
+    print(f"Liquid universe: {len(universe_rows)}, Entry: {len(entry_rows)}")
 
-    # 業種フル補完
-    fill_missing_from_finviz(meta_rows, max_lookups=3000, sleep_sec=1.2)
-    for m in meta_rows:
+    # 業種補完は全流動性銘柄に（業種スコア精度のため）
+    fill_missing_from_finviz(universe_rows, max_lookups=4000, sleep_sec=1.0)
+    for m in universe_rows:
         if not m.get("industry") or m["industry"] in {"—", "-", "nan"}:
             if m.get("sector") and m["sector"] not in {"—", "-", "nan"}:
                 m["industry"] = m["sector"]
 
+    # RSは全流動性ユニバース内パーセンタイル
     rs_map = calc_rs_percentile(returns_3m) if returns_3m else {}
 
+    # 全銘柄に RS を付与して業種スコア計算
+    for m in universe_rows:
+        m["rs"] = rs_map.get(m["ticker"], 50)
+
+    industry_scores = compute_industry_scores(universe_rows, min_count=3)
+    # ticker -> industry score
+    ind_score_map = {x["name"]: x for x in industry_scores}
+
     stocks = []
-    for m in meta_rows:
+    for m in entry_rows:
         t = m["ticker"]
+        # entry_rows の industry を universe 側の補完後で更新
+        match = next((u for u in universe_rows if u["ticker"] == t), m)
+        ind_name = match.get("industry") or "—"
         stocks.append(
             {
                 "ticker": t,
-                "name": m["name"],
+                "name": match.get("name") or m["name"],
                 "rs": rs_map.get(t, 50),
-                "industry": m.get("industry") or "—",
-                "sector": m.get("sector") or "—",
+                "industry": ind_name,
+                "sector": match.get("sector") or "—",
                 "price": m.get("price"),
                 "stage2_entry": True,
                 "stage2_active": bool(m.get("stage2_active")),
                 "breakout_pct": m.get("breakout_pct"),
                 "pct_from_30w": m.get("pct_from_30w"),
                 "status": "Entry",
+                "industry_score": (ind_score_map.get(ind_name) or {}).get("score"),
             }
         )
 
     stocks_sorted = sorted(stocks, key=lambda x: x["rs"], reverse=True)
-    industry_scores = compute_industry_scores(stocks_sorted, min_count=1)
 
     payload = {
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "universe_size": len(universe),
+        "liquid_size": len(universe_rows),
         "qualified_size": len(stocks_sorted),
         "entry_count": len(stocks_sorted),
         "active_count": 0,
@@ -1435,7 +1447,7 @@ def main() -> None:
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {OUT_PATH} (universe={len(universe)}, entry={len(stocks_sorted)})")
+    print(f"Wrote {OUT_PATH} (universe={len(universe)}, liquid={len(universe_rows)}, entry={len(stocks_sorted)}, industries={len(industry_scores)})")
 
 
 
