@@ -4007,6 +4007,11 @@
 "name": "Bain Capital GSS Investment Corp. Class A Ordinary Shares",
 "sector": "Financials"
 },
+"BCTX": {
+"industry": "Biotechnology",
+"name": "BriaCell Therapeutics Corp",
+"sector": "Healthcare"
+},
 "BCV": {
 "industry": "Capital Markets",
 "name": "Bancroft Fund Ltd.",
@@ -10058,6 +10063,11 @@
 "name": "Diana Shipping Inc",
 "sector": "Industrials"
 },
+"DSY": {
+"industry": "Household & Personal Products",
+"name": "Big Tree Cloud Holdings Ltd",
+"sector": "Consumer Defensive"
+},
 "DT": {
 "industry": "Software",
 "name": "Dynatrace, Inc.",
@@ -10222,6 +10232,11 @@
 "industry": "Health Care Equipment & Supplies",
 "name": "Daxor Corporation",
 "sector": "Health Care"
+},
+"DXST": {
+"industry": "Waste Management",
+"name": "Decent Holding Inc",
+"sector": "Industrials"
 },
 "DXYN": {
 "industry": "Textiles, Apparel & Luxury Goods",
@@ -10663,6 +10678,11 @@
 "name": "Encompass Health Corporation",
 "sector": "Health Care"
 },
+"EHGO": {
+"industry": "Business Equipment & Supplies",
+"name": "Eshallgo Inc",
+"sector": "Industrials"
+},
 "EHI": {
 "industry": "Capital Markets",
 "name": "Western Asset Global High Income Fund Inc.",
@@ -10712,6 +10732,11 @@
 "industry": "Electric Utilities",
 "name": "Edison International",
 "sector": "Utilities"
+},
+"EJH": {
+"industry": "Personal Services",
+"name": "E-Home Household Service Holdings Ltd",
+"sector": "Consumer Cyclical"
 },
 "EKSO": {
 "industry": "Health Care Equipment & Supplies",
@@ -10792,6 +10817,10 @@
 "industry": "Utilities - Diversified",
 "name": "Cia Paranaense De Energia Copel ADR",
 "sector": "Utilities"
+},
+"ELPW": {
+"industry": "Electrical Equipment & Parts",
+"sector": "Industrials"
 },
 "ELS": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
@@ -10972,6 +11001,21 @@
 "industry": "Diversified Financial Services",
 "name": "890 5th Avenue Partners, Inc.",
 "sector": "Financials"
+},
+"ENGN": {
+"industry": "Biotechnology",
+"name": "enGene Therapeutics Inc",
+"sector": "Healthcare"
+},
+"ENGS": {
+"industry": "Waste Management",
+"name": "Energys Group Ltd",
+"sector": "Industrials"
+},
+"ENIC": {
+"industry": "Utilities - Regulated Electric",
+"name": "Enel Chile SA ADR",
+"sector": "Utilities"
 },
 "ENJ": {
 "industry": "Electric Utilities",
@@ -11523,6 +11567,11 @@
 "name": "Eaton Vance Tax-Managed Diversified Equity Income Fund",
 "sector": "Financials"
 },
+"EU": {
+"industry": "Uranium",
+"name": "enCore Energy Corp",
+"sector": "Energy"
+},
 "EUCRW": {
 "industry": "Diversified Financial Services",
 "name": "Eucrates Biomedical Acquisition Corp.",
@@ -11562,6 +11611,11 @@
 "industry": "Shell Companies",
 "name": "Eqv Ventures Acquisition Corp II",
 "sector": "Financial"
+},
+"EVAX": {
+"industry": "Biotechnology",
+"name": "Evaxion A/S ADR",
+"sector": "Healthcare"
 },
 "EVC": {
 "industry": "Media",
@@ -11682,6 +11736,11 @@
 "industry": "Software",
 "name": "EVERTEC, Inc.",
 "sector": "Information Technology"
+},
+"EVTL": {
+"industry": "Aerospace & Defense",
+"name": "Vertical Aerospace Ltd",
+"sector": "Industrials"
 },
 "EVV": {
 "industry": "Capital Markets",
@@ -13392,6 +13451,11 @@
 "name": "First US Bancshares, Inc.",
 "sector": "Financials"
 },
+"FUSE": {
+"industry": "Software - Application",
+"name": "Fusemachines Inc",
+"sector": "Technology"
+},
 "FUSEW": {
 "industry": "Software",
 "name": "Fusemachines Inc. Warrants",
@@ -13566,6 +13630,11 @@
 "name": "Golden Arrow Merger Corp. Warrant",
 "sector": "Financials"
 },
+"GAME": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "GameSquare Holdings Inc",
+"sector": "Communication Services"
+},
 "GANX": {
 "industry": "Biotechnology",
 "name": "GT Gain Therapeutics SA",
@@ -13695,6 +13764,11 @@
 "industry": "Aerospace & Defense",
 "name": "General Dynamics Corporation",
 "sector": "Industrials"
+},
+"GDC": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "GD Culture Group Limited",
+"sector": "Communication Services"
 },
 "GDDY": {
 "industry": "Software",
@@ -13960,6 +14034,11 @@
 "industry": "Banks - Regional",
 "name": "Grupo Financiero Galicia ADR",
 "sector": "Financial"
+},
+"GGB": {
+"industry": "Steel",
+"name": "Gerdau SA ADR",
+"sector": "Basic Materials"
 },
 "GGG": {
 "industry": "Machinery",
@@ -14336,10 +14415,20 @@
 "name": "Globus Medical, Inc.",
 "sector": "Health Care"
 },
+"GMEX": {
+"industry": "Consumer Electronics",
+"name": "GMEX Robotics Corp",
+"sector": "Technology"
+},
 "GMFIW": {
 "industry": "Diversified Financial Services",
 "name": "Aetherium Acquisition Corp. Warrant",
 "sector": "Financials"
+},
+"GMM": {
+"industry": "Information Technology Services",
+"name": "Global Mofy AI Ltd",
+"sector": "Technology"
 },
 "GMRS": {
 "industry": "Health Care Providers & Services",
@@ -14625,6 +14714,11 @@
 "industry": "Electronic Equipment, Instruments & Components",
 "name": "Hyperscale Data Inc. Common Stock",
 "sector": "Information Technology"
+},
+"GRAB": {
+"industry": "Software - Application",
+"name": "Grab Holdings Limited",
+"sector": "Technology"
 },
 "GRAF": {
 "industry": "Diversified Financial Services",
@@ -14951,6 +15045,11 @@
 "name": "Gran Tierra Energy Inc",
 "sector": "Energy"
 },
+"GTEC": {
+"industry": "Auto Parts",
+"name": "Greenland Technologies Holding Corp",
+"sector": "Consumer Cyclical"
+},
 "GTEN": {
 "industry": "Diversified Financial Services",
 "name": "Gores Holdings X Inc. Class A ordinary shares",
@@ -15158,6 +15257,11 @@
 "industry": "Biotechnology",
 "name": "Halozyme Therapeutics, Inc.",
 "sector": "Health Care"
+},
+"HAO": {
+"industry": "Advertising Agencies",
+"name": "Haoxi Health Technology Ltd",
+"sector": "Communication Services"
 },
 "HAPN": {
 "industry": "Consumer Finance",
@@ -15553,6 +15657,11 @@
 "industry": "Insurance",
 "name": "Health In Tech Inc. Class A Common Stock",
 "sector": "Financials"
+},
+"HIVE": {
+"industry": "Capital Markets",
+"name": "HIVE Digital Technologies Ltd",
+"sector": "Financial"
 },
 "HIW": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
@@ -16104,6 +16213,11 @@
 "name": "Hudson Acquisition  I Corp. Unit",
 "sector": "Financials"
 },
+"HUDI": {
+"industry": "Steel",
+"name": "Huadi International Group Co Ltd",
+"sector": "Basic Materials"
+},
 "HUIZ": {
 "industry": "Insurance Brokers",
 "name": "Huize Holding Ltd ADR",
@@ -16148,6 +16262,11 @@
 "industry": "Capital Markets",
 "name": "Hut 8 Corp",
 "sector": "Financial"
+},
+"HUYA": {
+"industry": "Entertainment",
+"name": "HUYA Inc ADR",
+"sector": "Communication Services"
 },
 "HVII": {
 "industry": "Diversified Financial Services",
@@ -16629,6 +16748,11 @@
 "name": "Aberdeen India Fund Inc",
 "sector": "Financial"
 },
+"IFRX": {
+"industry": "Biotechnology",
+"name": "InflaRx NV",
+"sector": "Healthcare"
+},
 "IFS": {
 "industry": "Banks - Regional",
 "name": "Intercorp Financial Services Inc",
@@ -17024,6 +17148,11 @@
 "name": "MiNK Therapeutics Inc. Common Stock",
 "sector": "Health Care"
 },
+"INLF": {
+"industry": "Specialty Industrial Machinery",
+"name": "INLIF Ltd",
+"sector": "Industrials"
+},
 "INLX": {
 "industry": "Software - Application",
 "name": "Intellinetics Inc",
@@ -17379,6 +17508,11 @@
 "name": "Inflection Point Acquisition Corp. II Warrant",
 "sector": "Financials"
 },
+"IQ": {
+"industry": "Entertainment",
+"name": "iQIYI Inc ADR",
+"sector": "Communication Services"
+},
 "IQI": {
 "industry": "Capital Markets",
 "name": "Invesco Quality Municipal Income Trust",
@@ -17607,6 +17741,11 @@
 "industry": "Machinery",
 "name": "Illinois Tool Works Inc.",
 "sector": "Industrials"
+},
+"IVA": {
+"industry": "Biotechnology",
+"name": "Inventiva ADR",
+"sector": "Healthcare"
 },
 "IVDAW": {
 "industry": "Professional Services",
@@ -18018,6 +18157,11 @@
 "name": "Jupiter Wellness Acquisition Corp. Right",
 "sector": "Financials"
 },
+"JWEL": {
+"industry": "Internet Retail",
+"name": "Jowell Global Ltd",
+"sector": "Consumer Cyclical"
+},
 "JXG": {
 "industry": "Apparel Manufacturing",
 "name": "JX Luxventure Group Inc",
@@ -18032,6 +18176,11 @@
 "industry": "Health Care Equipment & Supplies",
 "name": "The Joint Corp.",
 "sector": "Health Care"
+},
+"JZ": {
+"industry": "Information Technology Services",
+"name": "Jianzhi Education Technology Group Co Ltd ADR",
+"sector": "Technology"
 },
 "KAI": {
 "industry": "Machinery",
@@ -18167,6 +18316,10 @@
 "industry": "Electrical Equipment",
 "name": "Kimball Electronics, Inc.",
 "sector": "Industrials"
+},
+"KEEL": {
+"industry": "Information Technology Services",
+"sector": "Technology"
 },
 "KELYA": {
 "industry": "Professional Services",
@@ -18708,6 +18861,11 @@
 "name": "Pasithea Therapeutics Corp. Warrant",
 "sector": "Health Care"
 },
+"KULR": {
+"industry": "Electronic Components",
+"name": "KULR Technology Group Inc",
+"sector": "Technology"
+},
 "KURA": {
 "industry": "Biotechnology",
 "name": "Kura Oncology, Inc.",
@@ -18752,6 +18910,11 @@
 "industry": "Real Estate Management & Development",
 "name": "Kennedy-Wilson Holdings, Inc.",
 "sector": "Real Estate"
+},
+"KWM": {
+"industry": "Entertainment",
+"name": "K Wave Media Ltd",
+"sector": "Communication Services"
 },
 "KWR": {
 "industry": "Chemicals",
@@ -18817,6 +18980,11 @@
 "name": "Lakewood-Amedex Biotherapeutics Inc. Common Stock",
 "sector": "Health Care"
 },
+"LAC": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Lithium Americas Corp (NewCo)",
+"sector": "Basic Materials"
+},
 "LAD": {
 "industry": "Automobiles",
 "name": "Lithia Motors, Inc.",
@@ -18826,6 +18994,11 @@
 "industry": "Equity Real Estate Investment Trusts (REITs)",
 "name": "Ladder Capital Corp",
 "sector": "Real Estate"
+},
+"LAES": {
+"industry": "Semiconductors",
+"name": "SEALSQ Corp",
+"sector": "Technology"
 },
 "LAKE": {
 "industry": "Textiles, Apparel & Luxury Goods",
@@ -18926,6 +19099,11 @@
 "industry": "Oil & Gas Equipment & Services",
 "name": "Landbridge Company LLC",
 "sector": "Energy"
+},
+"LBGJ": {
+"industry": "Specialty Industrial Machinery",
+"name": "Li Bang International Corp Inc",
+"sector": "Industrials"
 },
 "LBRDA": {
 "industry": "Entertainment",
@@ -19186,6 +19364,11 @@
 "industry": "Professional Services",
 "name": "LifeMD Inc. 8.875% Series A Cumulative Perpetual Preferred Stock",
 "sector": "Industrials"
+},
+"LFS": {
+"industry": "Entertainment",
+"name": "Leifras Co Ltd ADR",
+"sector": "Communication Services"
 },
 "LFST": {
 "industry": "Health Care Equipment & Supplies",
@@ -19737,6 +19920,11 @@
 "name": "Dorian LPG Ltd.",
 "sector": "Energy"
 },
+"LPL": {
+"industry": "Consumer Electronics",
+"name": "LG Display Co Ltd ADR",
+"sector": "Technology"
+},
 "LPLA": {
 "industry": "Capital Markets",
 "name": "LPL Financial Holdings Inc.",
@@ -20052,6 +20240,11 @@
 "name": "Lightwave Logic Inc",
 "sector": "Basic Materials"
 },
+"LX": {
+"industry": "Credit Services",
+"name": "LexinFintech Holdings Ltd ADR",
+"sector": "Financial"
+},
 "LXEO": {
 "industry": "Biotechnology",
 "name": "Lexeo Therapeutics Inc. Common Stock",
@@ -20116,6 +20309,11 @@
 "industry": "Household Durables",
 "name": "La-Z-Boy Incorporated",
 "sector": "Consumer Discretionary"
+},
+"LZMH": {
+"industry": "Information Technology Services",
+"name": "LZ Technology Holdings Ltd",
+"sector": "Technology"
 },
 "M": {
 "industry": "Household Durables",
@@ -20901,6 +21099,11 @@
 "name": "MFS Government Markets Income Trust",
 "sector": "Financials"
 },
+"MGIH": {
+"industry": "Packaging & Containers",
+"name": "Millennium Group International Holdings Ltd",
+"sector": "Consumer Cyclical"
+},
 "MGLN": {
 "industry": "Health Care Providers & Services",
 "name": "Magellan Health, Inc.",
@@ -21580,6 +21783,11 @@
 "name": "Marker Therapeutics, Inc.",
 "sector": "Health Care"
 },
+"MRLN": {
+"industry": "Aerospace & Defense",
+"name": "Merlin Inc",
+"sector": "Industrials"
+},
 "MRNA": {
 "industry": "Biotechnology",
 "name": "Moderna, Inc.",
@@ -21690,6 +21898,11 @@
 "name": "Madison Square Garden Sports Corp.",
 "sector": "Communication Services"
 },
+"MSGY": {
+"industry": "Engineering & Construction",
+"name": "Masonglory Ltd",
+"sector": "Industrials"
+},
 "MSI": {
 "industry": "Communications Equipment",
 "name": "Motorola Solutions, Inc.",
@@ -21789,6 +22002,11 @@
 "industry": "Biotechnology",
 "name": "Molecular Templates, Inc.",
 "sector": "Health Care"
+},
+"MTEN": {
+"industry": "Metal Fabrication",
+"name": "Mingteng International Corp Inc",
+"sector": "Industrials"
 },
 "MTEX": {
 "industry": "Household Products",
@@ -22495,6 +22713,11 @@
 "name": "Neogen Corporation",
 "sector": "Health Care"
 },
+"NEOV": {
+"industry": "Electrical Equipment & Parts",
+"name": "NeoVolta Inc",
+"sector": "Industrials"
+},
 "NEPH": {
 "industry": "Health Care Equipment & Supplies",
 "name": "Nephros, Inc.",
@@ -22604,6 +22827,11 @@
 "industry": "Oil, Gas & Consumable Fuels",
 "name": "National Fuel Gas Company",
 "sector": "Energy"
+},
+"NFGC": {
+"industry": "Gold",
+"name": "New Found Gold Corp",
+"sector": "Basic Materials"
 },
 "NFJ": {
 "industry": "Capital Markets",
@@ -22779,6 +23007,11 @@
 "industry": "Energy Equipment & Services",
 "name": "NINE ENERGY SERVICE, INC.",
 "sector": "Energy"
+},
+"NIO": {
+"industry": "Auto Manufacturers",
+"name": "NIO Inc ADR",
+"sector": "Consumer Cyclical"
 },
 "NIOBW": {
 "industry": "nan",
@@ -23028,6 +23261,11 @@
 "industry": "Industrial Conglomerates",
 "name": "NN, Inc.",
 "sector": "Industrials"
+},
+"NNDM": {
+"industry": "Computer Hardware",
+"name": "Nano Dimension Ltd ADR",
+"sector": "Technology"
 },
 "NNE": {
 "industry": "nan",
@@ -23727,6 +23965,11 @@
 "industry": "Health Care Technology",
 "name": "NexGel Inc Warrant",
 "sector": "Health Care"
+},
+"NXH": {
+"industry": "Internet Retail",
+"name": "Neighborhood Intelligence Inc",
+"sector": "Consumer Cyclical"
 },
 "NXL": {
 "industry": "Biotechnology",
@@ -25965,6 +26208,11 @@
 "name": "Pulse Biosciences, Inc.",
 "sector": "Health Care"
 },
+"PLTK": {
+"industry": "Electronic Gaming & Multimedia",
+"name": "Playtika Holding Corp",
+"sector": "Communication Services"
+},
 "PLTNW": {
 "industry": "Diversified Financial Services",
 "name": "Plutonian Acquisition Corp. Warrant",
@@ -25984,6 +26232,11 @@
 "industry": "Software",
 "name": "ePlus inc.",
 "sector": "Information Technology"
+},
+"PLX": {
+"industry": "Biotechnology",
+"name": "Protalix BioTherapeutics Inc",
+"sector": "Healthcare"
 },
 "PLXS": {
 "industry": "Electronic Equipment, Instruments & Components",
@@ -26084,6 +26337,11 @@
 "industry": "Biotechnology",
 "name": "PMV Pharmaceuticals, Inc.",
 "sector": "Health Care"
+},
+"PN": {
+"industry": "Solar",
+"name": "PN Smart Energy Ltd",
+"sector": "Technology"
 },
 "PNACR": {
 "industry": "Diversified Financial Services",
@@ -26469,6 +26727,11 @@
 "industry": "Biotechnology",
 "name": "Precipio, Inc.",
 "sector": "Health Care"
+},
+"PRQR": {
+"industry": "Biotechnology",
+"name": "ProQR Therapeutics N.V",
+"sector": "Healthcare"
 },
 "PRS": {
 "industry": "Capital Markets",
@@ -27115,6 +27378,11 @@
 "name": "Quantum Computing Inc",
 "sector": "Technology"
 },
+"QUCY": {
+"industry": "Diagnostics & Research",
+"name": "Quantum Cyber NV",
+"sector": "Healthcare"
+},
 "QUIK": {
 "industry": "Semiconductors & Semiconductor Equipment",
 "name": "QuickLogic Corporation",
@@ -27233,6 +27501,11 @@
 "RAIL": {
 "industry": "Road & Rail",
 "name": "FreightCar America, Inc.",
+"sector": "Industrials"
+},
+"RAIN": {
+"industry": "Pollution & Treatment Controls",
+"name": "Rain Enhancement Technologies Holdco Inc",
 "sector": "Industrials"
 },
 "RAINW": {
@@ -27395,6 +27668,11 @@
 "name": "RCM Technologies, Inc.",
 "sector": "Industrials"
 },
+"RCON": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "Recon Technology Ltd",
+"sector": "Energy"
+},
 "RCRTW": {
 "industry": "Diversified Telecommunication Services",
 "name": "Recruiter.com Group Inc. Warrant",
@@ -27438,6 +27716,11 @@
 "industry": "Interactive Media & Services",
 "name": "Reddit Inc. Class A Common Stock",
 "sector": "Communication Services"
+},
+"RDGT": {
+"industry": "Pharmaceutical Retailers",
+"name": "Ridgetech Inc",
+"sector": "Healthcare"
 },
 "RDI": {
 "industry": "Entertainment",
@@ -27498,6 +27781,11 @@
 "industry": "Specialty Retail",
 "name": "The RealReal, Inc.",
 "sector": "Consumer Discretionary"
+},
+"REAX": {
+"industry": "Real Estate Services",
+"name": "The Real Brokerage Inc",
+"sector": "Real Estate"
 },
 "REBN": {
 "industry": "Hotels, Restaurants & Leisure",
@@ -27594,10 +27882,20 @@
 "name": "Riley Exploration Permian, Inc.",
 "sector": "Energy"
 },
+"RERE": {
+"industry": "Internet Retail",
+"name": "ATRenew Inc ADR",
+"sector": "Consumer Cyclical"
+},
 "RES": {
 "industry": "Energy Equipment & Services",
 "name": "RPC, Inc.",
 "sector": "Energy"
+},
+"RETO": {
+"industry": "Building Materials",
+"name": "ReTo Eco-Solutions Inc",
+"sector": "Basic Materials"
 },
 "REVB": {
 "industry": "Biotechnology",
@@ -28533,6 +28831,11 @@
 "name": "Rezolute, Inc.",
 "sector": "Health Care"
 },
+"RZLV": {
+"industry": "Software - Infrastructure",
+"name": "Rezolve AI Plc",
+"sector": "Technology"
+},
 "S": {
 "industry": "Software",
 "name": "SentinelOne Inc. Class A Common Stock",
@@ -28778,6 +29081,11 @@
 "name": "SB Financial Group, Inc.",
 "sector": "Financials"
 },
+"SBFM": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Sunshine Biopharma Inc",
+"sector": "Healthcare"
+},
 "SBGI": {
 "industry": "Media",
 "name": "Sinclair Broadcast Group, Inc.",
@@ -28842,6 +29150,11 @@
 "industry": "Equity Real Estate Investment Trusts (REITs)",
 "name": "Sabra Health Care REIT, Inc.",
 "sector": "Real Estate"
+},
+"SBS": {
+"industry": "Utilities - Regulated Water",
+"name": "Companhia de Saneamento Basico do Estado de Sao Paulo ADR",
+"sector": "Utilities"
 },
 "SBSI": {
 "industry": "Banks",
@@ -29248,6 +29561,11 @@
 "name": "Smithfield Foods Inc. Common Stock",
 "sector": "Consumer Staples"
 },
+"SFHG": {
+"industry": "Specialty Business Services",
+"name": "Samfine Creation Holdings Group Ltd",
+"sector": "Industrials"
+},
 "SFIX": {
 "industry": "Specialty Retail",
 "name": "Stitch Fix, Inc.",
@@ -29522,6 +29840,11 @@
 "industry": "Health Care Equipment & Supplies",
 "name": "SI-BONE, Inc.",
 "sector": "Health Care"
+},
+"SID": {
+"industry": "Steel",
+"name": "Companhia Siderurgica Nacional ADR",
+"sector": "Basic Materials"
 },
 "SIDU": {
 "industry": "nan",
@@ -29803,6 +30126,11 @@
 "name": "Silgan Holdings Inc.",
 "sector": "Consumer Discretionary"
 },
+"SLI": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Standard Lithium Ltd",
+"sector": "Basic Materials"
+},
 "SLM": {
 "industry": "Consumer Finance",
 "name": "SLM Corporation",
@@ -30047,6 +30375,11 @@
 "industry": "Electronic Equipment, Instruments & Components",
 "name": "Sandisk Corporation Common Stock",
 "sector": "Information Technology"
+},
+"SNDL": {
+"industry": "Beverages - Wineries & Distilleries",
+"name": "SNDL Inc",
+"sector": "Consumer Defensive"
 },
 "SNDR": {
 "industry": "Transportation Infrastructure",
@@ -30847,6 +31180,10 @@
 "name": "ScanTech AI Systems Inc. Common stock",
 "sector": "Information Technology"
 },
+"STAK": {
+"industry": "Oil & Gas Equipment & Services",
+"sector": "Energy"
+},
 "STAY": {
 "industry": "Hotels, Restaurants & Leisure",
 "name": "Extended Stay America, Inc.",
@@ -30897,6 +31234,11 @@
 "name": "State Auto Financial Corporation",
 "sector": "Financials"
 },
+"STFS": {
+"industry": "Advertising Agencies",
+"name": "Star Fashion Culture Holdings Ltd",
+"sector": "Communication Services"
+},
 "STGW": {
 "industry": "Advertising Agencies",
 "name": "Stagwell Inc",
@@ -30936,6 +31278,11 @@
 "industry": "Capital Markets",
 "name": "Columbia Seligman Premium Technology Growth Fund",
 "sector": "Financials"
+},
+"STKH": {
+"industry": "Packaged Foods",
+"name": "Steakholder Foods Ltd ADR",
+"sector": "Consumer Defensive"
 },
 "STKS": {
 "industry": "Hotels, Restaurants & Leisure",
@@ -31141,6 +31488,11 @@
 "industry": "Diversified Financial Services",
 "name": "ShoulderUp Technology Acquisition Corp. Class A Common Stock",
 "sector": "Financials"
+},
+"SUGP": {
+"industry": "Security & Protection Services",
+"name": "SU Group Holdings Ltd",
+"sector": "Industrials"
 },
 "SUI": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
@@ -31446,6 +31798,11 @@
 "industry": "Chemicals",
 "name": "Sensient Technologies Corporation",
 "sector": "Materials"
+},
+"SXTC": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "China SXT Pharmaceuticals Inc",
+"sector": "Healthcare"
 },
 "SXTP": {
 "industry": "Biotechnology",
@@ -31957,6 +32314,11 @@
 "name": "Teledyne Technologies Incorporated",
 "sector": "Information Technology"
 },
+"TE": {
+"industry": "Electrical Equipment & Parts",
+"name": "T1 Energy Inc",
+"sector": "Industrials"
+},
 "TEAD": {
 "industry": "Diversified Telecommunication Services",
 "name": "Teads Holding Co. Common Stock",
@@ -32087,6 +32449,11 @@
 "name": "Trekor Metals Ltd",
 "sector": "Basic Materials"
 },
+"TGHL": {
+"industry": "Software - Infrastructure",
+"name": "Growhub Ltd",
+"sector": "Technology"
+},
 "TGL": {
 "industry": "Software",
 "name": "Treasure Global Inc. Common Stock",
@@ -32171,6 +32538,11 @@
 "industry": "Insurance",
 "name": "The Hanover Insurance Group, Inc.",
 "sector": "Financials"
+},
+"THM": {
+"industry": "Gold",
+"name": "International Tower Hill Mines Ltd",
+"sector": "Basic Materials"
 },
 "THMAU": {
 "industry": "Diversified Financial Services",
@@ -32272,6 +32644,11 @@
 "name": "Tivic Health Systems, Inc.",
 "sector": "Health Care"
 },
+"TJGC": {
+"industry": "Advertising Agencies",
+"name": "TJGC Group Ltd",
+"sector": "Communication Services"
+},
 "TJX": {
 "industry": "Textiles, Apparel & Luxury Goods",
 "name": "TJX Companies Inc",
@@ -32367,10 +32744,20 @@
 "name": "Talphera Inc. Common Stock",
 "sector": "Health Care"
 },
+"TLRY": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Tilray Brands Inc",
+"sector": "Healthcare"
+},
 "TLS": {
 "industry": "IT Services",
 "name": "Telos Corporation",
 "sector": "Information Technology"
+},
+"TLSA": {
+"industry": "Biotechnology",
+"name": "Tiziana Life Sciences Ltd",
+"sector": "Healthcare"
 },
 "TLSI": {
 "industry": "Biotechnology",
@@ -32396,6 +32783,11 @@
 "industry": "Auto Manufacturers",
 "name": "Toyota Motor Corp ADR",
 "sector": "Consumer Cyclical"
+},
+"TMC": {
+"industry": "Other Industrial Metals & Mining",
+"name": "TMC the metals company Inc",
+"sector": "Basic Materials"
 },
 "TMCI": {
 "industry": "Health Care Technology",
@@ -32436,6 +32828,11 @@
 "industry": "Electronic Equipment, Instruments & Components",
 "name": "Tempo Automation Holdings Inc. Warrant",
 "sector": "Information Technology"
+},
+"TMQ": {
+"industry": "Other Industrial Metals & Mining",
+"name": "Trilogy Metals Inc",
+"sector": "Basic Materials"
 },
 "TMS": {
 "industry": "Diversified Financial Services",
@@ -32595,6 +32992,11 @@
 "industry": "Banks",
 "name": "TowneBank",
 "sector": "Financials"
+},
+"TOYO": {
+"industry": "Solar",
+"name": "TOYO Co Ltd",
+"sector": "Technology"
 },
 "TPB": {
 "industry": "Tobacco",
@@ -32910,6 +33312,11 @@
 "name": "Trevena, Inc.",
 "sector": "Health Care"
 },
+"TRX": {
+"industry": "Gold",
+"name": "TRX Gold Corp",
+"sector": "Basic Materials"
+},
 "TS": {
 "industry": "Oil & Gas Equipment & Services",
 "name": "Tenaris SA ADR",
@@ -33099,6 +33506,11 @@
 "industry": "Energy Equipment & Services",
 "name": "Mammoth Energy Services, Inc.",
 "sector": "Energy"
+},
+"TV": {
+"industry": "Telecom Services",
+"name": "Grupo Televisa SAB ADR",
+"sector": "Communication Services"
 },
 "TVA": {
 "industry": "Diversified Financial Services",
@@ -34335,6 +34747,16 @@
 "name": "Viveve Medical, Inc.",
 "sector": "Health Care"
 },
+"VIVK": {
+"industry": "Oil & Gas Integrated",
+"name": "Vivakor Inc",
+"sector": "Energy"
+},
+"VIVO": {
+"industry": "Software - Infrastructure",
+"name": "VivoPower Plc",
+"sector": "Technology"
+},
 "VIVS": {
 "industry": "Biotechnology",
 "name": "VivoSim Labs Inc. Common Stock",
@@ -34359,6 +34781,11 @@
 "industry": "Food & Staples Retailing",
 "name": "Village Super Market, Inc.",
 "sector": "Consumer Staples"
+},
+"VLN": {
+"industry": "Semiconductors",
+"name": "Valens Semiconductor Ltd",
+"sector": "Technology"
 },
 "VLO": {
 "industry": "Oil, Gas & Consumable Fuels",
@@ -34570,6 +34997,11 @@
 "name": "The Glimpse Group Inc. Common Stock",
 "sector": "Information Technology"
 },
+"VRAX": {
+"industry": "Biotechnology",
+"name": "Virax Biolabs Group Ltd",
+"sector": "Healthcare"
+},
 "VRAY": {
 "industry": "Health Care Technology",
 "name": "ViewRay, Inc.",
@@ -34740,6 +35172,11 @@
 "name": "Catheter Precision Inc.",
 "sector": "Health Care"
 },
+"VTEX": {
+"industry": "Software - Application",
+"name": "Vtex",
+"sector": "Technology"
+},
 "VTGN": {
 "industry": "Biotechnology",
 "name": "VistaGen Therapeutics, Inc.",
@@ -34895,6 +35332,11 @@
 "name": "WaFd, Inc.",
 "sector": "Financials"
 },
+"WAFU": {
+"industry": "Education & Training Services",
+"name": "Wah Fu Education Group Ltd",
+"sector": "Consumer Defensive"
+},
 "WAL": {
 "industry": "Banks",
 "name": "Western Alliance Bancorporation",
@@ -34969,6 +35411,11 @@
 "industry": "Waste Management",
 "name": "Waste Connections Inc",
 "sector": "Industrials"
+},
+"WCT": {
+"industry": "Software - Application",
+"name": "Wellchange Holdings Co Ltd",
+"sector": "Technology"
 },
 "WD": {
 "industry": "Thrifts & Mortgage Finance",
@@ -35108,6 +35555,11 @@
 "name": "Where Food Comes From, Inc.",
 "sector": "Consumer Staples"
 },
+"WFF": {
+"industry": "Specialty Industrial Machinery",
+"name": "WF Holding Ltd",
+"sector": "Industrials"
+},
 "WFG": {
 "industry": "Lumber & Wood Production",
 "name": "West Fraser Timber Co Ltd",
@@ -35233,6 +35685,11 @@
 "name": "WinVest Acquisition Corp. Common Stock",
 "sector": "Financials"
 },
+"WIT": {
+"industry": "Information Technology Services",
+"name": "Wipro Ltd ADR",
+"sector": "Technology"
+},
 "WIW": {
 "industry": "Capital Markets",
 "name": "Western Asset Inflation-Linked Opportunities & Income Fund",
@@ -35272,6 +35729,11 @@
 "industry": "Construction & Engineering",
 "name": "Willdan Group, Inc.",
 "sector": "Industrials"
+},
+"WLDS": {
+"industry": "Consumer Electronics",
+"name": "Wearable Devices Ltd",
+"sector": "Technology"
 },
 "WLFC": {
 "industry": "Commercial Services & Supplies",
@@ -35362,6 +35824,11 @@
 "industry": "Banks",
 "name": "Western New England Bancorp, Inc.",
 "sector": "Financials"
+},
+"WOK": {
+"industry": "Medical Devices",
+"name": "Work Medical Technology Group Ltd",
+"sector": "Healthcare"
 },
 "WOLF": {
 "industry": "Semiconductors & Semiconductor Equipment",
@@ -35617,6 +36084,11 @@
 "name": "Wolverine World Wide, Inc.",
 "sector": "Consumer Discretionary"
 },
+"WXM": {
+"industry": "Industrial Distribution",
+"name": "WF International Ltd",
+"sector": "Industrials"
+},
 "WY": {
 "industry": "Specialty Retail",
 "name": "Weyerhaeuser Company",
@@ -35771,6 +36243,11 @@
 "industry": "Biotechnology",
 "name": "Exagen, Inc.",
 "sector": "Health Care"
+},
+"XHG": {
+"industry": "Insurance Brokers",
+"name": "XChange Tec.Inc ADR",
+"sector": "Financial"
 },
 "XHLD": {
 "industry": "Professional Services",
@@ -36227,6 +36704,11 @@
 "name": "Zoomcar Holdings Inc. Common Stock",
 "sector": "Consumer Discretionary"
 },
+"ZCMD": {
+"industry": "Health Information Services",
+"name": "Zhongchao Inc",
+"sector": "Healthcare"
+},
 "ZD": {
 "industry": "Diversified Telecommunication Services",
 "name": "Ziff Davis Inc. Common Stock",
@@ -36236,6 +36718,11 @@
 "industry": "Software",
 "name": "Zedge, Inc.",
 "sector": "Information Technology"
+},
+"ZENA": {
+"industry": "Software - Infrastructure",
+"name": "ZenaTech Inc",
+"sector": "Technology"
 },
 "ZEO": {
 "industry": "Diversified Financial Services",
@@ -36316,6 +36803,11 @@
 "industry": "Software",
 "name": "Zix Corporation",
 "sector": "Information Technology"
+},
+"ZJYL": {
+"industry": "Medical Instruments & Supplies",
+"name": "Jin Medical International Ltd",
+"sector": "Healthcare"
 },
 "ZKP": {
 "industry": "Diversified Financial Services",
@@ -36416,6 +36908,10 @@
 "industry": "Diversified Financial Services",
 "name": "Zimmer Energy Transition Acquisition Corp. Warrants",
 "sector": "Financials"
+},
+"ZTG": {
+"industry": "Consulting Services",
+"sector": "Industrials"
 },
 "ZTO": {
 "industry": "Integrated Freight & Logistics",
