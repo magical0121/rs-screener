@@ -1338,6 +1338,11 @@
 "name": "AIxCrypto Holdings Inc. Common Stock",
 "sector": "Health Care"
 },
+"AIXI": {
+"industry": "Software - Application",
+"name": "Xiao-I Corp ADR",
+"sector": "Technology"
+},
 "AIZ": {
 "industry": "Insurance",
 "name": "Assurant, Inc.",
@@ -4076,6 +4081,11 @@
 "industry": "Equity Real Estate Investment Trusts (REITs)",
 "name": "Brandywine Realty Trust",
 "sector": "Real Estate"
+},
+"BDRX": {
+"industry": "Biotechnology",
+"name": "Biodexa Pharmaceuticals Plc ADR",
+"sector": "Healthcare"
 },
 "BDSX": {
 "industry": "Biotechnology",
@@ -20878,6 +20888,11 @@
 "industry": "Health Care Technology",
 "name": "MiMedx Group, Inc.",
 "sector": "Health Care"
+},
+"MDXH": {
+"industry": "Diagnostics & Research",
+"name": "MDxHealth SA",
+"sector": "Healthcare"
 },
 "MEC": {
 "industry": "Building Products",
