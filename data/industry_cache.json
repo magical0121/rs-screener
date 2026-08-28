@@ -8274,6 +8274,11 @@
 "name": "Credo Technology Group Holding Ltd Ordinary Shares",
 "sector": "Information Technology"
 },
+"CRE": {
+"industry": "Specialty Business Services",
+"name": "Cre8 Enterprise Ltd",
+"sector": "Industrials"
+},
 "CRESY": {
 "industry": "Conglomerates",
 "name": "Cresud ADR",
@@ -19445,6 +19450,11 @@
 "name": "Ligand Pharmaceuticals Incorporated",
 "sector": "Health Care"
 },
+"LGPS": {
+"industry": "Conglomerates",
+"name": "LogProstyle Inc",
+"sector": "Industrials"
+},
 "LGVCW": {
 "industry": "nan",
 "name": "LAMF Global Ventures Corp. I Warrant",
@@ -24244,6 +24254,11 @@
 "OESX": {
 "industry": "Electrical Equipment",
 "name": "Orion Energy Systems, Inc.",
+"sector": "Industrials"
+},
+"OFAL": {
+"industry": "Engineering & Construction",
+"name": "OFA Group",
 "sector": "Industrials"
 },
 "OFED": {
