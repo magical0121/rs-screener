@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-08-28 06:14 UTC",
-  "universe_size": 7507,
-  "liquid_size": 861,
-  "qualified_size": 53,
-  "entry_count": 53,
+  "updated_at": "2026-08-28 22:46 UTC",
+  "universe_size": 7508,
+  "liquid_size": 876,
+  "qualified_size": 19,
+  "entry_count": 19,
   "active_count": 0,
   "logic": "Stage2=weekly close>12w high & >30wSMA; Entry=FIRST day of stage2 run only (today true, yesterday false, run_len=1)",
   "filters": {
@@ -15,8 +15,19 @@
   },
   "industries": [
     {
+      "name": "Insurance Brokers",
+      "score": 74,
+      "label": "普通",
+      "leaders": [
+        "ARX",
+        "HUIZ",
+        "AON"
+      ],
+      "count": 3
+    },
+    {
       "name": "Consumer Finance",
-      "score": 71,
+      "score": 72,
       "label": "普通",
       "leaders": [
         "CHYM",
@@ -26,37 +37,59 @@
       "count": 8
     },
     {
-      "name": "Pharmaceuticals",
+      "name": "IT Services",
       "score": 69,
       "label": "普通",
       "leaders": [
-        "AMRX",
-        "AMGN",
-        "AQST"
-      ],
-      "count": 8
-    },
-    {
-      "name": "Gold",
-      "score": 67,
-      "label": "普通",
-      "leaders": [
-        "CGAU",
-        "BTG",
-        "AU"
-      ],
-      "count": 10
-    },
-    {
-      "name": "IT Services",
-      "score": 67,
-      "label": "普通",
-      "leaders": [
         "CYCU",
-        "CDW",
+        "EFOR",
         "CART"
       ],
       "count": 12
+    },
+    {
+      "name": "Entertainment",
+      "score": 67,
+      "label": "普通",
+      "leaders": [
+        "AMC",
+        "CNK",
+        "CMCSA"
+      ],
+      "count": 6
+    },
+    {
+      "name": "Banks - Diversified",
+      "score": 67,
+      "label": "普通",
+      "leaders": [
+        "BBVA",
+        "BNY",
+        "BNS"
+      ],
+      "count": 6
+    },
+    {
+      "name": "Oil & Gas Midstream",
+      "score": 67,
+      "label": "普通",
+      "leaders": [
+        "DHT",
+        "CMBT",
+        "TK"
+      ],
+      "count": 4
+    },
+    {
+      "name": "Household Products",
+      "score": 66,
+      "label": "普通",
+      "leaders": [
+        "ELF",
+        "COTY",
+        "LAUR"
+      ],
+      "count": 18
     },
     {
       "name": "Insurance",
@@ -70,159 +103,160 @@
       "count": 10
     },
     {
-      "name": "Banks - Diversified",
-      "score": 66,
+      "name": "Food & Staples Retailing",
+      "score": 64,
       "label": "普通",
       "leaders": [
-        "BBVA",
-        "BNS",
-        "BNY"
+        "BRCC",
+        "BYND",
+        "CHEF"
       ],
-      "count": 6
+      "count": 13
     },
     {
-      "name": "Insurance - Diversified",
-      "score": 65,
+      "name": "Waste Management",
+      "score": 64,
       "label": "普通",
       "leaders": [
-        "PLGO",
-        "AEG",
-        "ACGL"
+        "DXST",
+        "ENGS"
       ],
       "count": 3
     },
     {
+      "name": "Pharmaceuticals",
+      "score": 63,
+      "label": "普通",
+      "leaders": [
+        "EOLS",
+        "AMRX",
+        "AMGN"
+      ],
+      "count": 11
+    },
+    {
+      "name": "Professional Services",
+      "score": 63,
+      "label": "普通",
+      "leaders": [
+        "CJMB",
+        "CBZ",
+        "BWMN"
+      ],
+      "count": 13
+    },
+    {
       "name": "Banks",
-      "score": 64,
+      "score": 63,
       "label": "普通",
       "leaders": [
         "CLBK",
         "BAC",
         "BRBS"
       ],
-      "count": 18
+      "count": 17
     },
     {
-      "name": "Advertising Agencies",
-      "score": 64,
+      "name": "Gold",
+      "score": 62,
       "label": "普通",
       "leaders": [
-        "STGW",
-        "NEXN"
+        "CGAU",
+        "BTG",
+        "AU"
       ],
-      "count": 3
-    },
-    {
-      "name": "Biotechnology",
-      "score": 63,
-      "label": "普通",
-      "leaders": [
-        "JUNS",
-        "AMLX",
-        "BIAF"
-      ],
-      "count": 111
+      "count": 9
     },
     {
       "name": "Health Care Technology",
-      "score": 63,
+      "score": 62,
       "label": "普通",
       "leaders": [
+        "VREX",
         "BBNX",
-        "DCTH",
-        "AZTA"
+        "DCTH"
       ],
       "count": 17
     },
     {
-      "name": "Marine Shipping",
-      "score": 63,
+      "name": "Biotechnology",
+      "score": 61,
       "label": "普通",
       "leaders": [
-        "ECO",
-        "ZIM",
-        "ASC"
+        "AGEN",
+        "AMLX",
+        "BIAF"
       ],
-      "count": 4
+      "count": 109
     },
     {
       "name": "Drug Manufacturers - Specialty & Generic",
-      "score": 62,
+      "score": 60,
       "label": "普通",
       "leaders": [
         "ZYBT",
         "CRDL",
         "ALVO"
       ],
-      "count": 11
+      "count": 10
     },
     {
       "name": "Health Care Equipment & Supplies",
-      "score": 61,
-      "label": "普通",
-      "leaders": [
-        "PMI",
-        "AVAH",
-        "ATRC"
-      ],
-      "count": 18
-    },
-    {
-      "name": "Professional Services",
-      "score": 61,
-      "label": "普通",
-      "leaders": [
-        "CJMB",
-        "CBZ",
-        "ADP"
-      ],
-      "count": 11
-    },
-    {
-      "name": "Software",
       "score": 60,
       "label": "普通",
       "leaders": [
-        "CXAI",
-        "AMPL",
-        "APPN"
+        "AVAH",
+        "ATRC",
+        "BLFS"
       ],
-      "count": 63
-    },
-    {
-      "name": "Food & Staples Retailing",
-      "score": 59,
-      "label": "普通",
-      "leaders": [
-        "BYND",
-        "BRCC",
-        "CHEF"
-      ],
-      "count": 12
+      "count": 17
     },
     {
       "name": "Oil, Gas & Consumable Fuels",
-      "score": 57,
+      "score": 60,
       "label": "普通",
       "leaders": [
         "DK",
         "BSIN",
         "DINO"
       ],
-      "count": 22
+      "count": 27
     },
     {
-      "name": "Internet & Direct Marketing Retail",
-      "score": 56,
+      "name": "Oil & Gas Integrated",
+      "score": 60,
       "label": "普通",
       "leaders": [
-        "W"
+        "CVE",
+        "EC"
       ],
       "count": 4
     },
     {
+      "name": "Diversified Financial Services",
+      "score": 59,
+      "label": "普通",
+      "leaders": [
+        "BFLY",
+        "AMCX",
+        "ANET"
+      ],
+      "count": 7
+    },
+    {
+      "name": "Hotels, Restaurants & Leisure",
+      "score": 58,
+      "label": "普通",
+      "leaders": [
+        "CAKE",
+        "CBRL",
+        "EAT"
+      ],
+      "count": 26
+    },
+    {
       "name": "Internet Content & Information",
-      "score": 56,
+      "score": 57,
       "label": "普通",
       "leaders": [
         "ATHM",
@@ -231,44 +265,26 @@
       "count": 4
     },
     {
-      "name": "Oil & Gas Integrated",
+      "name": "Software",
       "score": 56,
       "label": "普通",
       "leaders": [
-        "CVE"
+        "CXAI",
+        "AMPL",
+        "APPN"
       ],
-      "count": 3
+      "count": 66
     },
     {
-      "name": "Commercial Services & Supplies",
+      "name": "Banks - Regional",
       "score": 55,
       "label": "普通",
       "leaders": [
-        "AVY"
+        "DB",
+        "MFG",
+        "LYG"
       ],
-      "count": 3
-    },
-    {
-      "name": "Household Products",
-      "score": 55,
-      "label": "普通",
-      "leaders": [
-        "AQB",
-        "COTY",
-        "COUR"
-      ],
-      "count": 17
-    },
-    {
-      "name": "Hotels, Restaurants & Leisure",
-      "score": 55,
-      "label": "普通",
-      "leaders": [
-        "CAKE",
-        "CBRL",
-        "ANGX"
-      ],
-      "count": 25
+      "count": 5
     },
     {
       "name": "Capital Markets",
@@ -279,56 +295,34 @@
         "BX",
         "CRBG"
       ],
-      "count": 31
+      "count": 29
     },
     {
       "name": "Health Care Providers & Services",
-      "score": 54,
+      "score": 53,
       "label": "弱い",
       "leaders": [
-        "OSCR",
         "CAH",
         "CNC"
       ],
-      "count": 7
+      "count": 6
     },
     {
-      "name": "Entertainment",
-      "score": 54,
+      "name": "Transportation Infrastructure",
+      "score": 51,
       "label": "弱い",
       "leaders": [
-        "AMC",
-        "CNK",
-        "ROKU"
-      ],
-      "count": 9
-    },
-    {
-      "name": "Water Utilities",
-      "score": 54,
-      "label": "弱い",
-      "leaders": [
-        "CWT",
-        "AWK"
+        "ACA"
       ],
       "count": 3
     },
     {
-      "name": "Diversified Telecommunication Services",
+      "name": "Marine Shipping",
       "score": 50,
       "label": "弱い",
       "leaders": [
-        "MGNI",
-        "LILAK",
-        "DASH"
+        "DSX"
       ],
-      "count": 14
-    },
-    {
-      "name": "Other Precious Metals & Mining",
-      "score": 50,
-      "label": "弱い",
-      "leaders": [],
       "count": 3
     },
     {
@@ -336,122 +330,147 @@
       "score": 49,
       "label": "弱い",
       "leaders": [
-        "BWEN",
         "CXT",
-        "MMM"
+        "BWEN",
+        "DE"
       ],
-      "count": 18
+      "count": 15
+    },
+    {
+      "name": "Uranium",
+      "score": 49,
+      "label": "弱い",
+      "leaders": [
+        "UROY"
+      ],
+      "count": 3
+    },
+    {
+      "name": "Equity Real Estate Investment Trusts (REITs)",
+      "score": 47,
+      "label": "弱い",
+      "leaders": [
+        "CXW",
+        "CHMI",
+        "LXP"
+      ],
+      "count": 40
+    },
+    {
+      "name": "Commercial Services & Supplies",
+      "score": 46,
+      "label": "弱い",
+      "leaders": [
+        "AVY",
+        "ACCO"
+      ],
+      "count": 4
     },
     {
       "name": "Real Estate Management & Development",
-      "score": 48,
+      "score": 46,
       "label": "弱い",
       "leaders": [
         "CBRE",
         "CWK"
       ],
-      "count": 7
-    },
-    {
-      "name": "Diversified Financial Services",
-      "score": 48,
-      "label": "弱い",
-      "leaders": [
-        "BFLY",
-        "ANET",
-        "AMCX"
-      ],
-      "count": 7
-    },
-    {
-      "name": "Construction & Engineering",
-      "score": 46,
-      "label": "弱い",
-      "leaders": [
-        "BZH",
-        "KBR"
-      ],
       "count": 8
     },
     {
-      "name": "Technology Hardware, Storage & Peripherals",
-      "score": 46,
+      "name": "Chemicals",
+      "score": 44,
       "label": "弱い",
       "leaders": [
-        "DELL",
-        "CRCT"
+        "AVTR",
+        "MATV",
+        "ASH"
+      ],
+      "count": 18
+    },
+    {
+      "name": "Energy Equipment & Services",
+      "score": 43,
+      "label": "弱い",
+      "leaders": [
+        "DNOW",
+        "WHD"
       ],
       "count": 7
     },
     {
-      "name": "Software - Application",
-      "score": 46,
+      "name": "Diversified Telecommunication Services",
+      "score": 42,
       "label": "弱い",
       "leaders": [
-        "NIQ",
-        "OTEX"
+        "DASH",
+        "ABNB",
+        "CARG"
       ],
-      "count": 6
+      "count": 10
     },
     {
-      "name": "Chemicals",
-      "score": 45,
-      "label": "弱い",
-      "leaders": [
-        "AVTR",
-        "ASH",
-        "FF"
-      ],
-      "count": 15
-    },
-    {
-      "name": "Equity Real Estate Investment Trusts (REITs)",
-      "score": 44,
-      "label": "弱い",
-      "leaders": [
-        "CXW",
-        "PK",
-        "CHMI"
-      ],
-      "count": 35
-    },
-    {
-      "name": "Banks - Regional",
-      "score": 44,
-      "label": "弱い",
-      "leaders": [
-        "DB"
-      ],
-      "count": 3
-    },
-    {
-      "name": "Building Products",
-      "score": 43,
-      "label": "弱い",
-      "leaders": [
-        "ARHS",
-        "SWIM",
-        "ATI"
-      ],
-      "count": 11
-    },
-    {
-      "name": "Asset Management",
+      "name": "Multi-Utilities",
       "score": 42,
       "label": "弱い",
       "leaders": [],
-      "count": 4
+      "count": 3
+    },
+    {
+      "name": "Textiles, Apparel & Luxury Goods",
+      "score": 41,
+      "label": "弱い",
+      "leaders": [
+        "ANF",
+        "FOSL"
+      ],
+      "count": 10
+    },
+    {
+      "name": "Asset Management",
+      "score": 41,
+      "label": "弱い",
+      "leaders": [],
+      "count": 3
+    },
+    {
+      "name": "Construction & Engineering",
+      "score": 40,
+      "label": "弱い",
+      "leaders": [
+        "BZH",
+        "CF",
+        "MTH"
+      ],
+      "count": 10
+    },
+    {
+      "name": "Other Precious Metals & Mining",
+      "score": 40,
+      "label": "弱い",
+      "leaders": [],
+      "count": 3
     },
     {
       "name": "Metals & Mining",
       "score": 39,
       "label": "弱い",
       "leaders": [
-        "CDE",
-        "AUGO",
-        "ALOY"
+        "ALOY",
+        "AREC",
+        "AUGO"
       ],
-      "count": 17
+      "count": 12
+    },
+    {
+      "name": "Communications Equipment",
+      "score": 39,
+      "label": "弱い",
+      "leaders": [
+        "CLRO",
+        "MSI",
+        "BOXL"
+      ],
+      "count": 8
     },
     {
       "name": "Electric Utilities",
@@ -461,8 +480,64 @@
       "count": 8
     },
     {
-      "name": "Software - Infrastructure",
+      "name": "Technology Hardware, Storage & Peripherals",
       "score": 39,
+      "label": "弱い",
+      "leaders": [
+        "CRCT",
+        "DELL"
+      ],
+      "count": 7
+    },
+    {
+      "name": "Building Products",
+      "score": 38,
+      "label": "弱い",
+      "leaders": [
+        "ARHS",
+        "ATI"
+      ],
+      "count": 8
+    },
+    {
+      "name": "Internet & Direct Marketing Retail",
+      "score": 37,
+      "label": "弱い",
+      "leaders": [],
+      "count": 5
+    },
+    {
+      "name": "Computer Hardware",
+      "score": 37,
+      "label": "弱い",
+      "leaders": [
+        "BTCT"
+      ],
+      "count": 5
+    },
+    {
+      "name": "Electronic Equipment, Instruments & Components",
+      "score": 36,
+      "label": "弱い",
+      "leaders": [
+        "LASE"
+      ],
+      "count": 10
+    },
+    {
+      "name": "Aerospace & Defense",
+      "score": 36,
+      "label": "弱い",
+      "leaders": [
+        "DFNS",
+        "AXON",
+        "EMBJ"
+      ],
+      "count": 16
+    },
+    {
+      "name": "Software - Infrastructure",
+      "score": 34,
       "label": "弱い",
       "leaders": [
         "DLO"
@@ -470,119 +545,63 @@
       "count": 7
     },
     {
-      "name": "Telecom Services",
-      "score": 37,
-      "label": "弱い",
-      "leaders": [],
-      "count": 4
-    },
-    {
-      "name": "Multi-Utilities",
-      "score": 36,
-      "label": "弱い",
-      "leaders": [],
-      "count": 4
-    },
-    {
-      "name": "Other Industrial Metals & Mining",
-      "score": 36,
-      "label": "弱い",
-      "leaders": [
-        "BHP"
-      ],
-      "count": 4
-    },
-    {
       "name": "Automobiles",
-      "score": 35,
+      "score": 34,
       "label": "弱い",
       "leaders": [
         "CARS"
       ],
-      "count": 4
-    },
-    {
-      "name": "Communications Equipment",
-      "score": 34,
-      "label": "弱い",
-      "leaders": [
-        "CLRO",
-        "BOXL"
-      ],
-      "count": 7
-    },
-    {
-      "name": "Electronic Equipment, Instruments & Components",
-      "score": 33,
-      "label": "弱い",
-      "leaders": [
-        "APH"
-      ],
-      "count": 9
-    },
-    {
-      "name": "Textiles, Apparel & Luxury Goods",
-      "score": 33,
-      "label": "弱い",
-      "leaders": [
-        "ANF"
-      ],
-      "count": 10
-    },
-    {
-      "name": "Airlines",
-      "score": 31,
-      "label": "弱い",
-      "leaders": [],
       "count": 5
     },
     {
-      "name": "Aerospace & Defense",
-      "score": 31,
+      "name": "Airlines",
+      "score": 32,
       "label": "弱い",
-      "leaders": [
-        "DFNS",
-        "AXON",
-        "BETA"
-      ],
-      "count": 17
-    },
-    {
-      "name": "Specialty Retail",
-      "score": 28,
-      "label": "弱い",
-      "leaders": [
-        "BQ",
-        "BBY"
-      ],
-      "count": 9
+      "leaders": [],
+      "count": 6
     },
     {
       "name": "Internet Retail",
-      "score": 28,
+      "score": 32,
       "label": "弱い",
       "leaders": [],
       "count": 3
     },
     {
-      "name": "Energy Equipment & Services",
+      "name": "Specialty Retail",
+      "score": 29,
+      "label": "弱い",
+      "leaders": [
+        "BQ"
+      ],
+      "count": 10
+    },
+    {
+      "name": "Other Industrial Metals & Mining",
+      "score": 29,
+      "label": "弱い",
+      "leaders": [],
+      "count": 5
+    },
+    {
+      "name": "Construction Materials",
       "score": 26,
       "label": "弱い",
       "leaders": [],
-      "count": 7
+      "count": 3
     },
     {
       "name": "Electrical Equipment",
-      "score": 26,
+      "score": 25,
       "label": "弱い",
       "leaders": [
         "ATKR"
       ],
-      "count": 6
+      "count": 7
     },
     {
       "name": "Auto Components",
-      "score": 24,
+      "score": 25,
       "label": "弱い",
       "leaders": [
         "ALSN"
@@ -590,36 +609,43 @@
       "count": 7
     },
     {
-      "name": "Semiconductors",
-      "score": 21,
+      "name": "Information Technology Services",
+      "score": 24,
+      "label": "弱い",
+      "leaders": [],
+      "count": 3
+    },
+    {
+      "name": "Auto Parts",
+      "score": 22,
+      "label": "弱い",
+      "leaders": [],
+      "count": 4
+    },
+    {
+      "name": "Restaurants",
+      "score": 20,
       "label": "弱い",
       "leaders": [],
       "count": 3
     },
     {
       "name": "Semiconductors & Semiconductor Equipment",
-      "score": 20,
-      "label": "弱い",
-      "leaders": [],
-      "count": 22
-    },
-    {
-      "name": "Auto Parts",
-      "score": 20,
-      "label": "弱い",
-      "leaders": [],
-      "count": 4
-    },
-    {
-      "name": "Information Technology Services",
       "score": 19,
       "label": "弱い",
       "leaders": [],
+      "count": 25
+    },
+    {
+      "name": "Software - Application",
+      "score": 18,
+      "label": "弱い",
+      "leaders": [],
       "count": 4
     },
     {
-      "name": "Solar",
-      "score": 10,
+      "name": "Transportation",
+      "score": 4,
       "label": "弱い",
       "leaders": [],
       "count": 3
@@ -627,746 +653,270 @@
   ],
   "stocks": [
     {
-      "ticker": "LGPS",
-      "name": "LogProstyle Inc",
-      "rs": 99,
-      "industry": "Conglomerates",
-      "sector": "Industrials",
-      "price": 1.5199999809265137,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 111.48,
-      "pct_from_30w": 96.49,
-      "status": "Entry",
-      "industry_score": null
-    },
-    {
-      "ticker": "AMPL",
-      "name": "Amplitude Inc. Class A Common Stock",
-      "rs": 98,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 14.279999732971191,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 107.45,
-      "pct_from_30w": 80.26,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "CELU",
-      "name": "Celularity Inc. Class A Common Stock",
-      "rs": 98,
-      "industry": "Biotechnology",
-      "sector": "Health Care",
-      "price": 2.0999999046325684,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 240.83,
-      "pct_from_30w": 114.44,
-      "status": "Entry",
-      "industry_score": 63
-    },
-    {
-      "ticker": "NIQ",
-      "name": "NIQ",
-      "rs": 98,
-      "industry": "Software - Application",
-      "sector": "Technology",
-      "price": 19.06999969482422,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.54,
-      "pct_from_30w": 70.46,
-      "status": "Entry",
-      "industry_score": 46
-    },
-    {
-      "ticker": "ATRC",
-      "name": "AtriCure, Inc.",
+      "ticker": "DK",
+      "name": "Delek US Holdings Inc",
       "rs": 96,
-      "industry": "Health Care Equipment & Supplies",
-      "sector": "Health Care",
-      "price": 49.27000045776367,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.59,
-      "pct_from_30w": 52.78,
-      "status": "Entry",
-      "industry_score": 61
-    },
-    {
-      "ticker": "RPD",
-      "name": "Rapid7, Inc.",
-      "rs": 96,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 13.5,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 103.85,
-      "pct_from_30w": 66.77,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "CCC",
-      "name": "CCC Intelligent Solutions Holdings Inc. Common Stock",
-      "rs": 95,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 7.599999904632568,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.88,
-      "pct_from_30w": 35.22,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "CRL",
-      "name": "Charles River Laboratories International, Inc.",
-      "rs": 95,
-      "industry": "Biotechnology",
-      "sector": "Health Care",
-      "price": 296.4100036621094,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.41,
-      "pct_from_30w": 52.02,
-      "status": "Entry",
-      "industry_score": 63
-    },
-    {
-      "ticker": "PRCH",
-      "name": "Porch Group Inc.",
-      "rs": 95,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 17.440000534057617,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.35,
-      "pct_from_30w": 65.25,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "BLKB",
-      "name": "Blackbaud, Inc.",
-      "rs": 94,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 48.56999969482422,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 102.21,
-      "pct_from_30w": 26.12,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "GTLB",
-      "name": "GitLab Inc. Class A Common Stock",
-      "rs": 94,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 44.810001373291016,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 105.14,
-      "pct_from_30w": 56.91,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "CSTL",
-      "name": "Castle Biosciences, Inc.",
-      "rs": 93,
-      "industry": "Biotechnology",
-      "sector": "Health Care",
-      "price": 34.2599983215332,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.18,
-      "pct_from_30w": 32.55,
-      "status": "Entry",
-      "industry_score": 63
-    },
-    {
-      "ticker": "ASAN",
-      "name": "Asana, Inc.",
-      "rs": 92,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 10.170000076293945,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 106.16,
-      "pct_from_30w": 37.71,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "BULL",
-      "name": "Webull Corporation Class A Ordinary Shares",
-      "rs": 92,
-      "industry": "Capital Markets",
-      "sector": "Financials",
-      "price": 9.569999694824219,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 109.0,
-      "pct_from_30w": 46.79,
-      "status": "Entry",
-      "industry_score": 54
-    },
-    {
-      "ticker": "ECO",
-      "name": "Okeanis Eco Tankers Corp",
-      "rs": 92,
-      "industry": "Marine Shipping",
-      "sector": "Industrials",
-      "price": 66.33999633789062,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 102.52,
-      "pct_from_30w": 41.8,
-      "status": "Entry",
-      "industry_score": 63
-    },
-    {
-      "ticker": "BLFS",
-      "name": "BioLife Solutions, Inc.",
-      "rs": 91,
-      "industry": "Health Care Equipment & Supplies",
-      "sector": "Health Care",
-      "price": 37.20000076293945,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.27,
-      "pct_from_30w": 49.72,
-      "status": "Entry",
-      "industry_score": 61
-    },
-    {
-      "ticker": "BRZE",
-      "name": "Braze Inc. Class A Common Stock",
-      "rs": 90,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 34.09000015258789,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 109.76,
-      "pct_from_30w": 52.28,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "CGAU",
-      "name": "Centerra Gold Inc",
-      "rs": 90,
-      "industry": "Gold",
-      "sector": "Basic Materials",
-      "price": 24.25,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 102.11,
-      "pct_from_30w": 35.94,
-      "status": "Entry",
-      "industry_score": 67
-    },
-    {
-      "ticker": "CRM",
-      "name": "Salesforce, Inc.",
-      "rs": 90,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 252.0500030517578,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 120.5,
-      "pct_from_30w": 38.5,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "ZS",
-      "name": "Zscaler, Inc.",
-      "rs": 90,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 187.3000030517578,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 102.02,
-      "pct_from_30w": 23.83,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "AVPT",
-      "name": "AvePoint Inc. Class A Common Stock",
-      "rs": 89,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 14.300000190734863,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 106.08,
-      "pct_from_30w": 29.29,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "DBX",
-      "name": "Dropbox, Inc.",
-      "rs": 88,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 35.880001068115234,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 103.07,
-      "pct_from_30w": 32.08,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "CRWD",
-      "name": "CrowdStrike Holdings, Inc. Class A",
-      "rs": 87,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 227.9600067138672,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 105.07,
-      "pct_from_30w": 57.53,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "ERO",
-      "name": "Ero Copper Corp",
-      "rs": 87,
-      "industry": "Copper",
-      "sector": "Basic Materials",
-      "price": 39.81999969482422,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.01,
-      "pct_from_30w": 38.36,
-      "status": "Entry",
-      "industry_score": null
-    },
-    {
-      "ticker": "BZH",
-      "name": "Beazer Homes USA, Inc.",
-      "rs": 86,
-      "industry": "Construction & Engineering",
-      "sector": "Industrials",
-      "price": 33.220001220703125,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.09,
-      "pct_from_30w": 29.04,
-      "status": "Entry",
-      "industry_score": 46
-    },
-    {
-      "ticker": "WAY",
-      "name": "Waystar Holding Corp. Common Stock",
-      "rs": 85,
-      "industry": "Health Care Technology",
-      "sector": "Health Care",
-      "price": 25.25,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.96,
-      "pct_from_30w": 11.3,
-      "status": "Entry",
-      "industry_score": 63
-    },
-    {
-      "ticker": "CDW",
-      "name": "CDW Corporation",
-      "rs": 84,
-      "industry": "IT Services",
-      "sector": "Information Technology",
-      "price": 148.97000122070312,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.27,
-      "pct_from_30w": 17.09,
-      "status": "Entry",
-      "industry_score": 67
-    },
-    {
-      "ticker": "CTNM",
-      "name": "Contineum Therapeutics Inc. Class A Common Stock",
-      "rs": 84,
-      "industry": "Biotechnology",
-      "sector": "Health Care",
-      "price": 17.25,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.35,
-      "pct_from_30w": 23.78,
-      "status": "Entry",
-      "industry_score": 63
-    },
-    {
-      "ticker": "PLTR",
-      "name": "Palantir Technologies Inc. Class A",
-      "rs": 84,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 185.92999267578125,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 103.33,
-      "pct_from_30w": 31.9,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "BL",
-      "name": "BlackLine, Inc.",
-      "rs": 80,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 33.720001220703125,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 105.94,
-      "pct_from_30w": 2.97,
-      "status": "Entry",
-      "industry_score": 60
-    },
-    {
-      "ticker": "ARIS",
-      "name": "Aris Mining Corp",
-      "rs": 79,
-      "industry": "Gold",
-      "sector": "Basic Materials",
-      "price": 21.260000228881836,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.92,
-      "pct_from_30w": 19.91,
-      "status": "Entry",
-      "industry_score": 67
-    },
-    {
-      "ticker": "BR",
-      "name": "Broadridge Financial Solutions, Inc.",
-      "rs": 79,
-      "industry": "IT Services",
-      "sector": "Information Technology",
-      "price": 183.0800018310547,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.49,
-      "pct_from_30w": 14.08,
-      "status": "Entry",
-      "industry_score": 67
-    },
-    {
-      "ticker": "CMBT",
-      "name": "CMB.Tech NV",
-      "rs": 78,
-      "industry": "Oil & Gas Midstream",
+      "industry": "Oil, Gas & Consumable Fuels",
       "sector": "Energy",
-      "price": 18.280000686645508,
+      "price": 72.25,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 101.27,
-      "pct_from_30w": 30.65,
-      "status": "Entry",
-      "industry_score": null
-    },
-    {
-      "ticker": "ADBE",
-      "name": "Adobe Inc.",
-      "rs": 76,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 289.1499938964844,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 105.03,
-      "pct_from_30w": 17.38,
+      "breakout_pct": 101.09,
+      "pct_from_30w": 53.59,
       "status": "Entry",
       "industry_score": 60
     },
     {
-      "ticker": "BSY",
-      "name": "Bentley Systems, Incorporated Class B",
-      "rs": 73,
-      "industry": "Software",
-      "sector": "Information Technology",
-      "price": 37.61000061035156,
+      "ticker": "ABNB",
+      "name": "Airbnb, Inc. Class A",
+      "rs": 91,
+      "industry": "Diversified Telecommunication Services",
+      "sector": "Communication Services",
+      "price": 189.42999267578125,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 101.43,
-      "pct_from_30w": 11.16,
+      "breakout_pct": 101.14,
+      "pct_from_30w": 35.11,
+      "status": "Entry",
+      "industry_score": 42
+    },
+    {
+      "ticker": "DINO",
+      "name": "HF Sinclair Corporation Common Stock",
+      "rs": 91,
+      "industry": "Oil, Gas & Consumable Fuels",
+      "sector": "Energy",
+      "price": 99.70999908447266,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 102.46,
+      "pct_from_30w": 46.67,
       "status": "Entry",
       "industry_score": 60
     },
     {
-      "ticker": "BGC",
-      "name": "BGC Group Inc. Class A Common Stock",
-      "rs": 71,
-      "industry": "Capital Markets",
+      "ticker": "BILL",
+      "name": "BILL Holdings, Inc.",
+      "rs": 90,
+      "industry": "Software",
+      "sector": "Information Technology",
+      "price": 50.310001373291016,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 101.06,
+      "pct_from_30w": 22.42,
+      "status": "Entry",
+      "industry_score": 56
+    },
+    {
+      "ticker": "AJG",
+      "name": "Arthur J. Gallagher & Co.",
+      "rs": 88,
+      "industry": "Insurance",
       "sector": "Financials",
-      "price": 12.100000381469727,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.6,
-      "pct_from_30w": 13.98,
-      "status": "Entry",
-      "industry_score": 54
-    },
-    {
-      "ticker": "ACA",
-      "name": "Arcosa, Inc.",
-      "rs": 70,
-      "industry": "Transportation Infrastructure",
-      "sector": "Industrials",
-      "price": 145.49000549316406,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.06,
-      "pct_from_30w": 15.17,
-      "status": "Entry",
-      "industry_score": null
-    },
-    {
-      "ticker": "DC",
-      "name": "Dakota Gold Corp. Common Stock",
-      "rs": 64,
-      "industry": "Metals & Mining",
-      "sector": "Materials",
-      "price": 6.239999771118164,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 100.16,
-      "pct_from_30w": 15.43,
-      "status": "Entry",
-      "industry_score": 39
-    },
-    {
-      "ticker": "CGBD",
-      "name": "Carlyle Secured Lending, Inc.",
-      "rs": 63,
-      "industry": "Capital Markets",
-      "sector": "Financials",
-      "price": 11.65999984741211,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 102.73,
-      "pct_from_30w": 8.83,
-      "status": "Entry",
-      "industry_score": 54
-    },
-    {
-      "ticker": "OGC",
-      "name": "OceanaGold Corp",
-      "rs": 57,
-      "industry": "Gold",
-      "sector": "Basic Materials",
-      "price": 31.450000762939453,
+      "price": 267.55999755859375,
       "stage2_entry": true,
       "stage2_active": true,
       "breakout_pct": 101.42,
-      "pct_from_30w": 3.3,
+      "pct_from_30w": 18.72,
       "status": "Entry",
-      "industry_score": 67
+      "industry_score": 66
     },
     {
-      "ticker": "ACN",
-      "name": "Accenture plc",
-      "rs": 55,
-      "industry": "Information Technology Services",
-      "sector": "Technology",
-      "price": 187.3800048828125,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.13,
-      "pct_from_30w": 3.87,
-      "status": "Entry",
-      "industry_score": 19
-    },
-    {
-      "ticker": "NVDA",
-      "name": "NVIDIA Corporation",
-      "rs": 55,
-      "industry": "Semiconductors & Semiconductor Equipment",
-      "sector": "Information Technology",
-      "price": 227.97999572753906,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.25,
-      "pct_from_30w": 14.84,
-      "status": "Entry",
-      "industry_score": 20
-    },
-    {
-      "ticker": "AG",
-      "name": "First Majestic Silver Corp",
-      "rs": 54,
-      "industry": "Silver",
-      "sector": "Basic Materials",
-      "price": 21.739999771118164,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 103.08,
-      "pct_from_30w": 7.06,
-      "status": "Entry",
-      "industry_score": null
-    },
-    {
-      "ticker": "COIN",
-      "name": "Coinbase Global, Inc. Class A",
-      "rs": 52,
+      "ticker": "DUOL",
+      "name": "Duolingo Inc. Class A Common Stock",
+      "rs": 87,
       "industry": "Software",
       "sector": "Information Technology",
-      "price": 190.72000122070312,
+      "price": 146.97999572753906,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 102.27,
-      "pct_from_30w": 9.41,
+      "breakout_pct": 100.58,
+      "pct_from_30w": 28.05,
       "status": "Entry",
-      "industry_score": 60
+      "industry_score": 56
     },
     {
-      "ticker": "HCC",
-      "name": "Warrior Met Coal, Inc.",
-      "rs": 50,
-      "industry": "Metals & Mining",
-      "sector": "Materials",
-      "price": 108.26000213623047,
+      "ticker": "AMCX",
+      "name": "AMC Global Media Inc.",
+      "rs": 86,
+      "industry": "Diversified Financial Services",
+      "sector": "Financials",
+      "price": 12.65999984741211,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 101.43,
-      "pct_from_30w": 23.13,
+      "breakout_pct": 102.18,
+      "pct_from_30w": 39.44,
       "status": "Entry",
-      "industry_score": 39
+      "industry_score": 59
     },
     {
-      "ticker": "BTCS",
-      "name": "BTCS Inc",
-      "rs": 48,
-      "industry": "Capital Markets",
-      "sector": "Financial",
-      "price": 1.590000033378601,
+      "ticker": "BRO",
+      "name": "Brown & Brown, Inc.",
+      "rs": 86,
+      "industry": "Insurance",
+      "sector": "Financials",
+      "price": 73.30999755859375,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 117.78,
-      "pct_from_30w": 6.76,
+      "breakout_pct": 100.53,
+      "pct_from_30w": 11.53,
       "status": "Entry",
-      "industry_score": 54
+      "industry_score": 66
     },
     {
-      "ticker": "BTU",
-      "name": "Peabody Energy Corporation",
-      "rs": 47,
-      "industry": "Metals & Mining",
-      "sector": "Materials",
-      "price": 29.440000534057617,
+      "ticker": "CNO",
+      "name": "CNO Financial Group, Inc.",
+      "rs": 79,
+      "industry": "Insurance",
+      "sector": "Financials",
+      "price": 55.369998931884766,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 105.09,
-      "pct_from_30w": 4.71,
+      "breakout_pct": 100.16,
+      "pct_from_30w": 18.25,
       "status": "Entry",
-      "industry_score": 39
+      "industry_score": 66
     },
     {
-      "ticker": "MUX",
-      "name": "McEwen Inc",
-      "rs": 43,
-      "industry": "Other Precious Metals & Mining",
-      "sector": "Basic Materials",
-      "price": 21.65999984741211,
+      "ticker": "BRBS",
+      "name": "Blue Ridge Bankshares, Inc.",
+      "rs": 76,
+      "industry": "Banks",
+      "sector": "Financials",
+      "price": 3.930000066757202,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 104.23,
-      "pct_from_30w": 1.24,
+      "breakout_pct": 100.77,
+      "pct_from_30w": 12.41,
+      "status": "Entry",
+      "industry_score": 63
+    },
+    {
+      "ticker": "CMG",
+      "name": "Chipotle Mexican Grill, Inc.",
+      "rs": 76,
+      "industry": "Hotels, Restaurants & Leisure",
+      "sector": "Consumer Discretionary",
+      "price": 38.029998779296875,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 102.18,
+      "pct_from_30w": 11.17,
+      "status": "Entry",
+      "industry_score": 58
+    },
+    {
+      "ticker": "DSX",
+      "name": "Diana Shipping Inc",
+      "rs": 76,
+      "industry": "Marine Shipping",
+      "sector": "Industrials",
+      "price": 2.7799999713897705,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 102.58,
+      "pct_from_30w": 16.9,
       "status": "Entry",
       "industry_score": 50
     },
     {
-      "ticker": "CEG",
-      "name": "Constellation Energy Corporation Common Stock",
-      "rs": 42,
-      "industry": "Electric Utilities",
-      "sector": "Utilities",
-      "price": 282.4100036621094,
+      "ticker": "EFX",
+      "name": "Equifax Inc.",
+      "rs": 74,
+      "industry": "Professional Services",
+      "sector": "Industrials",
+      "price": 194.35000610351562,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 100.12,
-      "pct_from_30w": 0.63,
+      "breakout_pct": 100.9,
+      "pct_from_30w": 8.84,
       "status": "Entry",
-      "industry_score": 39
+      "industry_score": 63
     },
     {
-      "ticker": "BTE",
-      "name": "Baytex Energy Corp",
-      "rs": 41,
-      "industry": "Oil & Gas E&P",
-      "sector": "Energy",
-      "price": 4.820000171661377,
+      "ticker": "BEKE",
+      "name": "KE Holdings Inc ADR",
+      "rs": 63,
+      "industry": "Real Estate Services",
+      "sector": "Real Estate",
+      "price": 18.31999969482422,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 100.21,
-      "pct_from_30w": 13.09,
+      "breakout_pct": 103.21,
+      "pct_from_30w": 10.97,
       "status": "Entry",
       "industry_score": null
     },
     {
-      "ticker": "CNDT",
-      "name": "Conduent Incorporated",
-      "rs": 38,
-      "industry": "IT Services",
-      "sector": "Information Technology",
-      "price": 1.7400000095367432,
+      "ticker": "CMCSA",
+      "name": "Comcast Corporation",
+      "rs": 63,
+      "industry": "Entertainment",
+      "sector": "Communication Services",
+      "price": 27.059999465942383,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 102.35,
-      "pct_from_30w": 14.89,
+      "breakout_pct": 100.78,
+      "pct_from_30w": 2.33,
       "status": "Entry",
       "industry_score": 67
     },
     {
-      "ticker": "ALM",
-      "name": "Almonty Industries Inc",
-      "rs": 29,
-      "industry": "Other Industrial Metals & Mining",
-      "sector": "Basic Materials",
-      "price": 18.889999389648438,
+      "ticker": "DIS",
+      "name": "Walt Disney Company",
+      "rs": 57,
+      "industry": "Entertainment",
+      "sector": "Communication Services",
+      "price": 108.0999984741211,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 100.43,
-      "pct_from_30w": 12.48,
+      "breakout_pct": 100.3,
+      "pct_from_30w": 6.56,
       "status": "Entry",
-      "industry_score": 36
+      "industry_score": 67
     },
     {
-      "ticker": "CABA",
-      "name": "Cabaletta Bio, Inc.",
-      "rs": 26,
-      "industry": "Biotechnology",
-      "sector": "Health Care",
-      "price": 3.380000114440918,
+      "ticker": "BCAT",
+      "name": "BlackRock Capital Allocation Trust",
+      "rs": 55,
+      "industry": "Diversified Financials",
+      "sector": "Financials",
+      "price": 16.0,
       "stage2_entry": true,
       "stage2_active": true,
-      "breakout_pct": 104.0,
-      "pct_from_30w": 11.21,
+      "breakout_pct": 100.63,
+      "pct_from_30w": 10.78,
       "status": "Entry",
-      "industry_score": 63
+      "industry_score": null
+    },
+    {
+      "ticker": "ATAT",
+      "name": "Atour Lifestyle Holdings Ltd ADR",
+      "rs": 54,
+      "industry": "Lodging",
+      "sector": "Consumer Cyclical",
+      "price": 35.5,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 100.54,
+      "pct_from_30w": 0.94,
+      "status": "Entry",
+      "industry_score": null
+    },
+    {
+      "ticker": "ECC",
+      "name": "Eagle Point Credit Company Inc. Common Stock",
+      "rs": 44,
+      "industry": "Capital Markets",
+      "sector": "Financials",
+      "price": 3.9000000953674316,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 100.61,
+      "pct_from_30w": 3.26,
+      "status": "Entry",
+      "industry_score": 54
     }
   ]
 }
