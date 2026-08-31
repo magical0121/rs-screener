@@ -5997,6 +5997,11 @@
 "name": "Camtek Ltd",
 "sector": "Technology"
 },
+"CANG": {
+"industry": "Capital Markets",
+"name": "Cango Inc",
+"sector": "Financial"
+},
 "CAP": {
 "industry": "Diversified Financial Services",
 "name": "Capitol Investment Corp. V",
@@ -12570,6 +12575,11 @@
 "industry": "nan",
 "name": "Angel Oak Financial Strategies Income Term Trust",
 "sector": "Financials"
+},
+"FINV": {
+"industry": "Credit Services",
+"name": "FinVolution Group ADR",
+"sector": "Financial"
 },
 "FINW": {
 "industry": "Banks",
@@ -36637,6 +36647,11 @@
 "YMM": {
 "industry": "Software - Application",
 "name": "Full Truck Alliance Co Ltd ADR",
+"sector": "Technology"
+},
+"YMT": {
+"industry": "Software - Application",
+"name": "Yimutian Inc ADR",
 "sector": "Technology"
 },
 "YORKW": {
