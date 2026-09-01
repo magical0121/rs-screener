@@ -7806,6 +7806,11 @@
 "name": "Cerenome Inc. Common Stock",
 "sector": "Health Care"
 },
+"CNTB": {
+"industry": "Biotechnology",
+"name": "Connect Biopharma Holdings Ltd",
+"sector": "Healthcare"
+},
 "CNTM": {
 "industry": "Diversified Financial Services",
 "name": "ConnectM Technology Solutions Inc. Common Stock",
@@ -12801,6 +12806,11 @@
 "name": "Firefly Aerospace Inc",
 "sector": "Industrials"
 },
+"FLYE": {
+"industry": "Auto Manufacturers",
+"name": "Fly-E Group Inc",
+"sector": "Consumer Cyclical"
+},
 "FLYW": {
 "industry": "IT Services",
 "name": "Flywire Corporation",
@@ -13356,6 +13366,11 @@
 "name": "Franklin Limited Duration Income Trust",
 "sector": "Financials"
 },
+"FTFT": {
+"industry": "Software - Application",
+"name": "Future FinTech Group Inc",
+"sector": "Technology"
+},
 "FTH": {
 "industry": "Biotechnology",
 "name": "Faeth Therapeutics Inc. Common Stock",
@@ -13774,6 +13789,11 @@
 "industry": "Software - Infrastructure",
 "name": "GigaCloud Technology Inc",
 "sector": "Technology"
+},
+"GCTK": {
+"industry": "Medical Devices",
+"name": "GlucoTrack Inc",
+"sector": "Healthcare"
 },
 "GCTS": {
 "industry": "Diversified Financial Services",
@@ -16948,6 +16968,11 @@
 "name": "Imax Corp",
 "sector": "Communication Services"
 },
+"IMCC": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "IM Cannabis Corp",
+"sector": "Healthcare"
+},
 "IMCR": {
 "industry": "Biotechnology",
 "name": "Immunocore Holdings plc ADR",
@@ -17961,6 +17986,10 @@
 "industry": "Building Products",
 "name": "JELD-WEN Holding, Inc.",
 "sector": "Industrials"
+},
+"JEM": {
+"industry": "Apparel Retail",
+"sector": "Consumer Cyclical"
 },
 "JENA": {
 "industry": "Diversified Financial Services",
@@ -19424,6 +19453,11 @@
 "industry": "Medical Devices",
 "name": "Lifeward Ltd",
 "sector": "Healthcare"
+},
+"LGCL": {
+"industry": "Software - Application",
+"name": "Lucas GC Ltd",
+"sector": "Technology"
 },
 "LGCY": {
 "industry": "Diversified Consumer Services",
@@ -22373,6 +22407,11 @@
 "name": "MOZAYYX Acquisition Corp. Class A Ordinary Shares",
 "sector": "Financials"
 },
+"NA": {
+"industry": "Semiconductors",
+"name": "Nano Labs Ltd",
+"sector": "Technology"
+},
 "NABL": {
 "industry": "Software",
 "name": "N-able Inc. Common Stock",
@@ -22622,6 +22661,11 @@
 "industry": "nan",
 "name": "Southern Cross Acquisition I Corp. Warrants",
 "sector": "nan"
+},
+"NCPL": {
+"industry": "Capital Markets",
+"name": "Netcapital Inc",
+"sector": "Financial"
 },
 "NCPLW": {
 "industry": "Capital Markets",
@@ -22902,6 +22946,11 @@
 "industry": "Diversified Financial Services",
 "name": "NextGen Acquisition Corp. II",
 "sector": "Financials"
+},
+"NGEN": {
+"industry": "Biotechnology",
+"name": "NervGen Pharma Corp",
+"sector": "Healthcare"
 },
 "NGG": {
 "industry": "Utilities - Regulated Electric",
@@ -23936,6 +23985,11 @@
 "name": "NatWest Group Plc ADR",
 "sector": "Financial"
 },
+"NWGL": {
+"industry": "Lumber & Wood Production",
+"name": "CL Workshop Group Ltd ADR",
+"sector": "Basic Materials"
+},
 "NWL": {
 "industry": "Household Products",
 "name": "Newell Brands Inc.",
@@ -24856,6 +24910,11 @@
 "name": "Oscar Health, Inc.",
 "sector": "Health Care"
 },
+"OSG": {
+"industry": "Insurance - Specialty",
+"name": "Octave Specialty Group Inc",
+"sector": "Financial"
+},
 "OSIS": {
 "industry": "Electronic Equipment, Instruments & Components",
 "name": "OSI Systems, Inc.",
@@ -25775,6 +25834,11 @@
 "name": "PetMed Express, Inc.",
 "sector": "Consumer Discretionary"
 },
+"PETZ": {
+"industry": "Real Estate Services",
+"name": "TDH Holdings Inc",
+"sector": "Real Estate"
+},
 "PEVMD": {
 "industry": "nan",
 "name": "Phoenix Motor",
@@ -26543,6 +26607,11 @@
 "name": "Pilgrim's Pride Corporation",
 "sector": "Consumer Staples"
 },
+"PPCB": {
+"industry": "Biotechnology",
+"name": "Propanc Biopharma Inc",
+"sector": "Healthcare"
+},
 "PPD": {
 "industry": "Pharmaceuticals",
 "name": "PPD, Inc.",
@@ -26837,6 +26906,11 @@
 "industry": "Health Care Providers & Services",
 "name": "Privia Health Group, Inc.",
 "sector": "Health Care"
+},
+"PRZO": {
+"industry": "Aerospace & Defense",
+"name": "ParaZero Technologies Ltd",
+"sector": "Industrials"
 },
 "PS": {
 "industry": "Capital Markets",
@@ -27760,6 +27834,11 @@
 "RDGT": {
 "industry": "Pharmaceutical Retailers",
 "name": "Ridgetech Inc",
+"sector": "Healthcare"
+},
+"RDHL": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Redhill Biopharma Ltd ADR",
 "sector": "Healthcare"
 },
 "RDI": {
@@ -29821,6 +29900,11 @@
 "name": "Shoals Technologies Group, Inc.",
 "sector": "Information Technology"
 },
+"SHMD": {
+"industry": "Specialty Industrial Machinery",
+"name": "SCHMID Group NV",
+"sector": "Industrials"
+},
 "SHO": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
 "name": "Sunstone Hotel Investors, Inc.",
@@ -30060,6 +30144,11 @@
 "industry": "Construction & Engineering",
 "name": "Champion Homes, Inc.",
 "sector": "Industrials"
+},
+"SKYE": {
+"industry": "Biotechnology",
+"name": "Skye Bioscience Inc",
+"sector": "Healthcare"
 },
 "SKYH": {
 "industry": "Aerospace & Defense",
@@ -30350,6 +30439,11 @@
 "industry": "Health Care Equipment & Supplies",
 "name": "Sanara MedTech Inc.",
 "sector": "Health Care"
+},
+"SMTK": {
+"industry": "Semiconductor Equipment & Materials",
+"name": "SmartKem Inc",
+"sector": "Technology"
 },
 "SMWB": {
 "industry": "Software - Application",
@@ -31155,6 +31249,11 @@
 "name": "Sasol Ltd ADR",
 "sector": "Basic Materials"
 },
+"SSM": {
+"industry": "Auto Manufacturers",
+"name": "Sono Group NV",
+"sector": "Consumer Cyclical"
+},
 "SSNC": {
 "industry": "Construction & Engineering",
 "name": "SS&C Technologies Holdings, Inc.",
@@ -31814,6 +31913,11 @@
 "name": "Springwater Special Situations Corp. Warrant",
 "sector": "Financials"
 },
+"SWVL": {
+"industry": "Railroads",
+"name": "Swvl Holdings Corp",
+"sector": "Industrials"
+},
 "SWX": {
 "industry": "Gas Utilities",
 "name": "Southwest Gas Holdings, Inc.",
@@ -31853,6 +31957,11 @@
 "industry": "Biotechnology",
 "name": "60 Degrees Pharmaceuticals Inc. Warrant",
 "sector": "Health Care"
+},
+"SY": {
+"industry": "Health Information Services",
+"name": "So-Young International Inc ADR",
+"sector": "Healthcare"
 },
 "SYBT": {
 "industry": "Banks",
@@ -33547,6 +33656,11 @@
 "name": "Mammoth Energy Services, Inc.",
 "sector": "Energy"
 },
+"TUYA": {
+"industry": "Software - Infrastructure",
+"name": "Tuya Inc ADR",
+"sector": "Technology"
+},
 "TV": {
 "industry": "Telecom Services",
 "name": "Grupo Televisa SAB ADR",
@@ -34417,6 +34531,11 @@
 "name": "Vector Acquisition Corporation",
 "sector": "Financials"
 },
+"VAI": {
+"industry": "Rental & Leasing Services",
+"name": "Valor Energy Inc",
+"sector": "Industrials"
+},
 "VAL": {
 "industry": "Oil & Gas Drilling",
 "name": "Valaris Ltd",
@@ -34486,6 +34605,11 @@
 "industry": "Capital Markets",
 "name": "Delaware Investments Colorado Municipal Income Fund, Inc.",
 "sector": "Financials"
+},
+"VCIG": {
+"industry": "Consulting Services",
+"name": "VCI Global Ltd",
+"sector": "Industrials"
 },
 "VCNX": {
 "industry": "Biotechnology",
@@ -34881,6 +35005,11 @@
 "industry": "Diversified Financial Services",
 "name": "Vistas Media Acquisition Company Inc.",
 "sector": "Financials"
+},
+"VMAR": {
+"industry": "Recreational Vehicles",
+"name": "Vision Marine Technologies Inc",
+"sector": "Consumer Cyclical"
 },
 "VMC": {
 "industry": "Construction Materials",
@@ -35441,6 +35570,11 @@
 "industry": "Interactive Media & Services",
 "name": "WEBTOON Entertainment Inc. Common stock",
 "sector": "Communication Services"
+},
+"WBUY": {
+"industry": "Internet Retail",
+"name": "Webuy Global Ltd",
+"sector": "Consumer Cyclical"
 },
 "WCC": {
 "industry": "Trading Companies & Distributors",
@@ -36554,6 +36688,11 @@
 "name": "Exzeo Group Inc. Common Stock",
 "sector": "Financials"
 },
+"YAAS": {
+"industry": "Software - Application",
+"name": "Youxin Technology Ltd",
+"sector": "Technology"
+},
 "YALA": {
 "industry": "Software - Application",
 "name": "Yalla Group Limited ADR",
@@ -36578,6 +36717,11 @@
 "industry": "Diversified Financial Services",
 "name": "AA Mission Acquisition Corp. II Class A Ordinary Shares",
 "sector": "Financials"
+},
+"YDDL": {
+"industry": "Waste Management",
+"name": "One and one Green Technologies. Inc",
+"sector": "Industrials"
 },
 "YDES": {
 "industry": "Biotechnology",
@@ -36728,6 +36872,11 @@
 "industry": "Hotels, Restaurants & Leisure",
 "name": "AiRWA Inc.",
 "sector": "Consumer Discretionary"
+},
+"YYGH": {
+"industry": "Specialty Business Services",
+"name": "YY Group Holding Ltd",
+"sector": "Industrials"
 },
 "Z": {
 "industry": "Diversified Telecommunication Services",
