@@ -1797,6 +1797,11 @@
 "name": "Ambiq Micro Inc. Common Stock",
 "sector": "Information Technology"
 },
+"AMBR": {
+"industry": "Asset Management",
+"name": "Amber International Holding Ltd ADR",
+"sector": "Financial"
+},
 "AMC": {
 "industry": "Entertainment",
 "name": "AMC Entertainment Holdings, Inc.",
@@ -5996,6 +6001,11 @@
 "industry": "Semiconductor Equipment & Materials",
 "name": "Camtek Ltd",
 "sector": "Technology"
+},
+"CANF": {
+"industry": "Biotechnology",
+"name": "Can-Fite Biopharma Ltd ADR",
+"sector": "Healthcare"
 },
 "CANG": {
 "industry": "Capital Markets",
