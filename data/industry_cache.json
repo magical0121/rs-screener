@@ -7392,6 +7392,11 @@
 "name": "Clearfield, Inc.",
 "sector": "Information Technology"
 },
+"CLGN": {
+"industry": "Biotechnology",
+"name": "CollPlant Biotechnologies Ltd",
+"sector": "Healthcare"
+},
 "CLGX": {
 "industry": "IT Services",
 "name": "CoreLogic, Inc.",
@@ -7605,6 +7610,11 @@
 "industry": "Machinery",
 "name": "Cummins Inc.",
 "sector": "Industrials"
+},
+"CMND": {
+"industry": "Biotechnology",
+"name": "Clearmind Medicine Inc",
+"sector": "Healthcare"
 },
 "CMP": {
 "industry": "Metals & Mining",
