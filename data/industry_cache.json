@@ -21338,6 +21338,11 @@
 "name": "Middleby Corp. Common Stock Ex-Distribution When Issued",
 "sector": "Industrials"
 },
+"MIMI": {
+"industry": "Engineering & Construction",
+"name": "Mint Inc Ltd",
+"sector": "Industrials"
+},
 "MIN": {
 "industry": "Capital Markets",
 "name": "Aberdeen Intermediate Income Fund",
@@ -36143,6 +36148,11 @@
 "industry": "Banks",
 "name": "WSFS Financial Corporation",
 "sector": "Financials"
+},
+"WSHP": {
+"industry": "Internet Content & Information",
+"name": "WeShop Holdings Ltd",
+"sector": "Communication Services"
 },
 "WSM": {
 "industry": "Specialty Retail",
