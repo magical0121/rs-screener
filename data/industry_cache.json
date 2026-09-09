@@ -2482,6 +2482,11 @@
 "name": "ARB IOT Group Ltd",
 "sector": "Technology"
 },
+"ARBE": {
+"industry": "Scientific & Technical Instruments",
+"name": "Arbe Robotics Ltd",
+"sector": "Technology"
+},
 "ARCB": {
 "industry": "Transportation Infrastructure",
 "name": "ArcBest Corporation",
@@ -36822,6 +36827,11 @@
 "industry": "Internet Retail",
 "name": "Yunji Inc ADR",
 "sector": "Consumer Cyclical"
+},
+"YMAT": {
+"industry": "Specialty Chemicals",
+"name": "J-Star Holding Co Ltd",
+"sector": "Basic Materials"
 },
 "YMM": {
 "industry": "Software - Application",
