@@ -1114,6 +1114,11 @@
 "name": "AdaptHealth Corp.",
 "sector": "Health Care"
 },
+"AHMA": {
+"industry": "Travel Services",
+"name": "Ambitions Enterprise Management Co LLC",
+"sector": "Consumer Cyclical"
+},
 "AHR": {
 "industry": "REIT - Healthcare Facilities",
 "name": "American Healthcare REIT Inc",
@@ -1636,6 +1641,11 @@
 "industry": "Metals & Mining",
 "name": "REalloys Inc. Common Stock",
 "sector": "Materials"
+},
+"ALP": {
+"industry": "Asset Management",
+"name": "Alpha Compute Corp",
+"sector": "Financial"
 },
 "ALPAW": {
 "industry": "Diversified Financial Services",
@@ -13975,6 +13985,11 @@
 "name": "Genesis Energy, L.P.",
 "sector": "Energy"
 },
+"GELS": {
+"industry": "Drug Manufacturers - Specialty & Generic",
+"name": "Gelteq Ltd",
+"sector": "Healthcare"
+},
 "GEMI": {
 "industry": "Software",
 "name": "Gemini Space Station Inc. Class A Common Stock",
@@ -15733,6 +15748,11 @@
 "name": "Health In Tech Inc. Class A Common Stock",
 "sector": "Financials"
 },
+"HITI": {
+"industry": "Pharmaceutical Retailers",
+"name": "High Tide Inc",
+"sector": "Healthcare"
+},
 "HIVE": {
 "industry": "Capital Markets",
 "name": "HIVE Digital Technologies Ltd",
@@ -17067,6 +17087,11 @@
 "industry": "Oil & Gas Midstream",
 "name": "Imperial Petroleum Inc",
 "sector": "Energy"
+},
+"IMRN": {
+"industry": "Biotechnology",
+"name": "Immuron Limited ADR",
+"sector": "Healthcare"
 },
 "IMRX": {
 "industry": "Biotechnology",
@@ -21707,6 +21732,11 @@
 "name": "Modine Manufacturing Company",
 "sector": "Consumer Discretionary"
 },
+"MODD": {
+"industry": "Medical Devices",
+"name": "Modular Medical Inc",
+"sector": "Healthcare"
+},
 "MODV": {
 "industry": "Health Care Equipment & Supplies",
 "name": "ModivCare Inc.",
@@ -24615,6 +24645,11 @@
 "name": "Omega Therapeutics Inc. Common Stock",
 "sector": "Health Care"
 },
+"OMH": {
+"industry": "Real Estate Services",
+"name": "Ohmyhome Ltd",
+"sector": "Real Estate"
+},
 "OMP": {
 "industry": "Oil, Gas & Consumable Fuels",
 "name": "Oasis Midstream Partners LP",
@@ -26074,6 +26109,11 @@
 "name": "Koninklijke Philips NV ADR",
 "sector": "Healthcare"
 },
+"PHGE": {
+"industry": "Aerospace & Defense",
+"name": "BiomX Inc",
+"sector": "Industrials"
+},
 "PHI": {
 "industry": "Telecom Services",
 "name": "PLDT Inc ADR",
@@ -26637,6 +26677,11 @@
 "name": "Outdoor Holding Company - 8.75% Series A Cumulative Redeemable Perpetual Preferred Stock",
 "sector": "Industrials"
 },
+"PPBT": {
+"industry": "Biotechnology",
+"name": "Purple Biotech Ltd ADR",
+"sector": "Healthcare"
+},
 "PPC": {
 "industry": "Food & Staples Retailing",
 "name": "Pilgrim's Pride Corporation",
@@ -26976,6 +27021,11 @@
 "industry": "Software - Infrastructure",
 "name": "Paysafe Limited",
 "sector": "Technology"
+},
+"PSIG": {
+"industry": "Integrated Freight & Logistics",
+"name": "PS International Group Ltd",
+"sector": "Industrials"
 },
 "PSIX": {
 "industry": "Specialty Industrial Machinery",
@@ -29859,6 +29909,11 @@
 "industry": "Professional Services",
 "name": "SPAR Group, Inc.",
 "sector": "Industrials"
+},
+"SGRX": {
+"industry": "Financial Data & Stock Exchanges",
+"name": "Sangrix Inc",
+"sector": "Financial"
 },
 "SGRY": {
 "industry": "Health Care Equipment & Supplies",
@@ -33093,6 +33148,11 @@
 "name": "Travel + Leisure Co.",
 "sector": "Consumer Discretionary"
 },
+"TNMG": {
+"industry": "Publishing",
+"name": "TNL Mediagene",
+"sector": "Communication Services"
+},
 "TNON": {
 "industry": "Biotechnology",
 "name": "Tenon Medical Inc. Common Stock",
@@ -33996,6 +34056,11 @@
 "name": "United Bankshares, Inc.",
 "sector": "Financials"
 },
+"UCAR": {
+"industry": "Auto & Truck Dealerships",
+"name": "U Power Ltd",
+"sector": "Consumer Cyclical"
+},
 "UCB": {
 "industry": "Banks",
 "name": "United Community Banks Inc. Common Stock",
@@ -34616,6 +34681,11 @@
 "name": "Invesco Bond Fund",
 "sector": "Financials"
 },
+"VBIO": {
+"industry": "Biotechnology",
+"name": "Valion Bio Inc",
+"sector": "Healthcare"
+},
 "VBNB": {
 "industry": "nan",
 "name": "VanEck BNB ETF Common Shares of Beneficial Interest",
@@ -34890,6 +34960,11 @@
 "industry": "Asset Management",
 "name": "Vinci Compass Investments Ltd",
 "sector": "Financial"
+},
+"VIOT": {
+"industry": "Furnishings, Fixtures & Appliances",
+"name": "Viomi Technology Co Ltd ADR",
+"sector": "Consumer Cyclical"
 },
 "VIP": {
 "industry": "Software",
@@ -36792,6 +36867,11 @@
 "industry": "Software",
 "name": "Yext, Inc.",
 "sector": "Information Technology"
+},
+"YFOR": {
+"industry": "Specialty Business Services",
+"name": "YYForce Inc",
+"sector": "Industrials"
 },
 "YHC": {
 "industry": "Beverages",
