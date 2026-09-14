@@ -8169,6 +8169,11 @@
 "name": "Coupang Inc",
 "sector": "Consumer Cyclical"
 },
+"CPOP": {
+"industry": "Entertainment",
+"name": "Pop Culture Group Co Ltd",
+"sector": "Communication Services"
+},
 "CPRI": {
 "industry": "Luxury Goods",
 "name": "Capri Holdings Ltd",
@@ -10522,6 +10527,11 @@
 "industry": "Chemicals",
 "name": "Ecovyst Inc. Common Stock",
 "sector": "Materials"
+},
+"ECX": {
+"industry": "Auto Parts",
+"name": "ECARX Holdings Inc",
+"sector": "Consumer Cyclical"
 },
 "ED": {
 "industry": "Electric Utilities",
@@ -16282,6 +16292,11 @@
 "industry": "Electrical Equipment",
 "name": "Hubbell Incorporated",
 "sector": "Industrials"
+},
+"HUBC": {
+"industry": "Software - Infrastructure",
+"name": "Hub Cyber Security Ltd",
+"sector": "Technology"
 },
 "HUBG": {
 "industry": "Air Freight & Logistics",
@@ -29479,6 +29494,11 @@
 "industry": "Capital Markets",
 "name": "Stellus Capital Investment Corporation",
 "sector": "Financials"
+},
+"SCNI": {
+"industry": "Biotechnology",
+"name": "Scinai Immunotherapeutics Ltd ADR",
+"sector": "Healthcare"
 },
 "SCNX": {
 "industry": "Health Care Providers & Services",
