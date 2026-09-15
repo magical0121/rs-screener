@@ -17907,6 +17907,11 @@
 "name": "IZEA Worldwide, Inc.",
 "sector": "Communication Services"
 },
+"IZM": {
+"industry": "Electronics & Computer Distribution",
+"name": "Iczoom Group Inc",
+"sector": "Technology"
+},
 "IZTC": {
 "industry": "Biotechnology",
 "name": "Invizyne Technologies Inc. Common Stock",
@@ -21033,6 +21038,11 @@
 "name": "Medpace Holdings, Inc.",
 "sector": "Health Care"
 },
+"MEDS": {
+"industry": "Medical Distribution",
+"name": "DataMEDS AI Inc",
+"sector": "Healthcare"
+},
 "MEG": {
 "industry": "Transportation Infrastructure",
 "name": "Montrose Environmental Group, Inc.",
@@ -23679,6 +23689,11 @@
 "industry": "Metals & Mining",
 "name": "Natural Resource Partners L.P.",
 "sector": "Materials"
+},
+"NRSN": {
+"industry": "Biotechnology",
+"name": "NeuroSense Therapeutics Ltd",
+"sector": "Healthcare"
 },
 "NRT": {
 "industry": "Energy Equipment & Services",
