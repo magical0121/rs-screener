@@ -9753,6 +9753,11 @@
 "name": "Deluxe Corporation",
 "sector": "Communication Services"
 },
+"DLXY": {
+"industry": "Oil & Gas Refining & Marketing",
+"name": "Delixy Holdings Ltd",
+"sector": "Energy"
+},
 "DLY": {
 "industry": "nan",
 "name": "DoubleLine Yield Opportunities Fund",
@@ -18311,6 +18316,11 @@
 "name": "Jianzhi Education Technology Group Co Ltd ADR",
 "sector": "Technology"
 },
+"JZXN": {
+"industry": "Auto & Truck Dealerships",
+"name": "Jiuzi Holdings Inc",
+"sector": "Consumer Cyclical"
+},
 "KAI": {
 "industry": "Machinery",
 "name": "Kadant Inc.",
@@ -23459,6 +23469,11 @@
 "NNNN": {
 "industry": "Medical Instruments & Supplies",
 "name": "Anbio Biotechnology",
+"sector": "Healthcare"
+},
+"NNOX": {
+"industry": "Medical Devices",
+"name": "Nano X Imaging Ltd",
 "sector": "Healthcare"
 },
 "NNVC": {
