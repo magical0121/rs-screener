@@ -10208,6 +10208,11 @@
 "name": "DT Cloud Star Acquisition Corporation Units",
 "sector": "nan"
 },
+"DTSS": {
+"industry": "Software - Infrastructure",
+"name": "Datasea Intelligent Technology Ltd",
+"sector": "Technology"
+},
 "DTSTW": {
 "industry": "Software",
 "name": "Data Storage Corporation Warrant",
@@ -21272,6 +21277,11 @@
 "industry": "Hotels, Restaurants & Leisure",
 "name": "MGM Resorts International",
 "sector": "Consumer Discretionary"
+},
+"MGN": {
+"industry": "Engineering & Construction",
+"name": "Megan Holdings Ltd",
+"sector": "Industrials"
 },
 "MGNI": {
 "industry": "Diversified Telecommunication Services",
@@ -33796,6 +33806,11 @@
 "name": "Bloomia Holdings Inc. Common Stock",
 "sector": "Consumer Staples"
 },
+"TURB": {
+"industry": "Solar",
+"name": "Turbo Energy SA ADR",
+"sector": "Technology"
+},
 "TUSK": {
 "industry": "Energy Equipment & Services",
 "name": "Mammoth Energy Services, Inc.",
@@ -35445,6 +35460,11 @@
 "industry": "Semiconductors & Semiconductor Equipment",
 "name": "Vishay Intertechnology, Inc.",
 "sector": "Information Technology"
+},
+"VSME": {
+"industry": "Advertising Agencies",
+"name": "Vs Media Holdings Ltd",
+"sector": "Communication Services"
 },
 "VSNT": {
 "industry": "Media",
@@ -37182,6 +37202,11 @@
 "industry": "Medical Instruments & Supplies",
 "name": "Jin Medical International Ltd",
 "sector": "Healthcare"
+},
+"ZKH": {
+"industry": "Internet Retail",
+"name": "ZKH Group Ltd ADR",
+"sector": "Consumer Cyclical"
 },
 "ZKP": {
 "industry": "Diversified Financial Services",
