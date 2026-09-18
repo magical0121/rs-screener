@@ -10053,6 +10053,11 @@
 "name": "DarioHealth Corp.",
 "sector": "Health Care"
 },
+"DRK": {
+"industry": "Capital Markets",
+"name": "DarkHorse Technologies Inc",
+"sector": "Financial"
+},
 "DRMA": {
 "industry": "Biotechnology",
 "name": "Dermata Therapeutics Inc. Common Stock",
