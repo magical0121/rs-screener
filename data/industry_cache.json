@@ -5578,6 +5578,11 @@
 "name": "Blackrock Municipal 2030 Target Term Trust",
 "sector": "Financials"
 },
+"BTTC": {
+"industry": "Software - Application",
+"name": "Black Titan Corp",
+"sector": "Technology"
+},
 "BTTX": {
 "industry": "Biotechnology",
 "name": "Better Therapeutics Inc. Common Stock",
@@ -24094,6 +24099,10 @@
 "industry": "Banks",
 "name": "Northwest Bancshares, Inc.",
 "sector": "Financials"
+},
+"NWCL": {
+"industry": "Specialty Industrial Machinery",
+"sector": "Industrials"
 },
 "NWE": {
 "industry": "Multi-Utilities",
