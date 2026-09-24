@@ -11312,6 +11312,10 @@
 "name": "Eupraxia Pharmaceuticals Inc",
 "sector": "Healthcare"
 },
+"EPSM": {
+"industry": "Beverages - Wineries & Distilleries",
+"sector": "Consumer Defensive"
+},
 "EPSN": {
 "industry": "Oil, Gas & Consumable Fuels",
 "name": "Epsilon Energy Ltd.",
@@ -19629,6 +19633,11 @@
 "name": "Linkhome Holdings Inc. Common stock",
 "sector": "Real Estate"
 },
+"LHSW": {
+"industry": "Software - Infrastructure",
+"name": "Lianhe Sowell International Group Ltd",
+"sector": "Technology"
+},
 "LHX": {
 "industry": "Aerospace & Defense",
 "name": "L3Harris Technologies Inc",
@@ -20643,6 +20652,11 @@
 "industry": "Health Care Equipment & Supplies",
 "name": "Masimo Corporation",
 "sector": "Health Care"
+},
+"MASK": {
+"industry": "Software - Application",
+"name": "3 E Network Technology Group Ltd",
+"sector": "Technology"
 },
 "MASS": {
 "industry": "Health Care Technology",
@@ -31922,6 +31936,11 @@
 "name": "Silvaco Group Inc. Common Stock",
 "sector": "Information Technology"
 },
+"SVIA": {
+"industry": "Capital Markets",
+"name": "Silvia Inc",
+"sector": "Financial"
+},
 "SVII": {
 "industry": "Diversified Financial Services",
 "name": "Eagle Nuclear Energy Corp.",
@@ -33290,6 +33309,11 @@
 "industry": "Capital Markets",
 "name": "TOP Financial Group Limited",
 "sector": "Financial"
+},
+"TOPS": {
+"industry": "Oil & Gas Midstream",
+"name": "Top Ships Inc",
+"sector": "Energy"
 },
 "TORO": {
 "industry": "Oil & Gas Midstream",
@@ -34664,6 +34688,11 @@
 "industry": "Diversified Telecommunication Services",
 "name": "United States Cellular Corporation 5.500% Senior Notes due 2070",
 "sector": "Communication Services"
+},
+"UZX": {
+"industry": "Internet Retail",
+"name": "Linkage Global Inc",
+"sector": "Consumer Cyclical"
 },
 "V": {
 "industry": "Consumer Finance",
@@ -36817,6 +36846,11 @@
 "name": "Armada Acquisition Corp. II Warrant",
 "sector": "Financials"
 },
+"XRTX": {
+"industry": "Biotechnology",
+"name": "XORTX Therapeutics Inc",
+"sector": "Healthcare"
+},
 "XRX": {
 "industry": "IT Services",
 "name": "Xerox Holdings Corporation",
@@ -37176,6 +37210,11 @@
 "industry": "Biotechnology",
 "name": "Zogenix, Inc.",
 "sector": "Health Care"
+},
+"ZH": {
+"industry": "Internet Content & Information",
+"name": "Zhihu Inc ADR",
+"sector": "Communication Services"
 },
 "ZIM": {
 "industry": "Marine Shipping",
