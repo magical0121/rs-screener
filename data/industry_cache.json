@@ -6222,6 +6222,11 @@
 "name": "Colony Bankcorp, Inc.",
 "sector": "Financials"
 },
+"CBAT": {
+"industry": "Electrical Equipment & Parts",
+"name": "CBAK Energy Technology Ltd",
+"sector": "Industrials"
+},
 "CBC": {
 "industry": "Banks",
 "name": "Central Bancompany Inc. Class A Common Stock",
@@ -24787,6 +24792,10 @@
 "industry": "Communications Equipment",
 "name": "Ondas Holdings Inc.",
 "sector": "Information Technology"
+},
+"ONEN": {
+"industry": "Shell Companies",
+"sector": "Financial"
 },
 "ONEW": {
 "industry": "Specialty Retail",
