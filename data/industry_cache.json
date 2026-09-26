@@ -9224,6 +9224,11 @@
 "name": "DoorDash, Inc.",
 "sector": "Communication Services"
 },
+"DAVA": {
+"industry": "Software - Infrastructure",
+"name": "Endava plc ADR",
+"sector": "Technology"
+},
 "DAVE": {
 "industry": "Software",
 "name": "Dave Inc. Class A Common Stock",
@@ -14754,6 +14759,11 @@
 "name": "Gossamer Bio, Inc.",
 "sector": "Health Care"
 },
+"GOTU": {
+"industry": "Education & Training Services",
+"name": "Gaotu Techedu Inc ADR",
+"sector": "Consumer Defensive"
+},
 "GOVX": {
 "industry": "Biotechnology",
 "name": "GeoVax Labs, Inc.",
@@ -15652,6 +15662,11 @@
 "name": "Hepion Pharmaceuticals, Inc.",
 "sector": "Health Care"
 },
+"HEPS": {
+"industry": "Internet Retail",
+"name": "D-MARKET Electronic Services & Trading ADR",
+"sector": "Consumer Cyclical"
+},
 "HEQ": {
 "industry": "Capital Markets",
 "name": "John Hancock Hedged Equity & Income Fund",
@@ -16336,6 +16351,11 @@
 "industry": "Software",
 "name": "HubSpot, Inc.",
 "sector": "Information Technology"
+},
+"HUCK": {
+"industry": "Software - Application",
+"name": "Huckleberry.ai Inc",
+"sector": "Technology"
 },
 "HUDA": {
 "industry": "Diversified Financial Services",
@@ -18080,6 +18100,10 @@
 "industry": "Internet Retail",
 "name": "JD.com Inc ADR",
 "sector": "Consumer Cyclical"
+},
+"JDZG": {
+"industry": "Education & Training Services",
+"sector": "Consumer Defensive"
 },
 "JEF": {
 "industry": "Capital Markets",
@@ -21431,6 +21455,11 @@
 "industry": "Capital Markets",
 "name": "Miami International Holdings Inc. Common Stock",
 "sector": "Financials"
+},
+"MICC": {
+"industry": "Packaged Foods",
+"name": "Magnum Ice Cream Company NV",
+"sector": "Consumer Defensive"
 },
 "MIDD": {
 "industry": "Machinery",
