@@ -7756,6 +7756,11 @@
 "name": "Conduent Incorporated",
 "sector": "Information Technology"
 },
+"CNET": {
+"industry": "Advertising Agencies",
+"name": "ZW Data Action Technologies Inc",
+"sector": "Communication Services"
+},
 "CNGL": {
 "industry": "Diversified Financial Services",
 "name": "Canna-Global Acquisition Corp. Class A Common Stock",
@@ -12145,6 +12150,10 @@
 "industry": "Electronic Equipment, Instruments & Components",
 "name": "FaZe Holdings Inc. Warrant",
 "sector": "Information Technology"
+},
+"FBGL": {
+"industry": "Engineering & Construction",
+"sector": "Industrials"
 },
 "FBIN": {
 "industry": "nan",
@@ -16887,6 +16896,11 @@
 "name": "IDEX Corporation",
 "sector": "Industrials"
 },
+"IFBD": {
+"industry": "Software - Application",
+"name": "Infobird Co Ltd",
+"sector": "Technology"
+},
 "IFF": {
 "industry": "Chemicals",
 "name": "International Flavors & Fragrances Inc.",
@@ -18773,6 +18787,11 @@
 "name": "Knowles Corporation",
 "sector": "Information Technology"
 },
+"KNDI": {
+"industry": "Recreational Vehicles",
+"name": "Kandi Technologies Group Inc",
+"sector": "Consumer Cyclical"
+},
 "KNF": {
 "industry": "Construction Materials",
 "name": "Knife Riv Holding Co. Common Stock",
@@ -18782,6 +18801,10 @@
 "industry": "Commercial Services & Supplies",
 "name": "Knoll, Inc.",
 "sector": "Industrials"
+},
+"KNRX": {
+"industry": "Software - Application",
+"sector": "Technology"
 },
 "KNSA": {
 "industry": "Drug Manufacturers - Specialty & Generic",
@@ -20447,6 +20470,11 @@
 "name": "LexinFintech Holdings Ltd ADR",
 "sector": "Financial"
 },
+"LXEH": {
+"industry": "Education & Training Services",
+"name": "Lixiang Education Holding Co Ltd ADR",
+"sector": "Consumer Defensive"
+},
 "LXEO": {
 "industry": "Biotechnology",
 "name": "Lexeo Therapeutics Inc. Common Stock",
@@ -21320,6 +21348,11 @@
 "industry": "Packaging & Containers",
 "name": "Millennium Group International Holdings Ltd",
 "sector": "Consumer Cyclical"
+},
+"MGLD": {
+"industry": "Asset Management",
+"name": "Marygold Companies Inc",
+"sector": "Financial"
 },
 "MGLN": {
 "industry": "Health Care Providers & Services",
@@ -22234,6 +22267,11 @@
 "industry": "Oil, Gas & Consumable Fuels",
 "name": "Matador Resources Company",
 "sector": "Energy"
+},
+"MTEK": {
+"industry": "Electronic Components",
+"name": "Maris Tech Ltd",
+"sector": "Technology"
 },
 "MTEM": {
 "industry": "Biotechnology",
@@ -26558,6 +26596,11 @@
 "name": "Philip Morris International Inc.",
 "sector": "Consumer Staples"
 },
+"PMAX": {
+"industry": "Capital Markets",
+"name": "Powell Max Ltd",
+"sector": "Financial"
+},
 "PMBC": {
 "industry": "Banks",
 "name": "Pacific Mercantile Bancorp",
@@ -30616,6 +30659,11 @@
 "name": "Schmitt Industries, Inc.",
 "sector": "Information Technology"
 },
+"SMJF": {
+"industry": "Textile Manufacturing",
+"name": "SMJ International Holdings Inc",
+"sector": "Consumer Cyclical"
+},
 "SMMT": {
 "industry": "Biotechnology",
 "name": "Summit Therapeutics Inc.",
@@ -31100,6 +31148,11 @@
 "industry": "Diversified Financial Services",
 "name": "Shepherd Ave Capital Acquisition Corporation Unit",
 "sector": "Financials"
+},
+"SPHL": {
+"industry": "Residential Construction",
+"name": "Springview Holdings Ltd",
+"sector": "Consumer Cyclical"
 },
 "SPHR": {
 "industry": "nan",
@@ -32633,6 +32686,10 @@
 "industry": "nan",
 "name": "Touchstone Dynamic International ETF",
 "sector": "nan"
+},
+"TDIC": {
+"industry": "Advertising Agencies",
+"sector": "Communication Services"
 },
 "TDJ": {
 "industry": "nan",
@@ -34697,6 +34754,11 @@
 "name": "UWM Holdings Corporation",
 "sector": "Financials"
 },
+"UXIN": {
+"industry": "Auto & Truck Dealerships",
+"name": "Uxin Ltd ADR",
+"sector": "Consumer Cyclical"
+},
 "UYSC": {
 "industry": "Diversified Financial Services",
 "name": "UY Scuti Acquisition Corp. Ordinary Shares",
@@ -35501,6 +35563,11 @@
 "industry": "Biotechnology",
 "name": "Vertex Pharmaceuticals Incorporated",
 "sector": "Health Care"
+},
+"VSA": {
+"industry": "Education & Training Services",
+"name": "VisionSys AI Inc ADR",
+"sector": "Consumer Defensive"
 },
 "VSACW": {
 "industry": "Diversified Financial Services",
