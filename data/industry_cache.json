@@ -14783,6 +14783,11 @@
 "name": "GeoVax Labs, Inc.",
 "sector": "Health Care"
 },
+"GOW": {
+"industry": "Oil & Gas Equipment & Services",
+"name": "GOWell Energy Technology",
+"sector": "Energy"
+},
 "GPAK": {
 "industry": "nan",
 "name": "Gamer Pakistan Inc. Common Stock",
@@ -22663,6 +22668,11 @@
 "name": "Jinxin Technology Holding Co ADR",
 "sector": "Communication Services"
 },
+"NAMM": {
+"industry": "Gold",
+"name": "Namib Minerals",
+"sector": "Basic Materials"
+},
 "NAMS": {
 "industry": "Biotechnology",
 "name": "NewAmsterdam Pharma Company NV",
@@ -29903,6 +29913,11 @@
 "industry": "Chemicals",
 "name": "Serve Robotics Inc. Common Stock",
 "sector": "Materials"
+},
+"SES": {
+"industry": "Auto Parts",
+"name": "SES AI Corp",
+"sector": "Consumer Cyclical"
 },
 "SEVN": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
