@@ -4047,6 +4047,11 @@
 "name": "Blackrock Resources & Commodities Strategy Trust",
 "sector": "Financials"
 },
+"BCYC": {
+"industry": "Biotechnology",
+"name": "Bicycle Therapeutics Plc ADR",
+"sector": "Healthcare"
+},
 "BCYP": {
 "industry": "Diversified Financial Services",
 "name": "Big Cypress Acquisition Corp.",
@@ -10597,6 +10602,10 @@
 "industry": "nan",
 "name": "Virtus Stone Harbor Emerging Markets Income Fund",
 "sector": "nan"
+},
+"EDHL": {
+"industry": "Advertising Agencies",
+"sector": "Communication Services"
 },
 "EDIT": {
 "industry": "Biotechnology",
@@ -19629,6 +19638,11 @@
 "industry": "Diversified Consumer Services",
 "name": "Legacy Education Inc.",
 "sector": "Consumer Discretionary"
+},
+"LGHL": {
+"industry": "Capital Markets",
+"name": "Lion Group Holding Ltd ADR",
+"sector": "Financial"
 },
 "LGI": {
 "industry": "Capital Markets",
@@ -29319,6 +29333,10 @@
 "name": "Sailpoint Inc",
 "sector": "Technology"
 },
+"SAIQ": {
+"industry": "Telecom Services",
+"sector": "Communication Services"
+},
 "SAJ": {
 "industry": "Capital Markets",
 "name": "Saratoga Investment Corp 8.00% Notes due 2027",
@@ -32895,6 +32913,10 @@
 "industry": "Copper",
 "name": "Trekor Metals Ltd",
 "sector": "Basic Materials"
+},
+"TGE": {
+"industry": "Asset Management",
+"sector": "Financial"
 },
 "TGHL": {
 "industry": "Software - Infrastructure",
