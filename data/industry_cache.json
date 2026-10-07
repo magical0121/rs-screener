@@ -12503,6 +12503,11 @@
 "name": "F5, Inc.",
 "sector": "Financials"
 },
+"FFR": {
+"industry": "Computer Hardware",
+"name": "FF EAI Robotics Ecosystem Inc",
+"sector": "Technology"
+},
 "FG": {
 "industry": "Insurance",
 "name": "F&G Annuities & Life Inc. Common Stock",
@@ -30441,6 +30446,11 @@
 "industry": "Construction & Engineering",
 "name": "Champion Homes, Inc.",
 "sector": "Industrials"
+},
+"SKYD": {
+"industry": "Entertainment",
+"name": "Skydance Corp",
+"sector": "Communication Services"
 },
 "SKYE": {
 "industry": "Biotechnology",
