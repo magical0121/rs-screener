@@ -24364,6 +24364,11 @@
 "name": "NextPlay Technologies Inc. Common Stock",
 "sector": "Information Technology"
 },
+"NXTS": {
+"industry": "Agricultural Inputs",
+"name": "Nexentis Technologies Inc",
+"sector": "Basic Materials"
+},
 "NXTT": {
 "industry": "Software - Application",
 "name": "Next Technology Holding Inc",
@@ -26111,6 +26116,11 @@
 "industry": "Automobiles",
 "name": "GrabAGun Digital Holdings Inc. Common Stock",
 "sector": "Consumer Discretionary"
+},
+"PFAI": {
+"industry": "Farm Products",
+"name": "Pinnacle Food Group Ltd",
+"sector": "Consumer Defensive"
 },
 "PFBC": {
 "industry": "Banks",
