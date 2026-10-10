@@ -4067,6 +4067,11 @@
 "name": "Big Cypress Acquisition Corp.",
 "sector": "Financials"
 },
+"BDAI": {
+"industry": "Information Technology Services",
+"name": "Biddance AI Systems Inc",
+"sector": "Technology"
+},
 "BDC": {
 "industry": "Electrical Equipment",
 "name": "Belden Inc.",
@@ -23935,6 +23940,11 @@
 "name": "Bank of N T Butterfield & Son Ltd",
 "sector": "Financial"
 },
+"NTCL": {
+"industry": "Software - Application",
+"name": "NetClass Technology Inc",
+"sector": "Technology"
+},
 "NTCT": {
 "industry": "Software",
 "name": "NetScout Systems, Inc.",
@@ -35310,6 +35320,11 @@
 "industry": "Biotechnology",
 "name": "VivoSim Labs Inc. Common Stock",
 "sector": "Health Care"
+},
+"VJET": {
+"industry": "Medical Devices",
+"name": "Flyte Aviation Inc",
+"sector": "Healthcare"
 },
 "VKI": {
 "industry": "Capital Markets",
