@@ -7562,6 +7562,11 @@
 "name": "Clearwater Paper Corporation",
 "sector": "Materials"
 },
+"CLWT": {
+"industry": "Pollution & Treatment Controls",
+"name": "Euro Tech Holdings Co Ltd",
+"sector": "Industrials"
+},
 "CLX": {
 "industry": "Household Products",
 "name": "The Clorox Company",
@@ -12288,6 +12293,11 @@
 "industry": "Consumer Finance",
 "name": "FirstCash, Inc.",
 "sector": "Financials"
+},
+"FCHL": {
+"industry": "Education & Training Services",
+"name": "Fitness Champs Holdings Ltd",
+"sector": "Consumer Defensive"
 },
 "FCN": {
 "industry": "Professional Services",
@@ -20004,6 +20014,11 @@
 "name": "Cheniere Energy, Inc.",
 "sector": "Energy"
 },
+"LNKS": {
+"industry": "Electrical Equipment & Parts",
+"name": "Linkers Industries Ltd",
+"sector": "Industrials"
+},
 "LNN": {
 "industry": "Machinery",
 "name": "Lindsay Corporation",
@@ -21801,6 +21816,11 @@
 "industry": "Travel Services",
 "name": "MakeMyTrip Ltd",
 "sector": "Consumer Cyclical"
+},
+"MNDR": {
+"industry": "Health Information Services",
+"name": "Mobile health Network Solutions",
+"sector": "Healthcare"
 },
 "MNDY": {
 "industry": "Software - Application",
@@ -30472,6 +30492,11 @@
 "name": "Champion Homes, Inc.",
 "sector": "Industrials"
 },
+"SKYA": {
+"industry": "Software - Infrastructure",
+"name": "SkyAI Inc",
+"sector": "Technology"
+},
 "SKYD": {
 "industry": "Entertainment",
 "name": "Skydance Corp",
@@ -37312,6 +37337,11 @@
 "industry": "Diversified Telecommunication Services",
 "name": "Zillow Group, Inc.",
 "sector": "Communication Services"
+},
+"ZBAO": {
+"industry": "Insurance Brokers",
+"name": "Zhibao Technology Inc",
+"sector": "Financial"
 },
 "ZBH": {
 "industry": "Health Care Technology",
