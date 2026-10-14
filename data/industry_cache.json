@@ -18084,6 +18084,10 @@
 "name": "Jazz Pharmaceuticals plc",
 "sector": "Healthcare"
 },
+"JBDI": {
+"industry": "Specialty Retail",
+"sector": "Consumer Cyclical"
+},
 "JBGS": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
 "name": "JBG SMITH Properties",
@@ -18411,6 +18415,11 @@
 "industry": "Insurance",
 "name": "Jackson Financial Inc. Class A Common Stock",
 "sector": "Financials"
+},
+"JYD": {
+"industry": "Integrated Freight & Logistics",
+"name": "Jayud Global Logistics Ltd",
+"sector": "Industrials"
 },
 "JYNT": {
 "industry": "Health Care Equipment & Supplies",
