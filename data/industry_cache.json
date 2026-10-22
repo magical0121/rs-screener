@@ -2012,6 +2012,11 @@
 "name": "Amerant Bancorp Inc.",
 "sector": "Financials"
 },
+"AMTD": {
+"industry": "Asset Management",
+"name": "AMTD IDEA Group ADR",
+"sector": "Financial"
+},
 "AMTM": {
 "industry": "Aerospace & Defense",
 "name": "Amentum Holdings Inc. Common Stock",
@@ -3486,6 +3491,11 @@
 "industry": "Biotechnology",
 "name": "Axcella Health Inc.",
 "sector": "Health Care"
+},
+"AXNX": {
+"industry": "Engineering & Construction",
+"name": "Axonex AI Group Ltd",
+"sector": "Industrials"
 },
 "AXON": {
 "industry": "Aerospace & Defense",
@@ -14826,6 +14836,11 @@
 "name": "GOWell Energy Technology",
 "sector": "Energy"
 },
+"GP": {
+"industry": "Farm & Heavy Construction Machinery",
+"name": "GreenPower Motor Company Inc",
+"sector": "Industrials"
+},
 "GPAK": {
 "industry": "nan",
 "name": "Gamer Pakistan Inc. Common Stock",
@@ -22844,6 +22859,11 @@
 "industry": "Banks",
 "name": "Northeast Bank",
 "sector": "Financials"
+},
+"NBP": {
+"industry": "Biotechnology",
+"name": "NovaBridge Biosciences ADR",
+"sector": "Healthcare"
 },
 "NBR": {
 "industry": "Oil & Gas Drilling",
