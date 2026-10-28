@@ -7132,6 +7132,10 @@
 "name": "Cherry Hill Mortgage Investment Corporation",
 "sector": "Real Estate"
 },
+"CHOW": {
+"industry": "Software - Infrastructure",
+"sector": "Technology"
+},
 "CHPG": {
 "industry": "Diversified Financial Services",
 "name": "ChampionsGate Acquisition Corporation Class A Ordinary Share",
@@ -22253,6 +22257,11 @@
 "MSGE": {
 "industry": "Entertainment",
 "name": "Madison Square Garden Entertainment Corp.",
+"sector": "Communication Services"
+},
+"MSGK": {
+"industry": "Entertainment",
+"name": "MSG Knickerbockers Corp",
 "sector": "Communication Services"
 },
 "MSGM": {
