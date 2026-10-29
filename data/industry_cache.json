@@ -7201,6 +7201,11 @@
 "name": "CHS Inc.",
 "sector": "Consumer Staples"
 },
+"CHSN": {
+"industry": "Restaurants",
+"name": "Chanson International Holding",
+"sector": "Consumer Cyclical"
+},
 "CHT": {
 "industry": "Telecom Services",
 "name": "Chunghwa Telecom ADR",
@@ -11178,6 +11183,11 @@
 "industry": "Utilities - Renewable",
 "name": "Enlight Renewable Energy Ltd",
 "sector": "Utilities"
+},
+"ENLV": {
+"industry": "Biotechnology",
+"name": "Enlivex Ltd",
+"sector": "Healthcare"
 },
 "ENO": {
 "industry": "Electric Utilities",
