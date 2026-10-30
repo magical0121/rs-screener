@@ -18234,6 +18234,11 @@
 "name": "JFB Construction Holdings Class A Common Stock",
 "sector": "Real Estate"
 },
+"JFIN": {
+"industry": "Credit Services",
+"name": "Jiayin Group Inc ADR",
+"sector": "Financial"
+},
 "JFR": {
 "industry": "Capital Markets",
 "name": "Nuveen Floating Rate Income Fund",
@@ -35212,6 +35217,11 @@
 "industry": "Capital Markets",
 "name": "Delaware Investments National Municipal Income Fund",
 "sector": "Financials"
+},
+"VFS": {
+"industry": "Auto Manufacturers",
+"name": "VinFast Auto Ltd",
+"sector": "Consumer Cyclical"
 },
 "VG": {
 "industry": "Oil & Gas Midstream",
