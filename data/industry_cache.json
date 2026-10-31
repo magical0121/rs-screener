@@ -3467,6 +3467,11 @@
 "name": "Axos Financial, Inc.",
 "sector": "Financials"
 },
+"AXG": {
+"industry": "Capital Markets",
+"name": "Solowin Holdings",
+"sector": "Financial"
+},
 "AXGN": {
 "industry": "Health Care Technology",
 "name": "AxoGen, Inc.",
@@ -25005,6 +25010,11 @@
 "industry": "Communications Equipment",
 "name": "Ondas Holdings Inc.",
 "sector": "Information Technology"
+},
+"ONEG": {
+"industry": "Engineering & Construction",
+"name": "OneConstruction Group Ltd",
+"sector": "Industrials"
 },
 "ONEN": {
 "industry": "Shell Companies",
