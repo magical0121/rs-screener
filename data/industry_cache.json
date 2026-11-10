@@ -7306,6 +7306,11 @@
 "name": "CIIG Capital Partners II Inc. Warrant",
 "sector": "Financials"
 },
+"CIIT": {
+"industry": "Industrials",
+"name": "Tianci International Inc",
+"sector": "Industrials"
+},
 "CIK": {
 "industry": "Capital Markets",
 "name": "Credit Suisse Asset Management Income Fund, Inc.",
@@ -12600,6 +12605,11 @@
 "industry": "Capital Markets",
 "name": "FGI Industries Ltd. Warrant",
 "sector": "Financials"
+},
+"FGL": {
+"industry": "Industrials",
+"name": "Founder Group Ltd",
+"sector": "Industrials"
 },
 "FGMC": {
 "industry": "Diversified Financial Services",
