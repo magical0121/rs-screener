@@ -27932,6 +27932,11 @@
 "name": "QuickLogic Corporation",
 "sector": "Information Technology"
 },
+"QUIT": {
+"industry": "Healthcare",
+"name": "Achieve Life Sciences Inc",
+"sector": "Healthcare"
+},
 "QUMS": {
 "industry": "Diversified Financial Services",
 "name": "Quantumsphere Acquisition Corp. Ordinary Shares",
