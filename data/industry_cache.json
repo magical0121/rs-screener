@@ -8468,6 +8468,11 @@
 "name": "Critical Metals Corp",
 "sector": "Basic Materials"
 },
+"CRMN": {
+"industry": "Industrials",
+"name": "Skyline Builders Group Holding Ltd",
+"sector": "Industrials"
+},
 "CRMT": {
 "industry": "Automobiles",
 "name": "America's Car-Mart, Inc.",
@@ -10071,6 +10076,10 @@
 "industry": "Computer Hardware",
 "name": "Draganfly Inc",
 "sector": "Technology"
+},
+"DPU": {
+"industry": "Financial",
+"sector": "Financial"
 },
 "DPW": {
 "industry": "Electrical Equipment",
@@ -26503,6 +26512,11 @@
 "name": "Impinj, Inc.",
 "sector": "Information Technology"
 },
+"PICS": {
+"industry": "Technology",
+"name": "PicS NV",
+"sector": "Technology"
+},
 "PII": {
 "industry": "Automobiles",
 "name": "Polaris Inc.",
@@ -26931,6 +26945,11 @@
 "industry": "Electric Utilities",
 "name": "Pinnacle West Capital Corp",
 "sector": "Utilities"
+},
+"POAS": {
+"industry": "Healthcare",
+"name": "Phaos Technology (Cayman) Holdings Ltd",
+"sector": "Healthcare"
 },
 "POCI": {
 "industry": "Electronic Equipment, Instruments & Components",
