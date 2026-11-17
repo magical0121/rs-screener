@@ -8153,6 +8153,11 @@
 "name": "Core Scientific Inc. Tranche 2 Warrants",
 "sector": "nan"
 },
+"COSM": {
+"industry": "Healthcare",
+"name": "Cosmos Health Inc",
+"sector": "Healthcare"
+},
 "COSO": {
 "industry": "Banks - Regional",
 "name": "CoastalSouth Bancshares Inc",
@@ -14019,6 +14024,11 @@
 "name": "GDEV Inc",
 "sector": "Communication Services"
 },
+"GDHG": {
+"industry": "Consumer Cyclical",
+"name": "Golden Heaven Group Holdings Ltd",
+"sector": "Consumer Cyclical"
+},
 "GDL": {
 "industry": "Capital Markets",
 "name": "The GDL Fund",
@@ -15881,6 +15891,11 @@
 "industry": "Diversified Financial Services",
 "name": "H.I.G. Acquisition Corp.",
 "sector": "Financials"
+},
+"HIHO": {
+"industry": "Industrials",
+"name": "Highway Holdings Ltd",
+"sector": "Industrials"
 },
 "HII": {
 "industry": "Aerospace & Defense",
@@ -28255,6 +28270,11 @@
 "industry": "Capital Markets",
 "name": "PIMCO Strategic Income Fund, Inc.",
 "sector": "Financials"
+},
+"RCT": {
+"industry": "Technology",
+"name": "RedCloud Holdings PLC",
+"sector": "Technology"
 },
 "RCUS": {
 "industry": "Biotechnology",
