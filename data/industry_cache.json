@@ -4900,6 +4900,11 @@
 "name": "Badger Meter, Inc.",
 "sector": "Industrials"
 },
+"BMM": {
+"industry": "Basic Materials",
+"name": "Blue Moon Metals Inc",
+"sector": "Basic Materials"
+},
 "BMN": {
 "industry": "Closed-End Fund - Debt",
 "sector": "Financial"
@@ -16706,6 +16711,11 @@
 "industry": "Machinery",
 "name": "Hyzon Motors Inc. Warrants",
 "sector": "Industrials"
+},
+"HZN": {
+"industry": "Utilities",
+"name": "Bright Horizon Energy Corp",
+"sector": "Utilities"
 },
 "HZO": {
 "industry": "Specialty Retail",
@@ -32359,6 +32369,11 @@
 "industry": "Biotechnology",
 "name": "Savara Inc.",
 "sector": "Health Care"
+},
+"SVRE": {
+"industry": "Technology",
+"name": "SaverOne 2014 Ltd ADR",
+"sector": "Technology"
 },
 "SVRN": {
 "industry": "Marine Shipping",
