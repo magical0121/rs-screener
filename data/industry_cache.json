@@ -4541,6 +4541,11 @@
 "name": "BioAge Labs Inc. Common Stock",
 "sector": "Health Care"
 },
+"BIP": {
+"industry": "Utilities",
+"name": "Brookfield Infrastructure Partners Inc",
+"sector": "Utilities"
+},
 "BIPC": {
 "industry": "Gas Utilities",
 "name": "Brookfield Infrastructure Corporation",
@@ -29801,6 +29806,11 @@
 "industry": "Diversified Financial Services",
 "name": "SilverBox Corp IV Class A Ordinary Shares",
 "sector": "Financials"
+},
+"SCAG": {
+"industry": "Industrials",
+"name": "Scage Future ADR",
+"sector": "Industrials"
 },
 "SCCB": {
 "industry": "Equity Real Estate Investment Trusts (REITs)",
