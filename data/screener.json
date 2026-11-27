@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-26 04:32 UTC",
+  "updated_at": "2026-11-27 04:46 UTC",
   "universe_size": 6402,
-  "liquid_size": 2624,
+  "liquid_size": 2625,
   "qualified_size": 97,
   "entry_count": 97,
   "active_count": 0,
@@ -70,7 +70,7 @@
     },
     {
       "name": "Drug Manufacturers - Specialty & Generic",
-      "score": 75,
+      "score": 74,
       "label": "普通",
       "leaders": [
         "BHC",
@@ -930,15 +930,6 @@
       "count": 10
     },
     {
-      "name": "Oil & Gas E&P",
-      "score": 46,
-      "label": "弱い",
-      "leaders": [
-        "GFR"
-      ],
-      "count": 9
-    },
-    {
       "name": "Fixed & Integrated Telecom",
       "score": 45,
       "label": "弱い",
@@ -957,6 +948,15 @@
         "TD"
       ],
       "count": 13
+    },
+    {
+      "name": "Oil & Gas E&P",
+      "score": 45,
+      "label": "弱い",
+      "leaders": [
+        "GFR"
+      ],
+      "count": 9
     },
     {
       "name": "Consumer Lending",
@@ -1023,7 +1023,7 @@
       "leaders": [
         "KOD",
         "NAUT",
-        "ADMA"
+        "GMAB"
       ],
       "count": 277
     },
@@ -1445,7 +1445,7 @@
       "breakout_pct": 100.13,
       "pct_from_30w": 24.23,
       "status": "Entry",
-      "industry_score": 46
+      "industry_score": 45
     },
     {
       "ticker": "PAR",
@@ -1658,20 +1658,6 @@
       "industry_score": 36
     },
     {
-      "ticker": "CUBE",
-      "name": "CubeSmart",
-      "rs": 90,
-      "industry": "Diversified REITs",
-      "sector": "Real Estate",
-      "price": 45.470001220703125,
-      "stage2_entry": true,
-      "stage2_active": true,
-      "breakout_pct": 101.0,
-      "pct_from_30w": 13.27,
-      "status": "Entry",
-      "industry_score": 54
-    },
-    {
       "ticker": "RSG",
       "name": "Republic Services, Inc.",
       "rs": 90,
@@ -1684,6 +1670,20 @@
       "pct_from_30w": 16.09,
       "status": "Entry",
       "industry_score": 65
+    },
+    {
+      "ticker": "CUBE",
+      "name": "CubeSmart",
+      "rs": 89,
+      "industry": "Diversified REITs",
+      "sector": "Real Estate",
+      "price": 45.470001220703125,
+      "stage2_entry": true,
+      "stage2_active": true,
+      "breakout_pct": 101.0,
+      "pct_from_30w": 13.27,
+      "status": "Entry",
+      "industry_score": 54
     },
     {
       "ticker": "EXR",
@@ -2668,7 +2668,7 @@
     {
       "ticker": "FND",
       "name": "Floor & Decor Holdings, Inc.",
-      "rs": 62,
+      "rs": 61,
       "industry": "Specialty Retail",
       "sector": "Consumer Discretionary",
       "price": 51.619998931884766,
