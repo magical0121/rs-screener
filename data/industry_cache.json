@@ -5239,6 +5239,11 @@
 "name": "Broadridge Financial Solutions, Inc.",
 "sector": "Information Technology"
 },
+"BRAI": {
+"industry": "Technology",
+"name": "Braiin Ltd",
+"sector": "Technology"
+},
 "BRBI": {
 "industry": "Capital Markets",
 "name": "BRBI BR Partners SA ADR",
@@ -14653,6 +14658,11 @@
 "industry": "Electronic Equipment, Instruments & Components",
 "name": "Corning Inc",
 "sector": "Information Technology"
+},
+"GLXG": {
+"industry": "Industrials",
+"name": "Galaxy Payroll Group Ltd",
+"sector": "Industrials"
 },
 "GLXY": {
 "industry": "Capital Markets",
@@ -24450,6 +24460,11 @@
 "name": "Quanex Building Products Corporation",
 "sector": "Information Technology"
 },
+"NXAT": {
+"industry": "Industrials",
+"name": "Nexus Advanced Technologies Inc",
+"sector": "Industrials"
+},
 "NXDR": {
 "industry": "Diversified Telecommunication Services",
 "name": "Nextdoor Holdings Inc. Class A Common Stock",
@@ -28170,6 +28185,11 @@
 "industry": "Hotels, Restaurants & Leisure",
 "name": "RAVE Restaurant Group, Inc.",
 "sector": "Consumer Discretionary"
+},
+"RAYA": {
+"industry": "Industrials",
+"name": "Erayak Power Solution Group Inc",
+"sector": "Industrials"
 },
 "RBA": {
 "industry": "Professional Services",
@@ -34611,6 +34631,11 @@
 "name": "United Fire Group, Inc.",
 "sector": "Financials"
 },
+"UFG": {
+"industry": "Industrials",
+"name": "Uni Fuels Holdings Ltd",
+"sector": "Industrials"
+},
 "UFI": {
 "industry": "Textiles, Apparel & Luxury Goods",
 "name": "Unifi, Inc.",
@@ -37851,5 +37876,10 @@
 "industry": "Biotechnology",
 "name": "Zymeworks BC Inc",
 "sector": "Healthcare"
+},
+"ZYN": {
+"industry": "Consumer Cyclical",
+"name": "PTL Ltd",
+"sector": "Consumer Cyclical"
 }
 }
